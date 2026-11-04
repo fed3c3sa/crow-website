@@ -21,12 +21,13 @@ with. It is by Federico Cesarini and Marco Sassarini: [crow-hq/crow-desktop](htt
   the films, the timeline, the LinkedIn and X posts, the authors and the FAQ. Every fact comes from the repos' READMEs
   and release notes, Zenodo, PyPI and the authors' own posts.
 
-## Publish it with GitHub Pages
+## Where it is published
 
-Settings → Pages → Build and deployment: **Deploy from a branch**, branch `main`, folder `/ (root)`. The site is static
-(no build on GitHub) and `.nojekyll` keeps Pages from processing it. Its address is then
-`https://fed3c3sa.github.io/crow-website/`, which `index.html` (canonical, Open Graph, JSON-LD), `sitemap.xml`,
-`robots.txt`, `llms.txt` and `404.html` already use; with a custom domain, change those.
+**https://crowllmwiki.com/**, by GitHub Pages from `main`, folder `/ (root)`. The site is static (no build on GitHub),
+`.nojekyll` keeps Pages from processing it, and `CNAME` holds the domain. The domain's DNS is on Cloudflare, **DNS
+only** (not proxied, so GitHub can issue the HTTPS certificate): four `A` records to `185.199.108-111.153`, four
+`AAAA` to `2606:50c0:8000-8003::153`, and `www` as a `CNAME` to `fed3c3sa.github.io`, which Pages redirects to the
+apex. `index.html` (canonical, Open Graph, JSON-LD), `sitemap.xml`, `robots.txt` and `llms.txt` use that address.
 
 ## Change it
 
