@@ -12,6 +12,9 @@ github.com/crow-hq/llm-wiki-v2), AGPL-3.0-or-later. Its four answers were record
 The screenshots and recordings of Crow in assets/img/shots and assets/media come from crow-hq/crow-desktop and
 crow-hq/llm-wiki-v2; the films in assets/films are the authors' own.
 
+assets/paper holds the CROW paper, version 1.0, exactly as published on Zenodo (doi:10.5281/zenodo.23260209),
+by Federico Cesarini and Marco Sassarini, licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
+
 Third-party components bundled in assets/js/demo.js:
 - d3-force, d3-quadtree, d3-selection, d3-zoom and their d3 dependencies, ISC License, Copyright 2010-2023 Mike Bostock
   (https://github.com/d3/d3)
