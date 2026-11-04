@@ -67,6 +67,8 @@ async function main() {
   const input = $<HTMLInputElement>(".ws-input", root);
   const results = $(".ws-results", root);
   const refit = $<HTMLButtonElement>("[data-act=fit]", root);
+  const announce = $("[data-announce]", root);
+  const phone = matchMedia("(max-width: 819px)");
 
   const demo: Demo = await fetch(new URL("../data/demo.json", import.meta.url)).then((r) => r.json());
   const nodes = new Map(demo.graph.nodes.map((n) => [n.id, n]));
@@ -109,7 +111,7 @@ async function main() {
   /** The brain frames itself in the part of the stage the card leaves free. */
   function layoutFree() {
     const box = stage.getBoundingClientRect();
-    const wide = box.width >= 820;
+    const wide = !phone.matches; // the stylesheet's breakpoint: under it the card sits below the brain
     const cardOpen = !card.hidden && wide;
     const right = cardOpen ? card.getBoundingClientRect().width + 36 : 24;
     view.setFree({ x0: 24, y0: 24, x1: Math.max(120, box.width - right), y1: box.height - (wide ? 110 : 96) });
@@ -130,7 +132,7 @@ async function main() {
     meta.innerHTML = note ? ICON.folder : ICON.note;
     meta.append(
       note
-        ? demo.notes[node.id]?.trail.join(" › ") || "Your wiki"
+        ? demo.notes[node.id]?.trail.map(folderName).join(" › ") || "Your wiki"
         : `${node.notes} ${node.notes === 1 ? "note" : "notes"}`,
     );
     hoverCard.append(meta);
@@ -187,6 +189,7 @@ async function main() {
     return ul;
   }
   tree.append(branch("/", 0));
+  if (phone.matches) $<HTMLDetailsElement>(".ws-wiki", root).open = false; // 31 rows: a tap opens them
   function markTree() {
     tree.querySelectorAll<HTMLElement>("[data-id]").forEach((b) => {
       const id = b.dataset.id!;
@@ -196,19 +199,29 @@ async function main() {
   }
 
   // -- the card ---------------------------------------------------------------------------------------------------
-  const current = { note: null as string | null, answer: -1, back: null as (() => void) | null, token: 0 };
-  $("[data-act=close]", card).addEventListener("click", () => {
+  const current = { note: null as string | null, answer: -1, back: null as (() => void) | null, token: 0, opener: null as HTMLElement | null };
+  const close = () => {
     closeCard();
     clearFocus();
+    current.opener?.focus({ preventScroll: true }); // back to what opened the card
+    current.opener = null;
+  };
+  $("[data-act=close]", card).addEventListener("click", close);
+  root.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !card.hidden && !(event.target as HTMLElement).closest(".ws-composer")) close();
   });
   /** Shows the card; on a phone, where it sits under the brain, a tap brings it into view (an automatic answer does not). */
   function openCard(title: string, reveal = true) {
     const wasHidden = card.hidden;
+    const from = document.activeElement as HTMLElement | null;
+    if (reveal && from && !card.contains(from) && from !== document.body) current.opener = from;
     card.hidden = false;
     cardTitle.textContent = title;
     cardBody.scrollTop = 0;
+    closeResults();
     if (wasHidden) layoutFree();
-    if (reveal && matchMedia("(max-width: 819px)").matches) card.scrollIntoView({ block: "nearest", behavior: reduced ? "auto" : "smooth" });
+    if (reveal && phone.matches) card.scrollIntoView({ block: "nearest", behavior: reduced ? "auto" : "smooth" });
+    if (reveal) cardTitle.focus({ preventScroll: true }); // the keyboard lands in the card, not 40 tabs away
   }
   function closeCard() {
     card.hidden = true;
@@ -257,7 +270,11 @@ async function main() {
     trail.append(note.trail.map(folderName).join(" › ") || "Your wiki");
     const md = el("div", "md");
     md.innerHTML = note.html;
-    body.append(trail, md);
+    body.append(trail);
+    if (id === "about-this-demo.md")
+      body.append(el("p", "ws-aside", "This note was written for llmwiki2's own page, where you can set a model and drop files. Here the wiki is read-only."));
+    body.append(md);
+    announce.textContent = `Note opened: ${note.title}`;
     if (note.sources.length) {
       const src = el("div", "ws-sources");
       src.append(el("p", "ws-label", "Filed from"));
@@ -303,6 +320,10 @@ async function main() {
     const token = ++current.token;
     current.answer = i;
     current.note = null;
+    if (input.value) {
+      input.value = "";
+      found = [];
+    }
     show({ focus: null, only: null, lit: null });
     openCard(a.question, reveal);
     const thread = el("div", "ws-thread");
@@ -314,8 +335,10 @@ async function main() {
     mark.src = new URL("../img/crow-mark.png", import.meta.url).href;
     mark.alt = "";
     const answerBody = el("div", "ws-turn-body");
-    answerBody.append(el("p", "ws-who", "Answer"));
-    const searching = el("p", "ws-shimmer", "Searching your wiki…");
+    const who = el("p", "ws-who", "Answer");
+    who.append(el("span", "ws-recorded", "Recorded"));
+    answerBody.append(who);
+    const searching = el("p", "ws-shimmer", "Replaying how CROW searched the wiki…");
     answerBody.append(searching);
     ans.append(mark, answerBody);
     thread.append(you, ans);
@@ -336,6 +359,7 @@ async function main() {
     if (!instant) text.classList.add("rise");
     answerBody.append(text, traceOf(a));
     show({ glow: { paths: a.read, at: performance.now() } });
+    announce.textContent = `Recorded answer to: ${a.question}`;
   }
 
   function traceOf(a: Answer): HTMLElement {
@@ -383,7 +407,9 @@ async function main() {
   let found: string[] = [];
   function search() {
     const words = norm(input.value).split(/\s+/).filter(Boolean);
+    const inTitle = (id: string) => words.every((w) => norm(demo.notes[id].title).includes(w));
     found = words.length ? noteIds.filter((id) => words.every((w) => haystack.get(id)!.includes(w))) : [];
+    found.sort((a, b) => Number(inTitle(b)) - Number(inTitle(a))); // a title that matches comes first
     show({ only: words.length ? found : null, focus: null });
     results.replaceChildren();
     results.hidden = !words.length;
@@ -400,7 +426,13 @@ async function main() {
       results.append(b);
     }
   }
+  function closeResults() {
+    results.hidden = true;
+  }
   input.addEventListener("input", search);
+  input.addEventListener("focus", () => {
+    if (input.value) results.hidden = false;
+  });
   input.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       input.value = "";
@@ -440,7 +472,8 @@ async function main() {
     ([entry]) => {
       if (!entry.isIntersecting) return;
       io.disconnect();
-      if (current.answer < 0 && !current.note && card.hidden) void ask(0, false, false);
+      // On a phone the card sits under the brain: opening it by itself would push the page around.
+      if (!phone.matches && current.answer < 0 && !current.note && card.hidden) void ask(0, false, false);
     },
     { threshold: 0.55 },
   );

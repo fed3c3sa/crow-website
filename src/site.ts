@@ -87,6 +87,7 @@ async function detect(): Promise<Kind | null> {
   const data = (navigator as Navigator & { userAgentData?: { platform?: string; getHighEntropyValues?: (h: string[]) => Promise<{ architecture?: string }> } }).userAgentData;
   const platform = (data?.platform || navigator.platform || "").toLowerCase();
   if (/iphone|ipad|android/i.test(ua)) return null;
+  if (/macintosh/i.test(ua) && navigator.maxTouchPoints > 1) return null; // an iPad asking for the desktop site
   if (platform.includes("mac") || /mac os x/i.test(ua)) {
     if (data?.getHighEntropyValues) {
       try {
@@ -139,7 +140,8 @@ async function latestRelease() {
       a.querySelectorAll("[data-dl-size]").forEach((n) => (n.textContent = mb(asset.size)));
     });
   }
-  document.querySelectorAll("[data-crow-version]").forEach((n) => (n.textContent = version));
+  // Only the spans that print it: the <html> element carries the version the page was written for.
+  document.querySelectorAll("span[data-crow-version]").forEach((n) => (n.textContent = version));
   document.querySelectorAll<HTMLAnchorElement>("[data-release-page]").forEach((a) => (a.href = release.html_url));
   const date = new Date(release.published_at).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
   document.querySelectorAll("[data-crow-date]").forEach((n) => (n.textContent = date));

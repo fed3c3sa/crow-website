@@ -2,7 +2,7 @@
 # Copyright 2026 Federico Cesarini, Marco Sassarini. SPDX-License-Identifier: AGPL-3.0-or-later
 # How tools/data-src was recorded (4 November 2026): llmwiki2 0.8.0 serves a copy of its own example wiki, and the
 # graph, every note and four answers are saved as the HTTP API returns them. Asking needs an OpenRouter key; with the
-# defaults the wiki runs in CROW mode, Jev 1.13 deciding and Gemini 3.8 Flash writing (the four answers cost $0.008).
+# defaults the wiki runs in CROW mode, Jev 1.13 deciding and Gemini 3.8 Flash writing (the four answers cost about $0.006).
 # Run from the repo root with a clone of crow-hq/llm-wiki-v2 at $LLM_WIKI (default ../llm-wiki-v2), then npm run build.
 set -euo pipefail
 : "${OPENROUTER_API_KEY:?set OPENROUTER_API_KEY to record the answers}"

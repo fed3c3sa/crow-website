@@ -182,7 +182,7 @@ a:hover {
 
 /* A link inside running text is underlined, so it never relies on its colour alone. */
 p a:not(.btn):not(.link-arrow):not(.note-link),
-li a:not(.btn):not(.dl):not(.pill-link):not(.post),
+main li a:not(.btn):not(.dl):not(.pill-link):not(.post),
 dd a,
 .md a {
   text-decoration: underline;
@@ -928,23 +928,26 @@ section {
 
 .ws-hint {
   position: absolute;
-  left: 16px;
-  bottom: 104px;
+  left: 18px;
+  top: 60px;
+  max-width: 40%;
+  line-height: 1.5;
   z-index: 2;
   font-size: 12.5px;
-  color: var(--faint);
+  color: var(--muted);
   pointer-events: none;
 }
 
 .ws-card {
   position: absolute;
+  padding: 0;
   top: 16px;
   right: 16px;
   bottom: 104px;
   z-index: 4;
   display: flex;
   flex-direction: column;
-  width: min(440px, 46%);
+  width: min(400px, 44%);
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--r-2xl);
@@ -1002,7 +1005,8 @@ section {
 }
 
 .ws-composer:focus-within {
-  border-color: #3a3d43;
+  border-color: rgba(61, 128, 252, 0.55);
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.35), var(--ring);
 }
 
 .ws-composer > svg {
@@ -1048,7 +1052,7 @@ section {
   z-index: 6;
   translate: -50% 0;
   width: min(620px, calc(100% - 32px));
-  max-height: 232px;
+  max-height: 300px;
   overflow: auto;
   padding: 6px;
   background: var(--raised-2);
@@ -1695,6 +1699,8 @@ section {
 }
 
 .strip {
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 64px), transparent);
+  mask-image: linear-gradient(to right, #000 calc(100% - 64px), transparent);
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: minmax(300px, 1fr);
@@ -1891,13 +1897,15 @@ section {
   margin: 0;
   padding: 14px 16px 16px;
   overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
   font-size: 13.5px;
   line-height: 1.65;
   color: var(--text-2);
 }
 
 .code .c {
-  color: var(--faint);
+  color: var(--muted);
 }
 
 .code .p {
@@ -2104,6 +2112,14 @@ section {
   color: var(--text-3);
 }
 
+.pipeline b {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
 .pipeline span {
   padding: 5px 10px;
   border-radius: var(--r-md);
@@ -2113,7 +2129,7 @@ section {
 
 .pipeline i {
   font-style: normal;
-  color: var(--faint);
+  color: var(--muted);
 }
 
 /* -- download -------------------------------------------------------------------------------------------------- */
@@ -2567,7 +2583,7 @@ section {
   font-variant-numeric: tabular-nums;
 }
 
-.timeline h3 {
+.timeline h4 {
   margin-top: 3px;
   font-size: 16.5px;
   font-weight: 500;
@@ -2713,7 +2729,7 @@ section {
   margin-top: 4px;
   font-size: 12.5px;
   font-style: normal;
-  color: var(--faint);
+  color: var(--muted);
 }
 
 .person p {
@@ -2952,5 +2968,123 @@ section {
   :not(pre) > code {
     white-space: normal;
     overflow-wrap: anywhere;
+  }
+}
+
+/* -- review fixes -------------------------------------------------------------------------------------------- */
+
+.table-note {
+  padding: 12px 18px 14px;
+  border-top: 1px solid var(--divider);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.ws-recorded {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 0 7px;
+  vertical-align: 1px;
+  border-radius: var(--r-pill);
+  background: rgba(245, 184, 90, 0.13);
+  color: #ffd79a;
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 19px;
+}
+
+.ws-aside {
+  margin-bottom: 14px;
+  padding: 10px 12px;
+  border-radius: var(--r-lg);
+  background: rgba(245, 184, 90, 0.08);
+  border: 1px solid rgba(245, 184, 90, 0.2);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--text-3);
+}
+
+.ws-wiki summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  cursor: pointer;
+}
+
+.ws-wiki summary::-webkit-details-marker {
+  display: none;
+}
+
+.ws-wiki summary .ws-count {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.ws-wiki summary::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  margin-right: 4px;
+  border-right: 1.6px solid var(--muted);
+  border-bottom: 1.6px solid var(--muted);
+  transform: rotate(45deg);
+  transition: transform var(--t-fast) var(--ease);
+}
+
+.ws-wiki[open] summary::after {
+  transform: rotate(-135deg);
+}
+
+.ws-wiki summary .ws-count {
+  margin-left: auto;
+  margin-right: 12px;
+}
+
+.ws-card-title:focus-visible {
+  box-shadow: none;
+  outline: none;
+}
+
+/* Between a phone and a wide window the list goes under the brain, so the brain keeps the width beside the card. */
+@media (min-width: 820px) and (max-width: 1100px) {
+  .workspace {
+    --stage-h: min(720px, 84vh);
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: var(--stage-h) auto;
+    height: auto;
+    min-height: 0;
+  }
+  .ws-stage {
+    grid-row: 1;
+  }
+  .ws-sidebar {
+    grid-row: 2;
+    border-right: 0;
+    border-top: 1px solid var(--divider);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+    column-gap: 18px;
+    align-items: start;
+  }
+  .ws-sidebar > .ws-label,
+  .ws-sidebar > .ws-questions {
+    grid-column: 1;
+  }
+  .ws-sidebar > .ws-wiki {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+  .ws-tree {
+    columns: 2;
+    column-gap: 12px;
+  }
+  .ws-tree li {
+    break-inside: avoid;
+  }
+  .ws-card {
+    bottom: auto;
+    height: calc(var(--stage-h) - 120px);
   }
 }

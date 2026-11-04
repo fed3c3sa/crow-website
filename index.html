@@ -165,10 +165,12 @@
 
     <div class="workspace" data-explore>
       <aside class="ws-sidebar" aria-label="The example wiki">
-        <p class="ws-label">Questions</p>
+        <p class="ws-label">Recorded questions</p>
         <ul class="ws-questions"></ul>
-        <p class="ws-label">Wiki</p>
-        <nav class="ws-tree" aria-label="Folders and notes"></nav>
+        <details class="ws-wiki" open>
+          <summary class="ws-label">Wiki <span class="ws-count">23 notes</span></summary>
+          <nav class="ws-tree" aria-label="Folders and notes"></nav>
+        </details>
       </aside>
       <div class="ws-stage">
         <canvas class="ws-canvas" role="img" aria-label="The brain of the example wiki: a grey root, eight coloured folders and their notes, joined by links. Drag a dot to move it; the list beside it opens the same folders and notes."></canvas>
@@ -191,13 +193,14 @@
           <button class="ws-send" type="submit" aria-label="Open the first note found"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></button>
         </form>
       </div>
-      <div class="ws-card" hidden>
+      <section class="ws-card" aria-label="Answer or note" hidden>
         <div class="ws-card-head">
-          <p class="ws-card-title"></p>
+          <p class="ws-card-title" tabindex="-1"></p>
           <button class="btn btn-dark" type="button" data-act="close">Close</button>
         </div>
         <div class="ws-card-body"></div>
-      </div>
+      </section>
+      <p class="visually-hidden" aria-live="polite" data-announce></p>
     </div>
     <p class="ws-caption fine">The answers were recorded on 4 November 2026 from llmwiki2 0.8.0 in CROW mode, Jev 1.13 deciding and Gemini 3.8 Flash writing. Nothing on this page calls a model. <a href="https://github.com/crow-hq/llm-wiki-v2/tree/main/src/llmw2/demo">The example wiki on GitHub</a>.</p>
   </div>
@@ -300,13 +303,13 @@
 <section id="ai-apps">
   <div class="wrap">
     <div class="head reveal">
-      <span class="eyebrow" style="--dot: var(--crow)">New in Crow 0.1.4</span>
+      <span class="eyebrow" style="--dot: var(--crow)">Since Crow 0.1.4</span>
       <h2>Crow is the memory of your AI apps</h2>
       <p>Press <b>Connect AI apps</b> in Crow's sidebar, then <b>Connect</b> next to the app. From then on the app can ask your wiki, read a note and keep what it learns: a decision, a fix that worked, a preference, filed by Crow like any other note.</p>
     </div>
     <div class="apps">
       <article class="app reveal">
-        <div class="app-head"><span class="app-logo"><img src="assets/img/claude.svg" width="28" height="28" alt=""></span><h3>Claude<small>the desktop app</small></h3></div>
+        <div class="app-head"><span class="app-logo"><img src="assets/img/claude.svg" width="28" height="28" alt=""></span><h3>Claude <small>the desktop app</small></h3></div>
         <p>Crow adds itself to Claude's MCP servers; on macOS, if Claude is open, the button reads <b>Connect and restart</b> and Crow reopens Claude for you.</p>
         <p class="then">Elsewhere, quit Claude first, connect, then open Claude.</p>
       </article>
@@ -316,12 +319,12 @@
         <p class="then">Then start a new session.</p>
       </article>
       <article class="app reveal">
-        <div class="app-head"><span class="app-logo"><img src="assets/img/openai.png" width="28" height="28" alt=""></span><h3>ChatGPT<small>the desktop app</small></h3></div>
+        <div class="app-head"><span class="app-logo"><img src="assets/img/openai.png" width="28" height="28" alt=""></span><h3>ChatGPT <small>the desktop app</small></h3></div>
         <p>Crow adds itself to Codex's settings, which the ChatGPT app reads; on macOS it restarts ChatGPT if it is open.</p>
         <p class="then">Elsewhere, quit ChatGPT and open it again.</p>
       </article>
       <article class="app reveal">
-        <div class="app-head"><span class="app-logo"><img src="assets/img/openai.png" width="28" height="28" alt=""></span><h3>Codex<small>CLI, IDE extension</small></h3></div>
+        <div class="app-head"><span class="app-logo"><img src="assets/img/openai.png" width="28" height="28" alt=""></span><h3>Codex <small>CLI, IDE extension</small></h3></div>
         <p>Crow adds itself to <code>~/.codex/config.toml</code>.</p>
         <p class="then">Then start a new session.</p>
       </article>
@@ -381,10 +384,10 @@ crow mcp</pre>
       <div class="prose reveal">
         <span class="eyebrow" style="--dot: var(--crow)">CROW</span>
         <h3 style="margin:14px 0 16px;font-size:clamp(24px,2.8vw,32px);font-weight:450;letter-spacing:-0.02em;line-height:1.2">A small classifier decides where things go, so the wiki stays fast and cheap as it grows</h3>
-        <p>Karpathy's LLM wiki finds pages by having the model read an index, which works up to about a hundred sources. CROW makes it scale: a small classifier picks each document's folder among every folder of the wiki in one choice, and answering walks the folders level by level, so the wiki keeps growing without a vector database. The LLM is kept for writing: summarizing a source, naming a new folder, rewriting a note it merges into, and the final answer.</p>
+        <p>Karpathy's LLM wiki finds pages by having the model read an index, which works up to about a hundred sources. CROW makes it scale: a small classifier picks each document's folder among every folder of the wiki in one choice, and answering walks the folders level by level, so the wiki keeps growing without a vector database. The LLM writes: it summarizes each source, rewrites a note it merges into, names new folders and writes the answer. It also lays out the folders, in a plan before a batch is filed and by splitting a folder that has grown, and it decides when the classifier fails.</p>
         <p>In the <a href="#paper">CROW paper</a>, retrieval kept its accuracy across a twentyfold growth of the wiki.</p>
         <div class="pipeline" role="group" aria-label="The ingest pipeline">
-          <span>summarize</span><i>→</i><span>route</span><i>→</i><span>find match</span><i>→</i><span>merge or write</span><i>→</i><span>relate</span><i>→</i><span>link, index, log</span>
+          <b><span>summarize</span><i>→</i></b><b><span>route</span><i>→</i></b><b><span>find match</span><i>→</i></b><b><span>merge or write</span><i>→</i></b><b><span>relate</span><i>→</i></b><b><span>link, index, log</span></b>
         </div>
       </div>
       <div class="table-wrap reveal">
@@ -396,11 +399,13 @@ crow mcp</pre>
             <tr><th scope="row">Same subject as an existing note?</th><td><span class="chip chip-llm">LLM</span></td><td><span class="chip chip-cls">Classifier</span></td></tr>
             <tr><th scope="row">Merge into it, or write a new note?</th><td><span class="chip chip-llm">LLM</span></td><td><span class="chip chip-cls">Classifier</span></td></tr>
             <tr><th scope="row">Name a new folder, rewrite a merged note</th><td><span class="chip chip-llm">LLM</span></td><td><span class="chip chip-llm">LLM</span></td></tr>
+            <tr><th scope="row">Lay out the folders (a batch's plan, a folder's split)</th><td><span class="chip chip-llm">LLM</span></td><td><span class="chip chip-llm">LLM</span></td></tr>
             <tr><th scope="row">Related notes (See also)</th><td><span class="chip chip-llm">LLM</span></td><td><span class="chip chip-cls">Classifier</span></td></tr>
             <tr><th scope="row">Find the notes for a question</th><td><span class="chip chip-llm">LLM</span></td><td><span class="chip chip-cls">Classifier</span></td></tr>
             <tr><th scope="row">Write the answer</th><td><span class="chip chip-llm">LLM</span></td><td><span class="chip chip-llm">LLM</span></td></tr>
           </tbody>
         </table>
+        <p class="table-note">In CROW mode the LLM also decides when the classifier fails or is unsure. From llm-wiki-v2's README.</p>
       </div>
     </div>
 
@@ -430,7 +435,7 @@ crow mcp</pre>
         </div>
       </div>
     </div>
-    <p class="fine reveal" style="margin-top:16px;max-width:820px">These are the authors' own measurements, from llm-wiki-v2's benchmarks. The paper measures one corpus of 525 personal documents, mostly in Italian, with one LLM and one classifier version, and says so among its limitations. The corpora and scripts are public in <a href="https://github.com/crow-hq/llm-wiki-v2/tree/main/benchmarks">benchmarks/</a>, and every script has a <code>--dry-run</code>, so you can run them with your own models.</p>
+    <p class="fine reveal" style="margin-top:16px;max-width:820px">These are the authors' own measurements, from the benchmark in the <a href="#paper">CROW paper</a> (Table 2): one corpus of 525 personal documents, mostly in Italian, with one LLM and one classifier version, as the paper says among its limitations. That corpus is not public, since it holds the first author's personal notes. The corpora and scripts behind llm-wiki-v2's own measurements are public in <a href="https://github.com/crow-hq/llm-wiki-v2/tree/main/benchmarks">benchmarks/</a>, and every script has a <code>--dry-run</code>, so you can run them with your own models.</p>
   </div>
 </section>
 
@@ -494,7 +499,7 @@ crow mcp</pre>
       <a href="https://github.com/crow-hq/crow-desktop/releases/tag/v0.1.4" data-release-page>Every file of this version</a>
       <a href="https://github.com/crow-hq/crow-desktop/releases">Older versions</a>
       <a href="https://github.com/crow-hq/crow-desktop">crow-hq/crow-desktop on GitHub</a>
-      <span>Crow gets new versions by itself: Settings → About → Check for updates.</span>
+      <span>Crow updates itself from these releases: Settings → About → Check for updates.</span>
     </div>
 
     <h3 class="reveal" style="margin:64px 0 8px;font-size:24px;font-weight:450;letter-spacing:-0.015em">Install Crow (the builds are not signed yet)</h3>
@@ -566,13 +571,13 @@ crow mcp</pre>
   <div class="wrap films">
     <div class="head reveal">
       <span class="eyebrow" style="--dot: var(--area-7)">Films</span>
-      <h2>Crow in thirty seconds</h2>
-      <p>The films that went out with each release, on LinkedIn and X.</p>
+      <h2>Crow on film</h2>
+      <p>The films posted on LinkedIn and X since the launch.</p>
     </div>
     <div class="grid grid-2">
       <figure class="shot reveal">
         <div class="window"><video src="assets/films/crow-desktop-7-clicks.mp4" poster="assets/films/crow-desktop-7-clicks.webp" width="1280" height="800" controls playsinline preload="none" aria-label="Film: building a second brain with Crow Desktop in seven clicks"></video></div>
-        <figcaption><b>Build your second brain in 7 clicks.</b> The Crow Desktop release, 16 October 2026 (38 s).</figcaption>
+        <figcaption><b>Build your second brain in 7 clicks.</b> The Crow Desktop release, 16 October 2026 (39 s).</figcaption>
       </figure>
       <figure class="shot reveal">
         <div class="window"><video src="assets/films/desktop-graveyard.mp4" poster="assets/films/desktop-graveyard.webp" width="1280" height="720" controls playsinline preload="none" aria-label="Film: a desktop flooded with messy files, all dropped into Crow, which files them into a brain and answers a question"></video></div>
@@ -580,7 +585,7 @@ crow mcp</pre>
       </figure>
       <figure class="shot reveal">
         <div class="window"><video src="assets/films/no-vectors.mp4" poster="assets/films/no-vectors.webp" width="1280" height="720" controls playsinline preload="none" aria-label="Film: classic RAG as columns of numbers, then a crow filing documents into a folder tree and an answer citing a note"></video></div>
-        <figcaption><b>Our LLM wiki has no scaling limits.</b> Why a wiki needs no vectors; 12 October 2026 (27 s).</figcaption>
+        <figcaption><b>Our LLM wiki has no scaling limits.</b> Why a wiki needs no vectors; 12 October 2026 (27 s, shown here without its music).</figcaption>
       </figure>
       <figure class="shot reveal">
         <div class="window"><video src="assets/films/llm-wiki-v2-launch.mp4" poster="assets/films/llm-wiki-v2-launch.webp" width="1280" height="720" controls playsinline preload="none" aria-label="Film: a voxel crow filing documents into a wiki"></video></div>
@@ -608,7 +613,7 @@ crow mcp</pre>
           <a class="link-card" href="https://github.com/crow-hq/llm-wiki-v2/blob/main/docs/wiki/memory.md"><b>Memory for AI agents (MCP)</b><span>recall, remember, read_note</span></a>
           <a class="link-card" href="https://github.com/crow-hq/llm-wiki-v2/blob/main/docs/wiki/crow.md"><b>How CROW decides</b><span>Thresholds and fallbacks</span></a>
           <a class="link-card" href="https://github.com/crow-hq/llm-wiki-v2/tree/main/benchmarks"><b>Benchmarks</b><span>Corpora and scripts, with <code>--dry-run</code></span></a>
-          <a class="link-card" href="https://github.com/crow-hq/llm-wiki-v2/blob/main/CHANGELOG.md"><b>Changelog</b><span>Every release since 0.1</span></a>
+          <a class="link-card" href="https://github.com/crow-hq/llm-wiki-v2/blob/main/CHANGELOG.md"><b>Changelog</b><span>Every release since 0.2.0</span></a>
           <a class="link-card" href="https://github.com/crow-hq/llm-wiki-v2/discussions"><b>Discussions</b><span>Questions and ideas</span></a>
         </div>
       </div>
@@ -711,7 +716,7 @@ print(answer.text, answer.citations)</pre>
       <div class="number reveal"><b>140,458</b><span>impressions on the launch post on LinkedIn</span></div>
       <div class="number reveal"><b>250+</b><span>stars on GitHub, <span class="counter" data-stars>254</span> today</span></div>
       <div class="number reveal"><b>40+</b><span>forks, <span class="counter" data-forks>41</span> today</span></div>
-      <div class="number reveal"><b>~3,000</b><span>downloads from PyPI (mirrors included)</span></div>
+      <div class="number reveal"><b>~3,000</b><span>downloads from PyPI, 661 in the last week</span></div>
       <div class="number reveal"><b>~3,000</b><span>views of the paper on Zenodo</span></div>
     </div>
 
@@ -719,15 +724,22 @@ print(answer.text, answer.citations)</pre>
       <div>
         <h3 class="reveal" style="font-size:22px;font-weight:450;margin-bottom:24px">Timeline</h3>
         <ol class="timeline">
-          <li class="reveal" style="--dot: var(--area-4)"><time datetime="2026-11-03">3 November 2026</time><h3>llmwiki2 0.8.0</h3><p>Wikis of thousands of documents built from empty: top-level areas you decide, costs estimated and capped, steady speed as it grows, and nothing lost if a run stops halfway.</p></li>
-          <li class="reveal" style="--dot: var(--crow)"><time datetime="2026-10-28">28 October 2026</time><h3>Crow 0.1.4 and llmwiki2 0.7.0: Connect AI apps</h3><p>Claude, Claude Code, ChatGPT and Codex use the wiki as their memory, through MCP, with one button each.</p></li>
-          <li class="reveal"><time datetime="2026-10-19">19 October 2026</time><h3>llmwiki2 0.6.0 and Crow 0.1.3</h3><p>Each document is filed with one choice among all the wiki's folders, which costs less, and a folder that grows is split into subfolders by subject.</p></li>
-          <li class="reveal" style="--dot: var(--area-1)"><time datetime="2026-10-16">16 October 2026</time><h3>Crow 0.1.0: the desktop app</h3><p>For macOS, Windows and Linux, over llmwiki2 0.4.4, with an onboarding in five screens. Crow 0.1.1 and 0.1.2 followed the same day, with llmwiki2 0.5.0, which reads Word, PowerPoint, Excel and OpenDocument files.</p></li>
-          <li class="reveal"><time datetime="2026-10-14">14 October 2026</time><h3><code>pip install llmwiki2</code></h3><p>The first release on PyPI, 0.4.1.</p></li>
-          <li class="reveal"><time datetime="2026-10-12">12 October 2026</time><h3>llmwiki2 0.4.0</h3><p>Move notes, describe folders, ingest large documents; CROW works out the classifier's confidence itself.</p></li>
-          <li class="reveal" style="--dot: var(--area-2)"><time datetime="2026-10-09">9 October 2026</time><h3>The code goes public: LLM-Wiki-V2</h3><p>crow-hq/llm-wiki-v2 on GitHub, and the paper's version 1.0 on Zenodo with the link to the code.</p></li>
-          <li class="reveal" style="--dot: var(--crow)"><time datetime="2026-09-22">22 September 2026</time><h3>The CROW preprint</h3><p>CROW: Classifier-Routed Organization of LLM Wikis, on Zenodo.</p></li>
+          <li class="reveal" style="--dot: var(--area-4)"><time datetime="2026-11-03">3 November 2026</time><h4>llmwiki2 0.8.0</h4><p>Wikis of thousands of documents built from empty: top-level areas you decide, costs estimated and capped, steady speed as it grows, and nothing lost if a run stops halfway.</p></li>
+          <li class="reveal" style="--dot: var(--crow)"><time datetime="2026-10-28">28 October 2026</time><h4>Crow 0.1.4 and llmwiki2 0.7.0: Connect AI apps</h4><p>Claude, Claude Code, ChatGPT and Codex use the wiki as their memory, through MCP, with one button each.</p></li>
+          <li class="reveal"><time datetime="2026-10-19">19 October 2026</time><h4>llmwiki2 0.6.0 and Crow 0.1.3</h4><p>Each document is filed with one choice among all the wiki's folders, which costs less, and a folder that grows is split into subfolders by subject.</p></li>
+          <li class="reveal" style="--dot: var(--area-1)"><time datetime="2026-10-16">16 October 2026</time><h4>Crow 0.1.0: the desktop app</h4><p>For macOS, Windows and Linux, over llmwiki2 0.4.4, with an onboarding in five screens. The same day, Crow 0.1.1 opened a note's documents and deleted notes and folders, and Crow 0.1.2 moved to llmwiki2 0.5.0, which reads Word, PowerPoint, Excel and OpenDocument files itself.</p></li>
+          <li class="reveal"><time datetime="2026-10-14">14 October 2026</time><h4><code>pip install llmwiki2</code></h4><p>The first release on PyPI, 0.4.1.</p></li>
+          <li class="reveal"><time datetime="2026-10-12">12 October 2026</time><h4>llmwiki2 0.4.0</h4><p>Move notes, describe folders, ingest large documents; CROW works out the classifier's confidence itself.</p></li>
+          <li class="reveal" style="--dot: var(--area-2)"><time datetime="2026-10-09">9 October 2026</time><h4>The code goes public: LLM-Wiki-V2</h4><p>crow-hq/llm-wiki-v2 on GitHub, and a new Zenodo record of the paper's version 1.0 that links to the code.</p></li>
+          <li class="reveal"><time datetime="2026-09-29">29 September 2026</time><h4>The paper's version 1.0</h4><p>On Zenodo, after the preprint.</p></li>
+          <li class="reveal" style="--dot: var(--crow)"><time datetime="2026-09-22">22 September 2026</time><h4>The CROW preprint</h4><p>CROW: Classifier-Routed Organization of LLM Wikis, on Zenodo.</p></li>
         </ol>
+        <h3 class="reveal" style="font-size:17px;font-weight:450;margin:18px 0 14px;color:var(--text-2)">Others writing about CROW</h3>
+        <div class="posts">
+          <a class="post reveal" href="https://www.linkedin.com/posts/lukman-aminu-ibrahim-aa0936341_your-ai-doesnt-need-a-bigger-brain-it-needs-activity-7521662194800058368-4XBm"><span class="post-logo li">in</span><span><span class="post-meta">Lukman Aminu Ibrahim · 29 Oct 2026</span><span class="post-title">Your AI doesn't need a bigger brain</span><span class="post-text">An explainer on AI that keeps better notes, with CROW among its examples.</span></span></a>
+          <a class="post reveal" href="https://www.linkedin.com/posts/the-geo-community_generativeengineoptimization-geo-knowledgemanagement-activity-7517348522585808896-1qis"><span class="post-logo li">in</span><span><span class="post-meta">The GEO Community · 17 Oct 2026</span><span class="post-title">A review of LLM-Wiki v2 and its CROW mode</span></span></a>
+          <a class="post reveal" href="https://www.linkedin.com/posts/fshirafkan_farshidshirafkan-llm-crow-activity-7514583887520452608-ssFb"><span class="post-logo li">in</span><span><span class="post-meta">Farshid Shirafkan, PhD · 10 Oct 2026 · in Persian</span><span class="post-title">A post explaining CROW</span></span></a>
+        </div>
       </div>
       <div>
         <h3 class="reveal" style="font-size:22px;font-weight:450;margin-bottom:24px">On LinkedIn and X</h3>
@@ -735,7 +747,7 @@ print(answer.text, answer.citations)</pre>
           <a class="post reveal" href="https://www.linkedin.com/posts/marco-sassarini-95b342200_crow-080-activity-7523430164060565504-jFHB"><span class="post-logo li">in</span><span><span class="post-meta">Marco Sassarini, with Federico · 3 Nov 2026 · carousel</span><span class="post-title">We just released CROW 0.8.0</span><span class="post-text">It keeps a wiki of thousands of documents in order, with areas you decide, costs estimated and capped, steady speed as it grows, and nothing lost if it stops halfway.</span></span></a>
           <a class="post reveal" href="https://www.linkedin.com/posts/federico-cesarini-4a9482209_building-a-brain-is-the-new-hot-topic-and-activity-7523389346457018370-Z6jL"><span class="post-logo li">in</span><span><span class="post-meta">Federico Cesarini, with Marco · 3 Nov 2026</span><span class="post-title">Building a brain is the new hot topic, and we made it accessible to everyone</span><span class="post-text">We made it easy, with no scaling limit, and gave it to everyone for free.</span></span></a>
           <a class="post reveal" href="https://www.linkedin.com/posts/federico-cesarini-4a9482209_crow-claude-chatgpt-activity-7521284526074105856-lYIl"><span class="post-logo li">in</span><span><span class="post-meta">Federico Cesarini, with Marco · 28 Oct 2026 · video</span><span class="post-title">Turn your messy documents into knowledge your AI agents can use</span><span class="post-text">Organize all the documents on your laptop into a clean wiki, then connect it to your favorite agent with one click: Claude, Claude Code, ChatGPT or Codex.</span></span></a>
-          <a class="post reveal" href="https://www.linkedin.com/posts/marco-sassarini-95b342200_secondbrain-pkm-opensource-activity-7518583252698238976-WHCY"><span class="post-logo li">in</span><span><span class="post-meta">Marco Sassarini, with Federico · 21 Oct 2026 · video</span><span class="post-title">Your desktop. Total chaos.</span><span class="post-text">Downloads. PDFs. Notes you'll never find again. One click. Everything sorted. Everything linked. Crow Desktop. Open source. Out now.</span></span></a>
+          <a class="post reveal" href="https://www.linkedin.com/posts/marco-sassarini-95b342200_secondbrain-pkm-opensource-activity-7518583252698238976-WHCY"><span class="post-logo li">in</span><span><span class="post-meta">Marco Sassarini, with Federico · 21 Oct 2026 · video</span><span class="post-title">Your desktop. Total chaos.</span><span class="post-text">Downloads. PDFs. Notes you'll never find again. One click. … Everything sorted. Everything linked. Your second brain, built for you.</span></span></a>
           <a class="post reveal" href="https://www.linkedin.com/posts/marco-sassarini-95b342200_crow-060-smarter-folders-lower-cost-activity-7517990223214059520-bLeX"><span class="post-logo li">in</span><span><span class="post-meta">Marco Sassarini, with Federico · 19 Oct 2026 · carousel</span><span class="post-title">CROW 0.6.0 is out: smarter folders, lower cost</span><span class="post-text">The new version builds real folders and subfolders on its own, at a fraction of the cost: 0.86× the cost of CROW 0.5.0, 0.45 to 0.65× the cost of classic LLM filing.</span></span></a>
           <a class="post reveal" href="https://www.linkedin.com/posts/federico-cesarini-4a9482209_crow-llm-activity-7516894672523452416-CE4H"><span class="post-logo li">in</span><span><span class="post-meta">Federico Cesarini, with Marco · 16 Oct 2026 · video</span><span class="post-title">Build your second brain in 7 clicks with CROW</span><span class="post-text">We are releasing Crow-Desktop, an interface for the CROW architecture that lets you build your LLM wiki on your machine, with no scaling limits. Best part is, it detects all the documents by itself.</span></span></a>
           <a class="post reveal" href="https://www.linkedin.com/posts/marco-sassarini-95b342200_pip-install-llmwiki2-thats-all-now-you-activity-7516181757289996288-I3gN"><span class="post-logo li">in</span><span><span class="post-meta">Marco Sassarini · 14 Oct 2026</span><span class="post-title">pip install llmwiki2</span><span class="post-text">That's all. Now you can build your personal LLM wiki on your device, and it stays fast as it grows.</span></span></a>
@@ -743,15 +755,9 @@ print(answer.text, answer.citations)</pre>
           <a class="post reveal" href="https://www.linkedin.com/posts/federico-cesarini-4a9482209_crow-ollama-activity-7515506892450807808-aVfL"><span class="post-logo li">in</span><span><span class="post-meta">Federico Cesarini, with Marco · 12 Oct 2026 · video</span><span class="post-title">Our LLM-Wiki has no scaling limits</span><span class="post-text">With the latest release of CROW, we filled the remaining gaps, so you can finally bring your LLM wiki to any production environment.</span></span></a>
           <a class="post reveal" href="https://www.linkedin.com/posts/federico-cesarini-4a9482209_llm-wiki-is-back-introducing-llm-wiki-v2-activity-7514292430855270400-XhjZ"><span class="post-logo li">in</span><span><span class="post-meta">Federico Cesarini, with Marco · 9 Oct 2026 · video · 140K impressions</span><span class="post-title">LLM wiki is back: introducing LLM-Wiki-V2</span><span class="post-text">The great thing about an LLM wiki, compared to classical RAG, is that it reorganizes your documents into a structure that both agents and humans can read: a browsable tree of folders instead of an opaque vector index.</span></span></a>
           <a class="post reveal" href="https://www.linkedin.com/posts/federico-cesarini-4a9482209_crow-preview-activity-7509245544284909571-QhrG"><span class="post-logo li">in</span><span><span class="post-meta">Federico Cesarini, with Marco · 25 Sep 2026 · carousel</span><span class="post-title">We brought the LLM wiki back from the dead</span><span class="post-text">A typed classifier (like Jev or Laya) makes the filing decisions, and the LLM only writes. It runs using Google Open Knowledge Format OKF.</span></span></a>
-          <a class="post reveal" href="https://www.linkedin.com/posts/federico-cesarini-4a9482209_crow-jev-crow-activity-7508176011121958913-5gSI"><span class="post-logo li">in</span><span><span class="post-meta">Federico Cesarini · 22 Sep 2026</span><span class="post-title">CROW: Routing LLM Wikis Without the LLM: Cheaper, Faster, Better</span><span class="post-text">LLM wikis offer clear advantages over classical RAG: the knowledge base is an organized set of notes that both humans and AI can read.</span></span></a>
+          <a class="post reveal" href="https://www.linkedin.com/posts/federico-cesarini-4a9482209_crow-jev-crow-activity-7508176011121958913-5gSI"><span class="post-logo li">in</span><span><span class="post-meta">Federico Cesarini · 22 Sep 2026 · the paper</span><span class="post-title">CROW: Routing LLM Wikis Without the LLM: Cheaper, Faster, Better</span><span class="post-text">Me and Marco Sassarini propose CROW (Classifier-Routed Organization of LLM Wikis), a decision layer that delegates routing, retrieval and consolidation to a general-purpose typed classifier.</span></span></a>
           <a class="post reveal" href="https://x.com/fed3c3sa/status/2112268992622830035"><span class="post-logo x">X</span><span><span class="post-meta">@fed3c3sa, with @MarcoSassarini · 19 Oct 2026 · thread</span><span class="post-title">CROW 0.6.0 on X</span></span></a>
           <a class="post reveal" href="https://x.com/fed3c3sa/status/2111798628725747849"><span class="post-logo x">X</span><span><span class="post-meta">@fed3c3sa, with @MarcoSassarini · 18 Oct 2026 · thread</span><span class="post-title">CROW and Crow Desktop on X</span></span></a>
-        </div>
-        <h3 class="reveal" style="font-size:17px;font-weight:450;margin:34px 0 14px;color:var(--text-2)">Others writing about CROW</h3>
-        <div class="posts">
-          <a class="post reveal" href="https://www.linkedin.com/posts/lukman-aminu-ibrahim-aa0936341_your-ai-doesnt-need-a-bigger-brain-it-needs-activity-7521662194800058368-4XBm"><span class="post-logo li">in</span><span><span class="post-meta">Lukman Aminu Ibrahim · 29 Oct 2026</span><span class="post-title">Your AI doesn't need a bigger brain</span><span class="post-text">An explainer on AI that keeps better notes, with CROW among its examples.</span></span></a>
-          <a class="post reveal" href="https://www.linkedin.com/posts/the-geo-community_generativeengineoptimization-geo-knowledgemanagement-activity-7517348522585808896-1qis"><span class="post-logo li">in</span><span><span class="post-meta">The GEO Community · 17 Oct 2026</span><span class="post-title">A review of LLM-Wiki v2 and its CROW mode</span></span></a>
-          <a class="post reveal" href="https://www.linkedin.com/posts/fshirafkan_farshidshirafkan-llm-crow-activity-7514583887520452608-ssFb"><span class="post-logo li">in</span><span><span class="post-meta">Farshid Shirafkan, PhD · 10 Oct 2026 · in Persian</span><span class="post-title">The CROW idea, explained</span></span></a>
         </div>
       </div>
     </div>
@@ -779,7 +785,7 @@ print(answer.text, answer.citations)</pre>
       </article>
       <article class="person reveal">
         <div class="person-head"><img class="avatar" src="assets/img/marco.jpg" width="56" height="56" alt="Marco Sassarini"><h3>Marco Sassarini</h3></div>
-        <blockquote>AI engineer. Agents, RAG and LLM pipelines measured on real data, not demos.<cite>His bio on GitHub</cite></blockquote>
+        <blockquote>AI engineer. Agents, RAG and LLM pipelines measured on real data, not demos. Open source • code that actually ships<cite>His bio on GitHub</cite></blockquote>
         <div class="person-links">
           <a class="pill-link" href="https://www.linkedin.com/in/marco-sassarini-95b342200">LinkedIn</a>
           <a class="pill-link" href="https://github.com/sassarini-marco">GitHub</a>
@@ -788,12 +794,12 @@ print(answer.text, answer.citations)</pre>
       </article>
     </div>
     <div class="contact reveal">
-      <p>Questions, ideas, bugs, or a commercial licence without the AGPL's obligations?</p>
+      <p>Questions, ideas, bugs, or a commercial licence for llm-wiki-v2?</p>
       <div class="person-links">
         <a class="pill-link" href="mailto:crowhq.community@gmail.com">crowhq.community@gmail.com</a>
         <a class="pill-link" href="https://github.com/crow-hq/llm-wiki-v2/discussions">Discussions</a>
         <a class="pill-link" href="https://github.com/crow-hq/crow-desktop/issues">Crow issues</a>
-        <a class="pill-link" href="https://github.com/crow-hq/llm-wiki-v2/issues/new/choose">llm-wiki-v2 issues</a>
+        <a class="pill-link" href="https://github.com/crow-hq/llm-wiki-v2/issues">llm-wiki-v2 issues</a>
       </div>
     </div>
   </div>
@@ -817,7 +823,7 @@ print(answer.text, answer.citations)</pre>
       <details class="acc reveal"><summary>How is Crow different from NotebookLM?</summary><div class="acc-body"><p>NotebookLM works on the sources you upload to it, notebook by notebook, in Google's cloud. Crow finds the documents on your computer by itself and writes one wiki of Markdown files that stays on your computer, which you can read, edit and keep, with the models you choose through OpenRouter.</p></div></details>
       <details class="acc reveal"><summary>What is Jev?</summary><div class="acc-body"><p>A typed classifier by TypeSafe AI. Given a text, it answers typed questions (pick one of these options; is this statement true?) with probabilities instead of prose. CROW asks it every filing and retrieval decision and keeps the LLM for writing. CROW does not depend on it: any classifier that returns those probabilities can take its place. The authors have no ties to TypeSafe AI.</p></div></details>
       <details class="acc reveal"><summary>Why does my Mac or PC say Crow can't be verified?</summary><div class="acc-body"><p>Because Crow's installers are not signed with a paid Apple or Microsoft developer certificate yet. The warning is expected; <a href="#install-mac">Install Crow</a> shows how to open it.</p></div></details>
-      <details class="acc reveal"><summary>Why AGPL?</summary><div class="acc-body"><p>The AGPL keeps the code and every change to it open, also when it runs as a service. It is free to use, study, change and share, including for your own business; if you offer a modified version to others, over a network too, you share its source under the same licence. Commercial licences without that obligation are available from the authors.</p></div></details>
+      <details class="acc reveal"><summary>Why AGPL?</summary><div class="acc-body"><p>The AGPL keeps the code and every change to it open, also when it runs as a service. It is free to use, study, change and share, including for your own business; if you offer a modified version to others, over a network too, you share its source under the same licence. For llm-wiki-v2, commercial licences without that obligation are available from the authors: open an issue to ask.</p></div></details>
       <details class="acc reveal"><summary>Something wrong?</summary><div class="acc-body"><ul><li><b>Logs:</b> Settings → About → <b>Open logs</b>.</li><li><b>The wiki itself:</b> Settings → Library → <b>Show in Finder/Explorer</b>, or right-click the brain's empty space.</li><li><b>Start over:</b> Settings → Library → <b>Reset Crow…</b> erases the wiki, the chats and the settings. Your documents stay where they are.</li><li><b>Bugs and ideas:</b> <a href="https://github.com/crow-hq/crow-desktop/issues">issues</a>.</li></ul></div></details>
     </div>
   </div>
