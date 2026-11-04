@@ -15,7 +15,7 @@ with. It is by Federico Cesarini and Marco Sassarini: [crow-hq/crow-desktop](htt
   `src/brain`): drag the dots, pan and zoom, focus a folder, read a note, find one, and play four questions whose
   answers, classifier scores and costs were recorded from llmwiki2 0.8.0 (`tools/record-demo.sh`). Nothing calls a
   model.
-- **Downloads.** Direct links to every installer of the latest Crow release. The page carries the links of 0.1.4 and,
+- **Downloads.** Direct links to every installer of the latest Crow release. The page carries the links of 0.1.5 and,
   when GitHub has a newer release, swaps them for its files; the main button picks the file for the visitor's system.
 - Features, the AI apps Crow connects (MCP), why a wiki and not RAG, install help, the engine, the paper with BibTeX,
   the films, the timeline, the LinkedIn and X posts, the authors and the FAQ. Every fact comes from the repos' READMEs
