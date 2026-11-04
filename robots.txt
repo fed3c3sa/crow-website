@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fed3c3sa.github.io/crow-website/sitemap.xml

@@ -1,0 +1,24 @@
+Crow website
+Copyright 2026 Federico Cesarini, Marco Sassarini
+Licensed under the GNU Affero General Public License v3.0 or later (see LICENSE).
+
+The brain (src/brain) and the field of soft lights behind the hero (src/hero) are ported from the Crow desktop app
+(crow-hq/llm-wiki-v2-app), by the same authors, under the same licence.
+
+The example wiki in assets/data/demo.json is the one that ships with llm-wiki-v2 (src/llmw2/demo,
+github.com/crow-hq/llm-wiki-v2), AGPL-3.0-or-later. Its four answers were recorded from llmwiki2 0.8.0
+(see tools/record-demo.sh).
+
+The screenshots and recordings of Crow in assets/img/shots and assets/media come from crow-hq/crow-desktop and
+crow-hq/llm-wiki-v2; the films in assets/films are the authors' own.
+
+Third-party components bundled in assets/js/demo.js:
+- d3-force, d3-quadtree, d3-selection, d3-zoom and their d3 dependencies, ISC License, Copyright 2010-2023 Mike Bostock
+  (https://github.com/d3/d3)
+
+Fonts:
+- Inter, SIL Open Font License 1.1, Copyright 2020 The Inter Project Authors (https://github.com/rsms/inter);
+  assets/fonts/Inter-LICENSE.txt
+
+Logos of third-party apps (assets/img/claude.svg, claude-code.png, openai.png) belong to their owners and are shown
+only to name the apps Crow connects to, as the Crow app does.

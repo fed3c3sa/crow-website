@@ -1,0 +1,28 @@
+# Crow
+
+> Crow is a free, open-source desktop app (macOS, Windows, Linux) that turns the documents on your computer into an LLM wiki you can chat with: Markdown notes filed by topic and linked to each other, answers that cite the notes they used, and a memory that Claude, Claude Code, ChatGPT and Codex can use through MCP. It runs the CROW architecture of the open-source llm-wiki-v2 engine (Python package llmwiki2). By Federico Cesarini and Marco Sassarini.
+
+- Crow works with any model on OpenRouter, through the user's own account; Crow itself is free (GNU AGPL v3.0 or later).
+- CROW (Classifier-Routed Organization of LLM Wikis): a small typed classifier takes the filing and retrieval decisions and the LLM only writes. In llm-wiki-v2's benchmarks: right note read 89% vs 62% for an LLM-only wiki, 2.1x faster ingest, 68% fewer LLM tokens (the authors' own measurements).
+- The wiki is plain Markdown in a format derived from Google's Open Knowledge Format; Obsidian opens it as a vault.
+
+## Crow, the desktop app
+
+- [Download Crow (latest release)](https://github.com/crow-hq/crow-desktop/releases/latest): installers for macOS (Apple silicon, Intel), Windows (.exe, .msi) and Linux (AppImage, .deb, .rpm)
+- [crow-hq/crow-desktop](https://github.com/crow-hq/crow-desktop): README with install help, FAQ, privacy and costs
+
+## llm-wiki-v2, the engine
+
+- [crow-hq/llm-wiki-v2](https://github.com/crow-hq/llm-wiki-v2): the Python library, command line, web page and MCP memory
+- [llmwiki2 on PyPI](https://pypi.org/project/llmwiki2/): `pip install llmwiki2`, then `llmwiki2`; `uvx llmwiki2 demo` opens an example wiki with no key
+- [Benchmarks](https://github.com/crow-hq/llm-wiki-v2/tree/main/benchmarks)
+
+## Research
+
+- [CROW: Classifier-Routed Organization of LLM Wikis](https://doi.org/10.5281/zenodo.22898752): F. Cesarini, M. Sassarini, 2026, Zenodo
+
+## Authors
+
+- Federico Cesarini: https://www.federicocesarini.com/, https://github.com/fed3c3sa, https://www.linkedin.com/in/federico-cesarini-4a9482209
+- Marco Sassarini: https://github.com/sassarini-marco, https://www.linkedin.com/in/marco-sassarini-95b342200
+- Contact: crowhq.community@gmail.com

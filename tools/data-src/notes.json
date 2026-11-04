@@ -1,0 +1,694 @@
+{
+ "about-this-demo.md": {
+  "path": "about-this-demo.md",
+  "title": "About this demo",
+  "summary": "A fictional roastery's wiki, to try browsing, the brain and questions before adding your own documents.",
+  "tags": [
+   "demo"
+  ],
+  "frontmatter": {
+   "type": "Note",
+   "title": "About this demo",
+   "description": "A fictional roastery's wiki, to try browsing, the brain and questions before adding your own documents.",
+   "tags": [
+    "demo"
+   ],
+   "generated": {
+    "by": "llmw2/0.2.0",
+    "at": "2026-09-25T16:24:41+00:00"
+   },
+   "sources": [
+    {
+     "id": "s1",
+     "resource": "/raw/20260925-162441-about-this-demo.md",
+     "title": "About this demo"
+    }
+   ]
+  },
+  "body": "This wiki belongs to **Lumen Coffee Roasters**, a small roastery in Turin that does not exist.\nIt was written to show what an LLM wiki looks like after a few months of use:\n\n- every note sits in a folder the librarian chose, and each folder is described in its parent's index;\n- related notes are joined by *See also* links, drawn as red dashes in the **Brain** view;\n- every note keeps the source it was written from, under `raw/`.\n\nBrowse the folders on the left, open the Brain, or ask a question such as\n*\"What did we decide about prices in May?\"* (asking needs a model: set one in Settings).\nDrop your own files and they are filed next to these notes; this copy of the demo is yours to change."
+ },
+ "customers/cafe-portello.md": {
+  "path": "customers/cafe-portello.md",
+  "title": "Café Portello",
+  "summary": "Wholesale customer since 2024: 18 kg a week of Aurora; wants training on decaf.",
+  "tags": [
+   "wholesale",
+   "customer"
+  ],
+  "frontmatter": {
+   "type": "Note",
+   "title": "Café Portello",
+   "description": "Wholesale customer since 2024: 18 kg a week of Aurora; wants training on decaf.",
+   "tags": [
+    "wholesale",
+    "customer"
+   ],
+   "generated": {
+    "by": "llmw2/0.2.0",
+    "at": "2026-09-25T16:24:41+00:00"
+   },
+   "sources": [
+    {
+     "id": "s1",
+     "resource": "/raw/20260925-162441-cafe-portello.md",
+     "title": "Café Portello"
+    }
+   ]
+  },
+  "body": "A café near Porta Nuova, and one of the largest wholesale customers.\n\n- Buys about 18 kg of Aurora a week and 2 kg of Night Shift.\n- Pays at 30 days, always on time.\n- Asked for barista training on decaf, which extracts faster than their usual recipe.\n\nContact is the owner; deliveries on Wednesday morning.\n\n# See also\n\n* [Wholesale café onboarding](wholesale-cafe-onboarding.md) - New cafés get a tasting, a 2 kg trial, a grinder calibration visit, and 30-day payment after three orders.\n* [Night Shift decaf](../products/night-shift-decaf.md) - Swiss Water decaf from Colombia Huila; 12% of subscription orders."
+ },
+ "customers/refund-policy.md": {
+  "path": "customers/refund-policy.md",
+  "title": "Refund policy",
+  "summary": "Refunds within 30 days of delivery; damaged bags are replaced without sending them back.",
+  "tags": [
+   "policy",
+   "refunds"
+  ],
+  "frontmatter": {
+   "type": "Note",
+   "title": "Refund policy",
+   "description": "Refunds within 30 days of delivery; damaged bags are replaced without sending them back.",
+   "tags": [
+    "policy",
+    "refunds"
+   ],
+   "generated": {
+    "by": "llmw2/0.2.0",
+    "at": "2026-09-25T16:24:41+00:00"
+   },
+   "sources": [
+    {
+     "id": "s1",
+     "resource": "/raw/20260925-162441-refund-policy.md",
+     "title": "Refund policy"
+    }
+   ]
+  },
+  "body": "- Customers can ask for a refund within **30 days of delivery**.\n- Damaged or open bags are replaced without asking for the bag back: a photo is enough.\n- Subscriptions can be refunded for the last delivery only.\n\nRefunds go back to the original payment method within 5 working days.\n\n# See also\n\n* [Carriers and delivery times](../operations/shipping/carriers-and-delivery-times.md) - Parcel carrier for Italy in 1-2 days and the EU in 3-5; free shipping over €45 in Italy."
+ },
+ "customers/subscription-churn-q2-2026.md": {
+  "path": "customers/subscription-churn-q2-2026.md",
+  "title": "Subscription churn, Q2 2026",
+  "summary": "Churn was 6.1% a month in Q2 2026; people leave mostly because they have too much coffee, then because of price.",
+  "tags": [
+   "subscriptions",
+   "analysis"
+  ],
+  "frontmatter": {
+   "type": "Note",
+   "title": "Subscription churn, Q2 2026",
+   "description": "Churn was 6.1% a month in Q2 2026; people leave mostly because they have too much coffee, then because of price.",
+   "tags": [
+    "subscriptions",
+    "analysis"
+   ],
+   "generated": {
+    "by": "llmw2/0.2.0",
+    "at": "2026-09-25T16:24:41+00:00"
+   },
+   "sources": [
+    {
+     "id": "s1",
+     "resource": "/raw/20260925-162441-subscription-churn-q2-2026.md",
+     "title": "Subscription churn, Q2 2026"
+    }
+   ]
+  },
+  "body": "From the cancellation form, April to June 2026 (212 cancellations):\n\n| Reason | Share |\n|---|---|\n| Too much coffee at home | 41% |\n| Price | 23% |\n| Moving or travelling | 14% |\n| Taste | 9% |\n| Other | 13% |\n\nMost people leaving because of volume would have stayed with a pause option.\n\n# See also\n\n* [Pause instead of cancel](../ideas/pause-instead-of-cancel.md) - Offer a one- or two-month pause on the cancellation page, to keep subscribers who have too much coffee.\n* [Pricing meeting, May 2026](../meetings/pricing-meeting-may-2026.md) - Retail up 8% and wholesale up 5% from 1 July; decaf keeps its margin; subscriptions keep their discount."
+ },
+ "customers/wholesale-cafe-onboarding.md": {
+  "path": "customers/wholesale-cafe-onboarding.md",
+  "title": "Wholesale café onboarding",
+  "summary": "New cafés get a tasting, a 2 kg trial, a grinder calibration visit, and 30-day payment after three orders.",
+  "tags": [
+   "wholesale",
+   "process"
+  ],
+  "frontmatter": {
+   "type": "Note",
+   "title": "Wholesale café onboarding",
+   "description": "New cafés get a tasting, a 2 kg trial, a grinder calibration visit, and 30-day payment after three orders.",
+   "tags": [
+    "wholesale",
+    "process"
+   ],
+   "generated": {
+    "by": "llmw2/0.2.0",
+    "at": "2026-09-25T16:24:41+00:00"
+   },
+   "sources": [
+    {
+     "id": "s1",
+     "resource": "/raw/20260925-162441-wholesale-cafe-onboarding.md",
+     "title": "Wholesale café onboarding"
+    }
+   ]
+  },
+  "body": "How a new café becomes a wholesale customer:\n\n1. Tasting at the roastery with the owner and the head barista.\n2. A 2 kg trial of Aurora at wholesale price.\n3. A visit to calibrate the grinder and the espresso recipe.\n4. Payment on delivery for the first three orders, then 30 days.\n\nWholesale prices are in the price list; the minimum order is 5 kg.\n\n# See also\n\n* [Café Portello](cafe-portello.md) - Wholesale customer since 2024: 18 kg a week of Aurora; wants training on decaf.\n* [Price list from July 2026](../products/price-list-from-july-2026.md) - Retail and wholesale prices from 1 July 2026, after the rise in green coffee prices."
+ },
+ "ideas/cold-brew-cans.md": {
+  "path": "ideas/cold-brew-cans.md",
+  "title": "Cold brew cans",
+  "summary": "A pilot of 500 cans with a co-packer, if the shelf-life test passes.",
+  "tags": [
+   "idea",
+   "product"
+  ],
+  "frontmatter": {
+   "type": "Note",
+   "title": "Cold brew cans",
+   "description": "A pilot of 500 cans with a co-packer, if the shelf-life test passes.",
+   "tags": [
+    "idea",
+    "product"
+   ],
+   "generated": {
+    "by": "llmw2/0.2.0",
+    "at": "2026-09-25T16:24:41+00:00"
+   },
+   "sources": [
+    {
+     "id": "s1",
+     "resource": "/raw/20260925-162441-cold-brew-cans.md",
+     "title": "Cold brew cans"
+    }
+   ]
+  },
+  "body": "Cold brew made with Ethiopia Guji, sold in 250 ml cans.\n\n- A co-packer can fill small runs from 500 cans.\n- A shelf-life test (90 days, refrigerated) is needed before selling.\n- Target price: €3.50 a can in cafés.\n\nApproved as a pilot by the board in June 2026.\n\n# See also\n\n* [Board meeting, June 2026](../meetings/board-meeting-june-2026.md) - Approved a study for a second roaster, a cold brew pilot and a part-time packer.\n* [Ethiopia Guji, seasonal single origin](../products/ethiopia-guji-seasonal-single-origin.md) - Washed Guji lot, floral and citrus, sold from March to August while the lot lasts."
+ },
+ "ideas/pause-instead-of-cancel.md": {
+  "path": "ideas/pause-instead-of-cancel.md",
+  "title": "Pause instead of cancel",
+  "summary": "Offer a one- or two-month pause on the cancellation page, to keep subscribers who have too much coffee.",
+  "tags": [
+   "idea",
+   "subscriptions"
+  ],
+  "frontmatter": {
+   "type": "Note",
+   "title": "Pause instead of cancel",
+   "description": "Offer a one- or two-month pause on the cancellation page, to keep subscribers who have too much coffee.",
+   "tags": [
+    "idea",
+    "subscriptions"
+   ],
+   "generated": {
+    "by": "llmw2/0.2.0",
+    "at": "2026-09-25T16:24:41+00:00"
+   },
+   "sources": [
+    {
+     "id": "s1",
+     "resource": "/raw/20260925-162441-pause-instead-of-cancel.md",
+     "title": "Pause instead of cancel"
+    }
+   ]
+  },
+  "body": "41% of cancellations in Q2 2026 were from people with too much coffee at home.\n\nProposal: the cancellation page first offers to **pause for one or two months**, or to switch to a delivery every two weeks.\n\nSimilar shops report keeping a third of the people who would have cancelled.\n\n# See also\n\n* [Subscription churn, Q2 2026](../customers/subscription-churn-q2-2026.md) - Churn was 6.1% a month in Q2 2026; people leave mostly because they have too much coffee, then because of price."
+ },
+ "ideas/roastery-tours.md": {
+  "path": "ideas/roastery-tours.md",
+  "title": "Roastery tours",
+  "summary": "Saturday tours with a cupping session for 12 people at €15 each.",
+  "tags": [
+   "idea",
+   "events"
+  ],
+  "frontmatter": {
+   "type": "Note",
+   "title": "Roastery tours",
+   "description": "Saturday tours with a cupping session for 12 people at €15 each.",
+   "tags": [
+    "idea",
+    "events"
+   ],
+   "generated": {
+    "by": "llmw2/0.2.0",
+    "at": "2026-09-25T16:24:41+00:00"
+   },
+   "sources": [
+    {
+     "id": "s1",
+     "resource": "/raw/20260925-162441-roastery-tours.md",
+     "title": "Roastery tours"
+    }
+   ]
+  },
+  "body": "Open the roastery on Saturday mornings:\n\n- a one-hour tour of the roaster and the green coffee store;\n- a cupping of three coffees, led by the head roaster;\n- 12 people at most, €15 each, with 10% off coffee bought on the day.\n\nIt could bring new subscribers from the neighbourhood.\n\n# See also\n\n* [Quality control and cupping](../operations/roasting/quality-control-and-cupping.md) - Every batch is cupped the day after roasting; below 82 points a coffee is not sold as single origin."
+ },
+ "meetings/board-meeting-june-2026.md": {
+  "path": "meetings/board-meeting-june-2026.md",
+  "title": "Board meeting, June 2026",
+  "summary": "Approved a study for a second roaster, a cold brew pilot and a part-time packer.",
+  "tags": [
+   "meeting",
+   "board",
+   "decision"
+  ],
+  "frontmatter": {
+   "type": "Note",
+   "title": "Board meeting, June 2026",
+   "description": "Approved a study for a second roaster, a cold brew pilot and a part-time packer.",
+   "tags": [
+    "meeting",
+    "board",
+    "decision"
+   ],
+   "generated": {
+    "by": "llmw2/0.2.0",
+    "at": "2026-09-25T16:24:41+00:00"
+   },
+   "sources": [
+    {
+     "id": "s1",
+     "resource": "/raw/20260925-162441-board-meeting-june-2026.md",
+     "title": "Board meeting, June 2026"
+    }
+   ]
+  },
+  "body": "**Approved**\n\n1. A study of a second roaster, since the current one runs at 85% of capacity.\n2. A cold brew pilot of 500 cans, if the shelf-life test passes.\n3. Hiring a part-time packer for subscription day.\n\n**Not approved**: opening a second shop; to be discussed again in 2027.\n\n# See also\n\n* [Cold brew cans](../ideas/cold-brew-cans.md) - A pilot of 500 cans with a co-packer, if the shelf-life test passes.\n* [Roaster maintenance](../operations/roasting/roaster-maintenance.md) - Chaff cleaned weekly, exhaust monthly, burner serviced yearly; the roaster runs at 85% capacity.\n* [Subscription packing day](../operations/shipping/subscription-packing-day.md) - Subscriptions are roasted on Monday, packed on Tuesday morning and shipped on Tuesday afternoon."
+ },
+ "meetings/pricing-meeting-may-2026.md": {
+  "path": "meetings/pricing-meeting-may-2026.md",
+  "title": "Pricing meeting, May 2026",
+  "summary": "Retail up 8% and wholesale up 5% from 1 July; decaf keeps its margin; subscriptions keep their discount.",
+  "tags": [
+   "meeting",
+   "prices",
+   "decision"
+  ],
+  "frontmatter": {
+   "type": "Note",
+   "title": "Pricing meeting, May 2026",
+   "description": "Retail up 8% and wholesale up 5% from 1 July; decaf keeps its margin; subscriptions keep their discount.",
+   "tags": [
+    "meeting",
+    "prices",
+    "decision"
+   ],
+   "generated": {
+    "by": "llmw2/0.2.0",
+    "at": "2026-09-25T16:24:41+00:00"
+   },
+   "sources": [
+    {
+     "id": "s1",
+     "resource": "/raw/20260925-162441-pricing-meeting-may-2026.md",
+     "title": "Pricing meeting, May 2026"
+    }
+   ]
+  },
+  "body": "**Decisions**\n\n- Retail prices up 8% from 1 July 2026.\n- Wholesale up 5% only, to keep the cafés.\n- Subscriptions keep the 10% discount.\n\n**Why**: the July price fixings for green coffee came in 11% higher.\n\n**Actions**: update the price list and the web shop; email wholesale customers one month ahead.\n\n# See also\n\n* [Price list from July 2026](../products/price-list-from-july-2026.md) - Retail and wholesale prices from 1 July 2026, after the rise in green coffee prices.\n* [Subscription churn, Q2 2026](../customers/subscription-churn-q2-2026.md) - Churn was 6.1% a month in Q2 2026; people leave mostly because they have too much coffee, then because of price."
+ },
+ "meetings/weekly-sync-10-june-2026.md": {
+  "path": "meetings/weekly-sync-10-june-2026.md",
+  "title": "Weekly sync, 10 June 2026",
+  "summary": "Packing is late on Tuesdays, the Guji lot has arrived, and two cafés asked for decaf training.",
+  "tags": [
+   "meeting",
+   "weekly"
+  ],
+  "frontmatter": {
+   "type": "Note",
+   "title": "Weekly sync, 10 June 2026",
+   "description": "Packing is late on Tuesdays, the Guji lot has arrived, and two cafés asked for decaf training.",
+   "tags": [
+    "meeting",
+    "weekly"
+   ],
+   "generated": {
+    "by": "llmw2/0.2.0",
+    "at": "2026-09-25T16:24:41+00:00"
+   },
+   "sources": [
+    {
+     "id": "s1",
+     "resource": "/raw/20260925-162441-weekly-sync-10-june-2026.md",
+     "title": "Weekly sync, 10 June 2026"
+    }
+   ]
+  },
+  "body": "- Packing finished at 14:40 last Tuesday, too close to the 15:00 collection.\n- The Guji lot arrived: 1,800 kg, cupped at 86.5 as expected.\n- Café Portello and another café asked for decaf training: one session for both in July.\n- Web shop: the new price list goes live on 1 July.\n\n# See also\n\n* [Subscription packing day](../operations/shipping/subscription-packing-day.md) - Subscriptions are roasted on Monday, packed on Tuesday morning and shipped on Tuesday afternoon.\n* [Guji washing station visit, February 2026](../sourcing/guji-washing-station-visit-february-2026.md) - Notes from the visit to the Guji washing station: capacity, cupping and the 2026 contract."
+ },
+ "operations/roasting/aurora-roast-profile.md": {
+  "path": "operations/roasting/aurora-roast-profile.md",
+  "title": "Aurora roast profile",
+  "summary": "Charge at 205 °C, first crack at 9:10, drop at 11:30, with 1:45 of development.",
+  "tags": [
+   "roasting",
+   "profile"
+  ],
+  "frontmatter": {
+   "type": "Note",
+   "title": "Aurora roast profile",
+   "description": "Charge at 205 °C, first crack at 9:10, drop at 11:30, with 1:45 of development.",
+   "tags": [
+    "roasting",
+    "profile"
+   ],
+   "generated": {
+    "by": "llmw2/0.2.0",
+    "at": "2026-09-25T16:24:41+00:00"
+   },
+   "sources": [
+    {
+     "id": "s1",
+     "resource": "/raw/20260925-162441-aurora-roast-profile.md",
+     "title": "Aurora roast profile"
+    }
+   ]
+  },
+  "body": "The reference profile for 12 kg batches of Aurora on the 15 kg roaster.\n\n| Step | Time | Bean temperature |\n|---|---|---|\n| Charge | 0:00 | 205 °C (drum) |\n| Turning point | 1:25 | 92 °C |\n| Yellowing | 4:40 | 160 °C |\n| First crack | 9:10 | 196 °C |\n| Drop | 11:30 | 208 °C |\n\nDevelopment time is 1:45 (about 15% of the roast). Weight loss should be 14-15%.\nIf first crack comes before 8:45, lower the gas by one step at yellowing.\n\n# See also\n\n* [Aurora espresso blend](../../products/aurora-espresso-blend.md) - House espresso: 60% Brazil Cerrado and 40% Ethiopia Guji, medium roast; the best seller.\n* [Roaster maintenance](roaster-maintenance.md) - Chaff cleaned weekly, exhaust monthly, burner serviced yearly; the roaster runs at 85% capacity."
+ },
+ "operations/roasting/quality-control-and-cupping.md": {
+  "path": "operations/roasting/quality-control-and-cupping.md",
+  "title": "Quality control and cupping",
+  "summary": "Every batch is cupped the day after roasting; below 82 points a coffee is not sold as single origin.",
+  "tags": [
+   "quality",
+   "cupping"
+  ],
+  "frontmatter": {
+   "type": "Note",
+   "title": "Quality control and cupping",
+   "description": "Every batch is cupped the day after roasting; below 82 points a coffee is not sold as single origin.",
+   "tags": [
+    "quality",
+    "cupping"
+   ],
+   "generated": {
+    "by": "llmw2/0.2.0",
+    "at": "2026-09-25T16:24:41+00:00"
+   },
+   "sources": [
+    {
+     "id": "s1",
+     "resource": "/raw/20260925-162441-quality-control-and-cupping.md",
+     "title": "Quality control and cupping"
+    }
+   ]
+  },
+  "body": "Quality checks on every roast day:\n\n- Each batch is cupped the next morning against the reference sample.\n- Colour is measured on ground coffee (Agtron).\n- A single origin scoring below 82 goes into blends instead.\n\nFaults are written in the roast log with the batch number, so a customer complaint can be traced back to the roast.\n\n# See also\n\n* [Ethiopia Guji, seasonal single origin](../../products/ethiopia-guji-seasonal-single-origin.md) - Washed Guji lot, floral and citrus, sold from March to August while the lot lasts.\n* [Roastery tours](../../ideas/roastery-tours.md) - Saturday tours with a cupping session for 12 people at €15 each."
+ },
+ "operations/roasting/roaster-maintenance.md": {
+  "path": "operations/roasting/roaster-maintenance.md",
+  "title": "Roaster maintenance",
+  "summary": "Chaff cleaned weekly, exhaust monthly, burner serviced yearly; the roaster runs at 85% capacity.",
+  "tags": [
+   "roaster",
+   "maintenance"
+  ],
+  "frontmatter": {
+   "type": "Note",
+   "title": "Roaster maintenance",
+   "description": "Chaff cleaned weekly, exhaust monthly, burner serviced yearly; the roaster runs at 85% capacity.",
+   "tags": [
+    "roaster",
+    "maintenance"
+   ],
+   "generated": {
+    "by": "llmw2/0.2.0",
+    "at": "2026-09-25T16:24:41+00:00"
+   },
+   "sources": [
+    {
+     "id": "s1",
+     "resource": "/raw/20260925-162441-roaster-maintenance.md",
+     "title": "Roaster maintenance"
+    }
+   ]
+  },
+  "body": "The 15 kg roaster runs four days a week.\n\n- **Weekly**: empty and clean the chaff collector.\n- **Monthly**: clean the exhaust duct (a fire risk if skipped).\n- **Yearly**: burner service and thermocouple calibration by the manufacturer.\n\nIt already runs at about 85% of its capacity: the board asked for a study of a second roaster.\n\n# See also\n\n* [Aurora roast profile](aurora-roast-profile.md) - Charge at 205 °C, first crack at 9:10, drop at 11:30, with 1:45 of development.\n* [Board meeting, June 2026](../../meetings/board-meeting-june-2026.md) - Approved a study for a second roaster, a cold brew pilot and a part-time packer."
+ },
+ "operations/shipping/carriers-and-delivery-times.md": {
+  "path": "operations/shipping/carriers-and-delivery-times.md",
+  "title": "Carriers and delivery times",
+  "summary": "Parcel carrier for Italy in 1-2 days and the EU in 3-5; free shipping over €45 in Italy.",
+  "tags": [
+   "shipping"
+  ],
+  "frontmatter": {
+   "type": "Note",
+   "title": "Carriers and delivery times",
+   "description": "Parcel carrier for Italy in 1-2 days and the EU in 3-5; free shipping over €45 in Italy.",
+   "tags": [
+    "shipping"
+   ],
+   "generated": {
+    "by": "llmw2/0.2.0",
+    "at": "2026-09-25T16:24:41+00:00"
+   },
+   "sources": [
+    {
+     "id": "s1",
+     "resource": "/raw/20260925-162441-carriers-and-delivery-times.md",
+     "title": "Carriers and delivery times"
+    }
+   ]
+  },
+  "body": "- **Italy**: 1-2 working days, €5.90, free over €45.\n- **European Union**: 3-5 working days, €12.90.\n- Parcels are collected every weekday at 15:00.\n\nDamaged parcels are reported to the carrier within 8 days, with photos from the customer.\n\n# See also\n\n* [Subscription packing day](subscription-packing-day.md) - Subscriptions are roasted on Monday, packed on Tuesday morning and shipped on Tuesday afternoon.\n* [Refund policy](../../customers/refund-policy.md) - Refunds within 30 days of delivery; damaged bags are replaced without sending them back."
+ },
+ "operations/shipping/subscription-packing-day.md": {
+  "path": "operations/shipping/subscription-packing-day.md",
+  "title": "Subscription packing day",
+  "summary": "Subscriptions are roasted on Monday, packed on Tuesday morning and shipped on Tuesday afternoon.",
+  "tags": [
+   "subscriptions",
+   "packing"
+  ],
+  "frontmatter": {
+   "type": "Note",
+   "title": "Subscription packing day",
+   "description": "Subscriptions are roasted on Monday, packed on Tuesday morning and shipped on Tuesday afternoon.",
+   "tags": [
+    "subscriptions",
+    "packing"
+   ],
+   "generated": {
+    "by": "llmw2/0.2.0",
+    "at": "2026-09-25T16:24:41+00:00"
+   },
+   "sources": [
+    {
+     "id": "s1",
+     "resource": "/raw/20260925-162441-subscription-packing-day.md",
+     "title": "Subscription packing day"
+    }
+   ]
+  },
+  "body": "Subscriptions go out once a week so the coffee is always fresh:\n\n1. **Monday**: roast every coffee needed for the week's subscriptions.\n2. **Tuesday morning**: pack and label; about 420 bags a week.\n3. **Tuesday 15:00**: the carrier collects.\n\nPacking takes two people for a full morning, which is why a part-time packer is being hired.\n\n# See also\n\n* [Carriers and delivery times](carriers-and-delivery-times.md) - Parcel carrier for Italy in 1-2 days and the EU in 3-5; free shipping over €45 in Italy.\n* [Board meeting, June 2026](../../meetings/board-meeting-june-2026.md) - Approved a study for a second roaster, a cold brew pilot and a part-time packer.\n* [Weekly sync, 10 June 2026](../../meetings/weekly-sync-10-june-2026.md) - Packing is late on Tuesdays, the Guji lot has arrived, and two cafés asked for decaf training."
+ },
+ "products/aurora-espresso-blend.md": {
+  "path": "products/aurora-espresso-blend.md",
+  "title": "Aurora espresso blend",
+  "summary": "House espresso: 60% Brazil Cerrado and 40% Ethiopia Guji, medium roast; the best seller.",
+  "tags": [
+   "blend",
+   "espresso"
+  ],
+  "frontmatter": {
+   "type": "Note",
+   "title": "Aurora espresso blend",
+   "description": "House espresso: 60% Brazil Cerrado and 40% Ethiopia Guji, medium roast; the best seller.",
+   "tags": [
+    "blend",
+    "espresso"
+   ],
+   "generated": {
+    "by": "llmw2/0.2.0",
+    "at": "2026-09-25T16:24:41+00:00"
+   },
+   "sources": [
+    {
+     "id": "s1",
+     "resource": "/raw/20260925-162441-aurora-espresso-blend.md",
+     "title": "Aurora espresso blend"
+    }
+   ]
+  },
+  "body": "Aurora is the house espresso and about 45% of all coffee sold.\n\n| Component | Share | Why |\n|---|---|---|\n| Brazil Cerrado, natural | 60% | body, chocolate, low acidity |\n| Ethiopia Guji, washed | 40% | florals and a citrus finish |\n\nRoasted medium (Agtron 58-60) so it works both as espresso and with milk.\nRecommended recipe: 18 g in, 38 g out, 27-30 seconds.\n\nSold in 250 g and 1 kg bags; cafés buy it in 5 kg bags.\n\n# See also\n\n* [Aurora roast profile](../operations/roasting/aurora-roast-profile.md) - Charge at 205 °C, first crack at 9:10, drop at 11:30, with 1:45 of development.\n* [Ethiopia Guji, seasonal single origin](ethiopia-guji-seasonal-single-origin.md) - Washed Guji lot, floral and citrus, sold from March to August while the lot lasts."
+ },
+ "products/ethiopia-guji-seasonal-single-origin.md": {
+  "path": "products/ethiopia-guji-seasonal-single-origin.md",
+  "title": "Ethiopia Guji, seasonal single origin",
+  "summary": "Washed Guji lot, floral and citrus, sold from March to August while the lot lasts.",
+  "tags": [
+   "single-origin",
+   "ethiopia"
+  ],
+  "frontmatter": {
+   "type": "Note",
+   "title": "Ethiopia Guji, seasonal single origin",
+   "description": "Washed Guji lot, floral and citrus, sold from March to August while the lot lasts.",
+   "tags": [
+    "single-origin",
+    "ethiopia"
+   ],
+   "generated": {
+    "by": "llmw2/0.2.0",
+    "at": "2026-09-25T16:24:41+00:00"
+   },
+   "sources": [
+    {
+     "id": "s1",
+     "resource": "/raw/20260925-162441-ethiopia-guji-seasonal-single-origin.md",
+     "title": "Ethiopia Guji, seasonal single origin"
+    }
+   ]
+  },
+  "body": "The seasonal single origin for 2026 comes from the same washing station that supplies the Guji in Aurora.\n\n- Process: washed, dried on raised beds.\n- Cupping score at arrival: 86.5.\n- Notes: jasmine, bergamot, peach.\n- Volume: 1,800 kg; about 40% is kept for Aurora, the rest is sold as filter coffee.\n\nIt is roasted light for filter and sold only in 250 g bags.\n\n# See also\n\n* [Aurora espresso blend](aurora-espresso-blend.md) - House espresso: 60% Brazil Cerrado and 40% Ethiopia Guji, medium roast; the best seller.\n* [Guji washing station visit, February 2026](../sourcing/guji-washing-station-visit-february-2026.md) - Notes from the visit to the Guji washing station: capacity, cupping and the 2026 contract.\n* [Quality control and cupping](../operations/roasting/quality-control-and-cupping.md) - Every batch is cupped the day after roasting; below 82 points a coffee is not sold as single origin.\n* [Cold brew cans](../ideas/cold-brew-cans.md) - A pilot of 500 cans with a co-packer, if the shelf-life test passes."
+ },
+ "products/night-shift-decaf.md": {
+  "path": "products/night-shift-decaf.md",
+  "title": "Night Shift decaf",
+  "summary": "Swiss Water decaf from Colombia Huila; 12% of subscription orders.",
+  "tags": [
+   "decaf",
+   "colombia"
+  ],
+  "frontmatter": {
+   "type": "Note",
+   "title": "Night Shift decaf",
+   "description": "Swiss Water decaf from Colombia Huila; 12% of subscription orders.",
+   "tags": [
+    "decaf",
+    "colombia"
+   ],
+   "generated": {
+    "by": "llmw2/0.2.0",
+    "at": "2026-09-25T16:24:41+00:00"
+   },
+   "sources": [
+    {
+     "id": "s1",
+     "resource": "/raw/20260925-162441-night-shift-decaf.md",
+     "title": "Night Shift decaf"
+    }
+   ]
+  },
+  "body": "Night Shift is decaffeinated with the Swiss Water process (no solvents), from a Huila lot bought through Andes Direct.\n\n- Tasting notes: caramel, red apple, cocoa.\n- Roasted a little darker than Aurora, because decaf beans take heat faster and brown early.\n- 12% of subscription orders, rising every winter.\n\nWholesale cafés often ask for training on it: decaf needs a slightly coarser grind.\n\n# See also\n\n* [Andes Direct, importer](../sourcing/andes-direct-importer.md) - Main importer for Brazil and Colombia lots: FOB contracts, payment at 60 days.\n* [Café Portello](../customers/cafe-portello.md) - Wholesale customer since 2024: 18 kg a week of Aurora; wants training on decaf."
+ },
+ "products/price-list-from-july-2026.md": {
+  "path": "products/price-list-from-july-2026.md",
+  "title": "Price list from July 2026",
+  "summary": "Retail and wholesale prices from 1 July 2026, after the rise in green coffee prices.",
+  "tags": [
+   "prices"
+  ],
+  "frontmatter": {
+   "type": "Note",
+   "title": "Price list from July 2026",
+   "description": "Retail and wholesale prices from 1 July 2026, after the rise in green coffee prices.",
+   "tags": [
+    "prices"
+   ],
+   "generated": {
+    "by": "llmw2/0.2.0",
+    "at": "2026-09-25T16:24:41+00:00"
+   },
+   "sources": [
+    {
+     "id": "s1",
+     "resource": "/raw/20260925-162441-price-list-from-july-2026.md",
+     "title": "Price list from July 2026"
+    }
+   ]
+  },
+  "body": "Prices valid from **1 July 2026**, as decided in the May pricing meeting.\n\n| Coffee | 250 g retail | 1 kg retail | Wholesale per kg |\n|---|---|---|---|\n| Aurora espresso blend | €9.50 | €32.00 | €21.50 |\n| Night Shift decaf | €10.50 | €35.00 | €24.00 |\n| Ethiopia Guji | €13.00 | — | €29.00 |\n\nSubscriptions keep a 10% discount on retail prices. Free shipping in Italy over €45.\n\n# See also\n\n* [Pricing meeting, May 2026](../meetings/pricing-meeting-may-2026.md) - Retail up 8% and wholesale up 5% from 1 July; decaf keeps its margin; subscriptions keep their discount.\n* [Green coffee price hedging](../sourcing/green-coffee-price-hedging.md) - Prices are fixed for six months on 70% of the expected volume; the rest is bought at market.\n* [Wholesale café onboarding](../customers/wholesale-cafe-onboarding.md) - New cafés get a tasting, a 2 kg trial, a grinder calibration visit, and 30-day payment after three orders."
+ },
+ "sourcing/andes-direct-importer.md": {
+  "path": "sourcing/andes-direct-importer.md",
+  "title": "Andes Direct, importer",
+  "summary": "Main importer for Brazil and Colombia lots: FOB contracts, payment at 60 days.",
+  "tags": [
+   "supplier",
+   "brazil",
+   "colombia"
+  ],
+  "frontmatter": {
+   "type": "Note",
+   "title": "Andes Direct, importer",
+   "description": "Main importer for Brazil and Colombia lots: FOB contracts, payment at 60 days.",
+   "tags": [
+    "supplier",
+    "brazil",
+    "colombia"
+   ],
+   "generated": {
+    "by": "llmw2/0.2.0",
+    "at": "2026-09-25T16:24:41+00:00"
+   },
+   "sources": [
+    {
+     "id": "s1",
+     "resource": "/raw/20260925-162441-andes-direct-importer.md",
+     "title": "Andes Direct, importer"
+    }
+   ]
+  },
+  "body": "Andes Direct supplies all Brazilian and Colombian green coffee.\n\n- Contracts are FOB, with shipping to Genoa arranged by the importer.\n- Payment at 60 days from delivery.\n- Minimum order: one pallet (about 1,150 kg).\n- Samples arrive two weeks before each shipment and are cupped before the contract is signed.\n\nAbout 70% of the expected yearly volume is bought at fixed prices, as set out in the hedging policy.\n\n# See also\n\n* [Green coffee price hedging](green-coffee-price-hedging.md) - Prices are fixed for six months on 70% of the expected volume; the rest is bought at market.\n* [Night Shift decaf](../products/night-shift-decaf.md) - Swiss Water decaf from Colombia Huila; 12% of subscription orders."
+ },
+ "sourcing/green-coffee-price-hedging.md": {
+  "path": "sourcing/green-coffee-price-hedging.md",
+  "title": "Green coffee price hedging",
+  "summary": "Prices are fixed for six months on 70% of the expected volume; the rest is bought at market.",
+  "tags": [
+   "policy",
+   "prices"
+  ],
+  "frontmatter": {
+   "type": "Note",
+   "title": "Green coffee price hedging",
+   "description": "Prices are fixed for six months on 70% of the expected volume; the rest is bought at market.",
+   "tags": [
+    "policy",
+    "prices"
+   ],
+   "generated": {
+    "by": "llmw2/0.2.0",
+    "at": "2026-09-25T16:24:41+00:00"
+   },
+   "sources": [
+    {
+     "id": "s1",
+     "resource": "/raw/20260925-162441-green-coffee-price-hedging.md",
+     "title": "Green coffee price hedging"
+    }
+   ]
+  },
+  "body": "Green coffee is the largest cost, and its price moved by more than 30% in a year.\n\nThe rule since January 2026:\n\n1. Every six months, estimate the volume needed from sales.\n2. Fix the price for 70% of it with the importers.\n3. Buy the remaining 30% at the market price when needed.\n\nThis kept costs stable in the first half of 2026, but the July fixings came in higher,\nwhich is why retail prices change from July.\n\n# See also\n\n* [Price list from July 2026](../products/price-list-from-july-2026.md) - Retail and wholesale prices from 1 July 2026, after the rise in green coffee prices.\n* [Andes Direct, importer](andes-direct-importer.md) - Main importer for Brazil and Colombia lots: FOB contracts, payment at 60 days."
+ },
+ "sourcing/guji-washing-station-visit-february-2026.md": {
+  "path": "sourcing/guji-washing-station-visit-february-2026.md",
+  "title": "Guji washing station visit, February 2026",
+  "summary": "Notes from the visit to the Guji washing station: capacity, cupping and the 2026 contract.",
+  "tags": [
+   "origin",
+   "ethiopia",
+   "trip"
+  ],
+  "frontmatter": {
+   "type": "Note",
+   "title": "Guji washing station visit, February 2026",
+   "description": "Notes from the visit to the Guji washing station: capacity, cupping and the 2026 contract.",
+   "tags": [
+    "origin",
+    "ethiopia",
+    "trip"
+   ],
+   "generated": {
+    "by": "llmw2/0.2.0",
+    "at": "2026-09-25T16:24:41+00:00"
+   },
+   "sources": [
+    {
+     "id": "s1",
+     "resource": "/raw/20260925-162441-guji-washing-station-visit-february-2026.md",
+     "title": "Guji washing station visit, February 2026"
+    }
+   ]
+  },
+  "body": "Two days at the washing station in February 2026.\n\n- About 900 smallholder farmers deliver cherries; the station processes 60 tonnes a season.\n- Lots were cupped on site: the best washed lot scored 86.5 and was bought for the seasonal single origin.\n- A new drying area with raised beds should cut defects next season.\n\nAgreed for 2026: 1,800 kg at a price fixed on the day of signature, delivered by May.\n\n# See also\n\n* [Ethiopia Guji, seasonal single origin](../products/ethiopia-guji-seasonal-single-origin.md) - Washed Guji lot, floral and citrus, sold from March to August while the lot lasts.\n* [Weekly sync, 10 June 2026](../meetings/weekly-sync-10-june-2026.md) - Packing is late on Tuesdays, the Guji lot has arrived, and two cafés asked for decaf training."
+ }
+}

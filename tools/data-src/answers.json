@@ -1,0 +1,675 @@
+[
+ {
+  "question": "What did we decide about prices in May?",
+  "text": "In the May 2026 pricing meeting, the following decisions were made regarding prices:\n\n- **Retail prices:** Increase by 8% starting 1 July 2026 [meetings/pricing-meeting-may-2026.md].\n- **Wholesale prices:** Increase by 5% starting 1 July 2026 (to keep the cafés) [meetings/pricing-meeting-may-2026.md].\n- **Subscriptions:** Maintain their 10% discount [meetings/pricing-meeting-may-2026.md, products/price-list-from-july-2026.md].",
+  "citations": [
+   "meetings/pricing-meeting-may-2026.md",
+   "products/price-list-from-july-2026.md"
+  ],
+  "notes": [
+   "meetings/pricing-meeting-may-2026.md",
+   "sourcing/green-coffee-price-hedging.md",
+   "products/price-list-from-july-2026.md"
+  ],
+  "decisions": [
+   {
+    "step": "retrieve_folder",
+    "decider": "classifier",
+    "choice": "/meetings, /sourcing, /products, /customers, /operations, /ideas",
+    "confidence": null,
+    "fallback": false,
+    "scores": {
+     "/meetings": 0.89,
+     "/sourcing": 0.71,
+     "/products": 0.6,
+     "/customers": 0.57,
+     "/operations": 0.51,
+     "/ideas": 0.22
+    }
+   },
+   {
+    "step": "retrieve_folder",
+    "decider": "classifier",
+    "choice": "/operations/roasting, /operations/shipping",
+    "confidence": null,
+    "fallback": false,
+    "scores": {
+     "/operations/roasting": 0.16,
+     "/operations/shipping": 0.09
+    }
+   },
+   {
+    "step": "retrieve_note",
+    "decider": "classifier",
+    "choice": "meetings/pricing-meeting-may-2026.md, sourcing/green-coffee-price-hedging.md, products/price-list-from-july-2026.md",
+    "confidence": null,
+    "fallback": false,
+    "scores": {
+     "meetings/pricing-meeting-may-2026.md": 0.83,
+     "sourcing/green-coffee-price-hedging.md": 0.49,
+     "products/price-list-from-july-2026.md": 0.11,
+     "sourcing/andes-direct-importer.md": 0.09,
+     "ideas/roastery-tours.md": 0.09,
+     "sourcing/guji-washing-station-visit-february-2026.md": 0.08,
+     "customers/subscription-churn-q2-2026.md": 0.07,
+     "products/ethiopia-guji-seasonal-single-origin.md": 0.05,
+     "ideas/pause-instead-of-cancel.md": 0.05,
+     "meetings/board-meeting-june-2026.md": 0.04,
+     "customers/refund-policy.md": 0.04,
+     "customers/wholesale-cafe-onboarding.md": 0.04,
+     "ideas/cold-brew-cans.md": 0.04,
+     "operations/shipping/carriers-and-delivery-times.md": 0.04,
+     "about-this-demo.md": 0.03,
+     "products/aurora-espresso-blend.md": 0.03,
+     "customers/cafe-portello.md": 0.03,
+     "operations/roasting/quality-control-and-cupping.md": 0.03,
+     "meetings/weekly-sync-10-june-2026.md": 0.02,
+     "products/night-shift-decaf.md": 0.02,
+     "operations/roasting/aurora-roast-profile.md": 0.02,
+     "operations/roasting/roaster-maintenance.md": 0.02,
+     "operations/shipping/subscription-packing-day.md": 0.02
+    }
+   },
+   {
+    "step": "conflict",
+    "decider": "classifier",
+    "choice": "none",
+    "confidence": 0.06,
+    "fallback": false,
+    "scores": {}
+   }
+  ],
+  "usage": {
+   "llm": {
+    "calls": 1,
+    "input_tokens": 773,
+    "output_tokens": 144,
+    "missing": 0,
+    "seconds": 3.2542043330031447,
+    "cost_usd": 0.00111975,
+    "cached_tokens": 0,
+    "total_tokens": 917
+   },
+   "classifier": {
+    "calls": 4,
+    "input_tokens": 2723,
+    "output_tokens": 572,
+    "missing": 0,
+    "seconds": 1.1197709149564616,
+    "cost_usd": 0.000114366,
+    "cached_tokens": 0,
+    "total_tokens": 3295
+   },
+   "by_model": {
+    "classifier:typesafe/jev-1.13": {
+     "calls": 4,
+     "input_tokens": 2723,
+     "output_tokens": 572,
+     "missing": 0,
+     "seconds": 1.1197709149564616,
+     "cost_usd": 0.000114366,
+     "cached_tokens": 0,
+     "total_tokens": 3295
+    },
+    "llm:google/gemini-3.8-flash": {
+     "calls": 1,
+     "input_tokens": 773,
+     "output_tokens": 144,
+     "missing": 0,
+     "seconds": 3.2542043330031447,
+     "cost_usd": 0.00111975,
+     "cached_tokens": 0,
+     "total_tokens": 917
+    }
+   },
+   "by_op": {
+    "classifier:ask/conflict": {
+     "calls": 1,
+     "input_tokens": 437,
+     "output_tokens": 20,
+     "missing": 0,
+     "seconds": 0.20388991601066664,
+     "cost_usd": 1.8354e-05,
+     "cached_tokens": 0,
+     "total_tokens": 457
+    },
+    "classifier:retrieve_folder": {
+     "calls": 2,
+     "input_tokens": 848,
+     "output_tokens": 144,
+     "missing": 0,
+     "seconds": 0.5529782489757054,
+     "cost_usd": 3.5616e-05,
+     "cached_tokens": 0,
+     "total_tokens": 992
+    },
+    "classifier:retrieve_note": {
+     "calls": 1,
+     "input_tokens": 1438,
+     "output_tokens": 408,
+     "missing": 0,
+     "seconds": 0.36290274997008964,
+     "cost_usd": 6.0396e-05,
+     "cached_tokens": 0,
+     "total_tokens": 1846
+    },
+    "llm:researcher/answer": {
+     "calls": 1,
+     "input_tokens": 773,
+     "output_tokens": 144,
+     "missing": 0,
+     "seconds": 3.2542043330031447,
+     "cost_usd": 0.00111975,
+     "cached_tokens": 0,
+     "total_tokens": 917
+    }
+   }
+  },
+  "titles": {
+   "meetings/pricing-meeting-may-2026.md": "Pricing meeting, May 2026",
+   "products/price-list-from-july-2026.md": "Price list from July 2026"
+  }
+ },
+ {
+  "question": "How long do customers have to ask for a refund?",
+  "text": "Customers can ask for a refund within 30 days of delivery [customers/refund-policy.md].",
+  "citations": [
+   "customers/refund-policy.md"
+  ],
+  "notes": [
+   "customers/refund-policy.md"
+  ],
+  "decisions": [
+   {
+    "step": "retrieve_folder",
+    "decider": "classifier",
+    "choice": "/customers, /operations, /ideas, /meetings, /products",
+    "confidence": null,
+    "fallback": false,
+    "scores": {
+     "/customers": 0.75,
+     "/operations": 0.65,
+     "/ideas": 0.17,
+     "/meetings": 0.16,
+     "/products": 0.09,
+     "/sourcing": 0.05
+    }
+   },
+   {
+    "step": "retrieve_folder",
+    "decider": "classifier",
+    "choice": "/operations/shipping, /operations/roasting",
+    "confidence": null,
+    "fallback": false,
+    "scores": {
+     "/operations/shipping": 0.17,
+     "/operations/roasting": 0.14
+    }
+   },
+   {
+    "step": "retrieve_note",
+    "decider": "classifier",
+    "choice": "customers/refund-policy.md",
+    "confidence": null,
+    "fallback": false,
+    "scores": {
+     "customers/refund-policy.md": 0.93,
+     "about-this-demo.md": 0.05,
+     "customers/wholesale-cafe-onboarding.md": 0.03,
+     "customers/cafe-portello.md": 0.02,
+     "ideas/cold-brew-cans.md": 0.02,
+     "ideas/pause-instead-of-cancel.md": 0.02,
+     "ideas/roastery-tours.md": 0.02,
+     "meetings/pricing-meeting-may-2026.md": 0.02,
+     "products/ethiopia-guji-seasonal-single-origin.md": 0.02,
+     "products/price-list-from-july-2026.md": 0.02,
+     "operations/shipping/carriers-and-delivery-times.md": 0.02,
+     "operations/shipping/subscription-packing-day.md": 0.02,
+     "operations/roasting/quality-control-and-cupping.md": 0.02,
+     "customers/subscription-churn-q2-2026.md": 0.01,
+     "meetings/board-meeting-june-2026.md": 0.01,
+     "meetings/weekly-sync-10-june-2026.md": 0.01,
+     "products/aurora-espresso-blend.md": 0.01,
+     "products/night-shift-decaf.md": 0.01,
+     "operations/roasting/aurora-roast-profile.md": 0.01,
+     "operations/roasting/roaster-maintenance.md": 0.01
+    }
+   }
+  ],
+  "usage": {
+   "llm": {
+    "calls": 1,
+    "input_tokens": 364,
+    "output_tokens": 22,
+    "missing": 0,
+    "seconds": 1.7092214170261286,
+    "cost_usd": 0.0003555,
+    "cached_tokens": 0,
+    "total_tokens": 386
+   },
+   "classifier": {
+    "calls": 3,
+    "input_tokens": 2141,
+    "output_tokens": 498,
+    "missing": 0,
+    "seconds": 0.6993750000256114,
+    "cost_usd": 8.992200000000001e-05,
+    "cached_tokens": 0,
+    "total_tokens": 2639
+   },
+   "by_model": {
+    "classifier:typesafe/jev-1.13": {
+     "calls": 3,
+     "input_tokens": 2141,
+     "output_tokens": 498,
+     "missing": 0,
+     "seconds": 0.6993750000256114,
+     "cost_usd": 8.992200000000001e-05,
+     "cached_tokens": 0,
+     "total_tokens": 2639
+    },
+    "llm:google/gemini-3.8-flash": {
+     "calls": 1,
+     "input_tokens": 364,
+     "output_tokens": 22,
+     "missing": 0,
+     "seconds": 1.7092214170261286,
+     "cost_usd": 0.0003555,
+     "cached_tokens": 0,
+     "total_tokens": 386
+    }
+   },
+   "by_op": {
+    "classifier:retrieve_folder": {
+     "calls": 2,
+     "input_tokens": 852,
+     "output_tokens": 144,
+     "missing": 0,
+     "seconds": 0.48309258406516165,
+     "cost_usd": 3.5784e-05,
+     "cached_tokens": 0,
+     "total_tokens": 996
+    },
+    "classifier:retrieve_note": {
+     "calls": 1,
+     "input_tokens": 1289,
+     "output_tokens": 354,
+     "missing": 0,
+     "seconds": 0.21628241596044973,
+     "cost_usd": 5.4138e-05,
+     "cached_tokens": 0,
+     "total_tokens": 1643
+    },
+    "llm:researcher/answer": {
+     "calls": 1,
+     "input_tokens": 364,
+     "output_tokens": 22,
+     "missing": 0,
+     "seconds": 1.7092214170261286,
+     "cost_usd": 0.0003555,
+     "cached_tokens": 0,
+     "total_tokens": 386
+    }
+   }
+  },
+  "titles": {
+   "customers/refund-policy.md": "Refund policy"
+  }
+ },
+ {
+  "question": "Why do subscribers cancel, and what could keep them?",
+  "text": "Based on Q2 2026 cancellation data, subscribers cancel for the following reasons [customers/subscription-churn-q2-2026.md]:\n\n* **Too much coffee at home**: 41%\n* **Price**: 23%\n* **Moving or travelling**: 14%\n* **Taste**: 9%\n* **Other**: 13%\n\n### What could keep them:\n* **A pause option**: Most subscribers leaving due to volume would have stayed if offered a pause option [customers/subscription-churn-q2-2026.md]. Specifically, offering a one- or two-month pause on the cancellation page, or switching to delivery every two weeks, could keep subscribers who have excess coffee [ideas/pause-instead-of-cancel.md]. Similar shops report retaining a third of people who intended to cancel using this method [ideas/pause-instead-of-cancel.md].\n\n*(Note: The notes do not provide solutions or retention ideas for the other cancellation reasons, such as price, moving/travelling, or taste.)*",
+  "citations": [
+   "customers/subscription-churn-q2-2026.md",
+   "ideas/pause-instead-of-cancel.md"
+  ],
+  "notes": [
+   "ideas/pause-instead-of-cancel.md",
+   "customers/subscription-churn-q2-2026.md",
+   "operations/roasting/quality-control-and-cupping.md",
+   "customers/wholesale-cafe-onboarding.md",
+   "customers/refund-policy.md",
+   "operations/shipping/carriers-and-delivery-times.md",
+   "ideas/roastery-tours.md",
+   "meetings/board-meeting-june-2026.md"
+  ],
+  "decisions": [
+   {
+    "step": "retrieve_folder",
+    "decider": "classifier",
+    "choice": "/customers, /ideas, /operations, /meetings, /products, /sourcing",
+    "confidence": null,
+    "fallback": false,
+    "scores": {
+     "/customers": 0.81,
+     "/ideas": 0.66,
+     "/operations": 0.58,
+     "/meetings": 0.38,
+     "/products": 0.24,
+     "/sourcing": 0.12
+    }
+   },
+   {
+    "step": "retrieve_folder",
+    "decider": "classifier",
+    "choice": "/operations/roasting, /operations/shipping",
+    "confidence": null,
+    "fallback": false,
+    "scores": {
+     "/operations/roasting": 0.35,
+     "/operations/shipping": 0.25
+    }
+   },
+   {
+    "step": "retrieve_note",
+    "decider": "classifier",
+    "choice": "ideas/pause-instead-of-cancel.md, customers/subscription-churn-q2-2026.md, operations/roasting/quality-control-and-cupping.md, customers/wholesale-cafe-onboarding.md, customers/refund-policy.md, operations/shipping/carriers-and-delivery-times.md, ideas/roastery-tours.md, meetings/board-meeting-june-2026.md",
+    "confidence": null,
+    "fallback": false,
+    "scores": {
+     "ideas/pause-instead-of-cancel.md": 0.81,
+     "customers/subscription-churn-q2-2026.md": 0.46,
+     "operations/roasting/quality-control-and-cupping.md": 0.39,
+     "customers/wholesale-cafe-onboarding.md": 0.27,
+     "customers/refund-policy.md": 0.24,
+     "operations/shipping/carriers-and-delivery-times.md": 0.23,
+     "ideas/roastery-tours.md": 0.17,
+     "meetings/board-meeting-june-2026.md": 0.15,
+     "customers/cafe-portello.md": 0.13,
+     "meetings/pricing-meeting-may-2026.md": 0.1,
+     "products/price-list-from-july-2026.md": 0.07,
+     "about-this-demo.md": 0.06,
+     "ideas/cold-brew-cans.md": 0.06,
+     "operations/shipping/subscription-packing-day.md": 0.06,
+     "products/ethiopia-guji-seasonal-single-origin.md": 0.05,
+     "sourcing/guji-washing-station-visit-february-2026.md": 0.05,
+     "products/night-shift-decaf.md": 0.04,
+     "sourcing/andes-direct-importer.md": 0.04,
+     "meetings/weekly-sync-10-june-2026.md": 0.03,
+     "sourcing/green-coffee-price-hedging.md": 0.03,
+     "operations/roasting/roaster-maintenance.md": 0.03,
+     "products/aurora-espresso-blend.md": 0.02,
+     "operations/roasting/aurora-roast-profile.md": 0.02
+    }
+   },
+   {
+    "step": "conflict",
+    "decider": "classifier",
+    "choice": "none",
+    "confidence": 0.18,
+    "fallback": false,
+    "scores": {}
+   }
+  ],
+  "usage": {
+   "llm": {
+    "calls": 1,
+    "input_tokens": 1290,
+    "output_tokens": 234,
+    "missing": 0,
+    "seconds": 4.334898624976631,
+    "cost_usd": 0.001845,
+    "cached_tokens": 0,
+    "total_tokens": 1524
+   },
+   "classifier": {
+    "calls": 4,
+    "input_tokens": 2919,
+    "output_tokens": 572,
+    "missing": 0,
+    "seconds": 0.7552934160921723,
+    "cost_usd": 0.000122598,
+    "cached_tokens": 0,
+    "total_tokens": 3491
+   },
+   "by_model": {
+    "classifier:typesafe/jev-1.13": {
+     "calls": 4,
+     "input_tokens": 2919,
+     "output_tokens": 572,
+     "missing": 0,
+     "seconds": 0.7552934160921723,
+     "cost_usd": 0.000122598,
+     "cached_tokens": 0,
+     "total_tokens": 3491
+    },
+    "llm:google/gemini-3.8-flash": {
+     "calls": 1,
+     "input_tokens": 1290,
+     "output_tokens": 234,
+     "missing": 0,
+     "seconds": 4.334898624976631,
+     "cost_usd": 0.001845,
+     "cached_tokens": 0,
+     "total_tokens": 1524
+    }
+   },
+   "by_op": {
+    "classifier:ask/conflict": {
+     "calls": 1,
+     "input_tokens": 627,
+     "output_tokens": 20,
+     "missing": 0,
+     "seconds": 0.1952865410130471,
+     "cost_usd": 2.6334e-05,
+     "cached_tokens": 0,
+     "total_tokens": 647
+    },
+    "classifier:retrieve_folder": {
+     "calls": 2,
+     "input_tokens": 852,
+     "output_tokens": 144,
+     "missing": 0,
+     "seconds": 0.3817397500388324,
+     "cost_usd": 3.5784e-05,
+     "cached_tokens": 0,
+     "total_tokens": 996
+    },
+    "classifier:retrieve_note": {
+     "calls": 1,
+     "input_tokens": 1440,
+     "output_tokens": 408,
+     "missing": 0,
+     "seconds": 0.17826712504029274,
+     "cost_usd": 6.048e-05,
+     "cached_tokens": 0,
+     "total_tokens": 1848
+    },
+    "llm:researcher/answer": {
+     "calls": 1,
+     "input_tokens": 1290,
+     "output_tokens": 234,
+     "missing": 0,
+     "seconds": 4.334898624976631,
+     "cost_usd": 0.001845,
+     "cached_tokens": 0,
+     "total_tokens": 1524
+    }
+   }
+  },
+  "titles": {
+   "customers/subscription-churn-q2-2026.md": "Subscription churn, Q2 2026",
+   "ideas/pause-instead-of-cancel.md": "Pause instead of cancel"
+  }
+ },
+ {
+  "question": "How is a subscription order roasted and shipped?",
+  "text": "Subscription orders follow a weekly schedule [operations/shipping/subscription-packing-day.md]:\n\n1. **Roasting (Monday)**: Every coffee needed for the week's subscriptions is roasted [operations/shipping/subscription-packing-day.md]. Quality checks include cupping each batch the next morning against a reference sample and measuring ground coffee colour with Agtron [operations/roasting/quality-control-and-cupping.md].\n2. **Packing (Tuesday morning)**: Bags are packed and labeled (around 420 bags per week) [operations/shipping/subscription-packing-day.md].\n3. **Shipping (Tuesday at 15:00)**: The carrier collects the parcels [operations/shipping/subscription-packing-day.md, operations/shipping/carriers-and-delivery-times.md]. \n\nDelivery takes 1–2 working days for Italy and 3–5 working days for the European Union [operations/shipping/carriers-and-delivery-times.md]. Specific roast profiles depend on the bean (for example, the reference profile for Aurora uses a 12 kg batch on the 15 kg roaster with a 205 °C charge and a drop at 11:30) [operations/roasting/aurora-roast-profile.md].",
+  "citations": [
+   "operations/shipping/subscription-packing-day.md",
+   "operations/roasting/quality-control-and-cupping.md",
+   "operations/shipping/carriers-and-delivery-times.md",
+   "operations/roasting/aurora-roast-profile.md"
+  ],
+  "notes": [
+   "operations/shipping/subscription-packing-day.md",
+   "operations/roasting/aurora-roast-profile.md",
+   "operations/shipping/carriers-and-delivery-times.md",
+   "operations/roasting/quality-control-and-cupping.md",
+   "meetings/weekly-sync-10-june-2026.md",
+   "operations/roasting/roaster-maintenance.md",
+   "meetings/board-meeting-june-2026.md",
+   "about-this-demo.md"
+  ],
+  "decisions": [
+   {
+    "step": "retrieve_folder",
+    "decider": "classifier",
+    "choice": "/operations, /customers, /sourcing, /products, /ideas, /meetings",
+    "confidence": null,
+    "fallback": false,
+    "scores": {
+     "/operations": 0.86,
+     "/customers": 0.67,
+     "/sourcing": 0.29,
+     "/products": 0.23,
+     "/ideas": 0.22,
+     "/meetings": 0.19
+    }
+   },
+   {
+    "step": "retrieve_folder",
+    "decider": "classifier",
+    "choice": "/operations/roasting, /operations/shipping",
+    "confidence": null,
+    "fallback": false,
+    "scores": {
+     "/operations/roasting": 0.83,
+     "/operations/shipping": 0.79
+    }
+   },
+   {
+    "step": "retrieve_note",
+    "decider": "classifier",
+    "choice": "operations/shipping/subscription-packing-day.md, operations/roasting/aurora-roast-profile.md, operations/shipping/carriers-and-delivery-times.md, operations/roasting/quality-control-and-cupping.md, meetings/weekly-sync-10-june-2026.md, operations/roasting/roaster-maintenance.md, meetings/board-meeting-june-2026.md, about-this-demo.md",
+    "confidence": null,
+    "fallback": false,
+    "scores": {
+     "operations/shipping/subscription-packing-day.md": 0.9,
+     "operations/roasting/aurora-roast-profile.md": 0.31,
+     "operations/shipping/carriers-and-delivery-times.md": 0.25,
+     "operations/roasting/quality-control-and-cupping.md": 0.17,
+     "meetings/weekly-sync-10-june-2026.md": 0.16,
+     "operations/roasting/roaster-maintenance.md": 0.16,
+     "meetings/board-meeting-june-2026.md": 0.15,
+     "about-this-demo.md": 0.14,
+     "sourcing/guji-washing-station-visit-february-2026.md": 0.12,
+     "customers/wholesale-cafe-onboarding.md": 0.07,
+     "products/ethiopia-guji-seasonal-single-origin.md": 0.07,
+     "products/night-shift-decaf.md": 0.07,
+     "products/aurora-espresso-blend.md": 0.06,
+     "ideas/cold-brew-cans.md": 0.06,
+     "customers/cafe-portello.md": 0.05,
+     "sourcing/andes-direct-importer.md": 0.05,
+     "ideas/roastery-tours.md": 0.05,
+     "customers/refund-policy.md": 0.04,
+     "sourcing/green-coffee-price-hedging.md": 0.04,
+     "ideas/pause-instead-of-cancel.md": 0.04,
+     "meetings/pricing-meeting-may-2026.md": 0.04,
+     "products/price-list-from-july-2026.md": 0.03,
+     "customers/subscription-churn-q2-2026.md": 0.02
+    }
+   },
+   {
+    "step": "conflict",
+    "decider": "classifier",
+    "choice": "none",
+    "confidence": 0.1,
+    "fallback": false,
+    "scores": {}
+   }
+  ],
+  "usage": {
+   "llm": {
+    "calls": 1,
+    "input_tokens": 1516,
+    "output_tokens": 283,
+    "missing": 0,
+    "seconds": 2.948227999964729,
+    "cost_usd": 0.00219825,
+    "cached_tokens": 0,
+    "total_tokens": 1799
+   },
+   "classifier": {
+    "calls": 4,
+    "input_tokens": 3061,
+    "output_tokens": 572,
+    "missing": 0,
+    "seconds": 0.7552550839609466,
+    "cost_usd": 0.000128562,
+    "cached_tokens": 0,
+    "total_tokens": 3633
+   },
+   "by_model": {
+    "classifier:typesafe/jev-1.13": {
+     "calls": 4,
+     "input_tokens": 3061,
+     "output_tokens": 572,
+     "missing": 0,
+     "seconds": 0.7552550839609466,
+     "cost_usd": 0.000128562,
+     "cached_tokens": 0,
+     "total_tokens": 3633
+    },
+    "llm:google/gemini-3.8-flash": {
+     "calls": 1,
+     "input_tokens": 1516,
+     "output_tokens": 283,
+     "missing": 0,
+     "seconds": 2.948227999964729,
+     "cost_usd": 0.00219825,
+     "cached_tokens": 0,
+     "total_tokens": 1799
+    }
+   },
+   "by_op": {
+    "classifier:ask/conflict": {
+     "calls": 1,
+     "input_tokens": 775,
+     "output_tokens": 20,
+     "missing": 0,
+     "seconds": 0.18743745802203193,
+     "cost_usd": 3.255e-05,
+     "cached_tokens": 0,
+     "total_tokens": 795
+    },
+    "classifier:retrieve_folder": {
+     "calls": 2,
+     "input_tokens": 848,
+     "output_tokens": 144,
+     "missing": 0,
+     "seconds": 0.37740645895246416,
+     "cost_usd": 3.5616e-05,
+     "cached_tokens": 0,
+     "total_tokens": 992
+    },
+    "classifier:retrieve_note": {
+     "calls": 1,
+     "input_tokens": 1438,
+     "output_tokens": 408,
+     "missing": 0,
+     "seconds": 0.19041116698645055,
+     "cost_usd": 6.0396e-05,
+     "cached_tokens": 0,
+     "total_tokens": 1846
+    },
+    "llm:researcher/answer": {
+     "calls": 1,
+     "input_tokens": 1516,
+     "output_tokens": 283,
+     "missing": 0,
+     "seconds": 2.948227999964729,
+     "cost_usd": 0.00219825,
+     "cached_tokens": 0,
+     "total_tokens": 1799
+    }
+   }
+  },
+  "titles": {
+   "operations/shipping/subscription-packing-day.md": "Subscription packing day",
+   "operations/roasting/quality-control-and-cupping.md": "Quality control and cupping",
+   "operations/shipping/carriers-and-delivery-times.md": "Carriers and delivery times",
+   "operations/roasting/aurora-roast-profile.md": "Aurora roast profile"
+  }
+ }
+]
