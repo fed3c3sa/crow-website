@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Privacy · Crow</title>
+<meta name="description" content="What Crow, the desktop app, does with your documents: it keeps your wiki and chats on your computer, and sends what a model reads to OpenRouter through your own account. No analytics, no account with us.">
+<meta name="theme-color" content="#0f1113">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://crowllmwiki.com/privacy/">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="stylesheet" href="/assets/css/site.css">
+<style>
+  .policy { max-width: 720px; margin: 0 auto; padding: 72px 24px 96px; }
+  .policy h1 { font-size: 44px; font-weight: 420; letter-spacing: -0.02em; margin: 28px 0 8px; }
+  .policy h2 { font-size: 22px; font-weight: 560; margin: 40px 0 10px; }
+  .policy p, .policy li { color: var(--text-2); line-height: 1.65; margin: 10px 0; }
+  .policy ul { padding-left: 22px; }
+  .policy a { text-decoration: underline; text-underline-offset: 3px; }
+  .policy .updated { color: var(--text-3); }
+</style>
+</head>
+<body>
+<main class="policy">
+  <a href="/"><img class="crow-mark" src="/assets/img/crow-mark.png" width="46" height="33" alt="Crow"></a>
+  <h1>Privacy</h1>
+  <p class="updated">Crow, the desktop app for macOS, Windows and Linux, by Federico Cesarini and Marco Sassarini. Last updated 9 November 2026.</p>
+
+  <h2>In short</h2>
+  <p>Crow has no account with us and no analytics. We, its authors, receive nothing from it: not your documents, not your wiki, not your chats, not how you use it. Your wiki and your chats are stored only on your computer. To file your documents and answer your questions, Crow sends text to OpenRouter, through your own OpenRouter account and to the model you choose.</p>
+
+  <h2>What stays on your computer</h2>
+  <ul>
+    <li>The documents Crow finds or that you add: Crow reads them where they are and never changes, moves or uploads the files themselves.</li>
+    <li>Your wiki, a folder of Markdown notes, your chats and your settings.</li>
+    <li>The key Crow gets when you sign in to OpenRouter, readable only by your user account.</li>
+    <li>Crow's logs, which stay on your computer unless you send them to us yourself.</li>
+  </ul>
+  <p>In the Mac App Store version, Crow reads only the folders and files you open to it: your home folder, when you click Open in the dialog it shows, and the files and folders you add or drop onto its window.</p>
+
+  <h2>What goes to OpenRouter and the model you choose</h2>
+  <p>Crow works with the models on <a href="https://openrouter.ai">OpenRouter</a>, through your account there. What a model reads goes to OpenRouter and to that model's provider: each document's text, name and location as it is filed, and with each question, the notes and earlier messages its answer needs. What happens to it then is up to them, under policies Crow does not control: see <a href="https://openrouter.ai/privacy">OpenRouter's privacy policy</a> and <a href="https://openrouter.ai/docs/guides/privacy/provider-logging">each provider's data policy</a>. Before anything is sent, Crow shows the documents it will file and what that should cost, and it stops at the spending limit you set.</p>
+
+  <h2>Your AI apps</h2>
+  <p>If you connect Claude, Claude Code, ChatGPT or Codex to Crow, they can look things up in your wiki and keep notes in it. What they read from your wiki goes to their own provider (Anthropic or OpenAI), as part of your conversation with them, under that provider's policy.</p>
+
+  <h2>Updates and this website</h2>
+  <p>The version of Crow from GitHub looks for a newer release on GitHub when you click Check for updates; the Mac App Store version is updated by the App Store. This website, crowllmwiki.com, uses no cookies and no analytics; it is served by GitHub Pages.</p>
+
+  <h2>Children</h2>
+  <p>Crow is not directed at children under 13.</p>
+
+  <h2 id="contact">Contact</h2>
+  <p>Questions about privacy, or about Crow: <a href="mailto:crowhq.community@gmail.com">crowhq.community@gmail.com</a>, or an issue on <a href="https://github.com/crow-hq/crow-desktop/issues">crow-hq/crow-desktop</a>. If this policy changes, this page will say so, with its date.</p>
+
+  <p style="margin-top:48px"><a class="btn btn-cta" href="/">Back to Crow</a></p>
+</main>
+</body>
+</html>
