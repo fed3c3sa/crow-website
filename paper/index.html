@@ -30,7 +30,6 @@
 <meta name="citation_online_date" content="2026/10/09">
 <meta name="citation_doi" content="10.5281/zenodo.23260209">
 <meta name="citation_publisher" content="Zenodo">
-<meta name="citation_technical_report_institution" content="Zenodo">
 <meta name="citation_pdf_url" content="https://crowllmwiki.com/assets/paper/CROW_Cesarini_Sassarini_2026_v1.0_doi-23260209.pdf">
 <meta name="citation_abstract_html_url" content="https://crowllmwiki.com/paper/">
 <meta name="citation_language" content="en">
@@ -61,10 +60,7 @@
       "@type": "Organization",
       "@id": "https://crowllmwiki.com/#org",
       "name": "CROW",
-      "alternateName": [
-        "crow-hq",
-        "Crow LLM Wiki"
-      ],
+      "alternateName": "crow-hq",
       "description": "Classifier-routed LLM wikis: open-source tools and research.",
       "url": "https://crowllmwiki.com/",
       "logo": "https://crowllmwiki.com/assets/img/apple-touch-icon.png",
@@ -79,8 +75,7 @@
       ],
       "sameAs": [
         "https://github.com/crow-hq",
-        "https://pypi.org/org/crow-hq/",
-        "https://doi.org/10.5281/zenodo.22898752"
+        "https://pypi.org/org/crow-hq/"
       ]
     },
     {
@@ -121,7 +116,6 @@
       ],
       "datePublished": "2026-09-22",
       "dateModified": "2026-10-09",
-      "version": "1.0",
       "publisher": {
         "@type": "Organization",
         "name": "Zenodo",
@@ -265,7 +259,7 @@
           "name": "Is the CROW paper peer reviewed?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The CROW paper is published on Zenodo, which files all three of its versions as preprints, and the paper claims no peer review. Its results are the authors' own measurements on a private corpus of 525 documents, and the paper states its own limitations, starting with one corpus, one LLM and one classifier version."
+            "text": "The CROW paper is published on Zenodo, which files all three of its versions as preprints, and the paper does not claim to be peer reviewed. Its results are the authors' own measurements on a private corpus of 525 documents, and the paper states its own limitations, starting with one corpus, one LLM and one classifier version."
           }
         },
         {
@@ -417,7 +411,7 @@
 <details class="acc"><summary>What is CROW?</summary><div class="acc-body"><p>CROW (Classifier-Routed Organization of LLM Wikis) is a decision layer for LLM wikis, proposed by Federico Cesarini and Marco Sassarini in a 2026 paper on Zenodo. A typed classifier takes the routing, relevance and consolidation decisions, and an LLM writes the summaries, folder names, merged notes and answers. It runs in <a href="/llmwiki2/">llm-wiki-v2</a> and in Crow.</p></div></details>
 <details class="acc"><summary>What is a typed classifier, and what is Jev?</summary><div class="acc-body"><p>In the CROW paper, a general-purpose typed classifier takes a state (text or structured data) and typed questions written in natural language, and returns typed answers with probabilities instead of text. Jev, released in early access by TypeSafe AI on 15 September 2026, is the one the paper uses: a Choice picks one of up to 255 options, a Score rates against ordered levels, and a Noul gives the probability that a yes/no statement holds. The authors declare no relationship with TypeSafe AI.</p></div></details>
 <details class="acc"><summary>Is CROW a replacement for RAG?</summary><div class="acc-body"><p>Not on its own. LLM wikis were proposed as an alternative to classical RAG, and CROW is a decision layer for an LLM wiki: it changes who takes the filing and retrieval decisions, and it does not replace the compilation of entity, concept and synthesis pages. The paper has not compared CROW with embeddings and a cross-encoder or with hybrid search; it lists those comparisons as work still to do. For the idea itself, see <a href="/llm-wiki/">what an LLM wiki is</a>.</p></div></details>
-<details class="acc"><summary>Is the CROW paper peer reviewed?</summary><div class="acc-body"><p>The CROW paper is published on Zenodo, which files all three of its versions as preprints, and the paper claims no peer review. Its results are the authors' own measurements on a private corpus of 525 documents, and the paper states its own limitations, starting with one corpus, one LLM and one classifier version.</p></div></details>
+<details class="acc"><summary>Is the CROW paper peer reviewed?</summary><div class="acc-body"><p>The CROW paper is published on Zenodo, which files all three of its versions as preprints, and the paper does not claim to be peer reviewed. Its results are the authors' own measurements on a private corpus of 525 documents, and the paper states its own limitations, starting with one corpus, one LLM and one classifier version.</p></div></details>
 <details class="acc"><summary>Where can I download the CROW paper PDF?</summary><div class="acc-body"><p>Download <a href="/assets/paper/CROW_Cesarini_Sassarini_2026_v1.0_doi-23260209.pdf">the PDF of version 1.0</a> from this site. It is the same file as on <a href="https://zenodo.org/records/23260209">Zenodo record 23260209</a>, under CC BY 4.0. Earlier versions are on Zenodo under the concept DOI <a href="https://doi.org/10.5281/zenodo.22898752">10.5281/zenodo.22898752</a>.</p></div></details>
 <details class="acc"><summary>Is there an app that uses CROW?</summary><div class="acc-body"><p>Yes. <a href="/">Crow</a> is a free, open-source desktop app for macOS, Windows and Linux by the same two authors. It runs the CROW architecture of the llm-wiki-v2 engine and turns the documents on your computer into a wiki of linked Markdown notes you can chat with. <a href="/#download">Download Crow</a>, or <a href="/#brain">explore an example brain</a> first.</p></div></details>
         </div>

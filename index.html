@@ -48,10 +48,7 @@
       "@type": "Organization",
       "@id": "https://crowllmwiki.com/#org",
       "name": "CROW",
-      "alternateName": [
-        "crow-hq",
-        "Crow LLM Wiki"
-      ],
+      "alternateName": "crow-hq",
       "description": "Classifier-routed LLM wikis: open-source tools and research.",
       "url": "https://crowllmwiki.com/",
       "logo": "https://crowllmwiki.com/assets/img/apple-touch-icon.png",
@@ -66,8 +63,7 @@
       ],
       "sameAs": [
         "https://github.com/crow-hq",
-        "https://pypi.org/org/crow-hq/",
-        "https://doi.org/10.5281/zenodo.22898752"
+        "https://pypi.org/org/crow-hq/"
       ]
     },
     {
@@ -178,7 +174,6 @@
       ],
       "datePublished": "2026-09-22",
       "dateModified": "2026-10-09",
-      "version": "1.0",
       "publisher": {
         "@type": "Organization",
         "name": "Zenodo",
@@ -319,7 +314,7 @@
           "name": "Something wrong?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Logs: Settings → About → Open logs.The wiki itself: Settings → Library → Show in Finder/Explorer, or right-click the brain's empty space.Start over: Settings → Library → Reset Crow… erases the wiki, the chats and the settings. Your documents stay where they are.Bugs and ideas: issues."
+            "text": "Logs: Settings → About → Open logs. The wiki itself: Settings → Library → Show in Finder/Explorer, or right-click the brain's empty space. Start over: Settings → Library → Reset Crow… erases the wiki, the chats and the settings. Your documents stay where they are. Bugs and ideas: issues."
           }
         }
       ]
@@ -622,7 +617,7 @@ crow mcp</pre>
       <div class="prose reveal">
         <span class="eyebrow" style="--dot: var(--crow)">CROW</span>
         <h3 style="margin:14px 0 16px;font-size:clamp(24px,2.8vw,32px);font-weight:450;letter-spacing:-0.02em;line-height:1.2">A small classifier decides where things go, so the wiki stays fast and cheap as it grows</h3>
-        <p>Karpathy's LLM wiki finds pages by having the model read an index, which works up to about a hundred sources. CROW makes it scale: a small classifier picks each document's folder among every folder of the wiki in one choice, and answering finds the notes by search and lets the classifier reorder them, so the wiki keeps growing without a vector database. The LLM writes: it summarizes each source, rewrites a note it merges into, names new folders and writes the answer. It also lays out the folders, in a plan before a batch is filed and by splitting a folder that has grown, and it decides when the classifier fails.</p>
+        <p>Karpathy's LLM wiki finds pages by having the model read an index, which works up to about a hundred sources. CROW makes it scale: a small classifier picks each document's folder among every folder of the wiki in one choice, and answering walks the folders level by level, so the wiki keeps growing without a vector database. llmwiki2 1.0.0, not yet in Crow, finds a question's notes by search and lets the classifier reorder them. The LLM writes: it summarizes each source, rewrites a note it merges into, names new folders and writes the answer. It also lays out the folders, in a plan before a batch is filed and by splitting a folder that has grown, and it decides when the classifier fails.</p>
         <p>In the <a href="#paper">CROW paper</a>, retrieval kept its accuracy across a twentyfold growth of the wiki.</p>
         <div class="pipeline" role="group" aria-label="The ingest pipeline">
           <b><span>summarize</span><i>→</i></b><b><span>route</span><i>→</i></b><b><span>find match</span><i>→</i></b><b><span>merge or write</span><i>→</i></b><b><span>relate</span><i>→</i></b><b><span>link, index, log</span></b>

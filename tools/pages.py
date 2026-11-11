@@ -55,13 +55,13 @@ ENTITIES = {
         "@type": "Organization",
         "@id": f"{SITE}/#org",
         "name": "CROW",
-        "alternateName": ["crow-hq", "Crow LLM Wiki"],
+        "alternateName": "crow-hq",
         "description": "Classifier-routed LLM wikis: open-source tools and research.",
         "url": f"{SITE}/",
         "logo": f"{SITE}/assets/img/apple-touch-icon.png",
         "email": "crowhq.community@gmail.com",
         "founder": AUTHORS,
-        "sameAs": ["https://github.com/crow-hq", "https://pypi.org/org/crow-hq/", "https://doi.org/10.5281/zenodo.22898752"],
+        "sameAs": ["https://github.com/crow-hq", "https://pypi.org/org/crow-hq/"],
     },
     "crow": {
         "@type": "SoftwareApplication",
@@ -112,7 +112,6 @@ ENTITIES = {
         "author": AUTHORS,
         "datePublished": "2026-09-22",
         "dateModified": "2026-10-09",
-        "version": "1.0",
         "publisher": {"@type": "Organization", "name": "Zenodo", "url": "https://zenodo.org/"},
         "identifier": {"@type": "PropertyValue", "propertyID": "DOI", "value": "10.5281/zenodo.22898752"},
         "sameAs": ["https://doi.org/10.5281/zenodo.22898752", "https://zenodo.org/records/23260209"],
@@ -132,6 +131,7 @@ PAGE_MAIN = {"llmwiki2": "engine", "paper": "paper"}  # the page is about this e
 
 
 def clean(s: str) -> str:
+    s = re.sub(r"</(?:li|p|h[1-6])>|<br\s*/?>", " ", s)  # list items and paragraphs stay apart
     return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", s))).strip()
 
 
@@ -308,7 +308,6 @@ def build_page(src: Path, header: str, footer: str) -> tuple[str, str, dict]:
             ("citation_online_date", c.get("online_date", c["publication_date"])),
             ("citation_doi", c["doi"]),
             ("citation_publisher", c["publisher"]),
-            ("citation_technical_report_institution", c["publisher"]),
             ("citation_pdf_url", c["pdf_url"]),
             ("citation_abstract_html_url", url),
             ("citation_language", "en"),
