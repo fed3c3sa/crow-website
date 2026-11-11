@@ -41,6 +41,11 @@ npm run typecheck
 python3 -m http.server 8781   # then open http://127.0.0.1:8781/
 ```
 
+The content pages (`/llm-wiki/`, `/llmwiki2/`, `/paper/`) are written in `content/<slug>.html` (a JSON meta block, the
+body, the FAQ between `<!--faq-->` and `<!--/faq-->`) and built with `python3 tools/pages.py`, which also writes the
+JSON-LD of every page (the homepage's included, its FAQPage from the visible FAQ) and `sitemap.xml`. Never edit the
+generated `<slug>/index.html` or the homepage's JSON-LD by hand.
+
 `tools/og.html` is the source of `assets/img/og.jpg` (the social card); render it at 1200×630 with headless Chrome.
 
 ## Licence

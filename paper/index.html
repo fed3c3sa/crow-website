@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CROW: Classifier-Routed Organization of LLM Wikis (paper)</title>
+<meta name="description" content="CROW: Classifier-Routed Organization of LLM Wikis, by Federico Cesarini and Marco Sassarini (Zenodo, 2026). Abstract, method, results, PDF, BibTeX.">
+<meta name="author" content="Federico Cesarini, Marco Sassarini">
+<meta name="theme-color" content="#0f1113">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://crowllmwiki.com/paper/">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Crow">
+<meta property="og:title" content="CROW: Classifier-Routed Organization of LLM Wikis">
+<meta property="og:description" content="CROW: Classifier-Routed Organization of LLM Wikis, by Federico Cesarini and Marco Sassarini (Zenodo, 2026). Abstract, method, results, PDF, BibTeX.">
+<meta property="og:url" content="https://crowllmwiki.com/paper/">
+<meta property="og:image" content="https://crowllmwiki.com/assets/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="article:published_time" content="2026-11-11">
+<meta property="article:modified_time" content="2026-11-11">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@fed3c3sa">
+<meta name="citation_title" content="CROW: Classifier-Routed Organization of LLM Wikis">
+<meta name="citation_author" content="Cesarini, Federico">
+<meta name="citation_author" content="Sassarini, Marco">
+<meta name="citation_publication_date" content="2026/10/09">
+<meta name="citation_online_date" content="2026/10/09">
+<meta name="citation_doi" content="10.5281/zenodo.23260209">
+<meta name="citation_publisher" content="Zenodo">
+<meta name="citation_technical_report_institution" content="Zenodo">
+<meta name="citation_pdf_url" content="https://crowllmwiki.com/assets/paper/CROW_Cesarini_Sassarini_2026_v1.0_doi-23260209.pdf">
+<meta name="citation_abstract_html_url" content="https://crowllmwiki.com/paper/">
+<meta name="citation_language" content="en">
+<meta name="citation_keywords" content="LLM wikis; Knowledge bases; Retrieval-augmented generation; Typed classifiers; Hierarchical classification; Zero-shot clustering">
+<link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css">
+<script type="module" src="/assets/js/site.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://crowllmwiki.com/#website",
+      "url": "https://crowllmwiki.com/",
+      "name": "Crow",
+      "alternateName": [
+        "Crow LLM Wiki",
+        "crowllmwiki.com"
+      ],
+      "description": "Crow, the desktop app; llm-wiki-v2, the engine; CROW, the paper.",
+      "inLanguage": "en",
+      "publisher": {
+        "@id": "https://crowllmwiki.com/#org"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://crowllmwiki.com/#org",
+      "name": "CROW",
+      "alternateName": [
+        "crow-hq",
+        "Crow LLM Wiki"
+      ],
+      "description": "Classifier-routed LLM wikis: open-source tools and research.",
+      "url": "https://crowllmwiki.com/",
+      "logo": "https://crowllmwiki.com/assets/img/apple-touch-icon.png",
+      "email": "crowhq.community@gmail.com",
+      "founder": [
+        {
+          "@id": "https://crowllmwiki.com/#federico"
+        },
+        {
+          "@id": "https://crowllmwiki.com/#marco"
+        }
+      ],
+      "sameAs": [
+        "https://github.com/crow-hq",
+        "https://pypi.org/org/crow-hq/",
+        "https://doi.org/10.5281/zenodo.22898752"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://crowllmwiki.com/#federico",
+      "name": "Federico Cesarini",
+      "url": "https://www.federicocesarini.com/",
+      "sameAs": [
+        "https://github.com/fed3c3sa",
+        "https://www.linkedin.com/in/federico-cesarini-4a9482209",
+        "https://x.com/fed3c3sa"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://crowllmwiki.com/#marco",
+      "name": "Marco Sassarini",
+      "url": "https://github.com/sassarini-marco",
+      "sameAs": [
+        "https://github.com/sassarini-marco",
+        "https://www.linkedin.com/in/marco-sassarini-95b342200",
+        "https://x.com/MarcoSassarini"
+      ]
+    },
+    {
+      "@type": "ScholarlyArticle",
+      "@id": "https://crowllmwiki.com/#paper",
+      "headline": "CROW: Classifier-Routed Organization of LLM Wikis",
+      "name": "CROW: Classifier-Routed Organization of LLM Wikis",
+      "url": "https://crowllmwiki.com/paper/",
+      "author": [
+        {
+          "@id": "https://crowllmwiki.com/#federico"
+        },
+        {
+          "@id": "https://crowllmwiki.com/#marco"
+        }
+      ],
+      "datePublished": "2026-09-22",
+      "dateModified": "2026-10-09",
+      "version": "1.0",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Zenodo",
+        "url": "https://zenodo.org/"
+      },
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "DOI",
+        "value": "10.5281/zenodo.22898752"
+      },
+      "sameAs": [
+        "https://doi.org/10.5281/zenodo.22898752",
+        "https://zenodo.org/records/23260209"
+      ],
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "encoding": {
+        "@type": "MediaObject",
+        "encodingFormat": "application/pdf",
+        "contentUrl": "https://crowllmwiki.com/assets/paper/CROW_Cesarini_Sassarini_2026_v1.0_doi-23260209.pdf"
+      },
+      "isPartOf": {
+        "@id": "https://crowllmwiki.com/#website"
+      },
+      "abstract": "LLM wikis have been proposed as an alternative to classical retrieval-augmented generation (RAG): a large language model (LLM) incrementally organizes knowledge into a directory of notes that can be inspected directly and grows with little manual upkeep, at the price of LLM calls whose cost grows with the knowledge base. Many of these calls are spent on decisions rather than on writing: where a new source belongs, which notes it relates to, which notes answer a question. We introduce CROW (Classifier-Routed Organization of LLM Wikis), a decision layer for LLM wikis that delegates these routing and consolidation decisions to a general-purpose typed classifier, such as the recently released Jev, and reserves generative calls for the steps that require writing text. In CROW, ingestion relies on a short sequence of classifier calls and invokes an LLM only to summarize the incoming source, to name new folders and, when an existing note must be updated, to rewrite it, while retrieval uses the classifier to select the relevant notes and leaves to the LLM only the final answer. CROW does not replace the compilation of entity, concept and synthesis pages that gives LLM wikis much of their value. We specify how each decision maps onto classifier primitives, position the design with respect to memory systems for LLM agents, model routing and candidate-then-verify pipelines, and evaluate it on Google's Open Knowledge Format against an LLM that takes the same decisions, on 525 documents. CROW ingested the documents at 0.47 times the cost and 0.48 times the latency, with an LLM cost per document that stayed flat as the wiki grew, and at retrieval found the right note in 89.2% of asks against 61.8%, in about half the time. A cost model built on these measurements keeps an ingest at about $0.006 up to a million documents, so an LLM wiki with CROW can grow into a large, production knowledge store. The same mechanism also works as zero-shot, incremental clustering, in which named categories emerge from a stream of documents without training.",
+      "keywords": [
+        "LLM wikis",
+        "Knowledge bases",
+        "Retrieval-augmented generation",
+        "Typed classifiers",
+        "Hierarchical classification",
+        "Zero-shot clustering"
+      ],
+      "mainEntityOfPage": {
+        "@id": "https://crowllmwiki.com/paper/#webpage"
+      }
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://crowllmwiki.com/#llm-wiki-v2",
+      "name": "llm-wiki-v2 (llmwiki2)",
+      "alternateName": [
+        "llmwiki2",
+        "llm-wiki-v2"
+      ],
+      "url": "https://crowllmwiki.com/llmwiki2/",
+      "description": "An open-source Python engine that turns documents into an LLM wiki of Markdown notes, with CROW classifier routing: a library, a command line, a web page and an MCP memory for AI agents.",
+      "codeRepository": "https://github.com/crow-hq/llm-wiki-v2",
+      "programmingLanguage": "Python",
+      "runtimePlatform": "Python 3.11 or later",
+      "version": "1.0.0",
+      "dateModified": "2026-11-10",
+      "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+      "sameAs": [
+        "https://github.com/crow-hq/llm-wiki-v2",
+        "https://pypi.org/project/llmwiki2/"
+      ],
+      "author": [
+        {
+          "@id": "https://crowllmwiki.com/#federico"
+        },
+        {
+          "@id": "https://crowllmwiki.com/#marco"
+        }
+      ],
+      "publisher": {
+        "@id": "https://crowllmwiki.com/#org"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://crowllmwiki.com/paper/#webpage",
+      "url": "https://crowllmwiki.com/paper/",
+      "name": "CROW: Classifier-Routed Organization of LLM Wikis (paper)",
+      "description": "CROW: Classifier-Routed Organization of LLM Wikis, by Federico Cesarini and Marco Sassarini (Zenodo, 2026). Abstract, method, results, PDF, BibTeX.",
+      "isPartOf": {
+        "@id": "https://crowllmwiki.com/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://crowllmwiki.com/paper/#breadcrumb"
+      },
+      "inLanguage": "en",
+      "datePublished": "2026-11-11",
+      "dateModified": "2026-11-11",
+      "primaryImageOfPage": "https://crowllmwiki.com/assets/img/og.jpg",
+      "about": {
+        "@id": "https://crowllmwiki.com/#paper"
+      },
+      "mainEntity": {
+        "@id": "https://crowllmwiki.com/#paper"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://crowllmwiki.com/paper/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Crow",
+          "item": "https://crowllmwiki.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Paper",
+          "item": "https://crowllmwiki.com/paper/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://crowllmwiki.com/paper/#faq",
+      "url": "https://crowllmwiki.com/paper/",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is CROW?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CROW (Classifier-Routed Organization of LLM Wikis) is a decision layer for LLM wikis, proposed by Federico Cesarini and Marco Sassarini in a 2026 paper on Zenodo. A typed classifier takes the routing, relevance and consolidation decisions, and an LLM writes the summaries, folder names, merged notes and answers. It runs in llm-wiki-v2 and in Crow."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a typed classifier, and what is Jev?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In the CROW paper, a general-purpose typed classifier takes a state (text or structured data) and typed questions written in natural language, and returns typed answers with probabilities instead of text. Jev, released in early access by TypeSafe AI on 15 September 2026, is the one the paper uses: a Choice picks one of up to 255 options, a Score rates against ordered levels, and a Noul gives the probability that a yes/no statement holds. The authors declare no relationship with TypeSafe AI."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is CROW a replacement for RAG?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not on its own. LLM wikis were proposed as an alternative to classical RAG, and CROW is a decision layer for an LLM wiki: it changes who takes the filing and retrieval decisions, and it does not replace the compilation of entity, concept and synthesis pages. The paper has not compared CROW with embeddings and a cross-encoder or with hybrid search; it lists those comparisons as work still to do. For the idea itself, see what an LLM wiki is."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the CROW paper peer reviewed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The CROW paper is published on Zenodo, which files all three of its versions as preprints, and the paper claims no peer review. Its results are the authors' own measurements on a private corpus of 525 documents, and the paper states its own limitations, starting with one corpus, one LLM and one classifier version."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where can I download the CROW paper PDF?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Download the PDF of version 1.0 from this site. It is the same file as on Zenodo record 23260209, under CC BY 4.0. Earlier versions are on Zenodo under the concept DOI 10.5281/zenodo.22898752."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there an app that uses CROW?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Crow is a free, open-source desktop app for macOS, Windows and Linux by the same two authors. It runs the CROW architecture of the llm-wiki-v2 engine and turns the documents on your computer into a wiki of linked Markdown notes you can chat with. Download Crow, or explore an example brain first."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/" aria-label="Crow, home"><img class="crow-mark" src="/assets/img/crow-mark.png" width="34" height="24" alt=""><span>Crow</span></a>
+    <ul class="nav-links">
+      <li><a href="/#brain">Brain</a></li>
+      <li><a href="/#features">Features</a></li>
+      <li><a href="/llm-wiki/">LLM wiki</a></li>
+      <li><a href="/llmwiki2/">Engine</a></li>
+      <li><a href="/paper/">Paper</a></li>
+      <li><a href="/#download">Download</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-end">
+      <a class="gh" href="https://github.com/crow-hq/llm-wiki-v2" aria-label="llm-wiki-v2 on GitHub, stars">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.94 5.96 6.58.96-4.76 4.64 1.12 6.55L12 17.52l-5.88 3.09 1.12-6.55L2.48 9.42l6.58-.96Z"/></svg>
+        <span data-stars>256</span>
+      </a>
+      <a class="btn btn-cta" href="/#download">Download</a>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="article">
+  <div class="wrap">
+    <article class="article-col">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Crow</a><span aria-hidden="true">/</span><span aria-current="page">Paper</span></nav>
+      <span class="eyebrow" style="--dot: var(--crow)">Research</span>
+      <h1>CROW: Classifier-Routed Organization of LLM Wikis</h1>
+      <p class="lede">The paper behind Crow and llm-wiki-v2, by Federico Cesarini and Marco Sassarini: a typed classifier takes the filing and retrieval decisions of an LLM wiki, and the LLM writes the text. Published on Zenodo in 2026 under CC BY 4.0.</p>
+      <p class="byline">By <a href="https://www.federicocesarini.com/">Federico Cesarini</a> and <a href="https://github.com/sassarini-marco">Marco Sassarini</a> · Updated <time datetime="2026-11-11">11 November 2026</time></p>
+      <div class="article-body">
+<p>CROW: Classifier-Routed Organization of LLM Wikis is a paper by Federico Cesarini and Marco Sassarini, published on Zenodo in 2026. It proposes a decision layer for LLM wikis: a typed classifier decides where each new document is filed and which notes can answer a question, and the LLM is called only when text must be written.</p>
+<p>The <a href="/assets/paper/CROW_Cesarini_Sassarini_2026_v1.0_doi-23260209.pdf">PDF on this site</a> is version 1.0 from Zenodo (CC BY 4.0). The engine <a href="/llmwiki2/">llm-wiki-v2</a> and the <a href="/">Crow</a> desktop app both run CROW.</p>
+
+<h2>Abstract</h2>
+<p>LLM wikis have been proposed as an alternative to classical retrieval-augmented generation (RAG): a large language model (LLM) incrementally organizes knowledge into a directory of notes that can be inspected directly and grows with little manual upkeep, at the price of LLM calls whose cost grows with the knowledge base. Many of these calls are spent on decisions rather than on writing: where a new source belongs, which notes it relates to, which notes answer a question.</p>
+<p>We introduce CROW (Classifier-Routed Organization of LLM Wikis), a decision layer for LLM wikis that delegates these routing and consolidation decisions to a general-purpose typed classifier, such as the recently released Jev, and reserves generative calls for the steps that require writing text. In CROW, ingestion relies on a short sequence of classifier calls and invokes an LLM only to summarize the incoming source, to name new folders and, when an existing note must be updated, to rewrite it, while retrieval uses the classifier to select the relevant notes and leaves to the LLM only the final answer. CROW does not replace the compilation of entity, concept and synthesis pages that gives LLM wikis much of their value.</p>
+<p>We specify how each decision maps onto classifier primitives, position the design with respect to memory systems for LLM agents, model routing and candidate-then-verify pipelines, and evaluate it on Google's Open Knowledge Format against an LLM that takes the same decisions, on 525 documents. CROW ingested the documents at 0.47 times the cost and 0.48 times the latency, with an LLM cost per document that stayed flat as the wiki grew, and at retrieval found the right note in 89.2% of asks against 61.8%, in about half the time. A cost model built on these measurements keeps an ingest at about $0.006 up to a million documents, so an LLM wiki with CROW can grow into a large, production knowledge store. The same mechanism also works as zero-shot, incremental clustering, in which named categories emerge from a stream of documents without training.</p>
+
+<h2>What problem does CROW solve?</h2>
+<p>CROW addresses the cost of LLM wikis. In an LLM wiki, a language model files every new source and finds the notes for every question, and each of those calls reads the wiki's index, so the cost of one ingestion grows with the knowledge base. Many of the calls are decisions, not writing.</p>
+<p>An <a href="/llm-wiki/">LLM wiki</a> is the pattern Andrej Karpathy described in April 2026 in a <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">GitHub gist</a>: an LLM compiles sources once into linked Markdown notes and keeps them current, instead of retrieving raw fragments at every question as RAG does. Summaries have to be written; choosing where a source belongs, which notes it relates to and which notes to read is the kind of decision typed classifiers are built for.</p>
+<p>The decisions are also the part that grows. In the paper's benchmark (525 documents, the authors' own measurements on a private corpus), the LLM-only baseline spent 71.8% of its LLM tokens on decisions, and its tokens per document grew by 1,197 per 100 notes in the wiki.</p>
+
+<h2>How does CROW work?</h2>
+<p>CROW keeps the notes of an LLM wiki and its two phases, ingestion and retrieval, but changes who takes the decisions. A typed classifier answers each one as a choice among options or a yes/no question, with probabilities, and an LLM is called only to summarize a source, name a new folder, rewrite a merged note or write the answer.</p>
+<p>The paper describes each decision with the primitives of Jev, a typed classifier released in early access by TypeSafe AI on 15 September 2026: a Choice picks one of up to 255 options, and a Noul gives the probability that a yes/no statement holds. Any classifier that returns such probabilities can take its place. Every decision but one sees notes and folders only through their titles and one-line summaries.</p>
+<h3>Ingestion: filing a new document</h3>
+<ol>
+<li><strong>Summarize (LLM, optional).</strong> An LLM turns the source into a candidate note: title, one-line summary and body. It is the only generative call every ingestion pays.</li>
+<li><strong>Route (classifier).</strong> From the root down, a Choice at each folder picks one of its subfolders, Here, New subfolder, or None of these. An LLM names each new folder, and decides instead when every path ends in None of these or scores too low.</li>
+<li><strong>Find the related note (classifier).</strong> A Noul per note in the candidate folders asks whether the new content concerns the same subject, all in parallel.</li>
+<li><strong>Merge or create (classifier).</strong> With no match, code files a new note. Otherwise a Choice decides between modifying the best note and a new one, choosing new when unsure. Only a modification calls an LLM, to rewrite the note.</li>
+<li><strong>Link (classifier).</strong> The paper's implementation adds a Noul per nearby note; code writes up to five See-also links, and the LLM never writes links.</li>
+</ol>
+<h3>Retrieval: answering a question</h3>
+<ol>
+<li><strong>Route (classifier).</strong> A Noul per subfolder asks whether it likely holds notes that help answer the question; folders above a threshold are explored.</li>
+<li><strong>Score the notes (classifier).</strong> A Noul per candidate note, on its title and one-line summary, ranks the notes across folders.</li>
+<li><strong>Answer (LLM).</strong> The top notes (up to 8 in the evaluation) go in full to an LLM, which writes the answer.</li>
+</ol>
+<p>When nothing clears its threshold, classical LLM navigation takes over. A confidently wrong classifier still passes every threshold, and since the selected notes are read once, multi-hop or aggregating questions may be answered less well.</p>
+<p>CROW is not a complete LLM wiki: it leaves out entity, concept and synthesis pages, the upkeep of cross-references, and lint. The paper also presents the same ingestion as zero-shot clustering, where named categories emerge without training.</p>
+
+<h2>What did the benchmark measure?</h2>
+<p>The CROW paper's benchmark ran CROW against a baseline that runs the same pipeline but lets an LLM take every decision, on 525 documents from the first author's personal knowledge base, which is not public. The authors measured ingestion cost, latency and LLM tokens, and how often the right note reached the answering LLM, over 400 asks per pipeline.</p>
+<p>69.9% of the documents are in Italian. The LLM was DeepSeek V4.1 Flash and the classifier Jev 1.13, both through OpenRouter, at list prices. Twenty questions, each written from one document, were asked at 20 wiki sizes from 26 to 525 documents. A hit means the right note was among the notes passed to the answering LLM.</p>
+<div class="table-wrap"><table><thead><tr><th>Measure (Table 2 of the paper)</th><th>Baseline (LLM decides)</th><th>CROW</th><th>Ratio</th></tr></thead><tbody>
+<tr><td>Ingestion cost, total (billed)</td><td>$5.62 ($5.11)</td><td>$2.62 ($2.35)</td><td>0.47</td></tr>
+<tr><td>Ingestion LLM calls</td><td>2,945</td><td>796</td><td>0.27</td></tr>
+<tr><td>Ingestion LLM tokens</td><td>9.10 M</td><td>2.89 M</td><td>0.32</td></tr>
+<tr><td>Latency per document, mean / 95th percentile</td><td>38.6 / 134.1 s</td><td>18.4 / 54.3 s</td><td>0.48</td></tr>
+<tr><td>Right note found (hit), Wilson 95% interval</td><td>61.8% [56.9, 66.4]</td><td>89.2% [85.8, 91.9]</td><td></td></tr>
+<tr><td>Questions answered</td><td>90.5%</td><td>98.0%</td><td></td></tr>
+<tr><td>Latency per question, mean / 95th percentile</td><td>4.88 / 10.03 s</td><td>2.61 / 3.93 s</td><td>0.53</td></tr>
+<tr><td>Cost per question (billed)</td><td>$0.0029 ($0.0021)</td><td>$0.0020 ($0.0013)</td><td>0.69</td></tr>
+</tbody></table></div>
+<p>Costs are in US dollars at list price, billed amounts in brackets. CROW's hit rate was 90% at both the smallest and the largest wiki, while the baseline's fell from 75% to 55%. Beyond 525 documents the paper only projects: about $0.006 per CROW ingest up to a million documents, if the folder tree is kept bounded.</p>
+<h3>Limitations the paper states</h3>
+<ul>
+<li>One corpus of 525 short personal documents, mostly in Italian, one LLM and one classifier version. Other corpora, languages and models may give different results.</li>
+<li>The baseline is the same pipeline with an LLM deciding, not a classical wiki's agent loop. Comparisons with a small LLM, embeddings and a cross-encoder, the agent loop and hybrid search remain to be made.</li>
+<li>The ingestion thresholds were not calibrated, and the retrieval thresholds were set on questions from some of the evaluated documents. On 9 questions from documents never used for that, CROW led 77.8% to 69.4%, too few questions to establish it statistically.</li>
+<li>A hit means the right note was read, not that the answer was correct. The latencies include a local gateway that weighs more on the baseline.</li>
+<li>Errors compound across steps, and a misfiled note stays where it is.</li>
+</ul>
+
+<h2>Where is the code?</h2>
+<p>The code of CROW is the open-source repository crow-hq/llm-wiki-v2 on GitHub, installed from PyPI as llmwiki2, where CROW is the default mode. All the paper's experiments ran on this repository, and the harnesses used for the paper are in its history at <a href="https://github.com/crow-hq/llm-wiki-v2/tree/f51e926ac00725c442ab269a7b386d52b4c9144b">commit f51e926</a>. The paper's corpus is not public.</p>
+<p>The repository's <a href="https://github.com/crow-hq/llm-wiki-v2/tree/v1.0.0/benchmarks"><code>benchmarks/</code></a> folder holds the scripts behind the authors' later measurements of llm-wiki-v2, with their corpora or pins to public sources, and every script has a <code>--dry-run</code>. The paper's 525 documents are not there, since they are the first author's personal notes.</p>
+<p>The code has moved on since the paper. In llmwiki2 1.0.0, CROW files a document with one Choice among every folder, the LLM also lays out and splits folders, and answering starts from the wiki's search, which the classifier reorders (<a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/wiki/crow.md">docs/wiki/crow.md</a>).</p>
+<p>Use it through <a href="/llmwiki2/">llmwiki2</a>, the Python library and command line, or <a href="/#download">Crow</a>, the free desktop app built on it.</p>
+
+<h2>Which version should I cite?</h2>
+<p>Cite the concept DOI 10.5281/zenodo.22898752 to refer to the CROW paper as a whole: it covers all versions and resolves to the latest one. To pin the exact text, cite 10.5281/zenodo.23260209, version 1.0 as published on Zenodo on 9 October 2026, which links the public code and is the PDF served on this site.</p>
+<div class="table-wrap"><table><thead><tr><th>Version</th><th>On Zenodo</th><th>DOI</th><th>What it is</th></tr></thead><tbody>
+<tr><td>Preprint, version 0.1.1</td><td>22 September 2026</td><td><a href="https://doi.org/10.5281/zenodo.22900601">10.5281/zenodo.22900601</a></td><td>The design; its effects stated as hypotheses, not measured.</td></tr>
+<tr><td>Version 1.0</td><td>29 September 2026</td><td><a href="https://doi.org/10.5281/zenodo.23034952">10.5281/zenodo.23034952</a></td><td>Adds the evaluation on 525 documents.</td></tr>
+<tr><td>Version 1.0, with the code link</td><td>9 October 2026</td><td><a href="https://doi.org/10.5281/zenodo.23260209">10.5281/zenodo.23260209</a></td><td>Same text, with the link to the public code. The PDF on this site.</td></tr>
+<tr><td>All versions (concept DOI)</td><td>Resolves to the latest</td><td><a href="https://doi.org/10.5281/zenodo.22898752">10.5281/zenodo.22898752</a></td><td>The paper as a whole.</td></tr>
+</tbody></table></div>
+
+<h2>How to cite</h2>
+<p>BibTeX, with the concept DOI:</p>
+<div class="code"><div class="code-head"><span>BibTeX</span><button class="copy" type="button" data-copy="code-paper-1" aria-label="Copy"></button></div><pre id="code-paper-1">@misc{cesarini2026crow,
+  title = {{CROW}: Classifier-Routed Organization of {LLM} Wikis},
+  author = {Cesarini, Federico and Sassarini, Marco},
+  year = {2026},
+  publisher = {Zenodo},
+  doi = {10.5281/zenodo.22898752}
+}</pre></div>
+<p>As plain text: Cesarini, F. and Sassarini, M. (2026). CROW: Classifier-Routed Organization of LLM Wikis. Zenodo. <a href="https://doi.org/10.5281/zenodo.22898752">https://doi.org/10.5281/zenodo.22898752</a></p>
+<p>To cite the software, see the repository's <a href="https://github.com/crow-hq/llm-wiki-v2/blob/main/CITATION.cff">CITATION.cff</a>.</p>
+      </div>
+      <section class="article-faq" aria-labelledby="faq-h">
+        <h2 id="faq-h">Questions</h2>
+        <div class="faq">
+<details class="acc"><summary>What is CROW?</summary><div class="acc-body"><p>CROW (Classifier-Routed Organization of LLM Wikis) is a decision layer for LLM wikis, proposed by Federico Cesarini and Marco Sassarini in a 2026 paper on Zenodo. A typed classifier takes the routing, relevance and consolidation decisions, and an LLM writes the summaries, folder names, merged notes and answers. It runs in <a href="/llmwiki2/">llm-wiki-v2</a> and in Crow.</p></div></details>
+<details class="acc"><summary>What is a typed classifier, and what is Jev?</summary><div class="acc-body"><p>In the CROW paper, a general-purpose typed classifier takes a state (text or structured data) and typed questions written in natural language, and returns typed answers with probabilities instead of text. Jev, released in early access by TypeSafe AI on 15 September 2026, is the one the paper uses: a Choice picks one of up to 255 options, a Score rates against ordered levels, and a Noul gives the probability that a yes/no statement holds. The authors declare no relationship with TypeSafe AI.</p></div></details>
+<details class="acc"><summary>Is CROW a replacement for RAG?</summary><div class="acc-body"><p>Not on its own. LLM wikis were proposed as an alternative to classical RAG, and CROW is a decision layer for an LLM wiki: it changes who takes the filing and retrieval decisions, and it does not replace the compilation of entity, concept and synthesis pages. The paper has not compared CROW with embeddings and a cross-encoder or with hybrid search; it lists those comparisons as work still to do. For the idea itself, see <a href="/llm-wiki/">what an LLM wiki is</a>.</p></div></details>
+<details class="acc"><summary>Is the CROW paper peer reviewed?</summary><div class="acc-body"><p>The CROW paper is published on Zenodo, which files all three of its versions as preprints, and the paper claims no peer review. Its results are the authors' own measurements on a private corpus of 525 documents, and the paper states its own limitations, starting with one corpus, one LLM and one classifier version.</p></div></details>
+<details class="acc"><summary>Where can I download the CROW paper PDF?</summary><div class="acc-body"><p>Download <a href="/assets/paper/CROW_Cesarini_Sassarini_2026_v1.0_doi-23260209.pdf">the PDF of version 1.0</a> from this site. It is the same file as on <a href="https://zenodo.org/records/23260209">Zenodo record 23260209</a>, under CC BY 4.0. Earlier versions are on Zenodo under the concept DOI <a href="https://doi.org/10.5281/zenodo.22898752">10.5281/zenodo.22898752</a>.</p></div></details>
+<details class="acc"><summary>Is there an app that uses CROW?</summary><div class="acc-body"><p>Yes. <a href="/">Crow</a> is a free, open-source desktop app for macOS, Windows and Linux by the same two authors. It runs the CROW architecture of the llm-wiki-v2 engine and turns the documents on your computer into a wiki of linked Markdown notes you can chat with. <a href="/#download">Download Crow</a>, or <a href="/#brain">explore an example brain</a> first.</p></div></details>
+        </div>
+      </section>
+      <section class="article-sources" aria-labelledby="sources-h">
+        <h2 id="sources-h">Sources</h2>
+        <ul><li><a href="https://zenodo.org/records/23260209">CROW: Classifier-Routed Organization of LLM Wikis, version 1.0 (Zenodo record 23260209)</a></li><li><a href="https://zenodo.org/records/23034952">CROW, version 1.0, first record (Zenodo record 23034952)</a></li><li><a href="https://zenodo.org/records/22900601">CROW, preprint version 0.1.1 (Zenodo record 22900601)</a></li><li><a href="https://doi.org/10.5281/zenodo.22898752">CROW, all versions (concept DOI 10.5281/zenodo.22898752)</a></li><li><a href="https://github.com/crow-hq/llm-wiki-v2/tree/v1.0.0">crow-hq/llm-wiki-v2 at v1.0.0 (README)</a></li><li><a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/wiki/crow.md">CROW mode in llm-wiki-v2 1.0.0 (docs/wiki/crow.md)</a></li><li><a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/benchmarks/README.md">llm-wiki-v2 benchmarks (benchmarks/README.md at v1.0.0)</a></li><li><a href="https://github.com/crow-hq/llm-wiki-v2/tree/f51e926ac00725c442ab269a7b386d52b4c9144b">llm-wiki-v2 at commit f51e926, the code of the paper&#x27;s experiments</a></li><li><a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/CITATION.cff">llm-wiki-v2 CITATION.cff</a></li><li><a href="https://github.com/crow-hq/crow-desktop">crow-hq/crow-desktop (README)</a></li><li><a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">Andrej Karpathy, LLM Wiki (GitHub Gist)</a></li></ul>
+      </section>
+      <nav class="article-next links" aria-label="Keep reading"><a class="link-card" href="/llm-wiki/"><b>What is an LLM wiki?</b><span>Karpathy&#x27;s idea, RAG, and how to build one</span></a><a class="link-card" href="/llmwiki2/"><b>llmwiki2, the engine</b><span>The Python library, command line and MCP memory</span></a><a class="link-card" href="/#brain"><b>Explore a brain</b><span>An example wiki drawn by Crow's own code</span></a></nav>
+    </article>
+  </div>
+
+  <section class="final">
+    <div class="wrap">
+      <div class="final-box reveal">
+        <canvas class="hero-field" aria-hidden="true"></canvas>
+        <img class="crow-mark" src="/assets/img/crow-mark.png" width="76" height="54" alt="">
+        <h2>Turn the documents on your computer into an LLM wiki you can chat with.</h2>
+        <div class="hero-cta">
+          <a class="btn btn-cta btn-lg" href="/#download">Download Crow, free</a>
+          <a class="btn btn-outline" href="https://github.com/crow-hq/llm-wiki-v2">Star llm-wiki-v2</a>
+        </div>
+        <p class="dl-note">macOS, Windows and Linux · open source</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a class="brand" href="/"><img class="crow-mark" src="/assets/img/crow-mark.png" width="34" height="24" alt=""><span>Crow</span></a>
+        <p>Crow and llm-wiki-v2 are free software under the GNU AGPL v3.0 or later, by Federico Cesarini and Marco Sassarini. The LLM wiki idea is Andrej Karpathy's; the wiki format derives from Google's Open Knowledge Format.</p>
+      </div>
+      <div>
+        <h2 class="footer-h">Crow</h2>
+        <ul>
+          <li><a href="/#download">Download</a></li>
+          <li><a href="https://github.com/crow-hq/crow-desktop/releases">Releases</a></li>
+          <li><a href="/#install-mac">Install help</a></li>
+          <li><a href="https://github.com/crow-hq/crow-desktop">crow-hq/crow-desktop</a></li>
+          <li><a href="https://github.com/crow-hq/crow-desktop/issues">Issues</a></li>
+          <li><a href="/privacy/">Privacy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer-h">Engine</h2>
+        <ul>
+          <li><a href="/llmwiki2/">llmwiki2, explained</a></li>
+          <li><a href="https://github.com/crow-hq/llm-wiki-v2">crow-hq/llm-wiki-v2</a></li>
+          <li><a href="https://pypi.org/project/llmwiki2/">llmwiki2 on PyPI</a></li>
+          <li><a href="https://github.com/crow-hq/llm-wiki-v2/blob/main/docs/library/index.md">Library guide</a></li>
+          <li><a href="https://github.com/crow-hq/llm-wiki-v2/tree/main/benchmarks">Benchmarks</a></li>
+          <li><a href="https://github.com/crow-hq/llm-wiki-v2/blob/main/CHANGELOG.md">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer-h">Research</h2>
+        <ul>
+          <li><a href="/paper/">The CROW paper</a></li>
+          <li><a href="/assets/paper/CROW_Cesarini_Sassarini_2026_v1.0_doi-23260209.pdf" download>CROW paper (PDF)</a></li>
+          <li><a href="https://zenodo.org/records/23260209">Zenodo record</a></li>
+          <li><a href="https://doi.org/10.5281/zenodo.22898752">DOI, all versions</a></li>
+          <li><a href="/llm-wiki/">What is an LLM wiki?</a></li>
+          <li><a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">Karpathy's LLM Wiki</a></li>
+          <li><a href="https://github.com/GoogleCloudPlatform/open-knowledge-format">Open Knowledge Format</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer-h">Community</h2>
+        <ul>
+          <li><a href="https://github.com/crow-hq">GitHub: crow-hq</a></li>
+          <li><a href="https://github.com/crow-hq/llm-wiki-v2/discussions">Discussions</a></li>
+          <li><a href="mailto:crowhq.community@gmail.com">crowhq.community@gmail.com</a></li>
+          <li><a href="https://www.linkedin.com/in/federico-cesarini-4a9482209">Federico on LinkedIn</a></li>
+          <li><a href="https://www.linkedin.com/in/marco-sassarini-95b342200">Marco on LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 Federico Cesarini, Marco Sassarini</span>
+      <span>This site's brain is drawn by Crow's own code. <a href="https://github.com/fed3c3sa/crow-website">Source of this site</a></span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

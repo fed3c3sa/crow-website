@@ -1,0 +1,117 @@
+<!--meta
+{
+  "slug": "llmwiki2",
+  "title": "llmwiki2: the open-source LLM wiki engine for Python",
+  "description": "llmwiki2 (llm-wiki-v2) is an open-source Python library, command line, web page and MCP memory that turns your documents into a Markdown LLM wiki.",
+  "h1": "llmwiki2 (llm-wiki-v2): the open-source LLM wiki engine for Python",
+  "lede": "A Python library, a command line, a web page and an MCP memory that file your documents into a wiki of linked Markdown notes and answer your questions with citations. Version 1.0.0, the first stable release, came out on 10 November 2026.",
+  "eyebrow": "Engine",
+  "crumb": "llmwiki2",
+  "published": "2026-11-11",
+  "modified": "2026-11-11",
+  "about": ["llmwiki2", "llm-wiki-v2", "LLM wiki", "MCP memory server", "CROW"],
+  "sources": [
+    {"title": "llm-wiki-v2 README, tag v1.0.0", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/README.md"},
+    {"title": "llm-wiki-v2 1.0.0 release notes", "url": "https://github.com/crow-hq/llm-wiki-v2/releases/tag/v1.0.0"},
+    {"title": "llm-wiki-v2 CHANGELOG, tag v1.0.0", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/CHANGELOG.md"},
+    {"title": "Using llmw2 as a library (library guide, Compatibility section)", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/library/index.md"},
+    {"title": "The wiki as Claude's memory (MCP)", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/wiki/memory.md"},
+    {"title": "CROW mode", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/wiki/crow.md"},
+    {"title": "Providers", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/wiki/providers.md"},
+    {"title": "llm-wiki-v2 CITATION.cff, tag v1.0.0", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/CITATION.cff"},
+    {"title": "llm-wiki-v2 pyproject.toml, tag v1.0.0", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/pyproject.toml"},
+    {"title": "llmwiki2 on PyPI", "url": "https://pypi.org/project/llmwiki2/"},
+    {"title": "Crow desktop app README (crow-hq/crow-desktop)", "url": "https://github.com/crow-hq/crow-desktop"},
+    {"title": "F. Cesarini, M. Sassarini, CROW: Classifier-Routed Organization of LLM Wikis, version 1.0, Zenodo", "url": "https://doi.org/10.5281/zenodo.23260209"},
+    {"title": "A. Karpathy, LLM Wiki (gist)", "url": "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f"},
+    {"title": "R. Ghumare, LLM Wiki v2 (gist)", "url": "https://gist.github.com/rohitg00/2067ab416f7bbe447c1977edaaa681e2"}
+  ]
+}
+-->
+<p>llmwiki2 is an open-source Python library, command line, web page and MCP memory that files your documents into a wiki of linked Markdown notes and answers questions citing the notes it used. It is the engine of the <a href="/">Crow</a> desktop app, published from the <a href="https://github.com/crow-hq/llm-wiki-v2">crow-hq/llm-wiki-v2</a> repository, by Federico Cesarini and Marco Sassarini.</p>
+
+<h2>What is llmwiki2?</h2>
+<p>llmwiki2 is the PyPI package of LLM Wiki v2, a Python engine for LLM wikis. It summarizes each document into a Markdown note, files the note in a folder about its subject, merges it into the note on the same subject when there is one, links related notes, and answers questions citing the notes it read.</p>
+<p>It builds on the <a href="/llm-wiki/">LLM wiki</a> idea Andrej Karpathy described. It reads text, Markdown, PDF, Word, PowerPoint, Excel and OpenDocument files, and keeps the wiki as plain Markdown, by default in <code>~/llm-wiki</code>, in a format derived from Google's Open Knowledge Format, with an untouched copy of every source in <code>raw/</code>.</p>
+
+<h2>How do I install llmwiki2?</h2>
+<p>Install llmwiki2 from PyPI with Python 3.11 or later, using <code>pip install llmwiki2</code>, or <code>uv tool install llmwiki2</code> if you want uv to fetch Python. Then run <code>llmwiki2</code>: your browser opens, you pick a provider, paste its key, press Test connection, then Save and start.</p>
+<div class="code"><div class="code-head"><span>Install and start</span></div><pre>pip install llmwiki2
+llmwiki2</pre></div>
+<div class="code"><div class="code-head"><span>With uv</span></div><pre>uv tool install llmwiki2</pre></div>
+<p>Just looking? <code>llmwiki2 demo</code> opens an example wiki, the notes of a fictional coffee roastery, with no key needed to browse it and its brain. It is copied to <code>~/llm-wiki-demo</code>. To try it without installing anything but uv:</p>
+<div class="code"><div class="code-head"><span>Example wiki, no key</span></div><pre>uvx llmwiki2 demo</pre></div>
+<p>The same example wiki is drawn on Crow's home page, where you can <a href="/#brain">explore its brain</a> without installing anything.</p>
+
+<h2>How do I use llmwiki2 as a Python library?</h2>
+<p>Use llmwiki2 as a library by importing <code>Wiki</code> from <code>llmw2</code>, the package's import name. <code>Wiki.from_env</code> reads the settings and the provider's key from the environment; then <code>ingest</code> files a text, <code>ingest_file</code> files a PDF or Office document, and <code>ask</code> returns an answer with its citations. The web page and the command line call the same object.</p>
+<div class="code"><div class="code-head"><span>Python</span></div><pre>from llmw2 import Wiki
+
+wiki = Wiki.from_env(bundle="./wiki")        # OKF_* variables and the provider's key, e.g. OPENROUTER_API_KEY
+wiki.init()
+
+result = wiki.ingest(open("meeting.md").read(), title="Pricing meeting")
+wiki.ingest_file(open("minutes.pdf", "rb").read(), "minutes.pdf")   # also .docx, .pptx, .xlsx, .odt, .ods
+print(result.action, result.note, result.created_folders, result.related)
+
+answer = wiki.ask("What did we decide about enterprise pricing?")
+print(answer.text, answer.citations)
+
+print(wiki.usage.to_dict())                  # {"llm": …, "classifier": …, "by_model": …}</pre></div>
+<p>The same operations are on the command line: <code>llmwiki2 --bundle ./wiki</code> followed by <code>init</code>, <code>ingest</code>, <code>sync</code>, <code>ask</code>, <code>check</code> or <code>serve</code>. Every step of the ingest and ask flows is a function you can replace. The <a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/library/index.md">library guide</a> covers the API, and <a href="https://github.com/crow-hq/llm-wiki-v2/tree/v1.0.0/examples">examples/</a> holds runnable programs.</p>
+
+<h2>How do I give Claude Code or Codex a memory with llmwiki2?</h2>
+<p>To give Claude Code or Codex a memory, install llmwiki2 with the <code>mcp</code> extra, start <code>llmwiki2</code>, open Memory on its page and press Start. The wiki then serves MCP at <code>http://127.0.0.1:8000/mcp</code>: add it with <code>claude mcp add</code> or <code>codex mcp add</code>, and the client recalls from your notes and files what it learns.</p>
+<div class="code"><div class="code-head"><span>Install with the memory</span></div><pre>pip install 'llmwiki2[mcp]'      # or: uv tool install 'llmwiki2[mcp]'</pre></div>
+<div class="code"><div class="code-head"><span>Connect a client</span></div><pre>claude mcp add --transport http --scope user llm-wiki http://127.0.0.1:8000/mcp   # Claude Code, every project
+codex mcp add llm-wiki --url http://127.0.0.1:8000/mcp                            # Codex</pre></div>
+<div class="table-wrap"><table><thead><tr><th>MCP tool</th><th>What it does</th></tr></thead><tbody>
+<tr><td><code>recall</code></td><td>Answers from the wiki, citing its notes. Read-only.</td></tr>
+<tr><td><code>remember</code></td><td>Files a text like a note: right folder, merged, linked.</td></tr>
+<tr><td><code>search</code></td><td>Finds notes by their words, with no model call.</td></tr>
+<tr><td><code>read_note</code></td><td>Reads one note in full.</td></tr>
+<tr><td><code>rebuild</code></td><td>Files every note again from the raw copies, only with <code>confirm</code>.</td></tr>
+</tbody></table></div>
+<p>Cursor and VS Code take the same URL in their <code>mcp.json</code>. By default the wiki's own models file the memories; the client's models can do it instead, which sends your documents' text to them (see the <a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/wiki/memory.md">memory guide</a>). The memory has no authentication: keep the port on your machine.</p>
+
+<h2>What is CROW mode?</h2>
+<p>CROW mode is llmwiki2's default. A small typed classifier takes the filing decisions (which folder, which note it matches, merge or new note, related notes) and reorders the notes found for a question; the LLM writes notes, merges, folder names and answers. When the classifier is not confident enough, or fails, that step goes back to the LLM.</p>
+<p>CROW stands for Classifier-Routed Organization of LLM Wikis, the method of <a href="/paper/">the CROW paper</a>. Filing picks a note's folder among every folder of the wiki in one classifier choice; the LLM lays out the folders, with a plan before a batch and a split when a folder grows. Asking, in 1.0.0, starts from the wiki's search: the top note stays first, and one batched classifier call reorders the other 15. The LLM walks the folders only when the search finds nothing.</p>
+<p>The default classifier is Jev, by TypeSafe AI, through OpenRouter or TypeSafe; any System One server, such as Laya or Ollama 0.35 or later, can take its place. Classic mode (<code>--mode classic</code>) lets the LLM take every decision. Details: <a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/wiki/crow.md">docs/wiki/crow.md</a>.</p>
+<p>In the CROW paper's benchmark of 525 documents, CROW read the right note in 89.2% of asks against 61.8% for an LLM taking the same decisions, took 18.4 s per document against 38.6 s, and used 68% fewer LLM tokens. These are the authors' own measurements, on a private corpus of the first author's notes, with the paper's pipeline, before 1.0.0 changed how CROW asks.</p>
+
+<h2>Which models and providers does llmwiki2 support?</h2>
+<p>llmwiki2 talks to any OpenAI-compatible chat API. It has presets for OpenRouter (the default, with <code>google/gemini-3.8-flash</code>), OpenAI, Gemini and Ollama, and a <code>custom</code> setting for any other OpenAI-compatible server, such as vLLM, LM Studio or llama.cpp's server. CROW's classifier is a separate setting: Jev through OpenRouter or TypeSafe, or a local server.</p>
+<div class="table-wrap"><table><thead><tr><th>Provider</th><th>Default model</th><th>Key</th></tr></thead><tbody>
+<tr><td><code>openrouter</code></td><td><code>google/gemini-3.8-flash</code></td><td><code>OPENROUTER_API_KEY</code></td></tr>
+<tr><td><code>openai</code></td><td><code>gpt-6-luna</code></td><td><code>OPENAI_API_KEY</code></td></tr>
+<tr><td><code>gemini</code></td><td><code>gemini-3.8-flash</code></td><td><code>GEMINI_API_KEY</code></td></tr>
+<tr><td><code>ollama</code></td><td><code>gemma4</code></td><td>none</td></tr>
+<tr><td><code>custom</code></td><td>the one you set</td><td>if it wants one</td></tr>
+</tbody></table></div>
+<p>The default models are suggestions and can change in a minor release. Everything can also run on your computer, with writer, classifier and an optional embedder all served by Ollama, at the price of time and some quality.</p>
+
+<h2>What changed in llmwiki2 1.0.0?</h2>
+<p>llmwiki2 1.0.0, released on 10 November 2026, is the first stable release: from here on the library follows semantic versioning, with a documented compatibility scope. A wiki written by 0.8.0 opens as it is, with nothing to convert. In CROW mode, asking now starts from the wiki's search, then one classifier call reorders the notes.</p>
+<ul>
+<li>Semantic versioning covers the names in <code>llmw2.__all__</code>, the <code>Steps</code> API, the settings, the command line, the HTTP API, the MCP tools and the wiki on disk; not prompt texts, models, thresholds or caches (<a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/library/index.md#compatibility">Compatibility</a>).</li>
+<li>CROW's ask no longer walks the folders with the classifier.</li>
+<li>Search with no model call (<code>Wiki.search</code>, the MCP <code>search</code> tool, <code>llmwiki2 search</code>), and an optional embedder.</li>
+<li>Breaking: four removed settings are ignored with a warning, and <code>over_limit</code> is keyword-only. The rest is in the <a href="https://github.com/crow-hq/llm-wiki-v2/releases/tag/v1.0.0">1.0.0 release notes</a>.</li>
+</ul>
+
+<h2>Is llmwiki2 the same as the LLM Wiki v2 gist?</h2>
+<p>No. llmwiki2 is installable software: the Python package of the crow-hq/llm-wiki-v2 repository, by Federico Cesarini and Marco Sassarini, released on PyPI. The <a href="https://gist.github.com/rohitg00/2067ab416f7bbe447c1977edaaa681e2">LLM Wiki v2 gist</a> by Rohit Ghumare, from April 2026, is a separate document with the same name: it extends <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">Karpathy's LLM Wiki</a> pattern with lessons from building agentmemory.</p>
+<p>The gist adds ideas such as confidence scores that fade over time, a knowledge graph and hybrid search.</p>
+
+<h2>llmwiki2 and Crow</h2>
+<p>Crow is llmwiki2 as a desktop app for macOS, Windows and Linux, for people who would rather not use a terminal: it finds your documents by itself and works with any model on OpenRouter. Crow does not run local models yet; the engine does, with Ollama. <a href="/#download">Download Crow</a>, or read <a href="/llm-wiki/">what an LLM wiki is</a>.</p>
+
+<!--faq-->
+<details class="acc"><summary>Is llmwiki2 free?</summary><div class="acc-body"><p>Yes. llmwiki2 is free software under the GNU AGPL v3.0 or later: free to use, change and share, also in your own business; if you offer a modified version to others, over a network too, you share its source. The package's licence expression also lists the licences of files it ships, such as its fonts. Cloud models are billed by their provider; Ollama is free.</p></div></details>
+<details class="acc"><summary>What is the difference between llm-wiki-v2, llmwiki2 and llmw2?</summary><div class="acc-body"><p>They are three names for one project. llm-wiki-v2 is the GitHub repository, <a href="https://github.com/crow-hq/llm-wiki-v2">crow-hq/llm-wiki-v2</a>, whose README is titled LLM Wiki v2. llmwiki2 is the package on <a href="https://pypi.org/project/llmwiki2/">PyPI</a> and the command you run. llmw2 is the name you import in Python: <code>from llmw2 import Wiki</code>.</p></div></details>
+<details class="acc"><summary>Does llmwiki2 need an API key? Can it run locally with Ollama?</summary><div class="acc-body"><p>Not necessarily. <code>llmwiki2 demo</code> needs no key to browse, and the LLM can be Ollama on your computer, with no key and no account. CROW's classifier is remote by default (Jev, through OpenRouter or TypeSafe): point it at a System One server on your machine, such as Ollama 0.35 or later or Laya, or use classic mode, where the LLM takes every decision.</p></div></details>
+<details class="acc"><summary>Does llmwiki2 work with Obsidian?</summary><div class="acc-body"><p>The wiki is plain Markdown with relative links and an <code>index.md</code> in every folder, so any editor opens it. Crow, which writes the same format, documents that Obsidian opens its wiki as a vault, graph view included. llmwiki2 does not need Obsidian: its own web page shows the notes and the brain.</p></div></details>
+<details class="acc"><summary>Does llmwiki2 need a vector database?</summary><div class="acc-body"><p>No. llmwiki2's search is BM25 over the notes' words, with no model call. An embedder is optional: with an OpenAI-compatible <code>/embeddings</code> server or Ollama the search goes by meaning too, and the vectors are kept in one file inside the wiki. The notes stay readable Markdown.</p></div></details>
+<details class="acc"><summary>How do I cite llmwiki2?</summary><div class="acc-body"><p>Use the repository's <a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/CITATION.cff">CITATION.cff</a>: Federico Cesarini and Marco Sassarini, llm-wiki-v2, version 1.0.0, released 2026-11-10. It asks you to cite, together with it, the Open Knowledge Format by Google LLC, from which the wiki format is derived. For the method, cite <a href="/paper/">the CROW paper</a>, doi:10.5281/zenodo.22898752.</p></div></details>
+<!--/faq-->

@@ -3,9 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Crow: an AI second brain built from the documents on your computer</title>
-<meta name="description" content="Crow is a free, open-source desktop app that turns the documents on your computer into an LLM wiki you can chat with: linked Markdown notes, answers with sources, and memory for Claude, ChatGPT and Codex. By Federico Cesarini and Marco Sassarini.">
+<title>Crow: the free, open-source LLM wiki app for your documents</title>
+<meta name="description" content="Crow is a free, open-source desktop app for macOS, Windows and Linux that turns your documents into an LLM wiki you can chat with and your AI apps can use.">
 <meta name="author" content="Federico Cesarini, Marco Sassarini">
+<meta name="msvalidate.01" content="382ECCFE29CD1B206F08A503B1F8F431">
 <meta name="theme-color" content="#0f1113">
 <meta name="color-scheme" content="dark">
 <link rel="canonical" href="https://crowllmwiki.com/">
@@ -13,7 +14,7 @@
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Crow">
-<meta property="og:title" content="Crow: build your second brain in minutes">
+<meta property="og:title" content="Crow: an LLM wiki app that builds your second brain in minutes">
 <meta property="og:description" content="An LLM wiki you can chat with, for macOS, Windows and Linux. Free and open source, on the CROW architecture of llm-wiki-v2.">
 <meta property="og:url" content="https://crowllmwiki.com/">
 <meta property="og:image" content="https://crowllmwiki.com/assets/img/og.jpg">
@@ -33,58 +34,295 @@
       "@id": "https://crowllmwiki.com/#website",
       "url": "https://crowllmwiki.com/",
       "name": "Crow",
+      "alternateName": [
+        "Crow LLM Wiki",
+        "crowllmwiki.com"
+      ],
       "description": "Crow, the desktop app; llm-wiki-v2, the engine; CROW, the paper.",
-      "inLanguage": "en"
+      "inLanguage": "en",
+      "publisher": {
+        "@id": "https://crowllmwiki.com/#org"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://crowllmwiki.com/#org",
+      "name": "CROW",
+      "alternateName": [
+        "crow-hq",
+        "Crow LLM Wiki"
+      ],
+      "description": "Classifier-routed LLM wikis: open-source tools and research.",
+      "url": "https://crowllmwiki.com/",
+      "logo": "https://crowllmwiki.com/assets/img/apple-touch-icon.png",
+      "email": "crowhq.community@gmail.com",
+      "founder": [
+        {
+          "@id": "https://crowllmwiki.com/#federico"
+        },
+        {
+          "@id": "https://crowllmwiki.com/#marco"
+        }
+      ],
+      "sameAs": [
+        "https://github.com/crow-hq",
+        "https://pypi.org/org/crow-hq/",
+        "https://doi.org/10.5281/zenodo.22898752"
+      ]
     },
     {
       "@type": "Person",
       "@id": "https://crowllmwiki.com/#federico",
       "name": "Federico Cesarini",
       "url": "https://www.federicocesarini.com/",
-      "sameAs": ["https://github.com/fed3c3sa", "https://www.linkedin.com/in/federico-cesarini-4a9482209", "https://x.com/fed3c3sa"]
+      "sameAs": [
+        "https://github.com/fed3c3sa",
+        "https://www.linkedin.com/in/federico-cesarini-4a9482209",
+        "https://x.com/fed3c3sa"
+      ]
     },
     {
       "@type": "Person",
       "@id": "https://crowllmwiki.com/#marco",
       "name": "Marco Sassarini",
-      "sameAs": ["https://github.com/sassarini-marco", "https://www.linkedin.com/in/marco-sassarini-95b342200", "https://x.com/MarcoSassarini"]
+      "url": "https://github.com/sassarini-marco",
+      "sameAs": [
+        "https://github.com/sassarini-marco",
+        "https://www.linkedin.com/in/marco-sassarini-95b342200",
+        "https://x.com/MarcoSassarini"
+      ]
     },
     {
       "@type": "SoftwareApplication",
       "@id": "https://crowllmwiki.com/#crow",
       "name": "Crow",
+      "alternateName": "Crow LLM Wiki",
+      "url": "https://crowllmwiki.com/",
       "description": "A desktop app that turns the documents on your computer into a second brain: a wiki of Markdown notes, filed by topic and linked to each other, that you can chat with.",
+      "disambiguatingDescription": "Crow is a free, open-source desktop app that builds an LLM wiki from your own documents. It is not a language model and not a model API.",
       "applicationCategory": "ProductivityApplication",
       "operatingSystem": "macOS, Windows, Linux",
       "softwareVersion": "0.1.5",
       "datePublished": "2026-10-16",
       "dateModified": "2026-11-04",
       "license": "https://www.gnu.org/licenses/agpl-3.0.html",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
       "downloadUrl": "https://github.com/crow-hq/crow-desktop/releases/latest",
       "codeRepository": "https://github.com/crow-hq/crow-desktop",
+      "sameAs": [
+        "https://github.com/crow-hq/crow-desktop"
+      ],
       "image": "https://crowllmwiki.com/assets/img/og.jpg",
-      "author": [{ "@id": "https://crowllmwiki.com/#federico" }, { "@id": "https://crowllmwiki.com/#marco" }]
+      "author": [
+        {
+          "@id": "https://crowllmwiki.com/#federico"
+        },
+        {
+          "@id": "https://crowllmwiki.com/#marco"
+        }
+      ],
+      "publisher": {
+        "@id": "https://crowllmwiki.com/#org"
+      }
     },
     {
       "@type": "SoftwareSourceCode",
       "@id": "https://crowllmwiki.com/#llm-wiki-v2",
       "name": "llm-wiki-v2 (llmwiki2)",
-      "description": "An LLM wiki in a Markdown format derived from the Open Knowledge Format, with CROW classifier routing.",
+      "alternateName": [
+        "llmwiki2",
+        "llm-wiki-v2"
+      ],
+      "url": "https://crowllmwiki.com/llmwiki2/",
+      "description": "An open-source Python engine that turns documents into an LLM wiki of Markdown notes, with CROW classifier routing: a library, a command line, a web page and an MCP memory for AI agents.",
       "codeRepository": "https://github.com/crow-hq/llm-wiki-v2",
       "programmingLanguage": "Python",
+      "runtimePlatform": "Python 3.11 or later",
+      "version": "1.0.0",
+      "dateModified": "2026-11-10",
       "license": "https://www.gnu.org/licenses/agpl-3.0.html",
-      "author": [{ "@id": "https://crowllmwiki.com/#federico" }, { "@id": "https://crowllmwiki.com/#marco" }]
+      "sameAs": [
+        "https://github.com/crow-hq/llm-wiki-v2",
+        "https://pypi.org/project/llmwiki2/"
+      ],
+      "author": [
+        {
+          "@id": "https://crowllmwiki.com/#federico"
+        },
+        {
+          "@id": "https://crowllmwiki.com/#marco"
+        }
+      ],
+      "publisher": {
+        "@id": "https://crowllmwiki.com/#org"
+      }
     },
     {
       "@type": "ScholarlyArticle",
       "@id": "https://crowllmwiki.com/#paper",
       "headline": "CROW: Classifier-Routed Organization of LLM Wikis",
-      "author": [{ "@id": "https://crowllmwiki.com/#federico" }, { "@id": "https://crowllmwiki.com/#marco" }],
+      "name": "CROW: Classifier-Routed Organization of LLM Wikis",
+      "url": "https://crowllmwiki.com/paper/",
+      "author": [
+        {
+          "@id": "https://crowllmwiki.com/#federico"
+        },
+        {
+          "@id": "https://crowllmwiki.com/#marco"
+        }
+      ],
       "datePublished": "2026-09-22",
-      "publisher": { "@type": "Organization", "name": "Zenodo" },
-      "identifier": "https://doi.org/10.5281/zenodo.22898752",
-      "url": "https://doi.org/10.5281/zenodo.22898752"
+      "dateModified": "2026-10-09",
+      "version": "1.0",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Zenodo",
+        "url": "https://zenodo.org/"
+      },
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "DOI",
+        "value": "10.5281/zenodo.22898752"
+      },
+      "sameAs": [
+        "https://doi.org/10.5281/zenodo.22898752",
+        "https://zenodo.org/records/23260209"
+      ],
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "encoding": {
+        "@type": "MediaObject",
+        "encodingFormat": "application/pdf",
+        "contentUrl": "https://crowllmwiki.com/assets/paper/CROW_Cesarini_Sassarini_2026_v1.0_doi-23260209.pdf"
+      },
+      "isPartOf": {
+        "@id": "https://crowllmwiki.com/#website"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://crowllmwiki.com/#webpage",
+      "url": "https://crowllmwiki.com/",
+      "name": "Crow: the free, open-source LLM wiki app for your documents",
+      "isPartOf": {
+        "@id": "https://crowllmwiki.com/#website"
+      },
+      "about": {
+        "@id": "https://crowllmwiki.com/#crow"
+      },
+      "mainEntity": {
+        "@id": "https://crowllmwiki.com/#crow"
+      },
+      "dateModified": "2026-11-11",
+      "inLanguage": "en",
+      "primaryImageOfPage": "https://crowllmwiki.com/assets/img/og.jpg"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://crowllmwiki.com/#faq",
+      "url": "https://crowllmwiki.com/",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a second brain?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A second brain is a system outside your head that keeps what you read and learn, so you can find it and connect it later. Crow builds one from the documents you already have: you don't write, tag or file anything yourself."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is an LLM wiki?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An LLM wiki is a set of Markdown pages that a language model writes and keeps up to date from your sources, an idea Andrej Karpathy described in 2026. Instead of searching your documents again at every question, the model reads each source once and files what it says. Crow is a desktop app that builds one from your files and keeps it organized as it grows to thousands of documents. More in what an LLM wiki is, and how it differs from RAG."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I chat with thousands of PDFs and documents on my computer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Install Crow, tick the folders that hold them, and start: Crow files them into the wiki, oldest first, and you can ask questions while it works. Each answer names the notes it used, so you can open them and check."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use it with Obsidian?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The wiki is a folder of Markdown files with relative links and an index.md in every folder, so Obsidian opens it as a vault, graph view included. Settings → Library → Show in Finder/Explorer shows where it is. Crow doesn't need Obsidian."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Crow change, move or upload my files?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It never changes or moves them: Crow reads the folders you choose and keeps a copy of each document's text inside the wiki. Deleting a note, or resetting Crow, never touches your documents. To file a document, its text goes to the model you chose through OpenRouter (see Privacy, under Download)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which AI models can I use? Can I run it offline or with Ollama?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gemini 3.8 Flash (the default), Claude Sonnet 5.5, DeepSeek V4.1 Flash, or any other model on OpenRouter, under Advanced settings; a small classifier model, Jev, decides where each document goes. Crow works through OpenRouter, so it needs an internet connection; local models are not supported in the app yet. The llm-wiki-v2 engine runs with Ollama from the command line."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can my AI agents use the wiki as memory?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes: Connect AI apps, in Crow's sidebar, connects Claude, Claude Code, ChatGPT and Codex in one click each (see AI apps). Any other MCP client (Cursor, VS Code…) can run the same local (stdio) server: Crow's own executable with the argument mcp. The wiki is also plain Markdown with an index in every folder, so an agent that reads files can use it directly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is Crow different from NotebookLM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "NotebookLM works on the sources you upload to it, notebook by notebook, in Google's cloud. Crow finds the documents on your computer by itself and writes one wiki of Markdown files that stays on your computer, which you can read, edit and keep, with the models you choose through OpenRouter."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Jev?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A typed classifier by TypeSafe AI. Given a text, it answers typed questions (pick one of these options; is this statement true?) with probabilities instead of prose. CROW asks it every filing and retrieval decision and keeps the LLM for writing. CROW does not depend on it: any classifier that returns those probabilities can take its place. The authors have no ties to TypeSafe AI."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my Mac or PC say Crow can't be verified?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because Crow's installers are not signed with a paid Apple or Microsoft developer certificate yet. The warning is expected; Install Crow shows how to open it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why AGPL?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The AGPL keeps the code and every change to it open, also when it runs as a service. It is free to use, study, change and share, including for your own business; if you offer a modified version to others, over a network too, you share its source under the same licence. For llm-wiki-v2, commercial licences without that obligation are available from the authors: open an issue to ask."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Something wrong?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Logs: Settings → About → Open logs.The wiki itself: Settings → Library → Show in Finder/Explorer, or right-click the brain's empty space.Start over: Settings → Library → Reset Crow… erases the wiki, the chats and the settings. Your documents stay where they are.Bugs and ideas: issues."
+          }
+        }
+      ]
     }
   ]
 }
@@ -111,7 +349,7 @@
       <a class="gh" href="https://github.com/crow-hq/llm-wiki-v2" aria-label="llm-wiki-v2 on GitHub, stars">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
         <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.94 5.96 6.58.96-4.76 4.64 1.12 6.55L12 17.52l-5.88 3.09 1.12-6.55L2.48 9.42l6.58-.96Z"/></svg>
-        <span data-stars>254</span>
+        <span data-stars>256</span>
       </a>
       <a class="btn btn-cta" href="#download">Download</a>
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">
@@ -384,7 +622,7 @@ crow mcp</pre>
       <div class="prose reveal">
         <span class="eyebrow" style="--dot: var(--crow)">CROW</span>
         <h3 style="margin:14px 0 16px;font-size:clamp(24px,2.8vw,32px);font-weight:450;letter-spacing:-0.02em;line-height:1.2">A small classifier decides where things go, so the wiki stays fast and cheap as it grows</h3>
-        <p>Karpathy's LLM wiki finds pages by having the model read an index, which works up to about a hundred sources. CROW makes it scale: a small classifier picks each document's folder among every folder of the wiki in one choice, and answering walks the folders level by level, so the wiki keeps growing without a vector database. The LLM writes: it summarizes each source, rewrites a note it merges into, names new folders and writes the answer. It also lays out the folders, in a plan before a batch is filed and by splitting a folder that has grown, and it decides when the classifier fails.</p>
+        <p>Karpathy's LLM wiki finds pages by having the model read an index, which works up to about a hundred sources. CROW makes it scale: a small classifier picks each document's folder among every folder of the wiki in one choice, and answering finds the notes by search and lets the classifier reorder them, so the wiki keeps growing without a vector database. The LLM writes: it summarizes each source, rewrites a note it merges into, names new folders and writes the answer. It also lays out the folders, in a plan before a batch is filed and by splitting a folder that has grown, and it decides when the classifier fails.</p>
         <p>In the <a href="#paper">CROW paper</a>, retrieval kept its accuracy across a twentyfold growth of the wiki.</p>
         <div class="pipeline" role="group" aria-label="The ingest pipeline">
           <b><span>summarize</span><i>→</i></b><b><span>route</span><i>→</i></b><b><span>find match</span><i>→</i></b><b><span>merge or write</span><i>→</i></b><b><span>relate</span><i>→</i></b><b><span>link, index, log</span></b>
@@ -607,8 +845,9 @@ crow mcp</pre>
           <p>It is a Python library, a command line and a web page with the brain, and it can be the long-term memory of Claude Code, Codex or any MCP client. Every step of the ingest and ask flows is a function you can replace.</p>
         </div>
         <div class="links">
-          <a class="link-card" href="https://github.com/crow-hq/llm-wiki-v2"><b>crow-hq/llm-wiki-v2</b><span><span class="counter" data-stars>254</span> stars · <span class="counter" data-forks>41</span> forks on GitHub</span></a>
-          <a class="link-card" href="https://pypi.org/project/llmwiki2/"><b>llmwiki2 on PyPI</b><span>Version <span data-pypi-version>0.8.0</span> · Python 3.11 or later</span></a>
+          <a class="link-card" href="https://github.com/crow-hq/llm-wiki-v2"><b>crow-hq/llm-wiki-v2</b><span><span class="counter" data-stars>256</span> stars · <span class="counter" data-forks>41</span> forks on GitHub</span></a>
+          <a class="link-card" href="https://pypi.org/project/llmwiki2/"><b>llmwiki2 on PyPI</b><span>Version <span data-pypi-version>1.0.0</span> · Python 3.11 or later</span></a>
+          <a class="link-card" href="/llmwiki2/"><b>llmwiki2, explained</b><span>Install, library, MCP memory, CROW mode</span></a>
           <a class="link-card" href="https://github.com/crow-hq/llm-wiki-v2/blob/main/docs/library/index.md"><b>Library guide</b><span><code>from llmw2 import Wiki</code></span></a>
           <a class="link-card" href="https://github.com/crow-hq/llm-wiki-v2/blob/main/docs/wiki/memory.md"><b>Memory for AI agents (MCP)</b><span>recall, remember, read_note</span></a>
           <a class="link-card" href="https://github.com/crow-hq/llm-wiki-v2/blob/main/docs/wiki/crow.md"><b>How CROW decides</b><span>Thresholds and fallbacks</span></a>
@@ -673,6 +912,7 @@ print(answer.text, answer.citations)</pre>
           <a class="btn btn-cta" href="assets/paper/CROW_Cesarini_Sassarini_2026_v1.0_doi-23260209.pdf" download type="application/pdf">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3"/><path d="m7 10 5 5 5-5"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/></svg>
             Download the PDF</a>
+          <a class="btn btn-outline" href="/paper/">About the paper</a>
           <a class="btn btn-outline" href="https://zenodo.org/records/23260209">Read on Zenodo</a>
           <a class="btn btn-outline" href="https://doi.org/10.5281/zenodo.22898752">doi:10.5281/zenodo.22898752</a>
         </div>
@@ -714,7 +954,7 @@ print(answer.text, answer.citations)</pre>
     </div>
     <div class="numbers">
       <div class="number reveal"><b>140,458</b><span>impressions on the launch post on LinkedIn</span></div>
-      <div class="number reveal"><b>250+</b><span>stars on GitHub, <span class="counter" data-stars>254</span> today</span></div>
+      <div class="number reveal"><b>250+</b><span>stars on GitHub, <span class="counter" data-stars>256</span> today</span></div>
       <div class="number reveal"><b>40+</b><span>forks, <span class="counter" data-forks>41</span> today</span></div>
       <div class="number reveal"><b>~3,000</b><span>downloads from PyPI, 661 in the last week</span></div>
       <div class="number reveal"><b>~3,000</b><span>views of the paper on Zenodo</span></div>
@@ -724,6 +964,8 @@ print(answer.text, answer.citations)</pre>
       <div>
         <h3 class="reveal" style="font-size:22px;font-weight:450;margin-bottom:24px">Timeline</h3>
         <ol class="timeline">
+          <li class="reveal" style="--dot: var(--area-5)"><time datetime="2026-11-10">10 November 2026</time><h4>llmwiki2 1.0.0: the first stable release</h4><p>From here on the library follows semantic versioning, and a wiki written by 0.8.0 opens as it is. In CROW mode, a question finds its notes with the wiki's search and one classifier call. <a href="/llmwiki2/">More on llmwiki2</a></p></li>
+          <li class="reveal" style="--dot: var(--crow)"><time datetime="2026-11-04">4 November 2026</time><h4>Crow 0.1.5</h4><p>On llmwiki2 0.8.0: at most 10 top-level folders, a note you edit while Crow is filing is never overwritten, and filing slows down far less as the wiki grows.</p></li>
           <li class="reveal" style="--dot: var(--area-4)"><time datetime="2026-11-03">3 November 2026</time><h4>llmwiki2 0.8.0</h4><p>Wikis of thousands of documents built from empty: top-level areas you decide, costs estimated and capped, steady speed as it grows, and nothing lost if a run stops halfway.</p></li>
           <li class="reveal" style="--dot: var(--crow)"><time datetime="2026-10-28">28 October 2026</time><h4>Crow 0.1.4 and llmwiki2 0.7.0: Connect AI apps</h4><p>Claude, Claude Code, ChatGPT and Codex use the wiki as their memory, through MCP, with one button each.</p></li>
           <li class="reveal"><time datetime="2026-10-19">19 October 2026</time><h4>llmwiki2 0.6.0 and Crow 0.1.3</h4><p>Each document is filed with one choice among all the wiki's folders, which costs less, and a folder that grows is split into subfolders by subject.</p></li>
@@ -814,7 +1056,7 @@ print(answer.text, answer.citations)</pre>
     </div>
     <div class="faq">
       <details class="acc reveal"><summary>What is a second brain?</summary><div class="acc-body"><p>A second brain is a system outside your head that keeps what you read and learn, so you can find it and connect it later. Crow builds one from the documents you already have: you don't write, tag or file anything yourself.</p></div></details>
-      <details class="acc reveal"><summary>What is an LLM wiki?</summary><div class="acc-body"><p>An LLM wiki is a set of Markdown pages that a language model writes and keeps up to date from your sources, an idea Andrej Karpathy <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">described</a> in 2026. Instead of searching your documents again at every question, the model reads each source once and files what it says. Crow is a desktop app that builds one from your files and keeps it organized as it grows to thousands of documents.</p></div></details>
+      <details class="acc reveal"><summary>What is an LLM wiki?</summary><div class="acc-body"><p>An LLM wiki is a set of Markdown pages that a language model writes and keeps up to date from your sources, an idea Andrej Karpathy <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">described</a> in 2026. Instead of searching your documents again at every question, the model reads each source once and files what it says. Crow is a desktop app that builds one from your files and keeps it organized as it grows to thousands of documents. More in <a href="/llm-wiki/">what an LLM wiki is, and how it differs from RAG</a>.</p></div></details>
       <details class="acc reveal"><summary>How do I chat with thousands of PDFs and documents on my computer?</summary><div class="acc-body"><p>Install Crow, tick the folders that hold them, and start: Crow files them into the wiki, oldest first, and you can ask questions while it works. Each answer names the notes it used, so you can open them and check.</p></div></details>
       <details class="acc reveal"><summary>Can I use it with Obsidian?</summary><div class="acc-body"><p>Yes. The wiki is a folder of Markdown files with relative links and an <code>index.md</code> in every folder, so Obsidian opens it as a vault, graph view included. Settings → Library → <b>Show in Finder/Explorer</b> shows where it is. Crow doesn't need Obsidian.</p></div></details>
       <details class="acc reveal"><summary>Does Crow change, move or upload my files?</summary><div class="acc-body"><p>It never changes or moves them: Crow reads the folders you choose and keeps a copy of each document's text inside the wiki. Deleting a note, or resetting Crow, never touches your documents. To file a document, its text goes to the model you chose through OpenRouter (see Privacy, under <a href="#download">Download</a>).</p></div></details>
@@ -871,6 +1113,7 @@ print(answer.text, answer.citations)</pre>
       <div>
         <h2 class="footer-h">Engine</h2>
         <ul>
+          <li><a href="/llmwiki2/">llmwiki2, explained</a></li>
           <li><a href="https://github.com/crow-hq/llm-wiki-v2">crow-hq/llm-wiki-v2</a></li>
           <li><a href="https://pypi.org/project/llmwiki2/">llmwiki2 on PyPI</a></li>
           <li><a href="https://github.com/crow-hq/llm-wiki-v2/blob/main/docs/library/index.md">Library guide</a></li>
@@ -881,9 +1124,11 @@ print(answer.text, answer.citations)</pre>
       <div>
         <h2 class="footer-h">Research</h2>
         <ul>
+          <li><a href="/paper/">The CROW paper</a></li>
           <li><a href="assets/paper/CROW_Cesarini_Sassarini_2026_v1.0_doi-23260209.pdf" download>CROW paper (PDF)</a></li>
           <li><a href="https://zenodo.org/records/23260209">Zenodo record</a></li>
           <li><a href="https://doi.org/10.5281/zenodo.22898752">DOI, all versions</a></li>
+          <li><a href="/llm-wiki/">What is an LLM wiki?</a></li>
           <li><a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">Karpathy's LLM Wiki</a></li>
           <li><a href="https://github.com/GoogleCloudPlatform/open-knowledge-format">Open Knowledge Format</a></li>
         </ul>

@@ -1,0 +1,108 @@
+<!--meta
+{
+  "slug": "llm-wiki",
+  "title": "LLM wiki: what it is, how it differs from RAG, how to build one",
+  "description": "What an LLM wiki is, from Karpathy's idea file: how it differs from RAG, what gets costly as it grows, and three ways to build one, with or without code.",
+  "h1": "What is an LLM wiki? From Karpathy's idea file to a wiki of thousands of documents",
+  "lede": "An LLM wiki is a knowledge base that a language model writes and keeps current from your sources. Here is how the pattern works, how it differs from RAG, what gets expensive as it grows, and three ways to build one.",
+  "eyebrow": "Guide",
+  "crumb": "LLM wiki",
+  "published": "2026-11-11",
+  "modified": "2026-11-11",
+  "about": ["LLM wiki", "Karpathy LLM Wiki", "LLM wiki vs RAG", "CROW", "Crow desktop app"],
+  "sources": [
+    {"title": "Andrej Karpathy, LLM Wiki (GitHub gist, created 4 April 2026)", "url": "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f"},
+    {"title": "F. Cesarini, M. Sassarini, CROW: Classifier-Routed Organization of LLM Wikis, version 1.0, Zenodo, 2026", "url": "https://doi.org/10.5281/zenodo.23260209"},
+    {"title": "crow-hq/llm-wiki-v2, README at v1.0.0", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/README.md"},
+    {"title": "llm-wiki-v2, CROW mode (docs/wiki/crow.md at v1.0.0)", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/wiki/crow.md"},
+    {"title": "llm-wiki-v2 1.0.0 release notes", "url": "https://github.com/crow-hq/llm-wiki-v2/releases/tag/v1.0.0"},
+    {"title": "llmwiki2 on PyPI", "url": "https://pypi.org/project/llmwiki2/"},
+    {"title": "crow-hq/crow-desktop, README (Crow 0.1.5)", "url": "https://github.com/crow-hq/crow-desktop"}
+  ]
+}
+-->
+<p>An LLM wiki is a folder of Markdown pages that a language model writes and keeps current from your sources. Instead of searching raw documents at every question, as RAG does, the model reads each source once, files what it learned into linked pages, and revises them as new sources arrive. Andrej Karpathy described the pattern in April 2026.</p>
+
+<h2>What is an LLM wiki?</h2>
+<p>An LLM wiki is, in Andrej Karpathy's words, "a pattern for building personal knowledge bases using LLMs." A language model builds and maintains a wiki of interlinked Markdown files that sits between you and your raw sources. You choose the sources and ask the questions; the model does the summarizing, cross-referencing and filing.</p>
+<p>Karpathy published it on 4 April 2026 as an <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">idea file</a>: a GitHub gist meant to be pasted into your own agent, such as Codex or Claude Code, which works out the specifics with you. It has three layers:</p>
+<ul>
+<li><strong>Raw sources.</strong> Articles, papers, images, data files. The model reads them and never changes them.</li>
+<li><strong>The wiki.</strong> Markdown pages the model writes and owns: summaries, entity and concept pages, comparisons, a synthesis.</li>
+<li><strong>The schema.</strong> An instructions file, such as <code>CLAUDE.md</code> for Claude Code or <code>AGENTS.md</code> for Codex, that sets the structure, the conventions and the workflows.</li>
+</ul>
+<p>Three operations act on them. <strong>Ingest</strong>: the model reads a new source, writes a summary page and updates the related pages, the index and the log; one source may touch 10 to 15 pages. <strong>Query</strong>: it reads the relevant pages and answers with citations; good answers can be filed back. <strong>Lint</strong>: it checks for contradictions, stale claims and orphan pages.</p>
+<p><code>index.md</code> lists every page with a one-line summary, and the model reads it first to answer; <code>log.md</code> is an append-only record of what happened. Karpathy keeps the agent on one side and Obsidian on the other: "Obsidian is the IDE; the LLM is the programmer; the wiki is the codebase."</p>
+
+<h2>How is an LLM wiki different from RAG?</h2>
+<p>An LLM wiki differs from RAG in when the work is done. RAG retrieves chunks of your raw documents at every question and pieces the answer together again each time. An LLM wiki processes each source once, at ingest, into readable notes that the model keeps current, so knowledge accumulates instead of being rediscovered at every query.</p>
+<div class="table-wrap"><table><thead><tr><td></td><th scope="col">RAG</th><th scope="col">LLM wiki</th></tr></thead><tbody>
+<tr><th scope="row">When the knowledge is processed</th><td>At every question: relevant chunks are retrieved from the raw documents</td><td>Once per source, at ingest, then kept current</td></tr>
+<tr><th scope="row">What you can inspect</th><td>An index of chunks and embeddings, opaque to a reader</td><td>A folder of Markdown pages you can read, correct and keep in git</td></tr>
+<tr><th scope="row">What a question costs</th><td>Combining retrieved fragments again, every time</td><td>Reading pages whose synthesis is already written</td></tr>
+<tr><th scope="row">What adding a source costs</th><td>Mainly computing embeddings</td><td>LLM calls to summarize the source, file it and update pages</td></tr>
+<tr><th scope="row">How it grows</th><td>More chunks in the index</td><td>Existing pages are revised; each filing decision reads a longer index</td></tr>
+</tbody></table></div>
+<p>An LLM wiki needs no vector database: in Karpathy's version the model reads <code>index.md</code> to find pages, and he suggests a search engine, such as <a href="https://github.com/tobi/qmd">qmd</a>, only as the wiki grows. RAG makes adding a document cheap; an LLM wiki pays for LLM calls up front, so later questions read finished notes.</p>
+
+<h2>What goes wrong when an LLM wiki grows?</h2>
+<p>As an LLM wiki grows, its decisions get more expensive. Many of the model's calls go to deciding, not writing: where a new source belongs, which notes it relates to, which notes answer a question. Each decision reads a list of folders or notes that lengthens as the wiki fills.</p>
+<p>Karpathy says as much: the index works "surprisingly well at moderate scale," about 100 sources and hundreds of pages, and beyond that he suggests proper search. The <a href="/paper/">CROW paper</a> by Federico Cesarini and Marco Sassarini explains the cost: each ingest call reads the index alongside the new source, so while the index is read in full, building a large wiki costs more than linearly.</p>
+<p>In the paper's benchmark of 525 documents (the authors' own measurements, on a private corpus), an LLM taking every decision spent 71.8% of its LLM tokens on decisions, and its LLM tokens per document grew by 1,197 for every 100 notes already in the wiki. It found the right note in 75% of asks on the smallest wiki and 55% on the largest, as the wiki grew from 26 to 525 documents.</p>
+<p>That baseline is not Karpathy's agent loop but an LLM making the same decisions in CROW's fixed pipeline. The paper lists the comparison with the agent loop, and with the hybrid search the gist suggests, as work still to do.</p>
+
+<h2>How does CROW keep an LLM wiki fast and cheap?</h2>
+<p>CROW (Classifier-Routed Organization of LLM Wikis) keeps an LLM wiki fast and cheap by separating deciding from writing. A small typed classifier takes the routing decisions: which folder a source goes to, which note it matches, whether to merge, which notes to link. The LLM writes the summaries, merged notes, folder names and answers.</p>
+<p>The classifier answers typed questions (pick one of these options; is this statement true?) with probabilities instead of prose. The paper and llm-wiki-v2 use Jev, by TypeSafe AI, but any classifier that returns such probabilities can replace it. When it is unsure or fails, the LLM decides. At the paper's list prices a classifier token cost 7 to 29 times less than an LLM token.</p>
+<p>The paper measured CROW on 525 personal documents, against an LLM taking the same decisions in the same pipeline. These are the authors' own measurements on one corpus, mostly in Italian, with one LLM (DeepSeek V4.1 Flash) and one classifier version (Jev 1.13); the corpus is private and is not in the repository's <code>benchmarks/</code> folder.</p>
+<ul>
+<li><strong>Right note read:</strong> 89.2% of asks, against 61.8%; 90% at both the smallest and the largest wiki.</li>
+<li><strong>About 2.1 times faster ingest:</strong> 18.4 s per document on average, against 38.6 s.</li>
+<li><strong>68% fewer LLM tokens:</strong> 2.89 million against 9.10 million.</li>
+<li><strong>0.47 times the cost:</strong> $2.62 against $5.62 at list price, the classifier's $0.19 included.</li>
+</ul>
+<p>A hit means the right note was read, not that the answer was correct, and the retrieval thresholds were set on questions from some of the same documents (on 9 questions from documents not used to set them, 77.8% against 69.4%, too few to settle it). CROW is a decision layer: it does not compile entity pages or run lint.</p>
+<p>Since the paper, llmwiki2 1.0.0 finds a question's candidate notes with the wiki's own search, and the classifier reorders them. Measurements on public corpora, with the scripts to run them again, are in <a href="https://github.com/crow-hq/llm-wiki-v2/tree/main/benchmarks">benchmarks/</a>.</p>
+
+<h2>How do I build an LLM wiki?</h2>
+<p>You can build an LLM wiki in three ways. By hand, you paste Karpathy's idea file into a coding agent and grow the wiki together. With a little setup, the llmwiki2 Python engine files documents and answers questions from a web page, a command line or a library. With no code, Crow is a desktop LLM wiki app.</p>
+
+<h3>By hand, with an agent and Karpathy's idea file</h3>
+<p>The original way, with the most control. The gist is written for an agent such as Codex, Claude Code or OpenCode:</p>
+<ol>
+<li>Paste the gist into your agent and set up the wiki together.</li>
+<li>Keep your sources in a raw folder the model reads and never edits.</li>
+<li>Agree on the schema file: page types, conventions, and the ingest, query and lint workflows.</li>
+<li>Ingest one source at a time at first, and read what the model writes.</li>
+<li>Ask questions, file the good answers back, and lint now and then.</li>
+</ol>
+<p>Keep Obsidian open to watch the pages appear. Past about a hundred sources, plan for search.</p>
+
+<h3>With llmwiki2, the Python engine</h3>
+<p>llm-wiki-v2 is the open-source engine by Federico Cesarini and Marco Sassarini, on PyPI as <code>llmwiki2</code> (1.0.0, 10 November 2026). Drop PDF, Word, Excel or text files on its web page: each lands in a folder, merged with what the wiki knows, and answers cite their notes. It runs with OpenRouter, OpenAI, Gemini, Ollama or any OpenAI-compatible server, on Python 3.11 or later.</p>
+<div class="code"><div class="code-head"><span>Install and start</span></div><pre>pip install llmwiki2
+llmwiki2</pre></div>
+<p>Your browser opens: pick a provider, paste its key, press Test connection, then Save and start. <code>uvx llmwiki2 demo</code> opens an example wiki with no key. More on the <a href="/llmwiki2/">llmwiki2 page</a>.</p>
+
+<h3>With Crow, the desktop app, no code</h3>
+<p><a href="/">Crow</a> is a free desktop app for macOS, Windows and Linux that runs the CROW architecture of llm-wiki-v2. It finds the documents on your computer by itself and works with any model on OpenRouter.</p>
+<ol>
+<li><a href="/#download">Download Crow</a> and install it. The builds are not signed yet; how to open them is next to the downloads.</li>
+<li>Pick the folders Crow should read, or single files.</li>
+<li>Press <strong>Connect</strong>. OpenRouter opens in your browser: sign in (or make an account), press <strong>Authorize</strong>, and Crow gets a key of its own on your account.</li>
+<li>Choose a model, check the cost, and start. You can chat with the wiki while it grows.</li>
+</ol>
+<p>To see a finished wiki first, <a href="/#brain">explore an example brain</a> in your browser.</p>
+
+<h2>Can I open an LLM wiki in Obsidian?</h2>
+<p>Yes, an LLM wiki opens in Obsidian, because it is a folder of plain Markdown files. Karpathy's gist uses Obsidian as the viewer and its graph view to see the wiki's shape. The wikis that Crow and llmwiki2 write have relative links and an <code>index.md</code> in every folder, so Obsidian opens them as a vault, graph view included.</p>
+<p>Their format is derived from Google's <a href="https://github.com/GoogleCloudPlatform/open-knowledge-format">Open Knowledge Format</a> (OKF) v0.2. Each note has YAML frontmatter (<code>type: Note</code>, a title, a one-line description, its sources); related notes share a See also section; <code>raw/</code> keeps an untouched copy of every source; <code>log.md</code> records what changed. Crow doesn't need Obsidian.</p>
+
+<!--faq-->
+<details class="acc"><summary>Who invented the LLM wiki?</summary><div class="acc-body"><p>Andrej Karpathy, in a <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">GitHub gist</a> created on 4 April 2026: an "idea file" to paste into your own LLM agent. The gist relates it to Vannevar Bush's Memex of 1945. Crow, llm-wiki-v2 and the <a href="/paper/">CROW paper</a> build on his idea.</p></div></details>
+<details class="acc"><summary>Is an LLM wiki better than RAG?</summary><div class="acc-body"><p>It depends on the job. An LLM wiki suits knowledge you add to over time and want to read and correct: the synthesis is done once, at ingest. RAG adds a document more cheaply, mainly by computing embeddings. The CROW paper has not yet compared CROW with embeddings and a cross-encoder, and says so.</p></div></details>
+<details class="acc"><summary>Do I need to write code to build an LLM wiki?</summary><div class="acc-body"><p>No. Crow is a desktop app: pick folders, connect OpenRouter and start, with no terminal. <a href="/llmwiki2/">llmwiki2</a> takes two terminal commands, then works from a web page. By hand, a coding agent following Karpathy's idea file writes whatever small tools the wiki needs.</p></div></details>
+<details class="acc"><summary>Can my AI agents use an LLM wiki as memory?</summary><div class="acc-body"><p>Yes. In Crow, Connect AI apps links the Claude and ChatGPT desktop apps, Claude Code and Codex through MCP: they can ask the wiki (<code>recall</code>), read a note (<code>read_note</code>) and keep what they learn (<code>remember</code>). llmwiki2 offers the same memory to Claude Code, Codex or any MCP client with <code>pip install 'llmwiki2[mcp]'</code>.</p></div></details>
+<details class="acc"><summary>Is Crow free?</summary><div class="acc-body"><p>Yes. Crow is free and open source under the GNU AGPL v3.0 or later, as is llm-wiki-v2. You pay OpenRouter for the models it uses, through your own account; Crow estimates the cost first and stops at your spending limit, $10 unless you change it. <a href="/#download">Download Crow</a>.</p></div></details>
+<details class="acc"><summary>Does an LLM wiki work offline or with local models?</summary><div class="acc-body"><p>Crow needs an internet connection: it works through OpenRouter, and local models are not supported in the app yet. The llmwiki2 engine can run its LLM locally with Ollama or any OpenAI-compatible server. Its CROW classifier is remote by default; to keep it local too, point it at a System One server on your machine, such as Ollama 0.35 or later or Laya.</p></div></details>
+<!--/faq-->
