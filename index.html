@@ -23,7 +23,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@fed3c3sa">
 <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/films/crow-launch.webp" as="image" fetchpriority="high">
+<link rel="preload" as="image" href="assets/films/crow-launch.webp" imagesrcset="assets/films/crow-launch-720.webp 1280w, assets/films/crow-launch.webp 1920w" imagesizes="(max-width: 1100px) 100vw, 1000px" fetchpriority="high">
 <link rel="stylesheet" href="assets/css/site.css">
 <script type="module" src="assets/js/site.js"></script>
 <script type="application/ld+json">
@@ -218,7 +218,7 @@
       "mainEntity": {
         "@id": "https://crowllmwiki.com/#crow"
       },
-      "dateModified": "2026-11-12",
+      "dateModified": "2026-11-13",
       "inLanguage": "en",
       "primaryImageOfPage": "https://crowllmwiki.com/assets/img/og.jpg",
       "video": {
@@ -228,11 +228,11 @@
     {
       "@type": "VideoObject",
       "@id": "https://crowllmwiki.com/#film",
-      "name": "Crow in 34 seconds",
+      "name": "Crow launch film",
       "description": "The Crow launch film: files lost in chaos become one brain, Crow works offline with a local model, a question lights up the notes of its answer, and accuracy reaches 98%.",
       "thumbnailUrl": "https://crowllmwiki.com/assets/films/crow-launch.webp",
       "contentUrl": "https://crowllmwiki.com/assets/films/crow-launch.mp4",
-      "uploadDate": "2026-11-12",
+      "uploadDate": "2026-11-12T23:54:48+01:00",
       "duration": "PT34S",
       "inLanguage": "en",
       "about": {
@@ -387,44 +387,13 @@
 
 <main id="main">
 
-<!-- ======================================================================================== film -->
-<!-- The launch film, first thing on the page: a muted loop under the nav, the button restarts it with sound -->
-<section class="film-band" id="top" aria-labelledby="film-title">
-  <video class="film-video" muted loop playsinline preload="none" disablepictureinpicture
-         poster="assets/films/crow-launch.webp"
-         data-src="assets/films/crow-launch.mp4"
-         data-src-small="assets/films/crow-launch-720.mp4"></video><span class="visually-hidden">Film: files lost in chaos fly into Crow and become one brain; Crow works offline with a local model and stays private; a question lights up the notes of its answer; accuracy at 98%; Crow, because your time is important</span>
-  <div class="film-copy">
-    <p class="film-title" id="film-title">Crow in 34 seconds</p>
-    <div class="film-actions">
-      <button type="button" class="film-btn" data-film-sound hidden>
-        <span class="when-off">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
-          <span>Play with sound</span>
-          <span class="film-time">0:34</span>
-        </span>
-        <span class="when-on">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m22 9-6 6"/><path d="m16 9 6 6"/></svg>
-          <span>Mute</span>
-        </span>
-      </button>
-      <button type="button" class="film-pause" data-film-pause aria-label="Pause the film" hidden>
-        <svg class="i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
-        <svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72c0 .84.93 1.35 1.64.9l10.16-6.86a1.08 1.08 0 0 0 0-1.8L9.64 4.24A1.08 1.08 0 0 0 8 5.14z"/></svg>
-      </button>
-    </div>
-  </div>
-</section>
-
 <!-- ======================================================================================== hero -->
-<section class="hero" id="intro">
+<section class="hero" id="top">
   <canvas class="hero-field" aria-hidden="true"></canvas>
   <div class="hero-inner">
     <a class="badge" href="#ai-apps"><b>Crow <span data-crow-version>0.1.5</span></b> Connect Claude, ChatGPT and Codex to your wiki</a>
-    <img class="crow-mark" src="assets/img/crow-mark.png" width="92" height="66" alt="Crow, a pixel-art crow">
     <h1>Build your second brain<br>in minutes</h1>
     <p class="lead">Turn your documents into a living wiki you can chat with.</p>
-    <p class="sub">Crow finds your PDFs, Word files, slides and spreadsheets by itself, files them into a wiki of linked Markdown notes, and answers your questions citing the notes it used.</p>
     <div class="hero-cta">
       <a class="btn btn-cta btn-lg" href="https://github.com/crow-hq/crow-desktop/releases/download/v0.1.5/Crow_0.1.5_aarch64.dmg" data-dl="mac-arm" data-dl-primary>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3"/><path d="m7 10 5 5 5-5"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/></svg>
@@ -437,15 +406,38 @@
       </a>
     </div>
     <p class="dl-note"><span data-dl-note>Apple silicon</span> · Crow <span data-crow-version>0.1.5</span> · free and open source · <a href="#download">macOS, Windows and Linux</a></p>
+  </div>
+  <div class="hero-film">
+    <div class="film-frame">
+      <div class="window film-window">
+        <img class="film-poster" src="assets/films/crow-launch.webp" srcset="assets/films/crow-launch-720.webp 1280w, assets/films/crow-launch.webp 1920w" sizes="(max-width: 1100px) 100vw, 1000px" width="1920" height="1080" fetchpriority="high" alt="">
+        <video class="film-video" muted loop playsinline preload="none" disablepictureinpicture width="1920" height="1080"
+               data-src="assets/films/crow-launch.mp4"
+               data-src-small="assets/films/crow-launch-720.mp4"
+               aria-describedby="film-desc"></video>
+        <span class="visually-hidden" id="film-desc">Film: files lost in chaos fly into Crow and become one brain; Crow works offline with a local model and stays private; a question lights up the notes of its answer; accuracy at 98%; Crow, because your time is important</span>
+      </div>
+      <div class="film-actions">
+        <button type="button" class="film-btn" data-film-sound hidden>
+          <span class="when-off">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+            <span class="film-label">Play with sound</span>
+            <span class="film-time" aria-hidden="true">0:34</span>
+          </span>
+          <span class="when-on">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m22 9-6 6"/><path d="m16 9 6 6"/></svg>
+            <span class="film-label">Mute</span>
+          </span>
+        </button>
+        <button type="button" class="film-pause" data-film-pause aria-label="Pause the film" hidden>
+          <svg class="i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+          <svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72c0 .84.93 1.35 1.64.9l10.16-6.86a1.08 1.08 0 0 0 0-1.8L9.64 4.24A1.08 1.08 0 0 0 8 5.14z"/></svg>
+        </button>
+      </div>
+    </div>
+    <p class="sub">Crow finds your PDFs, Word files, slides and spreadsheets by itself, files them into a wiki of linked Markdown notes, and answers your questions citing the notes it used.</p>
     <p class="byline">Made by <a href="#team">Federico Cesarini</a> and <a href="#team">Marco Sassarini</a></p>
   </div>
-  <figure class="hero-shot reveal">
-    <div class="window">
-      <div class="window-bar"><i></i><i></i><i></i><span>Crow</span></div>
-      <video src="assets/media/ask-and-see-the-sources.mp4" poster="assets/media/ask-and-see-the-sources.webp" width="960" height="600" muted loop playsinline preload="metadata" data-autoplay></video><span class="visually-hidden">Crow's window: a question typed into a new chat, the answer comparing two kitchen quotes with the notes it cites, and those notes lighting up in the brain, the graph of the wiki beside the chat</span>
-    </div>
-    <figcaption class="fine">Ask, and the notes the answer cites light up in the brain. A sample wiki made up for the recording.</figcaption>
-  </figure>
 </section>
 
 <!-- ======================================================================================== brain -->
@@ -565,23 +557,24 @@
     </div>
     <div class="grid grid-2">
       <figure class="shot reveal">
-        <div class="window"><video src="assets/media/the-brain-grows.mp4" poster="assets/media/the-brain-grows.webp" width="900" height="563" muted loop playsinline preload="none" data-autoplay></video><span class="visually-hidden">The brain growing: notes appear next to the folders of their subjects and the graph widens as more documents are filed</span></div>
+        <div class="window"><video src="assets/media/ask-and-see-the-sources.mp4" data-poster="assets/media/ask-and-see-the-sources.webp" width="960" height="600" muted loop playsinline preload="none" data-autoplay></video><span class="visually-hidden">Crow's window: a question typed into a new chat, the answer comparing two kitchen quotes with the notes it cites, and those notes lighting up in the brain, the graph of the wiki beside the chat</span></div>
+        <figcaption><b>Ask, and see the sources.</b> The notes the answer cites light up in the brain.</figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <div class="window"><video src="assets/media/the-brain-grows.mp4" data-poster="assets/media/the-brain-grows.webp" width="900" height="563" muted loop playsinline preload="none" data-autoplay></video><span class="visually-hidden">The brain growing: notes appear next to the folders of their subjects and the graph widens as more documents are filed</span></div>
         <figcaption><b>The brain grows as Crow files.</b> Each document joins the folder of its subject, and a folder that grows splits into subfolders (sped up).</figcaption>
       </figure>
       <figure class="shot reveal">
-        <div class="window"><video src="assets/media/zoom-into-the-brain.mp4" poster="assets/media/zoom-into-the-brain.webp" width="880" height="550" muted loop playsinline preload="none" data-autoplay></video><span class="visually-hidden">Zooming into the Finance folder of a large brain: its subfolders appear with their names, then a click on Receipts dims everything else</span></div>
+        <div class="window"><video src="assets/media/zoom-into-the-brain.mp4" data-poster="assets/media/zoom-into-the-brain.webp" width="880" height="550" muted loop playsinline preload="none" data-autoplay></video><span class="visually-hidden">Zooming into the Finance folder of a large brain: its subfolders appear with their names, then a click on Receipts dims everything else</span></div>
         <figcaption><b>Folders inside folders.</b> Zoom in and the names appear, down to the notes; click a folder to dim everything else.</figcaption>
       </figure>
       <figure class="shot reveal">
-        <div class="window"><video src="assets/media/onboarding.mp4" poster="assets/media/onboarding.webp" width="960" height="615" muted loop playsinline preload="none" data-autoplay></video><span class="visually-hidden">Crow's first run: the welcome screen, the documents it found by folder with a date filter, connecting OpenRouter, the cost estimate, and the wiki starting to build</span></div>
+        <div class="window"><video src="assets/media/onboarding.mp4" data-poster="assets/media/onboarding.webp" width="960" height="615" muted loop playsinline preload="none" data-autoplay></video><span class="visually-hidden">Crow's first run: the welcome screen, the documents it found by folder with a date filter, connecting OpenRouter, the cost estimate, and the wiki starting to build</span></div>
         <figcaption><b>From your documents to a wiki.</b> The welcome screen, the documents Crow found by folder, OpenRouter, the cost estimate, and the wiki starting to build.</figcaption>
-      </figure>
-      <figure class="shot reveal">
-        <div class="window"><img src="assets/img/shots/13-open-a-note.webp" width="1600" height="1000" loading="lazy" alt="A note open over the brain: a trip budget as a Markdown table, and the three documents it was filed from"></div>
-        <figcaption><b>Notes you can read.</b> Plain Markdown, with the documents each note was filed from.</figcaption>
       </figure>
     </div>
     <div class="strip reveal" role="group" aria-label="More screenshots">
+      <figure><img src="assets/img/shots/13-open-a-note.webp" width="1600" height="1000" loading="lazy" alt="A note open over the brain: a trip budget as a Markdown table, and the three documents it was filed from"><figcaption><b>Notes you can read.</b> Plain Markdown, with the documents each note was filed from.</figcaption></figure>
       <figure><img src="assets/img/shots/06-chat-with-sources.webp" width="1600" height="1000" loading="lazy" alt="A chat about a trip to Japan: each answer cites the notes it used, and the note under the pointer is lit in the brain"><figcaption><b>Answers with sources.</b> Point at a cited note and it lights up in the brain.</figcaption></figure>
       <figure><img src="assets/img/shots/10-big-brain.webp" width="1600" height="1000" loading="lazy" alt="A large brain: eight subjects in eight colours, each a tree of folders and notes"><figcaption><b>One brain, every subject.</b> Hundreds of notes in nested folders, a colour per subject.</figcaption></figure>
       <figure><img src="assets/img/shots/04-cost-before-you-start.webp" width="1600" height="1025" loading="lazy" alt="Ready to create your wiki: 2,581 documents, about $6.71 and about 3 hours, pausing at a $10 limit"><figcaption><b>The cost before you start,</b> from OpenRouter's prices and the size of each document.</figcaption></figure>
@@ -649,7 +642,7 @@ crow mcp</pre>
       </div>
     </div>
     <figure class="shot reveal" style="margin-top:44px">
-      <div class="window"><video src="assets/films/connect-ai-apps.mp4" poster="assets/films/connect-ai-apps.webp" width="1280" height="720" controls playsinline preload="none" aria-label="Film: Crow files the documents into a wiki, then connects Claude, Claude Code, ChatGPT and Codex to it; Claude answers from the wiki with a chart"></video></div>
+      <div class="window"><video src="assets/films/connect-ai-apps.mp4" data-poster="assets/films/connect-ai-apps.webp" width="1280" height="720" controls playsinline preload="none" aria-label="Film: Crow files the documents into a wiki, then connects Claude, Claude Code, ChatGPT and Codex to it; Claude answers from the wiki with a chart"></video></div>
       <figcaption><b>Connect your wiki to any AI agent.</b> The film from the 28 October 2026 post (30 s, with sound).</figcaption>
     </figure>
   </div>
@@ -871,19 +864,19 @@ crow mcp</pre>
     </div>
     <div class="grid grid-2">
       <figure class="shot reveal">
-        <div class="window"><video src="assets/films/crow-desktop-7-clicks.mp4" poster="assets/films/crow-desktop-7-clicks.webp" width="1280" height="800" controls playsinline preload="none" aria-label="Film: building a second brain with Crow Desktop in seven clicks"></video></div>
+        <div class="window"><video src="assets/films/crow-desktop-7-clicks.mp4" data-poster="assets/films/crow-desktop-7-clicks.webp" width="1280" height="800" controls playsinline preload="none" aria-label="Film: building a second brain with Crow Desktop in seven clicks"></video></div>
         <figcaption><b>Build your second brain in 7 clicks.</b> The Crow Desktop release, 16 October 2026 (39 s).</figcaption>
       </figure>
       <figure class="shot reveal">
-        <div class="window"><video src="assets/films/desktop-graveyard.mp4" poster="assets/films/desktop-graveyard.webp" width="1280" height="720" controls playsinline preload="none" aria-label="Film: a desktop flooded with messy files, all dropped into Crow, which files them into a brain and answers a question"></video></div>
+        <div class="window"><video src="assets/films/desktop-graveyard.mp4" data-poster="assets/films/desktop-graveyard.webp" width="1280" height="720" controls playsinline preload="none" aria-label="Film: a desktop flooded with messy files, all dropped into Crow, which files them into a brain and answers a question"></video></div>
         <figcaption><b>Your desktop. Total chaos.</b> Every file dropped into Crow, sorted and linked; 21 October 2026 (27 s).</figcaption>
       </figure>
       <figure class="shot reveal">
-        <div class="window"><video src="assets/films/no-vectors.mp4" poster="assets/films/no-vectors.webp" width="1280" height="720" controls playsinline preload="none" aria-label="Film: classic RAG as columns of numbers, then a crow filing documents into a folder tree and an answer citing a note"></video></div>
+        <div class="window"><video src="assets/films/no-vectors.mp4" data-poster="assets/films/no-vectors.webp" width="1280" height="720" controls playsinline preload="none" aria-label="Film: classic RAG as columns of numbers, then a crow filing documents into a folder tree and an answer citing a note"></video></div>
         <figcaption><b>Our LLM wiki has no scaling limits.</b> Why a wiki needs no vectors; 12 October 2026 (27 s, shown here without its music).</figcaption>
       </figure>
       <figure class="shot reveal">
-        <div class="window"><video src="assets/films/llm-wiki-v2-launch.mp4" poster="assets/films/llm-wiki-v2-launch.webp" width="1280" height="720" controls playsinline preload="none" aria-label="Film: a voxel crow filing documents into a wiki"></video></div>
+        <div class="window"><video src="assets/films/llm-wiki-v2-launch.mp4" data-poster="assets/films/llm-wiki-v2-launch.webp" width="1280" height="720" controls playsinline preload="none" aria-label="Film: a voxel crow filing documents into a wiki"></video></div>
         <figcaption><b>LLM wiki is back: introducing LLM-Wiki-V2.</b> The launch, 9 October 2026 (10 s).</figcaption>
       </figure>
     </div>
@@ -945,7 +938,7 @@ print(answer.text, answer.citations)</pre>
       </div>
     </div>
     <figure class="shot reveal" style="margin-top:48px">
-      <div class="window"><div class="window-bar"><i></i><i></i><i></i><span>llmwiki2 · localhost:8000</span></div><video src="assets/media/llmwiki2-demo.mp4" poster="assets/media/llmwiki2-demo.webp" width="800" height="450" muted loop playsinline preload="none" data-autoplay></video><span class="visually-hidden">llmwiki2's web page: a PDF dropped on the page is merged into the note it updates; a typed question gets an answer citing that note; a second document dropped on the brain appears as a new note in its folder</span></div>
+      <div class="window"><div class="window-bar"><i></i><i></i><i></i><span>llmwiki2 · localhost:8000</span></div><video src="assets/media/llmwiki2-demo.mp4" data-poster="assets/media/llmwiki2-demo.webp" width="800" height="450" muted loop playsinline preload="none" data-autoplay></video><span class="visually-hidden">llmwiki2's web page: a PDF dropped on the page is merged into the note it updates; a typed question gets an answer citing that note; a second document dropped on the brain appears as a new note in its folder</span></div>
       <figcaption><b>llmwiki2's own web page.</b> A PDF dropped on the page is merged into the note it updates, a question gets an answer citing that note, and a second document dropped on the brain becomes a new note in its folder.</figcaption>
     </figure>
   </div>

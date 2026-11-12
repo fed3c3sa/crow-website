@@ -19,7 +19,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://crowllmwiki.com"
-HOME_MODIFIED = "2026-11-12"  # bump when the homepage changes
+HOME_MODIFIED = "2026-11-13"  # bump when the homepage changes
 OTHER_PAGES = {"/privacy/": "2026-11-12"}
 
 PEOPLE = {
@@ -193,12 +193,12 @@ def homepage(index: str) -> str:
     film = {
         "@type": "VideoObject",
         "@id": f"{SITE}/#film",
-        "name": "Crow in 34 seconds",
+        "name": "Crow launch film",
         "description": "The Crow launch film: files lost in chaos become one brain, Crow works offline with a local model, "
         "a question lights up the notes of its answer, and accuracy reaches 98%.",
         "thumbnailUrl": f"{SITE}/assets/films/crow-launch.webp",
         "contentUrl": f"{SITE}/assets/films/crow-launch.mp4",
-        "uploadDate": "2026-11-12",
+        "uploadDate": "2026-11-12T23:54:48+01:00",
         "duration": "PT34S",
         "inLanguage": "en",
         "about": {"@id": f"{SITE}/#crow"},

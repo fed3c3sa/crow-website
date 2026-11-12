@@ -228,22 +228,42 @@ function videos() {
     { threshold: 0.35 },
   );
   document.querySelectorAll<HTMLVideoElement>("video[data-autoplay]").forEach((v) => io.observe(v));
+  // posters load as their video comes near (a browser fetches every poster at once, even with preload="none")
+  const near = new IntersectionObserver(
+    (entries) => {
+      for (const { target, isIntersecting } of entries) {
+        if (!isIntersecting) continue;
+        const video = target as HTMLVideoElement;
+        video.poster = video.dataset.poster!;
+        near.unobserve(video);
+      }
+    },
+    { rootMargin: "1200px 0px" },
+  );
+  document.querySelectorAll<HTMLVideoElement>("video[data-poster]").forEach((v) => near.observe(v));
 }
 
-/* The launch film at the top: a muted loop that plays while it is on screen. Phones get the 720p file. Reduced motion
-   and Save-Data: nothing autoplays, the poster stays and the buttons still play it. "Play with sound" restarts it
-   with sound, then turns into "Mute". A film the visitor paused stays paused. */
+/* The launch film under the hero's buttons: a muted loop that plays while it is on screen (phones get the 720p file).
+   Reduced motion and Save-Data: nothing autoplays, the poster stays and the buttons still play it.
+   "Play with sound" restarts it with sound, once, then it goes back to the muted loop; while the sound is on the
+   button reads "Mute" and only mutes. A film the visitor paused stays paused. Nothing loads until the film is near
+   the screen, so a link deep into the page costs no video. */
 function film() {
-  const band = document.querySelector<HTMLElement>(".film-band");
-  const video = band?.querySelector<HTMLVideoElement>("video");
-  if (!band || !video) return;
+  const video = document.querySelector<HTMLVideoElement>(".film-video");
+  const frame = video?.closest<HTMLElement>(".film-frame");
+  if (!video || !frame) return;
   const saveData = Boolean((navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData);
   const auto = !reduced && !saveData;
+  const sound = frame.querySelector<HTMLButtonElement>("[data-film-sound]");
+  const pause = frame.querySelector<HTMLButtonElement>("[data-film-pause]");
+  let soundOn = false;
   let userPlay = false;
   let userPaused = false;
-  let inView = true;
+  let inView = false;
+  let loaded = false;
+
   const load = () => {
-    if (video.src) return;
+    if (video.getAttribute("src")) return;
     const small = matchMedia("(max-width: 900px)").matches && video.dataset.srcSmall;
     video.src = (small || video.dataset.src)!;
     video.preload = "auto";
@@ -253,35 +273,42 @@ function film() {
     void video.play().catch(() => {});
   };
   const wanted = () => !userPaused && (auto || userPlay);
+  const setSound = (on: boolean) => {
+    soundOn = on;
+    video.muted = !on;
+    video.loop = !on; // with sound it plays once
+    sound?.classList.toggle("is-on", on);
+  };
 
-  const sound = band.querySelector<HTMLButtonElement>("[data-film-sound]");
   if (sound) {
     sound.hidden = false;
     sound.addEventListener("click", () => {
-      if (video.muted || video.paused) {
-        userPlay = true;
-        userPaused = false;
-        video.muted = false;
-        load();
-        try {
-          video.currentTime = 0;
-        } catch {
-          /* not seekable yet: it starts from the top anyway */
-        }
-        play();
-        sound.classList.add("is-on");
-      } else {
-        video.muted = true;
-        sound.classList.remove("is-on");
-        if (!auto) {
-          userPlay = false;
-          video.pause();
-        }
+      if (soundOn) {
+        setSound(false); // mute only: playing or paused, it stays as it is
+        return;
       }
+      userPlay = true;
+      userPaused = false;
+      load();
+      setSound(true);
+      try {
+        video.currentTime = 0;
+      } catch {
+        /* not seekable yet: it starts from the top anyway */
+      }
+      play();
     });
   }
 
-  const pause = band.querySelector<HTMLButtonElement>("[data-film-pause]");
+  // the end of the run with sound: back to the muted loop (or to the last frame if nothing autoplays)
+  video.addEventListener("ended", () => {
+    setSound(false);
+    if (auto && inView && !userPaused) {
+      video.currentTime = 0;
+      play();
+    }
+  });
+
   if (pause) {
     pause.hidden = false;
     const sync = () => {
@@ -303,20 +330,43 @@ function film() {
     });
   }
 
-  new IntersectionObserver(
-    ([entry]) => {
-      inView = entry.isIntersecting;
-      if (inView && wanted() && (document.readyState === "complete" || userPlay)) play();
-      else if (!inView && !video.paused) video.pause();
-    },
-    { threshold: 0.25 },
-  ).observe(video);
-  // the poster paints first; the film starts once the page has loaded, so it never holds up the first screen
-  const start = () => {
-    if (auto && inView && wanted()) play();
+  // the poster paints first; the film starts once the page has loaded and the film is on screen
+  // measured, not taken from the observer's last report: on a link deep into the page the browser jumps to the
+  // anchor after the first report, and the load event can come before the next one
+  const onScreen = () => {
+    const r = video.getBoundingClientRect();
+    const seen = Math.min(r.bottom, innerHeight) - Math.max(r.top, 0);
+    return r.height > 0 && seen >= r.height * 0.25;
   };
-  if (document.readyState === "complete") start();
-  else window.addEventListener("load", start, { once: true });
+  const update = () => {
+    inView = onScreen();
+    if (inView && wanted() && (loaded || userPlay)) play();
+    else if (!inView && !video.paused) video.pause();
+  };
+  new IntersectionObserver(
+    () => update(),
+    { threshold: [0, 0.25, 0.5] },
+  ).observe(video);
+  // the browser jumps to a #section only after the load event, while the page still sits at the top: on a link deep
+  // into the page nothing starts on its own until that jump (the first scroll, or 1.5 s after load if there is none)
+  const settle = () => {
+    loaded = true;
+    setTimeout(update, 250);
+  };
+  const go = () =>
+    document.readyState === "complete" ? settle() : window.addEventListener("load", settle, { once: true });
+  if (location.hash.length > 1 && location.hash !== "#top") {
+    let armed = false;
+    const arm = () => {
+      if (armed) return;
+      armed = true;
+      go();
+    };
+    window.addEventListener("scroll", arm, { once: true, passive: true });
+    const later = () => setTimeout(arm, 1500);
+    if (document.readyState === "complete") later();
+    else window.addEventListener("load", later, { once: true });
+  } else go();
 }
 
 function nav() {
