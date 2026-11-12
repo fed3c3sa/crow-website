@@ -649,31 +649,31 @@ crow mcp</pre>
 
     <div class="stats" style="margin-top:56px">
       <div class="stat reveal">
-        <p class="stat-value">89%</p>
+        <p class="stat-value">99.5%</p>
         <p class="stat-label">right note read</p>
         <div class="stat-vs">
-          <div class="vs-row crow"><b>CROW</b><span class="vs-bar"><i style="width:89%"></i></span><span>89%</span></div>
-          <div class="vs-row"><span>LLM-only wiki</span><span class="vs-bar"><i style="width:62%"></i></span><span>62%</span></div>
+          <div class="vs-row crow"><b>CROW</b><span class="vs-bar"><i style="width:99.5%"></i></span><span>99.5%</span></div>
+          <div class="vs-row"><span>LLM-only wiki</span><span class="vs-bar"><i style="width:79.4%"></i></span><span>79.4%</span></div>
         </div>
       </div>
       <div class="stat reveal">
-        <p class="stat-value">2.1×</p>
+        <p class="stat-value">1.6×</p>
         <p class="stat-label">faster per ingest</p>
         <div class="stat-vs">
-          <div class="vs-row crow"><b>CROW</b><span class="vs-bar"><i style="width:47.7%"></i></span><span>18.4 s</span></div>
-          <div class="vs-row"><span>LLM-only wiki</span><span class="vs-bar"><i style="width:100%"></i></span><span>38.6 s</span></div>
+          <div class="vs-row crow"><b>CROW</b><span class="vs-bar"><i style="width:61.6%"></i></span><span>18.0 s</span></div>
+          <div class="vs-row"><span>LLM-only wiki</span><span class="vs-bar"><i style="width:100%"></i></span><span>29.2 s</span></div>
         </div>
       </div>
       <div class="stat reveal">
-        <p class="stat-value">68%</p>
+        <p class="stat-value">63%</p>
         <p class="stat-label">fewer LLM tokens per ingest</p>
         <div class="stat-vs">
-          <div class="vs-row crow"><b>CROW</b><span class="vs-bar"><i style="width:31.8%"></i></span><span>5,508</span></div>
-          <div class="vs-row"><span>LLM-only wiki</span><span class="vs-bar"><i style="width:100%"></i></span><span>17,324</span></div>
+          <div class="vs-row crow"><b>CROW</b><span class="vs-bar"><i style="width:36.8%"></i></span><span>4,861</span></div>
+          <div class="vs-row"><span>LLM-only wiki</span><span class="vs-bar"><i style="width:100%"></i></span><span>13,227</span></div>
         </div>
       </div>
     </div>
-    <p class="fine reveal" style="margin-top:16px;max-width:820px">These are the authors' own measurements, from the benchmark in the <a href="#paper">CROW paper</a> (Table 2): one corpus of 525 personal documents, mostly in Italian, with one LLM and one classifier version, as the paper says among its limitations. That corpus is not public, since it holds the first author's personal notes. The corpora and scripts behind llm-wiki-v2's own measurements are public in <a href="https://github.com/crow-hq/llm-wiki-v2/tree/main/benchmarks">benchmarks/</a>, and every script has a <code>--dry-run</code>, so you can run them with your own models.</p>
+    <p class="fine reveal" style="margin-top:16px;max-width:820px">Measured on llm-wiki-v2 1.0.0: eleven corpora (company handbooks, mail, EU laws in Italian and English, contracts, tax manuals, Italian Wikibooks and personal notes), 2,019 documents and 656 questions, each corpus filed in CROW mode and in classic mode (the LLM takes every decision) with the same writer (GLM 5.3 Flash) and classifier (Jev), one run per mode and corpus. A hit means the right note was read, not that the answer was correct. The corpora and scripts are public in <a href="https://github.com/crow-hq/llm-wiki-v2/tree/main/benchmarks">benchmarks/</a>, except the two personal-note corpora and the Wikibooks pages, and every script has a <code>--dry-run</code>, so you can run them with your own models. The <a href="#paper">CROW paper</a>'s own benchmark, on 525 personal documents, is in its Table 2.</p>
   </div>
 </section>
 
