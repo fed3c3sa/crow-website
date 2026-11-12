@@ -580,6 +580,223 @@ section {
   }
 }
 
+/* -- the launch film, first thing on the page ------------------------------------------------------------------- */
+/* Full width under the nav, 16:9 up to the screen's height. The film carries its own words in the middle, so the
+   title and the buttons sit low and small on a shade. Phones: the film at 16:9, title and buttons under it. */
+
+.film-band {
+  position: relative;
+  width: 100%;
+  height: min(100vh, 56.25vw);
+  height: min(100svh, 56.25vw);
+  min-height: 420px;
+  overflow: hidden;
+  background: #0c0f11 url("../films/crow-launch.webp") center / cover no-repeat;
+}
+
+.film-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* a shade under the nav and under the buttons, so both read over the white files of the first seconds */
+.film-band::before,
+.film-band::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.film-band::before {
+  top: 0;
+  height: 140px;
+  background: linear-gradient(to bottom, rgba(12, 15, 17, 0.72), rgba(12, 15, 17, 0));
+}
+
+.film-band::after {
+  bottom: 0;
+  height: 200px;
+  background: linear-gradient(to top, rgba(12, 15, 17, 0.8), rgba(12, 15, 17, 0));
+}
+
+.film-copy {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 var(--gutter) clamp(22px, 3.4vw, 44px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px 24px;
+}
+
+.film-title {
+  font-size: clamp(17px, 1.7vw, 22px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.5);
+}
+
+.film-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.film-btn {
+  display: inline-flex;
+  align-items: center;
+  height: 46px;
+  padding: 0 20px 0 16px;
+  border: 0;
+  border-radius: var(--r-pill);
+  color: #0f1113;
+  background: rgba(255, 255, 255, 0.92);
+  font: inherit;
+  font-size: 14.5px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition:
+    transform var(--t-med) var(--ease),
+    background-color var(--t-med) var(--ease);
+}
+
+.film-btn:hover {
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+.film-btn:active {
+  transform: scale(0.97);
+}
+
+.film-btn svg {
+  width: 19px;
+  height: 19px;
+  flex: none;
+}
+
+.film-btn .when-on,
+.film-btn .when-off {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.film-btn .when-on,
+.film-btn.is-on .when-off {
+  display: none;
+}
+
+.film-btn.is-on .when-on {
+  display: inline-flex;
+}
+
+.film-time {
+  opacity: 0.6;
+  font-variant-numeric: tabular-nums;
+}
+
+.film-pause {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  flex: none;
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition: background-color var(--t-med) var(--ease);
+}
+
+.film-pause:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.film-pause svg {
+  width: 15px;
+  height: 15px;
+}
+
+.film-pause .i-play {
+  display: none;
+  margin-left: 2px;
+}
+
+.film-pause.is-paused .i-play {
+  display: block;
+}
+
+.film-pause.is-paused .i-pause {
+  display: none;
+}
+
+.film-btn[hidden],
+.film-pause[hidden] {
+  display: none;
+}
+
+.film-btn:focus-visible,
+.film-pause:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* the hero follows the film: no longer the first screen, so no room kept for the nav and no full height */
+.film-band + .hero .hero-inner {
+  min-height: 0;
+  padding-top: clamp(72px, 9vw, 112px);
+}
+
+@media (max-width: 760px) {
+  .film-band {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    padding-top: 64px; /* the nav */
+    background: var(--bg);
+  }
+
+  .film-video {
+    position: relative;
+    inset: auto;
+    display: block;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    background: #0c0f11 url("../films/crow-launch.webp") center / cover no-repeat;
+  }
+
+  .film-band::before,
+  .film-band::after {
+    display: none;
+  }
+
+  .film-copy {
+    position: static;
+    padding-top: 16px;
+    padding-bottom: 0;
+  }
+}
+
 /* -- hero ------------------------------------------------------------------------------------------------------ */
 
 .hero {

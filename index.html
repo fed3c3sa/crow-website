@@ -23,6 +23,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@fed3c3sa">
 <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/films/crow-launch.webp" as="image" fetchpriority="high">
 <link rel="stylesheet" href="assets/css/site.css">
 <script type="module" src="assets/js/site.js"></script>
 <script type="application/ld+json">
@@ -219,7 +220,32 @@
       },
       "dateModified": "2026-11-12",
       "inLanguage": "en",
-      "primaryImageOfPage": "https://crowllmwiki.com/assets/img/og.jpg"
+      "primaryImageOfPage": "https://crowllmwiki.com/assets/img/og.jpg",
+      "video": {
+        "@id": "https://crowllmwiki.com/#film"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://crowllmwiki.com/#film",
+      "name": "Crow in 34 seconds",
+      "description": "The Crow launch film: files lost in chaos become one brain, Crow works offline with a local model, a question lights up the notes of its answer, and accuracy reaches 98%.",
+      "thumbnailUrl": "https://crowllmwiki.com/assets/films/crow-launch.webp",
+      "contentUrl": "https://crowllmwiki.com/assets/films/crow-launch.mp4",
+      "uploadDate": "2026-11-12",
+      "duration": "PT34S",
+      "inLanguage": "en",
+      "about": {
+        "@id": "https://crowllmwiki.com/#crow"
+      },
+      "creator": [
+        {
+          "@id": "https://crowllmwiki.com/#federico"
+        },
+        {
+          "@id": "https://crowllmwiki.com/#marco"
+        }
+      ]
     },
     {
       "@type": "FAQPage",
@@ -361,8 +387,37 @@
 
 <main id="main">
 
+<!-- ======================================================================================== film -->
+<!-- The launch film, first thing on the page: a muted loop under the nav, the button restarts it with sound -->
+<section class="film-band" id="top" aria-labelledby="film-title">
+  <video class="film-video" muted loop playsinline preload="none" disablepictureinpicture
+         poster="assets/films/crow-launch.webp"
+         data-src="assets/films/crow-launch.mp4"
+         data-src-small="assets/films/crow-launch-720.mp4"></video><span class="visually-hidden">Film: files lost in chaos fly into Crow and become one brain; Crow works offline with a local model and stays private; a question lights up the notes of its answer; accuracy at 98%; Crow, because your time is important</span>
+  <div class="film-copy">
+    <p class="film-title" id="film-title">Crow in 34 seconds</p>
+    <div class="film-actions">
+      <button type="button" class="film-btn" data-film-sound hidden>
+        <span class="when-off">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+          <span>Play with sound</span>
+          <span class="film-time">0:34</span>
+        </span>
+        <span class="when-on">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m22 9-6 6"/><path d="m16 9 6 6"/></svg>
+          <span>Mute</span>
+        </span>
+      </button>
+      <button type="button" class="film-pause" data-film-pause aria-label="Pause the film" hidden>
+        <svg class="i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+        <svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72c0 .84.93 1.35 1.64.9l10.16-6.86a1.08 1.08 0 0 0 0-1.8L9.64 4.24A1.08 1.08 0 0 0 8 5.14z"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
 <!-- ======================================================================================== hero -->
-<section class="hero" id="top">
+<section class="hero" id="intro">
   <canvas class="hero-field" aria-hidden="true"></canvas>
   <div class="hero-inner">
     <a class="badge" href="#ai-apps"><b>Crow <span data-crow-version>0.1.5</span></b> Connect Claude, ChatGPT and Codex to your wiki</a>

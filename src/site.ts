@@ -230,6 +230,95 @@ function videos() {
   document.querySelectorAll<HTMLVideoElement>("video[data-autoplay]").forEach((v) => io.observe(v));
 }
 
+/* The launch film at the top: a muted loop that plays while it is on screen. Phones get the 720p file. Reduced motion
+   and Save-Data: nothing autoplays, the poster stays and the buttons still play it. "Play with sound" restarts it
+   with sound, then turns into "Mute". A film the visitor paused stays paused. */
+function film() {
+  const band = document.querySelector<HTMLElement>(".film-band");
+  const video = band?.querySelector<HTMLVideoElement>("video");
+  if (!band || !video) return;
+  const saveData = Boolean((navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData);
+  const auto = !reduced && !saveData;
+  let userPlay = false;
+  let userPaused = false;
+  let inView = true;
+  const load = () => {
+    if (video.src) return;
+    const small = matchMedia("(max-width: 900px)").matches && video.dataset.srcSmall;
+    video.src = (small || video.dataset.src)!;
+    video.preload = "auto";
+  };
+  const play = () => {
+    load();
+    void video.play().catch(() => {});
+  };
+  const wanted = () => !userPaused && (auto || userPlay);
+
+  const sound = band.querySelector<HTMLButtonElement>("[data-film-sound]");
+  if (sound) {
+    sound.hidden = false;
+    sound.addEventListener("click", () => {
+      if (video.muted || video.paused) {
+        userPlay = true;
+        userPaused = false;
+        video.muted = false;
+        load();
+        try {
+          video.currentTime = 0;
+        } catch {
+          /* not seekable yet: it starts from the top anyway */
+        }
+        play();
+        sound.classList.add("is-on");
+      } else {
+        video.muted = true;
+        sound.classList.remove("is-on");
+        if (!auto) {
+          userPlay = false;
+          video.pause();
+        }
+      }
+    });
+  }
+
+  const pause = band.querySelector<HTMLButtonElement>("[data-film-pause]");
+  if (pause) {
+    pause.hidden = false;
+    const sync = () => {
+      pause.classList.toggle("is-paused", video.paused);
+      pause.setAttribute("aria-label", video.paused ? "Play the film" : "Pause the film");
+    };
+    sync();
+    video.addEventListener("play", sync);
+    video.addEventListener("pause", sync);
+    pause.addEventListener("click", () => {
+      if (video.paused) {
+        userPaused = false;
+        userPlay = true;
+        play();
+      } else {
+        userPaused = true;
+        video.pause();
+      }
+    });
+  }
+
+  new IntersectionObserver(
+    ([entry]) => {
+      inView = entry.isIntersecting;
+      if (inView && wanted() && (document.readyState === "complete" || userPlay)) play();
+      else if (!inView && !video.paused) video.pause();
+    },
+    { threshold: 0.25 },
+  ).observe(video);
+  // the poster paints first; the film starts once the page has loaded, so it never holds up the first screen
+  const start = () => {
+    if (auto && inView && wanted()) play();
+  };
+  if (document.readyState === "complete") start();
+  else window.addEventListener("load", start, { once: true });
+}
+
 function nav() {
   const bar = document.querySelector(".nav");
   const toggle = document.querySelector<HTMLButtonElement>(".nav-toggle");
@@ -301,6 +390,7 @@ if (explore) {
 reveal();
 nav();
 copyButtons();
+film();
 videos();
 void downloads();
 void stars();

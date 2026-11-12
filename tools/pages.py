@@ -190,7 +190,22 @@ def homepage(index: str) -> str:
         "inLanguage": "en",
         "primaryImageOfPage": f"{SITE}/assets/img/og.jpg",
     }
-    nodes = base_nodes() + [ENTITIES["crow"], ENTITIES["engine"], ENTITIES["paper"], page, faq_node(f"{SITE}/", faq)]
+    film = {
+        "@type": "VideoObject",
+        "@id": f"{SITE}/#film",
+        "name": "Crow in 34 seconds",
+        "description": "The Crow launch film: files lost in chaos become one brain, Crow works offline with a local model, "
+        "a question lights up the notes of its answer, and accuracy reaches 98%.",
+        "thumbnailUrl": f"{SITE}/assets/films/crow-launch.webp",
+        "contentUrl": f"{SITE}/assets/films/crow-launch.mp4",
+        "uploadDate": "2026-11-12",
+        "duration": "PT34S",
+        "inLanguage": "en",
+        "about": {"@id": f"{SITE}/#crow"},
+        "creator": [{"@id": f"{SITE}/#federico"}, {"@id": f"{SITE}/#marco"}],
+    }
+    page["video"] = {"@id": f"{SITE}/#film"}
+    nodes = base_nodes() + [ENTITIES["crow"], ENTITIES["engine"], ENTITIES["paper"], page, film, faq_node(f"{SITE}/", faq)]
     return re.sub(r'<script type="application/ld\+json">.*?</script>', lambda _: graph(nodes), index, count=1, flags=re.S)
 
 
