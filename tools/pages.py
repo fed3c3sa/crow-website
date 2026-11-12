@@ -19,8 +19,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://crowllmwiki.com"
-HOME_MODIFIED = "2026-11-11"  # bump when the homepage changes
-OTHER_PAGES = {"/privacy/": "2026-11-09"}
+HOME_MODIFIED = "2026-11-12"  # bump when the homepage changes
+OTHER_PAGES = {"/privacy/": "2026-11-12"}
 
 PEOPLE = {
     "federico": {
@@ -59,7 +59,8 @@ ENTITIES = {
         "description": "Classifier-routed LLM wikis: open-source tools and research.",
         "url": f"{SITE}/",
         "logo": f"{SITE}/assets/img/apple-touch-icon.png",
-        "email": "crowhq.community@gmail.com",
+        "email": "support@crowllmwiki.com",
+        "contactPoint": {"@type": "ContactPoint", "contactType": "customer support", "email": "support@crowllmwiki.com"},
         "founder": AUTHORS,
         "sameAs": ["https://github.com/crow-hq", "https://pypi.org/org/crow-hq/"],
     },
