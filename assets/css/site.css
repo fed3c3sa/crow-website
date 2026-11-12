@@ -682,6 +682,17 @@ section {
   font-size: 16px;
 }
 
+.btn-gh .gh-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 4px;
+  padding-left: 12px;
+  border-left: 1px solid currentColor;
+  border-left-color: color-mix(in srgb, currentColor 30%, transparent);
+  font-variant-numeric: tabular-nums;
+}
+
 .dl-note {
   margin-top: 16px;
   font-size: 13.5px;
