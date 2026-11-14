@@ -338,10 +338,19 @@ function film() {
     const seen = Math.min(r.bottom, innerHeight) - Math.max(r.top, 0);
     return r.height > 0 && seen >= r.height * 0.25;
   };
+  // the first start waits for the film to stay on screen a moment: a link that scrolls past it loads nothing
+  let staying = 0;
   const update = () => {
     inView = onScreen();
-    if (inView && wanted() && (loaded || userPlay)) play();
-    else if (!inView && !video.paused) video.pause();
+    if (inView && wanted() && (loaded || userPlay)) {
+      if (userPlay || video.getAttribute("src")) play();
+      else if (!staying)
+        staying = window.setTimeout(() => {
+          staying = 0;
+          inView = onScreen();
+          if (inView && wanted()) play();
+        }, 300);
+    } else if (!inView && !video.paused) video.pause();
   };
   new IntersectionObserver(
     () => update(),
@@ -411,7 +420,7 @@ function cinema() {
   };
   window.addEventListener("scroll", queue, { passive: true });
   window.addEventListener("resize", queue);
-  wide.addEventListener("change", queue);
+  wide.addEventListener?.("change", queue);
   apply();
 }
 

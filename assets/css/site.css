@@ -654,10 +654,30 @@ section {
   }
 }
 
-@media (max-height: 700px) {
+@media (max-height: 700px), (max-width: 640px) {
   .hero-inner {
     padding-top: 88px;
     padding-bottom: 32px;
+  }
+}
+
+/* a phone: tighter, so the film's edge still shows under a first screen that browser bars make short */
+@media (max-width: 640px) {
+  .hero-inner {
+    padding-top: 80px;
+    padding-bottom: 24px;
+  }
+
+  .hero .hero-inner h1 {
+    margin-top: 20px;
+  }
+
+  .hero .hero-inner .lead {
+    margin-top: 16px;
+  }
+
+  .hero .hero-inner .hero-cta {
+    margin-top: 26px;
   }
 }
 
@@ -833,74 +853,77 @@ section {
   background: transparent;
 }
 
-@media (min-width: 900px) and (min-aspect-ratio: 5/4) and (min-height: 540px) and (prefers-reduced-motion: no-preference) {
-  .cinema {
-    --e: 0;
-    --w0: min(1120px, 100vw - 2 * var(--gutter));
-    /* full: it covers the screen, but a screen far from 16:9 cuts no more than 8% of the film per side, top and
-       bottom included (what is left around it is the page, the same colour) */
-    --w1: min(max(100vw, min(177.78svh, 116vw)), 207svh);
-    --w: calc(var(--w0) + (var(--w1) - var(--w0)) * var(--e));
-    --h: calc(var(--w) * 0.5625);
-    --top: calc((100svh - var(--w1) * 0.5625) / 2 * var(--e));
-    height: 175svh; /* the screen, 30% more to finish growing, 45% to hold: see cinema() */
-    padding: 0;
-  }
+/* browsers without svh keep the plain window */
+@supports (height: 100svh) {
+  @media (min-width: 900px) and (min-aspect-ratio: 5/4) and (min-height: 540px) and (prefers-reduced-motion: no-preference) {
+    .cinema {
+      --e: 0;
+      --w0: min(1120px, 100vw - 2 * var(--gutter));
+      /* full: it covers the screen, but a screen far from 16:9 cuts no more than 8% of the film per side, top and
+         bottom included (what is left around it is the page, the same colour) */
+      --w1: min(max(100vw, min(177.78svh, 116vw)), 207svh);
+      --w: calc(var(--w0) + (var(--w1) - var(--w0)) * var(--e));
+      --h: calc(var(--w) * 0.5625);
+      --top: calc((100svh - var(--w1) * 0.5625) / 2 * var(--e));
+      height: 175svh; /* the screen, 30% more to finish growing, 45% to hold: see cinema() */
+      padding: 0;
+    }
 
-  .cinema-stage {
-    position: sticky;
-    top: 0;
-    height: 100svh;
-    padding: 0;
-    overflow: hidden;
-    contain: layout paint;
-  }
+    .cinema-stage {
+      position: sticky;
+      top: 0;
+      height: 100svh;
+      padding: 0;
+      overflow: hidden;
+      contain: layout paint;
+    }
 
-  .film-frame {
-    position: absolute;
-    top: var(--top);
-    left: 50%;
-    width: var(--w);
-    height: var(--h);
-    max-width: none;
-    margin: 0;
-    transform: translateX(-50%);
-  }
+    .film-frame {
+      position: absolute;
+      top: var(--top);
+      left: 50%;
+      width: var(--w);
+      height: var(--h);
+      max-width: none;
+      margin: 0;
+      transform: translateX(-50%);
+    }
 
-  .film-window {
-    width: 100%;
-    height: 100%;
-    aspect-ratio: auto;
-    border-radius: calc(18px * (1 - var(--e)));
-    border-color: rgba(43, 45, 48, calc(1 - var(--e)));
-    box-shadow: 0 40px 120px rgba(0, 0, 0, calc(0.55 * (1 - var(--e))));
-  }
+    .film-window {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: auto;
+      border-radius: calc(18px * (1 - var(--e)));
+      border-color: rgba(43, 45, 48, calc(1 - var(--e)));
+      box-shadow: 0 40px 120px rgba(0, 0, 0, calc(0.55 * (1 - var(--e))));
+    }
 
-  .film-actions.film-actions {
-    right: calc(max(0px, (var(--w) - 100vw) / 2) + 26px);
-    bottom: calc(max(0px, var(--top) + var(--h) - 100svh) + 26px);
-  }
+    .film-actions.film-actions {
+      right: calc(max(0px, (var(--w) - 100vw) / 2) + 26px);
+      bottom: calc(max(0px, var(--top) + var(--h) - 100svh) + 26px);
+    }
 
-  /* the headline steps back as the film comes up over it */
-  .hero-inner {
-    opacity: calc(1 - var(--away, 0) * 0.9);
-    transform: translateY(calc(var(--away, 0) * 56px)) scale(calc(1 - var(--away, 0) * 0.04));
-  }
+    /* the headline steps back as the film comes up over it */
+    .hero-inner {
+      opacity: calc(1 - var(--away, 0) * 0.9);
+      transform: translateY(calc(var(--away, 0) * 56px)) scale(calc(1 - var(--away, 0) * 0.04));
+    }
 
-  /* the film has the whole screen: the bar leaves, unless the keyboard is in it */
-  .nav {
-    transition:
-      background-color var(--t-med) var(--ease),
-      border-color var(--t-med) var(--ease),
-      backdrop-filter var(--t-med) var(--ease),
-      transform 420ms var(--ease),
-      opacity 420ms var(--ease);
-  }
+    /* the film has the whole screen: the bar leaves, unless the keyboard is in it */
+    .nav {
+      transition:
+        background-color var(--t-med) var(--ease),
+        border-color var(--t-med) var(--ease),
+        backdrop-filter var(--t-med) var(--ease),
+        transform 420ms var(--ease),
+        opacity 420ms var(--ease);
+    }
 
-  [data-cinema] .nav:not([data-open]):not(:focus-within) {
-    transform: translateY(-100%);
-    opacity: 0;
-    pointer-events: none;
+    [data-cinema] .nav:not([data-open]):not(:focus-within) {
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+    }
   }
 }
 
