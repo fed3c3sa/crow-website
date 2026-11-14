@@ -583,6 +583,7 @@ section {
 /* -- hero ------------------------------------------------------------------------------------------------------ */
 
 .hero {
+  --peek: clamp(72px, 13svh, 128px); /* how much of the film shows under the first screen */
   position: relative;
   padding: 0;
   overflow: hidden;
@@ -595,13 +596,20 @@ section {
   height: 100%;
 }
 
+/* the lights fade out before the film under them */
+.hero > .hero-field {
+  -webkit-mask-image: linear-gradient(#000 62%, transparent 98%);
+  mask-image: linear-gradient(#000 62%, transparent 98%);
+}
+
 .hero-inner {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: clamp(96px, 12vh, 120px) var(--gutter) 0;
+  min-height: calc(min(1100px, 100svh) - var(--peek));
+  padding: 104px var(--gutter) 56px;
   justify-content: center;
 }
 
@@ -636,7 +644,21 @@ section {
 
 .hero .crow-mark {
   width: 92px;
-  margin-top: 26px;
+  margin-top: 30px;
+}
+
+/* a phone or a low window: the crow in the bar is enough, the film comes sooner */
+@media (max-width: 640px), (max-height: 770px) {
+  .hero .crow-mark {
+    display: none;
+  }
+}
+
+@media (max-height: 700px) {
+  .hero-inner {
+    padding-top: 88px;
+    padding-bottom: 32px;
+  }
 }
 
 .hero h1 {
@@ -657,23 +679,13 @@ section {
   text-wrap: balance;
 }
 
-.hero .sub {
-  margin: 30px auto 0;
-  max-width: 640px;
-  text-align: center;
-  font-size: 15.5px;
-  line-height: 1.6;
-  color: var(--muted);
-  text-wrap: pretty;
-}
-
 .hero-cta {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 14px;
-  margin-top: 30px;
+  margin-top: 34px;
 }
 
 .hero-cta .btn-outline {
@@ -765,24 +777,48 @@ section {
   background: var(--bg);
 }
 
-/* -- the launch film, in a window right under the buttons ------------------------------------------------------- */
-/* A muted loop while it is on screen; "Play with sound" and the pause sit inside the window, bottom right, where the
-   film has no words. Phones: the window is too small to cover, so the buttons go under it. */
+/* -- what Crow does, said once, large, after the film -------------------------------------------------------------- */
 
-.hero-film {
-  position: relative;
-  max-width: 1040px;
-  margin: 32px auto 0;
-  padding: 0 var(--gutter) 72px;
+.statement {
+  padding-top: clamp(64px, 9vw, 120px);
+  text-align: center;
+}
+
+.statement p {
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: clamp(21px, 2.7vw, 34px);
+  font-weight: 420;
+  line-height: 1.34;
+  letter-spacing: -0.018em;
+  color: var(--text);
+  text-wrap: balance;
+}
+
+/* -- the launch film, on its own under the hero ----------------------------------------------------------------- */
+/* A muted loop while it is on screen; "Play with sound" and the pause sit inside it, bottom right, where the film has
+   no words. Its top edge shows under the first screen. On a wide screen it grows with the scroll from a window to
+   the whole screen and holds there (the film's background is the page's, so nothing frames it); elsewhere it is a
+   window in the page, and edge to edge on a phone. --e, 0 to 1, comes from cinema() in src/site.ts. */
+
+.cinema {
+  padding: 0 0 clamp(8px, 4vw, 40px);
+}
+
+.cinema-stage {
+  padding: 0 var(--gutter);
 }
 
 .film-frame {
   position: relative;
+  max-width: 1120px;
+  margin: 0 auto;
 }
 
 .film-window {
   aspect-ratio: 16 / 9;
-  background: #0c0f11;
+  border-radius: 18px;
+  background: var(--bg);
 }
 
 /* the poster is a real image under the video (the video has none, so it stays see-through until its first frame) */
@@ -795,6 +831,77 @@ section {
   height: 100%;
   object-fit: cover;
   background: transparent;
+}
+
+@media (min-width: 900px) and (min-aspect-ratio: 5/4) and (min-height: 540px) and (prefers-reduced-motion: no-preference) {
+  .cinema {
+    --e: 0;
+    --w0: min(1120px, 100vw - 2 * var(--gutter));
+    /* full: it covers the screen, but a screen far from 16:9 cuts no more than 8% of the film per side, top and
+       bottom included (what is left around it is the page, the same colour) */
+    --w1: min(max(100vw, min(177.78svh, 116vw)), 207svh);
+    --w: calc(var(--w0) + (var(--w1) - var(--w0)) * var(--e));
+    --h: calc(var(--w) * 0.5625);
+    --top: calc((100svh - var(--w1) * 0.5625) / 2 * var(--e));
+    height: 175svh; /* the screen, 30% more to finish growing, 45% to hold: see cinema() */
+    padding: 0;
+  }
+
+  .cinema-stage {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    padding: 0;
+    overflow: hidden;
+    contain: layout paint;
+  }
+
+  .film-frame {
+    position: absolute;
+    top: var(--top);
+    left: 50%;
+    width: var(--w);
+    height: var(--h);
+    max-width: none;
+    margin: 0;
+    transform: translateX(-50%);
+  }
+
+  .film-window {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    border-radius: calc(18px * (1 - var(--e)));
+    border-color: rgba(43, 45, 48, calc(1 - var(--e)));
+    box-shadow: 0 40px 120px rgba(0, 0, 0, calc(0.55 * (1 - var(--e))));
+  }
+
+  .film-actions.film-actions {
+    right: calc(max(0px, (var(--w) - 100vw) / 2) + 26px);
+    bottom: calc(max(0px, var(--top) + var(--h) - 100svh) + 26px);
+  }
+
+  /* the headline steps back as the film comes up over it */
+  .hero-inner {
+    opacity: calc(1 - var(--away, 0) * 0.9);
+    transform: translateY(calc(var(--away, 0) * 56px)) scale(calc(1 - var(--away, 0) * 0.04));
+  }
+
+  /* the film has the whole screen: the bar leaves, unless the keyboard is in it */
+  .nav {
+    transition:
+      background-color var(--t-med) var(--ease),
+      border-color var(--t-med) var(--ease),
+      backdrop-filter var(--t-med) var(--ease),
+      transform 420ms var(--ease),
+      opacity 420ms var(--ease);
+  }
+
+  [data-cinema] .nav:not([data-open]):not(:focus-within) {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 .film-actions {
@@ -912,15 +1019,33 @@ section {
   outline-offset: 3px;
 }
 
+/* a screen far from 16:9, where the full film does not reach two of the edges: there it fades into the page */
+@media (min-width: 900px) and (min-aspect-ratio: 207/100) and (min-height: 540px) and (prefers-reduced-motion: no-preference) {
+  .film-window {
+    --fade: calc(clamp(0px, (100vw - var(--w1)) / 2, 90px) * var(--e));
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent);
+    mask-image: linear-gradient(to right, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent);
+  }
+}
+
+@media (min-width: 900px) and (min-aspect-ratio: 5/4) and (max-aspect-ratio: 153/100) and (min-height: 540px) and (prefers-reduced-motion: no-preference) {
+  .film-window {
+    --fade: calc(clamp(0px, (100svh - var(--w1) * 0.5625) / 2, 70px) * var(--e));
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent);
+    mask-image: linear-gradient(to bottom, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent);
+  }
+}
+
 /* phones: round icon buttons in the corner, the words stay for screen readers */
 @media (max-width: 640px) {
-  .hero-film {
-    margin-top: 28px;
-    padding-bottom: 56px;
+  .cinema-stage {
+    padding: 0;
   }
 
   .film-window {
-    border-radius: 10px;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
   }
 
   .film-actions {

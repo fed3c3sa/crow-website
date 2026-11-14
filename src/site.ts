@@ -243,7 +243,7 @@ function videos() {
   document.querySelectorAll<HTMLVideoElement>("video[data-poster]").forEach((v) => near.observe(v));
 }
 
-/* The launch film under the hero's buttons: a muted loop that plays while it is on screen (phones get the 720p file).
+/* The launch film, in its own section under the hero: a muted loop that plays while it is on screen (phones get the 720p file).
    Reduced motion and Save-Data: nothing autoplays, the poster stays and the buttons still play it.
    "Play with sound" restarts it with sound, once, then it goes back to the muted loop; while the sound is on the
    button reads "Mute" and only mutes. A film the visitor paused stays paused. Nothing loads until the film is near
@@ -348,7 +348,7 @@ function film() {
     { threshold: [0, 0.25, 0.5] },
   ).observe(video);
   // the browser jumps to a #section only after the load event, while the page still sits at the top: on a link deep
-  // into the page nothing starts on its own until that jump (the first scroll, or 1.5 s after load if there is none)
+  // into the page nothing starts on its own until that jump is over (or 1.5 s after load if there is none)
   const settle = () => {
     loaded = true;
     setTimeout(update, 250);
@@ -362,11 +362,57 @@ function film() {
       armed = true;
       go();
     };
-    window.addEventListener("scroll", arm, { once: true, passive: true });
-    const later = () => setTimeout(arm, 1500);
+    // the jump can be a smooth scroll that passes over the film: wait until the page has stopped
+    let stop = 0;
+    const moving = () => {
+      clearTimeout(stop);
+      stop = window.setTimeout(() => {
+        window.removeEventListener("scroll", moving);
+        arm();
+      }, 300);
+    };
+    window.addEventListener("scroll", moving, { passive: true });
+    const later = () => setTimeout(() => stop || arm(), 1500);
     if (document.readyState === "complete") later();
     else window.addEventListener("load", later, { once: true });
   } else go();
+}
+
+/* The film's section on a wide screen (the media query is the one in site.css): the film grows with the scroll from
+   a window to the whole screen. --e goes 0 to 1 from the moment its top edge starts up the screen until 30% of a
+   screen after it reached the top; then the section holds it. The headline steps back meanwhile (--away), and the
+   nav leaves while the film has the screen. */
+function cinema() {
+  const section = document.querySelector<HTMLElement>(".cinema");
+  const hero = document.querySelector<HTMLElement>(".hero");
+  if (!section) return;
+  const wide = matchMedia("(min-width: 900px) and (min-aspect-ratio: 5/4) and (min-height: 540px) and (prefers-reduced-motion: no-preference)");
+  const root = document.documentElement;
+  let queued = 0;
+  const apply = () => {
+    queued = 0;
+    if (!wide.matches) {
+      section.style.removeProperty("--e");
+      hero?.style.removeProperty("--away");
+      root.removeAttribute("data-cinema");
+      return;
+    }
+    const screen = window.innerHeight;
+    const { top, bottom } = section.getBoundingClientRect();
+    const from = screen - 150;
+    const to = -0.3 * screen;
+    const p = Math.min(1, Math.max(0, (from - top) / (from - to)));
+    section.style.setProperty("--e", (p * p * (3 - 2 * p)).toFixed(4));
+    hero?.style.setProperty("--away", Math.min(1, Math.max(0, window.scrollY / (screen * 0.75))).toFixed(3));
+    root.toggleAttribute("data-cinema", top <= 64 && bottom >= screen * 0.45);
+  };
+  const queue = () => {
+    if (!queued) queued = requestAnimationFrame(apply);
+  };
+  window.addEventListener("scroll", queue, { passive: true });
+  window.addEventListener("resize", queue);
+  wide.addEventListener("change", queue);
+  apply();
 }
 
 function nav() {
@@ -440,6 +486,7 @@ if (explore) {
 reveal();
 nav();
 copyButtons();
+cinema();
 film();
 videos();
 void downloads();
