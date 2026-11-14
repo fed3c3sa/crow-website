@@ -156,9 +156,9 @@
       "disambiguatingDescription": "Crow is a free, open-source desktop app that builds an LLM wiki from your own documents. It is not a language model and not a model API.",
       "applicationCategory": "ProductivityApplication",
       "operatingSystem": "macOS, Windows, Linux",
-      "softwareVersion": "0.1.5",
+      "softwareVersion": "1.0.1",
       "datePublished": "2026-10-16",
-      "dateModified": "2026-11-04",
+      "dateModified": "2026-11-14",
       "license": "https://www.gnu.org/licenses/agpl-3.0.html",
       "isAccessibleForFree": true,
       "offers": {
@@ -197,8 +197,8 @@
       "codeRepository": "https://github.com/crow-hq/llm-wiki-v2",
       "programmingLanguage": "Python",
       "runtimePlatform": "Python 3.11 or later",
-      "version": "1.0.0",
-      "dateModified": "2026-11-10",
+      "version": "1.0.2",
+      "dateModified": "2026-11-13",
       "license": "https://www.gnu.org/licenses/agpl-3.0.html",
       "sameAs": [
         "https://github.com/crow-hq/llm-wiki-v2",
@@ -320,7 +320,7 @@
           "name": "Do I need to write code to build an LLM wiki?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Crow is a desktop app: pick folders, connect OpenRouter and start, with no terminal. llmwiki2 takes two terminal commands, then works from a web page. By hand, a coding agent following Karpathy's idea file writes whatever small tools the wiki needs."
+            "text": "No. Crow is a desktop app: pick folders, connect OpenRouter or choose local models, and start, with no terminal. llmwiki2 takes two terminal commands, then works from a web page. By hand, a coding agent following Karpathy's idea file writes whatever small tools the wiki needs."
           }
         },
         {
@@ -336,7 +336,7 @@
           "name": "Is Crow free?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Crow is free and open source under the GNU AGPL v3.0 or later, as is llm-wiki-v2. You pay OpenRouter for the models it uses, through your own account; Crow estimates the cost first and stops at your spending limit, $10 unless you change it. Download Crow."
+            "text": "Yes. Crow is free and open source under the GNU AGPL v3.0 or later, as is llm-wiki-v2. With local models nothing else is paid. With OpenRouter you pay it for the models Crow uses, through your own account; Crow estimates the cost first and stops at your spending limit, $10 unless you change it. Download Crow."
           }
         },
         {
@@ -344,7 +344,7 @@
           "name": "Does an LLM wiki work offline or with local models?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Crow needs an internet connection: it works through OpenRouter, and local models are not supported in the app yet. The llmwiki2 engine can run its LLM locally with Ollama or any OpenAI-compatible server. Its CROW classifier is remote by default; to keep it local too, point it at a System One server on your machine, such as Ollama 0.35 or later or Laya."
+            "text": "Yes. Since Crow 1.0, choose On this computer on the Connect screen: one button downloads Crow's local models (Ollama and three small open models, 2.6 to 4 GB depending on the system), and after the download Crow needs no internet connection, no account and no payment. Local models are in beta, and their notes are plainer than a cloud model's. The llmwiki2 engine can run its LLM locally with Ollama or any OpenAI-compatible server. Its CROW classifier is remote by default; to keep it local too, point it at a System One server on your machine, such as Ollama 0.35 or later or Laya."
           }
         }
       ]
@@ -372,7 +372,7 @@
       <a class="gh" href="https://github.com/crow-hq/llm-wiki-v2" aria-label="llm-wiki-v2 on GitHub, stars">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
         <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.94 5.96 6.58.96-4.76 4.64 1.12 6.55L12 17.52l-5.88 3.09 1.12-6.55L2.48 9.42l6.58-.96Z"/></svg>
-        <span data-stars>256</span>
+        <span data-stars>274</span>
       </a>
       <a class="btn btn-cta" href="/#download">Download</a>
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">
@@ -449,17 +449,17 @@
 <p>Keep Obsidian open to watch the pages appear. Past about a hundred sources, plan for search.</p>
 
 <h3>With llmwiki2, the Python engine</h3>
-<p>llm-wiki-v2 is the open-source engine by Federico Cesarini and Marco Sassarini, on PyPI as <code>llmwiki2</code> (1.0.0, 10 November 2026). Drop PDF, Word, Excel or text files on its web page: each lands in a folder, merged with what the wiki knows, and answers cite their notes. It runs with OpenRouter, OpenAI, Gemini, Ollama or any OpenAI-compatible server, on Python 3.11 or later.</p>
+<p>llm-wiki-v2 is the open-source engine by Federico Cesarini and Marco Sassarini, on PyPI as <code>llmwiki2</code> (1.0.2, 13 November 2026). Drop PDF, Word, Excel or text files on its web page: each lands in a folder, merged with what the wiki knows, and answers cite their notes. It runs with OpenRouter, OpenAI, Gemini, Ollama or any OpenAI-compatible server, on Python 3.11 or later.</p>
 <div class="code"><div class="code-head"><span>Install and start</span><button class="copy" type="button" data-copy="code-llm-wiki-1" aria-label="Copy"></button></div><pre id="code-llm-wiki-1">pip install llmwiki2
 llmwiki2</pre></div>
 <p>Your browser opens: pick a provider, paste its key, press Test connection, then Save and start. <code>uvx llmwiki2 demo</code> opens an example wiki with no key. More on the <a href="/llmwiki2/">llmwiki2 page</a>.</p>
 
 <h3>With Crow, the desktop app, no code</h3>
-<p><a href="/">Crow</a> is a free desktop app for macOS, Windows and Linux that runs the CROW architecture of llm-wiki-v2. It finds the documents on your computer by itself and works with any model on OpenRouter.</p>
+<p><a href="/">Crow</a> is a free desktop app for macOS, Windows and Linux that runs the CROW architecture of llm-wiki-v2. It finds the documents on your computer by itself and works with any model on OpenRouter, or, in beta, with local models that run on your computer, offline.</p>
 <ol>
 <li><a href="/#download">Download Crow</a> and install it. The builds are not signed yet; how to open them is next to the downloads.</li>
 <li>Pick the folders Crow should read, or single files.</li>
-<li>Press <strong>Connect</strong>. OpenRouter opens in your browser: sign in (or make an account), press <strong>Authorize</strong>, and Crow gets a key of its own on your account.</li>
+<li>Press <strong>Connect</strong>. OpenRouter opens in your browser: sign in (or make an account), press <strong>Authorize</strong>, and Crow gets a key of its own on your account. Or choose <strong>On this computer</strong> (beta): one button downloads Crow's local models, and nothing is paid.</li>
 <li>Choose a model, check the cost, and start. You can chat with the wiki while it grows.</li>
 </ol>
 <p>To see a finished wiki first, <a href="/#brain">explore an example brain</a> in your browser.</p>
@@ -473,15 +473,15 @@ llmwiki2</pre></div>
         <div class="faq">
 <details class="acc"><summary>Who came up with the LLM wiki?</summary><div class="acc-body"><p>Andrej Karpathy, in a <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">GitHub gist</a> created on 4 April 2026: an "idea file" to paste into your own LLM agent. The gist relates it to Vannevar Bush's Memex of 1945. Crow, llm-wiki-v2 and the <a href="/paper/">CROW paper</a> build on his idea.</p></div></details>
 <details class="acc"><summary>Is an LLM wiki better than RAG?</summary><div class="acc-body"><p>It depends on the job. An LLM wiki suits knowledge you add to over time and want to read and correct: the synthesis is done once, at ingest. RAG adds a document more cheaply, mainly by computing embeddings. The CROW paper has not yet compared CROW with embeddings and a cross-encoder, and says so.</p></div></details>
-<details class="acc"><summary>Do I need to write code to build an LLM wiki?</summary><div class="acc-body"><p>No. Crow is a desktop app: pick folders, connect OpenRouter and start, with no terminal. <a href="/llmwiki2/">llmwiki2</a> takes two terminal commands, then works from a web page. By hand, a coding agent following Karpathy's idea file writes whatever small tools the wiki needs.</p></div></details>
+<details class="acc"><summary>Do I need to write code to build an LLM wiki?</summary><div class="acc-body"><p>No. Crow is a desktop app: pick folders, connect OpenRouter or choose local models, and start, with no terminal. <a href="/llmwiki2/">llmwiki2</a> takes two terminal commands, then works from a web page. By hand, a coding agent following Karpathy's idea file writes whatever small tools the wiki needs.</p></div></details>
 <details class="acc"><summary>Can my AI agents use an LLM wiki as memory?</summary><div class="acc-body"><p>Yes. In Crow, Connect AI apps links the Claude and ChatGPT desktop apps, Claude Code and Codex through MCP: they can ask the wiki (<code>recall</code>), read a note (<code>read_note</code>) and keep what they learn (<code>remember</code>). llmwiki2 offers the same memory to Claude Code, Codex or any MCP client with <code>pip install 'llmwiki2[mcp]'</code>.</p></div></details>
-<details class="acc"><summary>Is Crow free?</summary><div class="acc-body"><p>Yes. Crow is free and open source under the GNU AGPL v3.0 or later, as is llm-wiki-v2. You pay OpenRouter for the models it uses, through your own account; Crow estimates the cost first and stops at your spending limit, $10 unless you change it. <a href="/#download">Download Crow</a>.</p></div></details>
-<details class="acc"><summary>Does an LLM wiki work offline or with local models?</summary><div class="acc-body"><p>Crow needs an internet connection: it works through OpenRouter, and local models are not supported in the app yet. The llmwiki2 engine can run its LLM locally with Ollama or any OpenAI-compatible server. Its CROW classifier is remote by default; to keep it local too, point it at a System One server on your machine, such as Ollama 0.35 or later or Laya.</p></div></details>
+<details class="acc"><summary>Is Crow free?</summary><div class="acc-body"><p>Yes. Crow is free and open source under the GNU AGPL v3.0 or later, as is llm-wiki-v2. With local models nothing else is paid. With OpenRouter you pay it for the models Crow uses, through your own account; Crow estimates the cost first and stops at your spending limit, $10 unless you change it. <a href="/#download">Download Crow</a>.</p></div></details>
+<details class="acc"><summary>Does an LLM wiki work offline or with local models?</summary><div class="acc-body"><p>Yes. Since Crow 1.0, choose <strong>On this computer</strong> on the Connect screen: one button downloads Crow's local models (Ollama and three small open models, 2.6 to 4 GB depending on the system), and after the download Crow needs no internet connection, no account and no payment. Local models are in beta, and their notes are plainer than a cloud model's. The llmwiki2 engine can run its LLM locally with Ollama or any OpenAI-compatible server. Its CROW classifier is remote by default; to keep it local too, point it at a System One server on your machine, such as Ollama 0.35 or later or Laya.</p></div></details>
         </div>
       </section>
       <section class="article-sources" aria-labelledby="sources-h">
         <h2 id="sources-h">Sources</h2>
-        <ul><li><a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">Andrej Karpathy, LLM Wiki (GitHub gist, created 4 April 2026)</a></li><li><a href="https://doi.org/10.5281/zenodo.23260209">F. Cesarini, M. Sassarini, CROW: Classifier-Routed Organization of LLM Wikis, version 1.0, Zenodo, 2026</a></li><li><a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/README.md">crow-hq/llm-wiki-v2, README at v1.0.0</a></li><li><a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/wiki/crow.md">llm-wiki-v2, CROW mode (docs/wiki/crow.md at v1.0.0)</a></li><li><a href="https://github.com/crow-hq/llm-wiki-v2/releases/tag/v1.0.0">llm-wiki-v2 1.0.0 release notes</a></li><li><a href="https://pypi.org/project/llmwiki2/">llmwiki2 on PyPI</a></li><li><a href="https://github.com/crow-hq/crow-desktop">crow-hq/crow-desktop, README (Crow 0.1.5)</a></li></ul>
+        <ul><li><a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">Andrej Karpathy, LLM Wiki (GitHub gist, created 4 April 2026)</a></li><li><a href="https://doi.org/10.5281/zenodo.23260209">F. Cesarini, M. Sassarini, CROW: Classifier-Routed Organization of LLM Wikis, version 1.0, Zenodo, 2026</a></li><li><a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/README.md">crow-hq/llm-wiki-v2, README at v1.0.0</a></li><li><a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/wiki/crow.md">llm-wiki-v2, CROW mode (docs/wiki/crow.md at v1.0.0)</a></li><li><a href="https://github.com/crow-hq/llm-wiki-v2/releases/tag/v1.0.0">llm-wiki-v2 1.0.0 release notes</a></li><li><a href="https://pypi.org/project/llmwiki2/">llmwiki2 on PyPI</a></li><li><a href="https://github.com/crow-hq/crow-desktop">crow-hq/crow-desktop, README (Crow 1.0.1)</a></li></ul>
       </section>
       <nav class="article-next links" aria-label="Keep reading"><a class="link-card" href="/llmwiki2/"><b>llmwiki2, the engine</b><span>The Python library, command line and MCP memory</span></a><a class="link-card" href="/paper/"><b>The CROW paper</b><span>Classifier-Routed Organization of LLM Wikis</span></a><a class="link-card" href="/#brain"><b>Explore a brain</b><span>An example wiki drawn by Crow's own code</span></a></nav>
     </article>

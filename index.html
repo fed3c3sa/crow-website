@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-crow-version="0.1.5">
+<html lang="en" data-crow-version="1.0.1">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -104,9 +104,9 @@
       "disambiguatingDescription": "Crow is a free, open-source desktop app that builds an LLM wiki from your own documents. It is not a language model and not a model API.",
       "applicationCategory": "ProductivityApplication",
       "operatingSystem": "macOS, Windows, Linux",
-      "softwareVersion": "0.1.5",
+      "softwareVersion": "1.0.1",
       "datePublished": "2026-10-16",
-      "dateModified": "2026-11-04",
+      "dateModified": "2026-11-14",
       "license": "https://www.gnu.org/licenses/agpl-3.0.html",
       "isAccessibleForFree": true,
       "offers": {
@@ -145,8 +145,8 @@
       "codeRepository": "https://github.com/crow-hq/llm-wiki-v2",
       "programmingLanguage": "Python",
       "runtimePlatform": "Python 3.11 or later",
-      "version": "1.0.0",
-      "dateModified": "2026-11-10",
+      "version": "1.0.2",
+      "dateModified": "2026-11-13",
       "license": "https://www.gnu.org/licenses/agpl-3.0.html",
       "sameAs": [
         "https://github.com/crow-hq/llm-wiki-v2",
@@ -218,7 +218,7 @@
       "mainEntity": {
         "@id": "https://crowllmwiki.com/#crow"
       },
-      "dateModified": "2026-11-13",
+      "dateModified": "2026-11-14",
       "inLanguage": "en",
       "primaryImageOfPage": "https://crowllmwiki.com/assets/img/og.jpg",
       "video": {
@@ -289,7 +289,7 @@
           "name": "Does Crow change, move or upload my files?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It never changes or moves them: Crow reads the folders you choose and keeps a copy of each document's text inside the wiki. Deleting a note, or resetting Crow, never touches your documents. To file a document, its text goes to the model you chose through OpenRouter (see Privacy, under Download)."
+            "text": "It never changes or moves them: Crow reads the folders you choose and keeps a copy of each document's text inside the wiki. Deleting a note, or resetting Crow, never touches your documents. To file a document, its text goes to the model you chose through OpenRouter, or to no one with local models (see Privacy, under Download)."
           }
         },
         {
@@ -297,7 +297,7 @@
           "name": "Which AI models can I use? Can I run it offline or with Ollama?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Gemini 3.8 Flash (the default), Claude Sonnet 5.5, DeepSeek V4.1 Flash, or any other model on OpenRouter, under Advanced settings; a small classifier model, Jev, decides where each document goes. Crow works through OpenRouter, so it needs an internet connection; local models are not supported in the app yet. The llm-wiki-v2 engine runs with Ollama from the command line."
+            "text": "On OpenRouter: DeepSeek V4.1 Flash (the default since Crow 1.0.1), Gemini 3.8 Flash, Claude Sonnet 5.5, or any other model, under Advanced settings; a small classifier model, Jev, decides where each document goes. Offline, since Crow 1.0: choose On this computer on the Connect screen. One button downloads Crow's local model package (Ollama and three small open models: LFM3 1.7B, Tev1 0.8B and EmbeddingGemma 2; 2.6 to 4 GB depending on the system) into Crow's own folder; you install and configure nothing, and a copy of Ollama you already run is left alone. After the download Crow needs no internet connection, no account and no payment. It runs on any Mac, Windows or Linux computer: fast on Apple silicon or with a graphics card, slower on the processor alone. Local models are in beta: the notes are plainer than a cloud model's, so Crow first asks a few questions and creates the wiki's first folders from your answers."
           }
         },
         {
@@ -313,7 +313,7 @@
           "name": "How is Crow different from NotebookLM?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "NotebookLM works on the sources you upload to it, notebook by notebook, in Google's cloud. Crow finds the documents on your computer by itself and writes one wiki of Markdown files that stays on your computer, which you can read, edit and keep, with the models you choose through OpenRouter."
+            "text": "NotebookLM works on the sources you upload to it, notebook by notebook, in Google's cloud. Crow finds the documents on your computer by itself and writes one wiki of Markdown files that stays on your computer, which you can read, edit and keep, with the models you choose through OpenRouter, or with local models and no cloud at all."
           }
         },
         {
@@ -375,7 +375,7 @@
       <a class="gh" href="https://github.com/crow-hq/llm-wiki-v2" aria-label="llm-wiki-v2 on GitHub, stars">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
         <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.94 5.96 6.58.96-4.76 4.64 1.12 6.55L12 17.52l-5.88 3.09 1.12-6.55L2.48 9.42l6.58-.96Z"/></svg>
-        <span data-stars>256</span>
+        <span data-stars>274</span>
       </a>
       <a class="btn btn-cta" href="#download">Download</a>
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">
@@ -391,22 +391,22 @@
 <section class="hero" id="top">
   <canvas class="hero-field" aria-hidden="true"></canvas>
   <div class="hero-inner">
-    <a class="badge" href="#ai-apps"><b>Crow <span data-crow-version>0.1.5</span></b> Connect Claude, ChatGPT and Codex to your wiki</a>
+    <a class="badge" href="#offline"><b>Crow <span data-crow-version>1.0.1</span></b> Runs offline, for free, with local models (beta)</a>
     <img class="crow-mark" src="assets/img/crow-mark.png" width="92" height="66" alt="Crow, a pixel-art crow">
     <h1>Build your second brain<br>in minutes</h1>
     <p class="lead">Turn your documents into a living wiki you can chat with.</p>
     <div class="hero-cta">
-      <a class="btn btn-cta btn-lg" href="https://github.com/crow-hq/crow-desktop/releases/download/v0.1.5/Crow_0.1.5_aarch64.dmg" data-dl="mac-arm" data-dl-primary>
+      <a class="btn btn-cta btn-lg" href="https://github.com/crow-hq/crow-desktop/releases/download/v1.0.1/Crow_1.0.1_aarch64.dmg" data-dl="mac-arm" data-dl-primary>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3"/><path d="m7 10 5 5 5-5"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/></svg>
         <span data-dl-label>Download for macOS</span>
       </a>
       <a class="btn btn-outline btn-gh" href="https://github.com/crow-hq/llm-wiki-v2">
         <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
         <span>llm-wiki-v2 on GitHub</span>
-        <span class="gh-stars"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.94 5.96 6.58.96-4.76 4.64 1.12 6.55L12 17.52l-5.88 3.09 1.12-6.55L2.48 9.42l6.58-.96Z"/></svg><span data-stars>256</span></span>
+        <span class="gh-stars"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.94 5.96 6.58.96-4.76 4.64 1.12 6.55L12 17.52l-5.88 3.09 1.12-6.55L2.48 9.42l6.58-.96Z"/></svg><span data-stars>274</span></span>
       </a>
     </div>
-    <p class="dl-note"><span data-dl-note>Apple silicon</span> · Crow <span data-crow-version>0.1.5</span> · free and open source · <a href="#download">macOS, Windows and Linux</a></p>
+    <p class="dl-note"><span data-dl-note>Apple silicon</span> · Crow <span data-crow-version>1.0.1</span> · free and open source · <a href="#download">macOS, Windows and Linux</a></p>
     <p class="byline">Made by <a href="#team">Federico Cesarini</a> and <a href="#team">Marco Sassarini</a></p>
   </div>
 </section>
@@ -518,12 +518,12 @@
       <article class="tile reveal" style="--c: var(--area-2)">
         <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg></div>
         <h3>Files them into a wiki that organizes itself</h3>
-        <p>Each document becomes a note in a folder about its subject. A new document on a subject updates the note already there instead of adding a copy, and a folder that grows is split into subfolders. Filing goes oldest first, so the newest facts win; files already filed, and duplicates, cost nothing again.</p>
+        <p>Each document becomes a note in a folder about its subject. A new document on a subject updates the note already there instead of adding a copy, and a folder that grows is split into subfolders. Filing goes oldest first, so the newest facts win; files already filed, and duplicates, cost nothing again. You can also move notes and folders yourself, right in the brain; when a note fits no folder, Crow asks you where it goes.</p>
       </article>
       <article class="tile reveal" style="--c: var(--area-4)">
         <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></div>
         <h3>Lets you chat with your documents, with sources</h3>
-        <p>Answers cite the notes they come from, and those notes light up in the brain, the graph of everything you filed. Follow-up questions are understood in context.</p>
+        <p>Answers appear as they are written, with the notes they come from listed under them, and those notes light up in the brain, the graph of everything you filed. Follow-up questions are understood in context. Crow speaks English and Italian, and answers in the language of the question.</p>
       </article>
       <article class="tile reveal" style="--c: var(--area-5)">
         <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M12 5v13"/></svg></div>
@@ -535,10 +535,10 @@
         <h3>Keeps it in plain Markdown you own</h3>
         <p>The wiki is a folder of Markdown files on your computer, in Google's <a href="https://github.com/GoogleCloudPlatform/open-knowledge-format">Open Knowledge Format</a>: open it in Obsidian or any editor, back it up, keep it in git. Your documents are never changed or moved.</p>
       </article>
-      <article class="tile reveal" style="--c: var(--area-8)">
+      <article class="tile reveal" id="offline" style="--c: var(--area-8)">
         <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></svg></div>
-        <h3>Works with any model, within a spending limit</h3>
-        <p>Gemini, Claude, DeepSeek or any model on <a href="https://openrouter.ai">OpenRouter</a>, through your own account. Crow pauses at your spending limit and continues where it stopped after a restart.</p>
+        <h3>Works with any model, or offline</h3>
+        <p>DeepSeek, Gemini, Claude or any model on <a href="https://openrouter.ai">OpenRouter</a>, through your own account: Crow pauses at your spending limit and continues where it stopped after a restart. Or choose <b>On this computer</b> (beta): one button downloads Crow's local models, with no account and nothing to configure, and no document or question leaves your computer.</p>
       </article>
       <article class="tile tile-wide reveal" style="--c: var(--crow)">
         <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></svg></div>
@@ -548,7 +548,7 @@
       <article class="tile reveal" style="--c: var(--area-7)">
         <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4"/><path d="m16.2 7.8 2.9-2.9"/><path d="M18 12h4"/><path d="m16.2 16.2 2.9 2.9"/><path d="M12 18v4"/><path d="m4.9 19.1 2.9-2.9"/><path d="M2 12h4"/><path d="m4.9 4.9 2.9 2.9"/></svg></div>
         <h3>Free, and open source</h3>
-        <p>Crow is free under the GNU AGPL v3.0 or later. You pay OpenRouter for the models it uses, and Crow estimates that cost before it starts.</p>
+        <p>Crow is free under the GNU AGPL v3.0 or later. With local models nothing else is paid; with OpenRouter you pay it for the models Crow uses, and Crow estimates that cost before it starts.</p>
       </article>
     </div>
     <p class="formats reveal">Crow reads PDF, Word (<code>.docx</code>), PowerPoint (<code>.pptx</code>), Excel (<code>.xlsx</code>), CSV, OpenDocument text and spreadsheets (<code>.odt</code>, <code>.ods</code>), Markdown and plain text; a spreadsheet becomes a note per sheet. Scanned PDFs without a text layer are skipped: Crow does no OCR yet.</p>
@@ -646,7 +646,7 @@ crow.exe mcp
 <span class="c"># Linux: crow mcp, or your AppImage's path then mcp</span>
 crow mcp</pre>
         </div>
-        <p class="fine" style="margin-top:12px">What a connected app recalls goes to that app's provider (Anthropic or OpenAI) as part of your conversation, under that app's terms. What it asks Crow, and asks it to remember, goes to your OpenRouter model, at the same prices as your own questions.</p>
+        <p class="fine" style="margin-top:12px">What a connected app recalls goes to that app's provider (Anthropic or OpenAI) as part of your conversation, under that app's terms. What it asks Crow, and asks it to remember, goes to the models Crow uses: your OpenRouter model, at the same prices as your own questions, or the local ones.</p>
       </div>
     </div>
     <figure class="shot reveal" style="margin-top:44px">
@@ -740,8 +740,8 @@ crow mcp</pre>
   <div class="wrap">
     <div class="head reveal">
       <span class="eyebrow" style="--dot: var(--ok)">Download</span>
-      <h2>Download Crow <span data-crow-version>0.1.5</span></h2>
-      <p>Released <span data-crow-date>4 November 2026</span>, for macOS, Windows and Linux. Crow is free; you pay <a href="https://openrouter.ai">OpenRouter</a> for the models it uses.</p>
+      <h2>Download Crow <span data-crow-version>1.0.1</span></h2>
+      <p>Released <span data-crow-date>14 November 2026</span>, for macOS, Windows and Linux. Crow is free; with local models nothing else is paid, and with <a href="https://openrouter.ai">OpenRouter</a> you pay it for the models Crow uses.</p>
     </div>
     <div class="dl-grid dl-table">
       <div class="dl-card reveal" data-os="mac">
@@ -749,13 +749,13 @@ crow mcp</pre>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.56c-.02-2.24 1.83-3.32 1.91-3.37-1.04-1.52-2.66-1.73-3.24-1.75-1.38-.14-2.69.81-3.39.81-.7 0-1.78-.79-2.93-.77-1.5.02-2.89.88-3.67 2.22-1.56 2.71-.4 6.73 1.12 8.93.74 1.08 1.63 2.29 2.79 2.25 1.12-.05 1.54-.72 2.9-.72 1.35 0 1.73.72 2.92.7 1.2-.02 1.97-1.1 2.71-2.18.85-1.25 1.2-2.46 1.22-2.52-.03-.01-2.33-.9-2.35-3.56ZM14.15 5.98c.62-.75 1.03-1.78.92-2.82-.89.04-1.97.59-2.6 1.34-.57.66-1.07 1.72-.94 2.73.99.08 2.01-.5 2.62-1.25Z"/></svg>
           <h3>macOS</h3><span class="mine">This computer</span>
         </div>
-        <a class="dl" href="https://github.com/crow-hq/crow-desktop/releases/download/v0.1.5/Crow_0.1.5_aarch64.dmg" data-dl="mac-arm">
-          <span class="dl-text"><span class="dl-for">Apple silicon (M1 and later)</span><span class="dl-file" data-dl-file>Crow_0.1.5_aarch64.dmg</span></span>
-          <span class="dl-size" data-dl-size>30 MB</span><span class="dl-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></span>
+        <a class="dl" href="https://github.com/crow-hq/crow-desktop/releases/download/v1.0.1/Crow_1.0.1_aarch64.dmg" data-dl="mac-arm">
+          <span class="dl-text"><span class="dl-for">Apple silicon (M1 and later)</span><span class="dl-file" data-dl-file>Crow_1.0.1_aarch64.dmg</span></span>
+          <span class="dl-size" data-dl-size>31 MB</span><span class="dl-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></span>
         </a>
-        <a class="dl" href="https://github.com/crow-hq/crow-desktop/releases/download/v0.1.5/Crow_0.1.5_x64.dmg" data-dl="mac-intel">
-          <span class="dl-text"><span class="dl-for">Intel</span><span class="dl-file" data-dl-file>Crow_0.1.5_x64.dmg</span></span>
-          <span class="dl-size" data-dl-size>32 MB</span><span class="dl-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></span>
+        <a class="dl" href="https://github.com/crow-hq/crow-desktop/releases/download/v1.0.1/Crow_1.0.1_x64.dmg" data-dl="mac-intel">
+          <span class="dl-text"><span class="dl-for">Intel</span><span class="dl-file" data-dl-file>Crow_1.0.1_x64.dmg</span></span>
+          <span class="dl-size" data-dl-size>33 MB</span><span class="dl-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></span>
         </a>
       </div>
       <div class="dl-card reveal" data-os="win">
@@ -763,13 +763,13 @@ crow mcp</pre>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.1 10.4 4v7.1H3Zm8.3-1.2L21 2.5v8.6h-9.7ZM3 12.9h7.4V20L3 18.9Zm8.3 0H21v8.6l-9.7-1.4Z"/></svg>
           <h3>Windows</h3><span class="mine">This computer</span>
         </div>
-        <a class="dl" href="https://github.com/crow-hq/crow-desktop/releases/download/v0.1.5/Crow_0.1.5_x64-setup.exe" data-dl="win-exe">
-          <span class="dl-text"><span class="dl-for">Installer (.exe)</span><span class="dl-file" data-dl-file>Crow_0.1.5_x64-setup.exe</span></span>
-          <span class="dl-size" data-dl-size>30 MB</span><span class="dl-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></span>
+        <a class="dl" href="https://github.com/crow-hq/crow-desktop/releases/download/v1.0.1/Crow_1.0.1_x64-setup.exe" data-dl="win-exe">
+          <span class="dl-text"><span class="dl-for">Installer (.exe)</span><span class="dl-file" data-dl-file>Crow_1.0.1_x64-setup.exe</span></span>
+          <span class="dl-size" data-dl-size>31 MB</span><span class="dl-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></span>
         </a>
-        <a class="dl" href="https://github.com/crow-hq/crow-desktop/releases/download/v0.1.5/Crow_0.1.5_x64_en-US.msi" data-dl="win-msi">
-          <span class="dl-text"><span class="dl-for">Installer for IT (.msi)</span><span class="dl-file" data-dl-file>Crow_0.1.5_x64_en-US.msi</span></span>
-          <span class="dl-size" data-dl-size>32 MB</span><span class="dl-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></span>
+        <a class="dl" href="https://github.com/crow-hq/crow-desktop/releases/download/v1.0.1/Crow_1.0.1_x64_en-US.msi" data-dl="win-msi">
+          <span class="dl-text"><span class="dl-for">Installer for IT (.msi)</span><span class="dl-file" data-dl-file>Crow_1.0.1_x64_en-US.msi</span></span>
+          <span class="dl-size" data-dl-size>33 MB</span><span class="dl-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></span>
         </a>
       </div>
       <div class="dl-card reveal" data-os="linux">
@@ -777,22 +777,22 @@ crow mcp</pre>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 17 6-6-6-6"/><path d="M12 19h8"/></svg>
           <h3>Linux</h3><span class="mine">This computer</span>
         </div>
-        <a class="dl" href="https://github.com/crow-hq/crow-desktop/releases/download/v0.1.5/Crow_0.1.5_amd64.AppImage" data-dl="linux-appimage">
-          <span class="dl-text"><span class="dl-for">AppImage, any distribution</span><span class="dl-file" data-dl-file>Crow_0.1.5_amd64.AppImage</span></span>
-          <span class="dl-size" data-dl-size>113 MB</span><span class="dl-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></span>
+        <a class="dl" href="https://github.com/crow-hq/crow-desktop/releases/download/v1.0.1/Crow_1.0.1_amd64.AppImage" data-dl="linux-appimage">
+          <span class="dl-text"><span class="dl-for">AppImage, any distribution</span><span class="dl-file" data-dl-file>Crow_1.0.1_amd64.AppImage</span></span>
+          <span class="dl-size" data-dl-size>119 MB</span><span class="dl-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></span>
         </a>
-        <a class="dl" href="https://github.com/crow-hq/crow-desktop/releases/download/v0.1.5/Crow_0.1.5_amd64.deb" data-dl="linux-deb">
-          <span class="dl-text"><span class="dl-for">Debian, Ubuntu (.deb)</span><span class="dl-file" data-dl-file>Crow_0.1.5_amd64.deb</span></span>
-          <span class="dl-size" data-dl-size>35 MB</span><span class="dl-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></span>
+        <a class="dl" href="https://github.com/crow-hq/crow-desktop/releases/download/v1.0.1/Crow_1.0.1_amd64.deb" data-dl="linux-deb">
+          <span class="dl-text"><span class="dl-for">Debian, Ubuntu (.deb)</span><span class="dl-file" data-dl-file>Crow_1.0.1_amd64.deb</span></span>
+          <span class="dl-size" data-dl-size>41 MB</span><span class="dl-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></span>
         </a>
-        <a class="dl" href="https://github.com/crow-hq/crow-desktop/releases/download/v0.1.5/Crow-0.1.5-1.x86_64.rpm" data-dl="linux-rpm">
-          <span class="dl-text"><span class="dl-for">Fedora, openSUSE (.rpm)</span><span class="dl-file" data-dl-file>Crow-0.1.5-1.x86_64.rpm</span></span>
-          <span class="dl-size" data-dl-size>35 MB</span><span class="dl-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></span>
+        <a class="dl" href="https://github.com/crow-hq/crow-desktop/releases/download/v1.0.1/Crow-1.0.1-1.x86_64.rpm" data-dl="linux-rpm">
+          <span class="dl-text"><span class="dl-for">Fedora, openSUSE (.rpm)</span><span class="dl-file" data-dl-file>Crow-1.0.1-1.x86_64.rpm</span></span>
+          <span class="dl-size" data-dl-size>41 MB</span><span class="dl-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></span>
         </a>
       </div>
     </div>
     <div class="dl-meta reveal">
-      <a href="https://github.com/crow-hq/crow-desktop/releases/tag/v0.1.5" data-release-page>Every file of this version</a>
+      <a href="https://github.com/crow-hq/crow-desktop/releases/tag/v1.0.1" data-release-page>Every file of this version</a>
       <a href="https://github.com/crow-hq/crow-desktop/releases">Older versions</a>
       <a href="https://github.com/crow-hq/crow-desktop">crow-hq/crow-desktop on GitHub</a>
       <span>Crow updates itself from these releases: Settings → About → Check for updates.</span>
@@ -844,7 +844,7 @@ crow mcp</pre>
     <h3 class="reveal" style="margin:64px 0 20px;font-size:24px;font-weight:450;letter-spacing:-0.015em">Start</h3>
     <ol class="steps">
       <li class="reveal"><b>Pick the folders Crow should read,</b> or single files.</li>
-      <li class="reveal">Press <b>Connect</b>: <a href="https://openrouter.ai">OpenRouter</a> opens in your browser. Sign in (or make an account), press <b>Authorize</b>, and Crow gets a key of its own on your account, which you can give a credit limit or an expiry.</li>
+      <li class="reveal">Press <b>Connect</b>: <a href="https://openrouter.ai">OpenRouter</a> opens in your browser. Sign in (or make an account), press <b>Authorize</b>, and Crow gets a key of its own on your account, which you can give a credit limit or an expiry. Or choose <b>On this computer</b> (beta): one button downloads Crow's local models, and nothing is paid.</li>
       <li class="reveal"><b>Choose a model, check the cost, and start.</b> You can chat with the wiki while it grows.</li>
     </ol>
     <p class="fine reveal" style="margin-top:14px">Already have an OpenRouter key? Crow also reads <code>OPENROUTER_API_KEY</code> from the environment, or from a <code>.env</code> file.</p>
@@ -852,11 +852,11 @@ crow mcp</pre>
     <div class="grid grid-2" style="margin-top:48px">
       <div class="tile reveal">
         <h3>What it costs</h3>
-        <p>Crow is free. You pay OpenRouter for the models it uses. Before filing starts, Crow estimates the cost from OpenRouter's current prices and the real size of each document you picked, and it stops on its own at your spending limit ($10 unless you change it). With the default model, a typical document costs a fraction of a cent; a library of thousands takes hours, so start with a folder or a recent date range and add more later.</p>
+        <p>Crow is free. With local models (choose <b>On this computer</b> on the Connect screen) nothing else is paid either. With OpenRouter, you pay OpenRouter for the models Crow uses. Before filing starts, Crow estimates the cost from OpenRouter's current prices and the real size of each document you picked, and it stops on its own at your spending limit ($10 unless you change it). With the default model, a typical document costs a fraction of a cent; a library of thousands takes hours, so start with a folder or a recent date range and add more later.</p>
       </div>
       <div class="tile reveal">
         <h3>Privacy</h3>
-        <p>Your wiki and your chats are stored only on your computer, but what the models read goes to OpenRouter, which passes it on to each model's provider: to file a document, its text, its name, where it is on your computer and the notes it may join; to answer a question, the question, the notes the answer draws on and the chat's earlier messages. What they keep is up to <a href="https://openrouter.ai/privacy">OpenRouter's privacy policy</a> and each provider's own. Your <a href="https://openrouter.ai/settings/privacy">privacy settings on OpenRouter</a> let you turn away providers that train on prompts.</p>
+        <p>With local models, the documents, the notes and the questions stay on your computer: the models run there, and Crow goes online only to download them and to look for its own updates. With OpenRouter, your wiki and your chats are stored only on your computer, but what the models read goes to OpenRouter, which passes it on to each model's provider: to file a document, its text, its name, where it is on your computer and the notes it may join; to answer a question, the question, the notes the answer draws on and the chat's earlier messages. What they keep is up to <a href="https://openrouter.ai/privacy">OpenRouter's privacy policy</a> and each provider's own. Your <a href="https://openrouter.ai/settings/privacy">privacy settings on OpenRouter</a> let you turn away providers that train on prompts.</p>
       </div>
     </div>
   </div>
@@ -903,7 +903,7 @@ crow mcp</pre>
           <p>It is a Python library, a command line and a web page with the brain, and it can be the long-term memory of Claude Code, Codex or any MCP client. Every step of the ingest and ask flows is a function you can replace.</p>
         </div>
         <div class="links">
-          <a class="link-card" href="https://github.com/crow-hq/llm-wiki-v2"><b>crow-hq/llm-wiki-v2</b><span><span class="counter" data-stars>256</span> stars · <span class="counter" data-forks>41</span> forks on GitHub</span></a>
+          <a class="link-card" href="https://github.com/crow-hq/llm-wiki-v2"><b>crow-hq/llm-wiki-v2</b><span><span class="counter" data-stars>274</span> stars · <span class="counter" data-forks>44</span> forks on GitHub</span></a>
           <a class="link-card" href="https://pypi.org/project/llmwiki2/"><b>llmwiki2 on PyPI</b><span>Version <span data-pypi-version>1.0.0</span> · Python 3.11 or later</span></a>
           <a class="link-card" href="/llmwiki2/"><b>llmwiki2, explained</b><span>Install, library, MCP memory, CROW mode</span></a>
           <a class="link-card" href="https://github.com/crow-hq/llm-wiki-v2/blob/main/docs/library/index.md"><b>Library guide</b><span><code>from llmw2 import Wiki</code></span></a>
@@ -1012,8 +1012,8 @@ print(answer.text, answer.citations)</pre>
     </div>
     <div class="numbers">
       <div class="number reveal"><b>140,458</b><span>impressions on the launch post on LinkedIn</span></div>
-      <div class="number reveal"><b>250+</b><span>stars on GitHub, <span class="counter" data-stars>256</span> today</span></div>
-      <div class="number reveal"><b>40+</b><span>forks, <span class="counter" data-forks>41</span> today</span></div>
+      <div class="number reveal"><b>250+</b><span>stars on GitHub, <span class="counter" data-stars>274</span> today</span></div>
+      <div class="number reveal"><b>40+</b><span>forks, <span class="counter" data-forks>44</span> today</span></div>
       <div class="number reveal"><b>~3,000</b><span>downloads from PyPI, 661 in the last week</span></div>
       <div class="number reveal"><b>~3,000</b><span>views of the paper on Zenodo</span></div>
     </div>
@@ -1022,6 +1022,8 @@ print(answer.text, answer.citations)</pre>
       <div>
         <h3 class="reveal" style="font-size:22px;font-weight:450;margin-bottom:24px">Timeline</h3>
         <ol class="timeline">
+          <li class="reveal" style="--dot: var(--crow)"><time datetime="2026-11-14">14 November 2026</time><h4>Crow 1.0.1</h4><p>Answers appear as they are written, with the notes they come from under them, and Crow speaks English and Italian. With local models, a question asked during filing is answered right away and a document takes about a third less time. On llmwiki2 1.0.2, which answers in the language of the question with small local models.</p></li>
+          <li class="reveal" style="--dot: var(--area-1)"><time datetime="2026-11-12">12 November 2026</time><h4>Crow 1.0.0 and llmwiki2 1.0.1: local models</h4><p>Crow runs fully offline, for free (beta): one button downloads Ollama and three small open models into Crow's own folder, and no document or question leaves the computer. Notes and folders can be moved by hand, in the brain. llmwiki2 1.0.1 is the memory of Claude Code and Codex from the terminal alone.</p></li>
           <li class="reveal" style="--dot: var(--area-5)"><time datetime="2026-11-10">10 November 2026</time><h4>llmwiki2 1.0.0: the first stable release</h4><p>From here on the library follows semantic versioning, and a wiki written by 0.8.0 opens as it is. In CROW mode, a question finds its notes with the wiki's search and one classifier call. <a href="/llmwiki2/">More on llmwiki2</a></p></li>
           <li class="reveal" style="--dot: var(--crow)"><time datetime="2026-11-04">4 November 2026</time><h4>Crow 0.1.5</h4><p>On llmwiki2 0.8.0: at most 10 top-level folders, a note you edit while Crow is filing is never overwritten, and filing slows down far less as the wiki grows.</p></li>
           <li class="reveal" style="--dot: var(--area-4)"><time datetime="2026-11-03">3 November 2026</time><h4>llmwiki2 0.8.0</h4><p>Wikis of thousands of documents built from empty: top-level areas you decide, costs estimated and capped, steady speed as it grows, and nothing lost if a run stops halfway.</p></li>
@@ -1117,10 +1119,10 @@ print(answer.text, answer.citations)</pre>
       <details class="acc reveal"><summary>What is an LLM wiki?</summary><div class="acc-body"><p>An LLM wiki is a set of Markdown pages that a language model writes and keeps up to date from your sources, an idea Andrej Karpathy <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">described</a> in 2026. Instead of searching your documents again at every question, the model reads each source once and files what it says. Crow is a desktop app that builds one from your files and keeps it organized as it grows to thousands of documents. More in <a href="/llm-wiki/">what an LLM wiki is, and how it differs from RAG</a>.</p></div></details>
       <details class="acc reveal"><summary>How do I chat with thousands of PDFs and documents on my computer?</summary><div class="acc-body"><p>Install Crow, tick the folders that hold them, and start: Crow files them into the wiki, oldest first, and you can ask questions while it works. Each answer names the notes it used, so you can open them and check.</p></div></details>
       <details class="acc reveal"><summary>Can I use it with Obsidian?</summary><div class="acc-body"><p>Yes. The wiki is a folder of Markdown files with relative links and an <code>index.md</code> in every folder, so Obsidian opens it as a vault, graph view included. Settings → Library → <b>Show in Finder/Explorer</b> shows where it is. Crow doesn't need Obsidian.</p></div></details>
-      <details class="acc reveal"><summary>Does Crow change, move or upload my files?</summary><div class="acc-body"><p>It never changes or moves them: Crow reads the folders you choose and keeps a copy of each document's text inside the wiki. Deleting a note, or resetting Crow, never touches your documents. To file a document, its text goes to the model you chose through OpenRouter (see Privacy, under <a href="#download">Download</a>).</p></div></details>
-      <details class="acc reveal"><summary>Which AI models can I use? Can I run it offline or with Ollama?</summary><div class="acc-body"><p>Gemini 3.8 Flash (the default), Claude Sonnet 5.5, DeepSeek V4.1 Flash, or any other model on OpenRouter, under Advanced settings; a small classifier model, Jev, decides where each document goes. Crow works through OpenRouter, so it needs an internet connection; local models are not supported in the app yet. The <a href="#engine">llm-wiki-v2</a> engine runs with Ollama from the command line.</p></div></details>
+      <details class="acc reveal"><summary>Does Crow change, move or upload my files?</summary><div class="acc-body"><p>It never changes or moves them: Crow reads the folders you choose and keeps a copy of each document's text inside the wiki. Deleting a note, or resetting Crow, never touches your documents. To file a document, its text goes to the model you chose through OpenRouter, or to no one with local models (see Privacy, under <a href="#download">Download</a>).</p></div></details>
+      <details class="acc reveal"><summary>Which AI models can I use? Can I run it offline or with Ollama?</summary><div class="acc-body"><p>On OpenRouter: DeepSeek V4.1 Flash (the default since Crow 1.0.1), Gemini 3.8 Flash, Claude Sonnet 5.5, or any other model, under Advanced settings; a small classifier model, Jev, decides where each document goes.</p><p>Offline, since Crow 1.0: choose <b>On this computer</b> on the Connect screen. One button downloads Crow's local model package (Ollama and three small open models: LFM3 1.7B, Tev1 0.8B and EmbeddingGemma 2; 2.6 to 4 GB depending on the system) into Crow's own folder; you install and configure nothing, and a copy of Ollama you already run is left alone. After the download Crow needs no internet connection, no account and no payment. It runs on any Mac, Windows or Linux computer: fast on Apple silicon or with a graphics card, slower on the processor alone. Local models are in beta: the notes are plainer than a cloud model's, so Crow first asks a few questions and creates the wiki's first folders from your answers.</p></div></details>
       <details class="acc reveal"><summary>Can my AI agents use the wiki as memory?</summary><div class="acc-body"><p>Yes: <b>Connect AI apps</b>, in Crow's sidebar, connects Claude, Claude Code, ChatGPT and Codex in one click each (see <a href="#ai-apps">AI apps</a>). Any other MCP client (Cursor, VS Code…) can run the same local (stdio) server: Crow's own executable with the argument <code>mcp</code>. The wiki is also plain Markdown with an index in every folder, so an agent that reads files can use it directly.</p></div></details>
-      <details class="acc reveal"><summary>How is Crow different from NotebookLM?</summary><div class="acc-body"><p>NotebookLM works on the sources you upload to it, notebook by notebook, in Google's cloud. Crow finds the documents on your computer by itself and writes one wiki of Markdown files that stays on your computer, which you can read, edit and keep, with the models you choose through OpenRouter.</p></div></details>
+      <details class="acc reveal"><summary>How is Crow different from NotebookLM?</summary><div class="acc-body"><p>NotebookLM works on the sources you upload to it, notebook by notebook, in Google's cloud. Crow finds the documents on your computer by itself and writes one wiki of Markdown files that stays on your computer, which you can read, edit and keep, with the models you choose through OpenRouter, or with local models and no cloud at all.</p></div></details>
       <details class="acc reveal"><summary>What is Jev?</summary><div class="acc-body"><p>A typed classifier by TypeSafe AI. Given a text, it answers typed questions (pick one of these options; is this statement true?) with probabilities instead of prose. CROW asks it every filing and retrieval decision and keeps the LLM for writing. CROW does not depend on it: any classifier that returns those probabilities can take its place. The authors have no ties to TypeSafe AI.</p></div></details>
       <details class="acc reveal"><summary>Why does my Mac or PC say Crow can't be verified?</summary><div class="acc-body"><p>Because Crow's installers are not signed with a paid Apple or Microsoft developer certificate yet. The warning is expected; <a href="#install-mac">Install Crow</a> shows how to open it.</p></div></details>
       <details class="acc reveal"><summary>Why AGPL?</summary><div class="acc-body"><p>The AGPL keeps the code and every change to it open, also when it runs as a service. It is free to use, study, change and share, including for your own business; if you offer a modified version to others, over a network too, you share its source under the same licence. For llm-wiki-v2, commercial licences without that obligation are available from the authors: open an issue to ask.</p></div></details>
@@ -1137,7 +1139,7 @@ print(answer.text, answer.citations)</pre>
       <img class="crow-mark" src="assets/img/crow-mark.png" width="76" height="54" alt="">
       <h2>Turn your messy documents into knowledge your AI agents can use.</h2>
       <div class="hero-cta">
-        <a class="btn btn-cta btn-lg" href="https://github.com/crow-hq/crow-desktop/releases/download/v0.1.5/Crow_0.1.5_aarch64.dmg" data-dl="mac-arm" data-dl-primary>
+        <a class="btn btn-cta btn-lg" href="https://github.com/crow-hq/crow-desktop/releases/download/v1.0.1/Crow_1.0.1_aarch64.dmg" data-dl="mac-arm" data-dl-primary>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3"/><path d="m7 10 5 5 5-5"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/></svg>
           <span data-dl-label>Download for macOS</span>
         </a>

@@ -118,19 +118,59 @@ const mb = (bytes: number) => `${Math.round(bytes / 1_000_000)} MB`;
 type Asset = { name: string; size: number; browser_download_url: string };
 type Release = { tag_name: string; html_url: string; published_at: string; assets: Asset[] };
 
+const HOUR = 3_600_000;
+
+/** What GitHub's API says about `path`, kept in this browser for an hour (`keep` picks the fields worth keeping).
+ * Without a key GitHub answers 60 requests an hour per address, which an office or a mobile network shares: a page
+ * seen again asks nothing, and a refused request gives the last answer this browser got, however old. */
+async function github<T>(path: string, keep: (data: any) => T): Promise<T> {
+  const key = `crow-github:${path}`;
+  let kept: { at: number; data: T } | null = null;
+  try {
+    kept = JSON.parse(localStorage.getItem(key) ?? "null");
+  } catch {
+    /* nothing kept, or storage is off */
+  }
+  if (kept && Date.now() - kept.at < HOUR) return kept.data;
+  try {
+    const data = keep(await fetch(`https://api.github.com/${path}`).then((r) => (r.ok ? r.json() : Promise.reject(r.status))));
+    try {
+      localStorage.setItem(key, JSON.stringify({ at: Date.now(), data }));
+    } catch {
+      /* storage full or off: next time asks again */
+    }
+    return data;
+  } catch (e) {
+    if (kept) return kept.data;
+    throw e;
+  }
+}
+
+/** x.y.z as numbers, to tell which of two versions is newer. */
+const semver = (v: string) => v.split(".").map((n) => parseInt(n, 10) || 0);
+const newer = (a: string, b: string) => {
+  const [x, y] = [semver(a), semver(b)];
+  for (let i = 0; i < 3; i++) if ((x[i] ?? 0) !== (y[i] ?? 0)) return (x[i] ?? 0) > (y[i] ?? 0);
+  return false;
+};
+
 /** The latest release, from GitHub: newer than the one written in the page, its links replace those. */
 async function latestRelease() {
-  const shown = document.documentElement.dataset.crowVersion;
+  const shown = document.documentElement.dataset.crowVersion ?? "";
   let release: Release;
   try {
-    const cached = sessionStorage.getItem("crow-release");
-    release = cached ? JSON.parse(cached) : await fetch("https://api.github.com/repos/crow-hq/crow-desktop/releases/latest").then((r) => (r.ok ? r.json() : Promise.reject(r.status)));
-    if (!cached) sessionStorage.setItem("crow-release", JSON.stringify(release));
+    release = await github("repos/crow-hq/crow-desktop/releases/latest", (r): Release => ({
+      tag_name: r.tag_name,
+      html_url: r.html_url,
+      published_at: r.published_at,
+      assets: (r.assets ?? []).map((a: Asset) => ({ name: a.name, size: a.size, browser_download_url: a.browser_download_url })),
+    }));
   } catch {
     return; // the page's own links stay
   }
   const version = release.tag_name.replace(/^v/, "");
-  if (!release.assets?.length || version === shown) return;
+  // A release kept from before the page was last updated is older than the page's own links, which then stay.
+  if (!release.assets?.length || !newer(version, shown)) return;
   for (const [kind, pattern] of PATTERNS) {
     const asset = release.assets.find((a) => pattern.test(a.name));
     if (!asset) continue;
@@ -180,7 +220,7 @@ async function downloads() {
 // -- live numbers -------------------------------------------------------------------------------------------------
 async function stars() {
   try {
-    const repo = await fetch("https://api.github.com/repos/crow-hq/llm-wiki-v2").then((r) => (r.ok ? r.json() : Promise.reject()));
+    const repo = await github("repos/crow-hq/llm-wiki-v2", (r) => ({ stargazers_count: r.stargazers_count, forks_count: r.forks_count }));
     if (typeof repo.stargazers_count === "number")
       document.querySelectorAll("[data-stars]").forEach((n) => (n.textContent = repo.stargazers_count.toLocaleString("en")));
     if (typeof repo.forks_count === "number") document.querySelectorAll("[data-forks]").forEach((n) => (n.textContent = repo.forks_count.toLocaleString("en")));

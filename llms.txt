@@ -2,7 +2,7 @@
 
 > Crow is a free, open-source desktop app (macOS, Windows, Linux) that turns the documents on your computer into an LLM wiki you can chat with: Markdown notes filed by topic and linked to each other, answers that cite the notes they used, and a memory that Claude, Claude Code, ChatGPT and Codex can use through MCP. It runs the CROW architecture of the open-source llm-wiki-v2 engine (Python package llmwiki2). By Federico Cesarini and Marco Sassarini.
 
-- Crow works with any model on OpenRouter, through the user's own account; Crow itself is free (GNU AGPL v3.0 or later).
+- Crow works with any model on OpenRouter, through the user's own account, or, since Crow 1.0 (beta), with local models that run on the user's computer: one button downloads them, and after that Crow works offline, with no account and no payment. Crow itself is free (GNU AGPL v3.0 or later). The app speaks English and Italian.
 - CROW (Classifier-Routed Organization of LLM Wikis): a small typed classifier takes the filing and retrieval decisions (since llmwiki2 1.0.0, a question's notes come from the wiki's search and the classifier reorders them); the LLM writes the notes and answers, lays out the folders, and decides when the classifier fails. In the CROW paper's benchmark of 525 documents: right note read 89% vs 62% for the same pipeline with an LLM taking every decision, 2.1x faster ingest, 68% fewer LLM tokens (the authors' own measurements, on a private corpus).
 - The wiki is plain Markdown in a format derived from Google's Open Knowledge Format; Obsidian opens it as a vault.
 - Crow is not affiliated with CrowLLM (crowllm.com), an AI API gateway with a similar name. llm-wiki-v2 (crow-hq) is also a different project from the "LLM Wiki v2" gist by rohitg00.
@@ -10,19 +10,19 @@
 ## On this site
 
 - [What is an LLM wiki?](https://crowllmwiki.com/llm-wiki/): Karpathy's idea, how it differs from RAG, what breaks as it grows, and three ways to build one
-- [llmwiki2, the engine](https://crowllmwiki.com/llmwiki2/): install, Python library, command line, MCP memory for Claude Code and Codex, CROW mode, version 1.0.0
+- [llmwiki2, the engine](https://crowllmwiki.com/llmwiki2/): install, Python library, command line, MCP memory for Claude Code and Codex, CROW mode, version 1.0.2
 - [The CROW paper](https://crowllmwiki.com/paper/): abstract, method, benchmark, versions and DOIs, how to cite
 - [Privacy](https://crowllmwiki.com/privacy/): what Crow, the desktop app, does with your documents
 
 ## Crow, the desktop app
 
-- [Download Crow (latest release)](https://github.com/crow-hq/crow-desktop/releases/latest): installers for macOS (Apple silicon, Intel), Windows (.exe, .msi) and Linux (AppImage, .deb, .rpm)
+- [Download Crow (latest release)](https://github.com/crow-hq/crow-desktop/releases/latest): Crow 1.0.1 (2026-11-14), installers for macOS (Apple silicon, Intel), Windows (.exe, .msi) and Linux (AppImage, .deb, .rpm)
 - [crow-hq/crow-desktop](https://github.com/crow-hq/crow-desktop): README with install help, FAQ, privacy and costs
 
 ## llm-wiki-v2, the engine
 
 - [crow-hq/llm-wiki-v2](https://github.com/crow-hq/llm-wiki-v2): the Python library, command line, web page and MCP memory
-- [llmwiki2 on PyPI](https://pypi.org/project/llmwiki2/): `pip install llmwiki2`, then `llmwiki2`; `uvx llmwiki2 demo` opens an example wiki with no key. Version 1.0.0 (2026-11-10) is the first stable release; from it on the library follows semantic versioning
+- [llmwiki2 on PyPI](https://pypi.org/project/llmwiki2/): `pip install llmwiki2`, then `llmwiki2`; `uvx llmwiki2 demo` opens an example wiki with no key. Version 1.0.2 (2026-11-13); 1.0.0 (2026-11-10) was the first stable release, from which the library follows semantic versioning
 - [Benchmarks](https://github.com/crow-hq/llm-wiki-v2/tree/main/benchmarks)
 
 ## Research

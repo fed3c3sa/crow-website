@@ -24,10 +24,10 @@
 <main class="policy">
   <a href="/"><img class="crow-mark" src="/assets/img/crow-mark.png" width="46" height="33" alt="Crow"></a>
   <h1>Privacy</h1>
-  <p class="updated">Crow, the desktop app for macOS, Windows and Linux, by Federico Cesarini and Marco Sassarini. Last updated 12 November 2026.</p>
+  <p class="updated">Crow, the desktop app for macOS, Windows and Linux, by Federico Cesarini and Marco Sassarini. Last updated 14 November 2026.</p>
 
   <h2>In short</h2>
-  <p>Crow has no account with us and no analytics. We, its authors, receive nothing from it: not your documents, not your wiki, not your chats, not how you use it. Your wiki and your chats are stored only on your computer. To file your documents and answer your questions, Crow sends text to OpenRouter, through your own OpenRouter account and to the model you choose.</p>
+  <p>Crow has no account with us and no analytics. We, its authors, receive nothing from it: not your documents, not your wiki, not your chats, not how you use it. Your wiki and your chats are stored only on your computer. To file your documents and answer your questions, Crow either runs local models on your computer, and then your documents and questions stay on it, or sends text to OpenRouter, through your own OpenRouter account and to the model you choose.</p>
 
   <h2>What stays on your computer</h2>
   <ul>
@@ -38,14 +38,17 @@
   </ul>
   <p>In the Mac App Store version, Crow reads only the folders and files you open to it: your home folder, when you click Open in the dialog it shows, and the files and folders you add or drop onto its window.</p>
 
+  <h2>With local models</h2>
+  <p>If you choose <b>On this computer</b> on the Connect screen, Crow downloads its local model package once, from GitHub and from Ollama's registry, into Crow's own folder. From then on the models run on your computer: your documents, your notes and your questions are sent nowhere.</p>
+
   <h2>What goes to OpenRouter and the model you choose</h2>
-  <p>Crow works with the models on <a href="https://openrouter.ai">OpenRouter</a>, through your account there. What a model reads goes to OpenRouter and to that model's provider: each document's text, name and location as it is filed, and with each question, the notes and earlier messages its answer needs. What happens to it then is up to them, under policies Crow does not control: see <a href="https://openrouter.ai/privacy">OpenRouter's privacy policy</a> and <a href="https://openrouter.ai/docs/guides/privacy/provider-logging">each provider's data policy</a>. Before anything is sent, Crow shows the documents it will file and what that should cost, and it stops at the spending limit you set.</p>
+  <p>With OpenRouter, Crow works with the models on <a href="https://openrouter.ai">OpenRouter</a>, through your account there. What a model reads goes to OpenRouter and to that model's provider: each document's text, name and location as it is filed, and with each question, the notes and earlier messages its answer needs. What happens to it then is up to them, under policies Crow does not control: see <a href="https://openrouter.ai/privacy">OpenRouter's privacy policy</a> and <a href="https://openrouter.ai/docs/guides/privacy/provider-logging">each provider's data policy</a>. Before anything is sent, Crow shows the documents it will file and what that should cost, and it stops at the spending limit you set.</p>
 
   <h2>Your AI apps</h2>
-  <p>If you connect Claude, Claude Code, ChatGPT or Codex to Crow, they can look things up in your wiki and keep notes in it. What they read from your wiki goes to their own provider (Anthropic or OpenAI), as part of your conversation with them, under that provider's policy.</p>
+  <p>If you connect Claude, Claude Code, ChatGPT or Codex to Crow, they can look things up in your wiki and keep notes in it. What they read from your wiki goes to their own provider (Anthropic or OpenAI), as part of your conversation with them, under that provider's policy. What they ask Crow, and ask it to remember, goes to the models Crow uses: the local ones, or your OpenRouter model.</p>
 
   <h2>Updates and this website</h2>
-  <p>The version of Crow from GitHub looks for a newer release on GitHub when you click Check for updates; the Mac App Store version is updated by the App Store. This website, crowllmwiki.com, uses no cookies and no analytics; it is served by GitHub Pages.</p>
+  <p>The version of Crow from GitHub looks for a newer release on GitHub when you click Check for updates; the Mac App Store version is updated by the App Store. This website, crowllmwiki.com, uses no cookies and no analytics; it is served by GitHub Pages. To show Crow's latest release and the engine's stars and version, your browser asks GitHub and PyPI, and keeps GitHub's answer in its own storage for an hour.</p>
 
   <h2>Children</h2>
   <p>Crow is not directed at children under 13.</p>
