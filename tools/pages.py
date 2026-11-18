@@ -19,7 +19,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://crowllmwiki.com"
-HOME_MODIFIED = "2026-11-14"  # bump when the homepage changes
+HOME_MODIFIED = "2026-11-18"  # bump when the homepage changes
 OTHER_PAGES = {"/privacy/": "2026-11-14"}
 
 PEOPLE = {
@@ -97,8 +97,8 @@ ENTITIES = {
         "codeRepository": "https://github.com/crow-hq/llm-wiki-v2",
         "programmingLanguage": "Python",
         "runtimePlatform": "Python 3.11 or later",
-        "version": "1.0.2",
-        "dateModified": "2026-11-13",
+        "version": "1.0.5",
+        "dateModified": "2026-11-17",
         "license": "https://www.gnu.org/licenses/agpl-3.0.html",
         "sameAs": ["https://github.com/crow-hq/llm-wiki-v2", "https://pypi.org/project/llmwiki2/"],
         "author": AUTHORS,

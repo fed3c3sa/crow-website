@@ -145,8 +145,8 @@
       "codeRepository": "https://github.com/crow-hq/llm-wiki-v2",
       "programmingLanguage": "Python",
       "runtimePlatform": "Python 3.11 or later",
-      "version": "1.0.2",
-      "dateModified": "2026-11-13",
+      "version": "1.0.5",
+      "dateModified": "2026-11-17",
       "license": "https://www.gnu.org/licenses/agpl-3.0.html",
       "sameAs": [
         "https://github.com/crow-hq/llm-wiki-v2",
@@ -218,7 +218,7 @@
       "mainEntity": {
         "@id": "https://crowllmwiki.com/#crow"
       },
-      "dateModified": "2026-11-14",
+      "dateModified": "2026-11-18",
       "inLanguage": "en",
       "primaryImageOfPage": "https://crowllmwiki.com/assets/img/og.jpg",
       "video": {
@@ -680,7 +680,7 @@ crow mcp</pre>
       <div class="prose reveal">
         <span class="eyebrow" style="--dot: var(--crow)">CROW</span>
         <h3 style="margin:14px 0 16px;font-size:clamp(24px,2.8vw,32px);font-weight:450;letter-spacing:-0.02em;line-height:1.2">A small classifier decides where things go, so the wiki stays fast and cheap as it grows</h3>
-        <p>Karpathy's LLM wiki finds pages by having the model read an index, which works up to about a hundred sources. CROW makes it scale: a small classifier picks each document's folder among every folder of the wiki in one choice, and answering walks the folders level by level, so the wiki keeps growing without a vector database. llmwiki2 1.0.0, not yet in Crow, finds a question's notes by search and lets the classifier reorder them. The LLM writes: it summarizes each source, rewrites a note it merges into, names new folders and writes the answer. It also lays out the folders, in a plan before a batch is filed and by splitting a folder that has grown, and it decides when the classifier fails.</p>
+        <p>Karpathy's LLM wiki finds pages by having the model read an index, which works up to about a hundred sources. CROW makes it scale: a small classifier picks each document's folder among every folder of the wiki in one choice, and in the paper answering walks the folders level by level, so the wiki keeps growing without a vector database. Since llmwiki2 1.0.0, and in Crow since 1.0.0, a question finds its notes by search and the classifier reorders them. The LLM writes: it summarizes each source, rewrites a note it merges into, names new folders and writes the answer. It also lays out the folders, in a plan before a batch is filed and by splitting a folder that has grown, and it decides when the classifier fails.</p>
         <p>In the <a href="#paper">CROW paper</a>, retrieval kept its accuracy across a twentyfold growth of the wiki.</p>
         <div class="pipeline" role="group" aria-label="The ingest pipeline">
           <b><span>summarize</span><i>→</i></b><b><span>route</span><i>→</i></b><b><span>find match</span><i>→</i></b><b><span>merge or write</span><i>→</i></b><b><span>relate</span><i>→</i></b><b><span>link, index, log</span></b>
@@ -904,7 +904,7 @@ crow mcp</pre>
         </div>
         <div class="links">
           <a class="link-card" href="https://github.com/crow-hq/llm-wiki-v2"><b>crow-hq/llm-wiki-v2</b><span><span class="counter" data-stars>274</span> stars · <span class="counter" data-forks>44</span> forks on GitHub</span></a>
-          <a class="link-card" href="https://pypi.org/project/llmwiki2/"><b>llmwiki2 on PyPI</b><span>Version <span data-pypi-version>1.0.0</span> · Python 3.11 or later</span></a>
+          <a class="link-card" href="https://pypi.org/project/llmwiki2/"><b>llmwiki2 on PyPI</b><span>Version <span data-pypi-version>1.0.5</span> · Python 3.11 or later</span></a>
           <a class="link-card" href="/llmwiki2/"><b>llmwiki2, explained</b><span>Install, library, MCP memory, CROW mode</span></a>
           <a class="link-card" href="https://github.com/crow-hq/llm-wiki-v2/blob/main/docs/library/index.md"><b>Library guide</b><span><code>from llmw2 import Wiki</code></span></a>
           <a class="link-card" href="https://github.com/crow-hq/llm-wiki-v2/blob/main/docs/wiki/memory.md"><b>Memory for AI agents (MCP)</b><span>recall, remember, read_note</span></a>
@@ -1022,6 +1022,7 @@ print(answer.text, answer.citations)</pre>
       <div>
         <h3 class="reveal" style="font-size:22px;font-weight:450;margin-bottom:24px">Timeline</h3>
         <ol class="timeline">
+          <li class="reveal" style="--dot: var(--area-5)"><time datetime="2026-11-17">17 November 2026</time><h4>llmwiki2 1.0.3 to 1.0.5: the memory in the MCP Registry</h4><p>The memory is listed in the official MCP Registry, and on a computer where llmwiki2 was never set up it runs on the client's own models, with no key. On OpenRouter the default writer is DeepSeek V4.1 Flash, the model CROW's thresholds and benchmarks are calibrated with. <a href="/llmwiki2/">More on llmwiki2</a></p></li>
           <li class="reveal" style="--dot: var(--crow)"><time datetime="2026-11-14">14 November 2026</time><h4>Crow 1.0.1</h4><p>Answers appear as they are written, with the notes they come from under them, and Crow speaks English and Italian. With local models, a question asked during filing is answered right away and a document takes about a third less time. On llmwiki2 1.0.2, which answers in the language of the question with small local models.</p></li>
           <li class="reveal" style="--dot: var(--area-1)"><time datetime="2026-11-12">12 November 2026</time><h4>Crow 1.0.0 and llmwiki2 1.0.1: local models</h4><p>Crow runs fully offline, for free (beta): one button downloads Ollama and three small open models into Crow's own folder, and no document or question leaves the computer. Notes and folders can be moved by hand, in the brain. llmwiki2 1.0.1 is the memory of Claude Code and Codex from the terminal alone.</p></li>
           <li class="reveal" style="--dot: var(--area-5)"><time datetime="2026-11-10">10 November 2026</time><h4>llmwiki2 1.0.0: the first stable release</h4><p>From here on the library follows semantic versioning, and a wiki written by 0.8.0 opens as it is. In CROW mode, a question finds its notes with the wiki's search and one classifier call. <a href="/llmwiki2/">More on llmwiki2</a></p></li>

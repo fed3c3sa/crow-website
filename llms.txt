@@ -10,7 +10,7 @@
 ## On this site
 
 - [What is an LLM wiki?](https://crowllmwiki.com/llm-wiki/): Karpathy's idea, how it differs from RAG, what breaks as it grows, and three ways to build one
-- [llmwiki2, the engine](https://crowllmwiki.com/llmwiki2/): install, Python library, command line, MCP memory for Claude Code and Codex, CROW mode, version 1.0.2
+- [llmwiki2, the engine](https://crowllmwiki.com/llmwiki2/): install, Python library, command line, MCP memory for Claude Code and Codex, CROW mode, version 1.0.5
 - [The CROW paper](https://crowllmwiki.com/paper/): abstract, method, benchmark, versions and DOIs, how to cite
 - [Privacy](https://crowllmwiki.com/privacy/): what Crow, the desktop app, does with your documents
 
@@ -22,7 +22,8 @@
 ## llm-wiki-v2, the engine
 
 - [crow-hq/llm-wiki-v2](https://github.com/crow-hq/llm-wiki-v2): the Python library, command line, web page and MCP memory
-- [llmwiki2 on PyPI](https://pypi.org/project/llmwiki2/): `pip install llmwiki2`, then `llmwiki2`; `uvx llmwiki2 demo` opens an example wiki with no key. Version 1.0.2 (2026-11-13); 1.0.0 (2026-11-10) was the first stable release, from which the library follows semantic versioning
+- [llmwiki2 on PyPI](https://pypi.org/project/llmwiki2/): `pip install llmwiki2`, then `llmwiki2`; `uvx llmwiki2 demo` opens an example wiki with no key. Version 1.0.5 (2026-11-17); 1.0.0 (2026-11-10) was the first stable release, from which the library follows semantic versioning
+- The memory for Claude Code, Codex or any MCP client is in the official MCP Registry as `io.github.crow-hq/llm-wiki-v2` (stdio, started with `uvx --with "mcp>=2.3,<3" llmwiki2 mcp`); or `uv tool install 'llmwiki2[mcp]'`, then `llmwiki2 setup`
 - [Benchmarks](https://github.com/crow-hq/llm-wiki-v2/tree/main/benchmarks)
 
 ## Research

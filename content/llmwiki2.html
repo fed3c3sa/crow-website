@@ -4,20 +4,22 @@
   "title": "llmwiki2: the open-source LLM wiki engine for Python",
   "description": "llmwiki2 (llm-wiki-v2) is an open-source Python library, command line, web page and MCP memory that turns your documents into a Markdown LLM wiki.",
   "h1": "llmwiki2 (llm-wiki-v2): the open-source LLM wiki engine for Python",
-  "lede": "A Python library, a command line, a web page and an MCP memory that file your documents into a wiki of linked Markdown notes and answer your questions with citations. Version 1.0.2 came out on 13 November 2026; 1.0.0, on 10 November, was the first stable release.",
+  "lede": "A Python library, a command line, a web page and an MCP memory that file your documents into a wiki of linked Markdown notes and answer your questions with citations. Version 1.0.5 came out on 17 November 2026; 1.0.0, on 10 November, was the first stable release.",
   "eyebrow": "Engine",
   "crumb": "llmwiki2",
   "published": "2026-11-11",
-  "modified": "2026-11-11",
+  "modified": "2026-11-18",
   "about": ["llmwiki2", "llm-wiki-v2", "LLM wiki", "MCP memory server", "CROW"],
   "sources": [
     {"title": "llm-wiki-v2 README, tag v1.0.0", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/README.md"},
     {"title": "llm-wiki-v2 1.0.0 release notes", "url": "https://github.com/crow-hq/llm-wiki-v2/releases/tag/v1.0.0"},
-    {"title": "llm-wiki-v2 CHANGELOG, tag v1.0.0", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/CHANGELOG.md"},
+    {"title": "llm-wiki-v2 README, tag v1.0.5", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.5/README.md"},
+    {"title": "llm-wiki-v2 CHANGELOG, tag v1.0.5", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.5/CHANGELOG.md"},
     {"title": "Using llmw2 as a library (library guide, Compatibility section)", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/library/index.md"},
-    {"title": "The wiki as Claude's memory (MCP)", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/wiki/memory.md"},
+    {"title": "The wiki as Claude's memory (MCP), tag v1.0.5", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.5/docs/wiki/memory.md"},
+    {"title": "llm-wiki-v2 server.json (its MCP Registry entry), tag v1.0.5", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.5/server.json"},
     {"title": "CROW mode", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/wiki/crow.md"},
-    {"title": "Providers", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/wiki/providers.md"},
+    {"title": "Providers, tag v1.0.5", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.5/docs/wiki/providers.md"},
     {"title": "llm-wiki-v2 CITATION.cff, tag v1.0.0", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/CITATION.cff"},
     {"title": "llm-wiki-v2 pyproject.toml, tag v1.0.0", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/pyproject.toml"},
     {"title": "llmwiki2 on PyPI", "url": "https://pypi.org/project/llmwiki2/"},
@@ -61,9 +63,11 @@ print(wiki.usage.to_dict())                  # {"llm": …, "classifier": …, "
 <p>The same operations are on the command line: <code>llmwiki2 --bundle ./wiki</code> followed by <code>init</code>, <code>ingest</code>, <code>sync</code>, <code>ask</code>, <code>check</code> or <code>serve</code>. Every step of the ingest and ask flows is a function you can replace. The <a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/library/index.md">library guide</a> covers the API, and <a href="https://github.com/crow-hq/llm-wiki-v2/tree/v1.0.0/examples">examples/</a> holds runnable programs.</p>
 
 <h2>How do I give Claude Code or Codex a memory with llmwiki2?</h2>
-<p>To give Claude Code or Codex a memory, install llmwiki2 with the <code>mcp</code> extra, start <code>llmwiki2</code>, open Memory on its page and press Start. The wiki then serves MCP at <code>http://127.0.0.1:8000/mcp</code>: add it with <code>claude mcp add</code> or <code>codex mcp add</code>, and the client recalls from your notes and files what it learns.</p>
-<div class="code"><div class="code-head"><span>Install with the memory</span></div><pre>pip install 'llmwiki2[mcp]'      # or: uv tool install 'llmwiki2[mcp]'</pre></div>
-<div class="code"><div class="code-head"><span>Connect a client</span></div><pre>claude mcp add --transport http --scope user llm-wiki http://127.0.0.1:8000/mcp   # Claude Code, every project
+<p>To give Claude Code or Codex a memory, install llmwiki2 with the <code>mcp</code> extra and run <code>llmwiki2 setup</code>: answer <strong>2</strong> (as the memory of an agentic CLI) to the first question and press Enter at the others. Claude Code or Codex then start the memory themselves, recall from your notes and file what they learn. No page or server stays running.</p>
+<div class="code"><div class="code-head"><span>Install with the memory and set it up</span></div><pre>uv tool install 'llmwiki2[mcp]'      # or: pip install 'llmwiki2[mcp]'
+llmwiki2 setup</pre></div>
+<p>Rather use the page? Start <code>llmwiki2</code>, open Memory, press Start, and connect a client to <code>http://127.0.0.1:8000/mcp</code>.</p>
+<div class="code"><div class="code-head"><span>Connect a client to the page's memory</span></div><pre>claude mcp add --transport http --scope user llm-wiki http://127.0.0.1:8000/mcp   # Claude Code, every project
 codex mcp add llm-wiki --url http://127.0.0.1:8000/mcp                            # Codex</pre></div>
 <div class="table-wrap"><table><thead><tr><th>MCP tool</th><th>What it does</th></tr></thead><tbody>
 <tr><td><code>recall</code></td><td>Answers from the wiki, citing its notes. Read-only.</td></tr>
@@ -71,8 +75,11 @@ codex mcp add llm-wiki --url http://127.0.0.1:8000/mcp                          
 <tr><td><code>search</code></td><td>Finds notes by their words, with no model call.</td></tr>
 <tr><td><code>read_note</code></td><td>Reads one note in full.</td></tr>
 <tr><td><code>rebuild</code></td><td>Files every note again from the raw copies, only with <code>confirm</code>.</td></tr>
+<tr><td><code>folders</code>, <code>move_note</code>, <code>describe_folder</code>, <code>rename_area</code>, <code>merge_areas</code>, <code>delete_note</code></td><td>Reorganize the wiki; merging and deleting only when you ask.</td></tr>
+<tr><td><code>remember_file</code>, <code>sync_folder</code></td><td>File documents from your disk, when the client starts the memory from the terminal (<code>llmwiki2 mcp</code>).</td></tr>
 </tbody></table></div>
-<p>Cursor and VS Code take the same URL in their <code>mcp.json</code>. By default the wiki's own models file the memories; the client's models can do it instead, which sends your documents' text to them (see the <a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/wiki/memory.md">memory guide</a>). The memory has no authentication: keep the port on your machine.</p>
+<p>Which models do the memory's work is a choice, in <code>setup</code> or under Memory: the client's own (the default in <code>setup</code>: Claude Code or Codex, on their plan, with no key in the wiki), the wiki's settings (the default on the page), or hybrid, where the client's model writes and the wiki's classifier decides. When the client's model writes, the requests carry your documents' text to it (see the <a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.5/docs/wiki/memory.md">memory guide</a>). Cursor and VS Code take the page's URL in their <code>mcp.json</code>. The page's memory has no authentication: keep the port on your machine.</p>
+<p>The memory is also in the official MCP Registry, as <code>io.github.crow-hq/llm-wiki-v2</code>: a client that reads the registry finds it and starts it with <code>uvx</code>, on the client's own models, with no key, where llmwiki2 was never set up.</p>
 
 <h2>What is CROW mode?</h2>
 <p>CROW mode is llmwiki2's default. A small typed classifier takes the filing decisions (which folder, which note it matches, merge or new note, related notes) and reorders the notes found for a question; the LLM writes notes, merges, folder names and answers. When the classifier is unsure or fails, the LLM or a safe default takes over.</p>
@@ -81,9 +88,9 @@ codex mcp add llm-wiki --url http://127.0.0.1:8000/mcp                          
 <p>In the CROW paper's benchmark of 525 documents, CROW read the right note in 89.2% of asks against 61.8% for an LLM taking the same decisions, took 18.4 s per document against 38.6 s, and used 68% fewer LLM tokens. These are the authors' own measurements, on a private corpus of the first author's notes, with the paper's pipeline, before 1.0.0 changed how CROW asks.</p>
 
 <h2>Which models and providers does llmwiki2 support?</h2>
-<p>llmwiki2 talks to any OpenAI-compatible chat API. It has presets for OpenRouter (the default, with <code>google/gemini-3.8-flash</code>), OpenAI, Gemini and Ollama, and a <code>custom</code> setting for any other OpenAI-compatible server, such as vLLM, LM Studio or llama.cpp's server. CROW's classifier is a separate setting: Jev through OpenRouter or TypeSafe, or a local server.</p>
+<p>llmwiki2 talks to any OpenAI-compatible chat API. It has presets for OpenRouter (the default, with <code>deepseek/deepseek-v4.1-flash</code> since 1.0.3), OpenAI, Gemini and Ollama, and a <code>custom</code> setting for any other OpenAI-compatible server, such as vLLM, LM Studio or llama.cpp's server. CROW's classifier is a separate setting: Jev through OpenRouter or TypeSafe, or a local server.</p>
 <div class="table-wrap"><table><thead><tr><th>Provider</th><th>Default model</th><th>Key</th></tr></thead><tbody>
-<tr><td><code>openrouter</code></td><td><code>google/gemini-3.8-flash</code></td><td><code>OPENROUTER_API_KEY</code></td></tr>
+<tr><td><code>openrouter</code></td><td><code>deepseek/deepseek-v4.1-flash</code></td><td><code>OPENROUTER_API_KEY</code></td></tr>
 <tr><td><code>openai</code></td><td><code>gpt-6-luna</code></td><td><code>OPENAI_API_KEY</code></td></tr>
 <tr><td><code>gemini</code></td><td><code>gemini-3.8-flash</code></td><td><code>GEMINI_API_KEY</code></td></tr>
 <tr><td><code>ollama</code></td><td><code>gemma4</code></td><td>none</td></tr>
@@ -110,7 +117,7 @@ codex mcp add llm-wiki --url http://127.0.0.1:8000/mcp                          
 <!--faq-->
 <details class="acc"><summary>Is llmwiki2 free?</summary><div class="acc-body"><p>Yes. llmwiki2 is free software under the GNU AGPL v3.0 or later: free to use, change and share, also in your own business; if you offer a modified version to others, over a network too, you share its source. The package's licence expression also lists the licences of files it ships, such as its fonts. Cloud models are billed by their provider; Ollama is free.</p></div></details>
 <details class="acc"><summary>What is the difference between llm-wiki-v2, llmwiki2 and llmw2?</summary><div class="acc-body"><p>They are three names for one project. llm-wiki-v2 is the GitHub repository, <a href="https://github.com/crow-hq/llm-wiki-v2">crow-hq/llm-wiki-v2</a>, whose README is titled LLM Wiki v2. llmwiki2 is the package on <a href="https://pypi.org/project/llmwiki2/">PyPI</a> and the command you run. llmw2 is the name you import in Python: <code>from llmw2 import Wiki</code>.</p></div></details>
-<details class="acc"><summary>Does llmwiki2 need an API key? Can it run locally with Ollama?</summary><div class="acc-body"><p>Not necessarily. <code>llmwiki2 demo</code> needs no key to browse, and the LLM can be Ollama on your computer, with no key and no account. CROW's classifier is remote by default (Jev, through OpenRouter or TypeSafe): point it at a System One server on your machine, such as Ollama 0.35 or later or Laya, or use classic mode, where the LLM takes every decision.</p></div></details>
+<details class="acc"><summary>Does llmwiki2 need an API key? Can it run locally with Ollama?</summary><div class="acc-body"><p>Not necessarily. <code>llmwiki2 demo</code> needs no key to browse, and the LLM can be Ollama on your computer, with no key and no account. As the memory of Claude Code or Codex, it can run on the client's own models, with no key in the wiki. CROW's classifier is remote by default (Jev, through OpenRouter or TypeSafe): point it at a System One server on your machine, such as Ollama 0.35 or later or Laya, or use classic mode, where the LLM takes every decision.</p></div></details>
 <details class="acc"><summary>Does llmwiki2 work with Obsidian?</summary><div class="acc-body"><p>The wiki is plain Markdown with relative links and an <code>index.md</code> in every folder, so any editor opens it. Crow, which writes the same format, documents that Obsidian opens its wiki as a vault, graph view included. llmwiki2 does not need Obsidian: its own web page shows the notes and the brain.</p></div></details>
 <details class="acc"><summary>Does llmwiki2 need a vector database?</summary><div class="acc-body"><p>No. llmwiki2's search is BM25 over the notes' words, with no model call. An embedder is optional: with an OpenAI-compatible <code>/embeddings</code> server or Ollama the search goes by meaning too, and the vectors are kept in one file inside the wiki. The notes stay readable Markdown.</p></div></details>
 <details class="acc"><summary>How do I cite llmwiki2?</summary><div class="acc-body"><p>Use the repository's <a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/CITATION.cff">CITATION.cff</a>: Federico Cesarini and Marco Sassarini, llm-wiki-v2, version 1.0.0, released 2026-11-10. It asks you to cite, together with it, the Open Knowledge Format by Google LLC, from which the wiki format is derived. For the method, cite <a href="/paper/">the CROW paper</a>, doi:10.5281/zenodo.22898752.</p></div></details>

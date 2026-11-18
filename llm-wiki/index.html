@@ -20,7 +20,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="article:published_time" content="2026-11-11">
-<meta property="article:modified_time" content="2026-11-11">
+<meta property="article:modified_time" content="2026-11-18">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@fed3c3sa">
 <link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -111,7 +111,7 @@
         "@id": "https://crowllmwiki.com/#org"
       },
       "datePublished": "2026-11-11",
-      "dateModified": "2026-11-11",
+      "dateModified": "2026-11-18",
       "mainEntityOfPage": {
         "@id": "https://crowllmwiki.com/llm-wiki/#webpage"
       },
@@ -197,8 +197,8 @@
       "codeRepository": "https://github.com/crow-hq/llm-wiki-v2",
       "programmingLanguage": "Python",
       "runtimePlatform": "Python 3.11 or later",
-      "version": "1.0.2",
-      "dateModified": "2026-11-13",
+      "version": "1.0.5",
+      "dateModified": "2026-11-17",
       "license": "https://www.gnu.org/licenses/agpl-3.0.html",
       "sameAs": [
         "https://github.com/crow-hq/llm-wiki-v2",
@@ -270,7 +270,7 @@
       },
       "inLanguage": "en",
       "datePublished": "2026-11-11",
-      "dateModified": "2026-11-11",
+      "dateModified": "2026-11-18",
       "primaryImageOfPage": "https://crowllmwiki.com/assets/img/og.jpg",
       "mainEntity": {
         "@id": "https://crowllmwiki.com/llm-wiki/#article"
@@ -389,7 +389,7 @@
       <span class="eyebrow" style="--dot: var(--crow)">Guide</span>
       <h1>What is an LLM wiki? From Karpathy&#x27;s idea file to a wiki of thousands of documents</h1>
       <p class="lede">An LLM wiki is a knowledge base that a language model writes and keeps current from your sources. Here is how the pattern works, how it differs from RAG, what gets expensive as it grows, and three ways to build one.</p>
-      <p class="byline">By <a href="https://www.federicocesarini.com/">Federico Cesarini</a> and <a href="https://github.com/sassarini-marco">Marco Sassarini</a> · Updated <time datetime="2026-11-11">11 November 2026</time></p>
+      <p class="byline">By <a href="https://www.federicocesarini.com/">Federico Cesarini</a> and <a href="https://github.com/sassarini-marco">Marco Sassarini</a> · Updated <time datetime="2026-11-18">18 November 2026</time></p>
       <div class="article-body">
 <p>An LLM wiki is a folder of Markdown pages that a language model writes and keeps current from your sources. Instead of searching raw documents at every question, as RAG does, the model reads each source once, files what it learned into linked pages, and revises them as new sources arrive. Andrej Karpathy described the pattern in April 2026.</p>
 
@@ -449,7 +449,7 @@
 <p>Keep Obsidian open to watch the pages appear. Past about a hundred sources, plan for search.</p>
 
 <h3>With llmwiki2, the Python engine</h3>
-<p>llm-wiki-v2 is the open-source engine by Federico Cesarini and Marco Sassarini, on PyPI as <code>llmwiki2</code> (1.0.2, 13 November 2026). Drop PDF, Word, Excel or text files on its web page: each lands in a folder, merged with what the wiki knows, and answers cite their notes. It runs with OpenRouter, OpenAI, Gemini, Ollama or any OpenAI-compatible server, on Python 3.11 or later.</p>
+<p>llm-wiki-v2 is the open-source engine by Federico Cesarini and Marco Sassarini, on PyPI as <code>llmwiki2</code> (1.0.5, 17 November 2026). Drop PDF, Word, Excel or text files on its web page: each lands in a folder, merged with what the wiki knows, and answers cite their notes. It runs with OpenRouter, OpenAI, Gemini, Ollama or any OpenAI-compatible server, on Python 3.11 or later.</p>
 <div class="code"><div class="code-head"><span>Install and start</span><button class="copy" type="button" data-copy="code-llm-wiki-1" aria-label="Copy"></button></div><pre id="code-llm-wiki-1">pip install llmwiki2
 llmwiki2</pre></div>
 <p>Your browser opens: pick a provider, paste its key, press Test connection, then Save and start. <code>uvx llmwiki2 demo</code> opens an example wiki with no key. More on the <a href="/llmwiki2/">llmwiki2 page</a>.</p>
