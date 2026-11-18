@@ -23,7 +23,7 @@
 
 - [crow-hq/llm-wiki-v2](https://github.com/crow-hq/llm-wiki-v2): the Python library, command line, web page and MCP memory
 - [llmwiki2 on PyPI](https://pypi.org/project/llmwiki2/): `pip install llmwiki2`, then `llmwiki2`; `uvx llmwiki2 demo` opens an example wiki with no key. Version 1.0.5 (2026-11-17); 1.0.0 (2026-11-10) was the first stable release, from which the library follows semantic versioning
-- The memory for Claude Code, Codex or any MCP client is in the official MCP Registry as `io.github.crow-hq/llm-wiki-v2` (stdio, started with `uvx --with "mcp>=2.3,<3" llmwiki2 mcp`); or `uv tool install 'llmwiki2[mcp]'`, then `llmwiki2 setup`
+- [The memory (MCP)](https://github.com/crow-hq/llm-wiki-v2#claudes-memory-mcp): for Claude Code, Codex or any MCP client; in the official MCP Registry as `io.github.crow-hq/llm-wiki-v2` (stdio, started with `uvx --with "mcp>=2.3,<3" llmwiki2 mcp`); or `uv tool install 'llmwiki2[mcp]'`, then `llmwiki2 setup`
 - [Benchmarks](https://github.com/crow-hq/llm-wiki-v2/tree/main/benchmarks)
 
 ## Research

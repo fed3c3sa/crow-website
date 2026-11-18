@@ -680,7 +680,7 @@ crow mcp</pre>
       <div class="prose reveal">
         <span class="eyebrow" style="--dot: var(--crow)">CROW</span>
         <h3 style="margin:14px 0 16px;font-size:clamp(24px,2.8vw,32px);font-weight:450;letter-spacing:-0.02em;line-height:1.2">A small classifier decides where things go, so the wiki stays fast and cheap as it grows</h3>
-        <p>Karpathy's LLM wiki finds pages by having the model read an index, which works up to about a hundred sources. CROW makes it scale: a small classifier picks each document's folder among every folder of the wiki in one choice, and in the paper answering walks the folders level by level, so the wiki keeps growing without a vector database. Since llmwiki2 1.0.0, and in Crow since 1.0.0, a question finds its notes by search and the classifier reorders them. The LLM writes: it summarizes each source, rewrites a note it merges into, names new folders and writes the answer. It also lays out the folders, in a plan before a batch is filed and by splitting a folder that has grown, and it decides when the classifier fails.</p>
+        <p>Karpathy's LLM wiki finds pages by having the model read an index, which works up to about a hundred sources. CROW makes it scale with a small classifier, so the wiki keeps growing without a vector database. In the paper, the classifier routes each document down the folders level by level, and answering walks them the same way. llmwiki2 now picks a document's folder among every folder of the wiki in one choice, and since llmwiki2 1.0.0, and in Crow since 1.0.0, a question finds its notes by search and the classifier reorders them. The LLM writes: it summarizes each source, rewrites a note it merges into, names new folders and writes the answer. It also lays out the folders, in a plan before a batch is filed and by splitting a folder that has grown, and it decides when the classifier fails.</p>
         <p>In the <a href="#paper">CROW paper</a>, retrieval kept its accuracy across a twentyfold growth of the wiki.</p>
         <div class="pipeline" role="group" aria-label="The ingest pipeline">
           <b><span>summarize</span><i>→</i></b><b><span>route</span><i>→</i></b><b><span>find match</span><i>→</i></b><b><span>merge or write</span><i>→</i></b><b><span>relate</span><i>→</i></b><b><span>link, index, log</span></b>
@@ -927,8 +927,9 @@ llmwiki2</pre>
         </div>
         <div class="code" style="margin-top:16px">
           <div class="code-head"><span>Claude's memory (MCP)</span><button class="copy" type="button" data-copy="code-mcp2" aria-label="Copy"></button></div>
-<pre id="code-mcp2">pip install 'llmwiki2[mcp]'
-<span class="c"># open Memory on the page, press Start, then:</span>
+<pre id="code-mcp2">uv tool install 'llmwiki2[mcp]'
+llmwiki2 setup
+<span class="c"># answer 2, then Enter. Or open Memory on the page, press Start, then:</span>
 claude mcp add --transport http --scope user llm-wiki http://127.0.0.1:8000/mcp
 codex mcp add llm-wiki --url http://127.0.0.1:8000/mcp</pre>
         </div>
