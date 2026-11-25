@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>LLM wiki: what it is, how it differs from RAG, how to build one</title>
-<meta name="description" content="What an LLM wiki is, from Karpathy&#x27;s idea file: how it differs from RAG, what gets costly as it grows, and three ways to build one, with or without code.">
+<title>What is an LLM wiki? A real example, vs RAG, how to build one</title>
+<meta name="description" content="An LLM wiki is a folder of notes a language model writes and keeps current. A real one file by file, how it differs from RAG, and three ways to build one.">
 <meta name="author" content="Federico Cesarini, Marco Sassarini">
 <meta name="theme-color" content="#0f1113">
 <meta name="color-scheme" content="dark">
@@ -14,13 +14,13 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Crow">
 <meta property="og:title" content="What is an LLM wiki? From Karpathy&#x27;s idea file to a wiki of thousands of documents">
-<meta property="og:description" content="What an LLM wiki is, from Karpathy&#x27;s idea file: how it differs from RAG, what gets costly as it grows, and three ways to build one, with or without code.">
+<meta property="og:description" content="An LLM wiki is a folder of notes a language model writes and keeps current. A real one file by file, how it differs from RAG, and three ways to build one.">
 <meta property="og:url" content="https://crowllmwiki.com/llm-wiki/">
 <meta property="og:image" content="https://crowllmwiki.com/assets/img/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="article:published_time" content="2026-11-11">
-<meta property="article:modified_time" content="2026-11-18">
+<meta property="article:modified_time" content="2026-11-25">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@fed3c3sa">
 <link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -98,7 +98,7 @@
       "@type": "TechArticle",
       "@id": "https://crowllmwiki.com/llm-wiki/#article",
       "headline": "What is an LLM wiki? From Karpathy's idea file to a wiki of thousands of documents",
-      "description": "What an LLM wiki is, from Karpathy's idea file: how it differs from RAG, what gets costly as it grows, and three ways to build one, with or without code.",
+      "description": "An LLM wiki is a folder of notes a language model writes and keeps current. A real one file by file, how it differs from RAG, and three ways to build one.",
       "author": [
         {
           "@id": "https://crowllmwiki.com/#federico"
@@ -111,11 +111,11 @@
         "@id": "https://crowllmwiki.com/#org"
       },
       "datePublished": "2026-11-11",
-      "dateModified": "2026-11-18",
+      "dateModified": "2026-11-25",
       "mainEntityOfPage": {
         "@id": "https://crowllmwiki.com/llm-wiki/#webpage"
       },
-      "image": "https://crowllmwiki.com/assets/img/og.jpg",
+      "image": "https://crowllmwiki.com/assets/img/figures/llm-wiki-example-brain.webp",
       "inLanguage": "en",
       "keywords": [
         "LLM wiki",
@@ -260,8 +260,8 @@
       "@type": "WebPage",
       "@id": "https://crowllmwiki.com/llm-wiki/#webpage",
       "url": "https://crowllmwiki.com/llm-wiki/",
-      "name": "LLM wiki: what it is, how it differs from RAG, how to build one",
-      "description": "What an LLM wiki is, from Karpathy's idea file: how it differs from RAG, what gets costly as it grows, and three ways to build one, with or without code.",
+      "name": "What is an LLM wiki? A real example, vs RAG, how to build one",
+      "description": "An LLM wiki is a folder of notes a language model writes and keeps current. A real one file by file, how it differs from RAG, and three ways to build one.",
       "isPartOf": {
         "@id": "https://crowllmwiki.com/#website"
       },
@@ -270,8 +270,8 @@
       },
       "inLanguage": "en",
       "datePublished": "2026-11-11",
-      "dateModified": "2026-11-18",
-      "primaryImageOfPage": "https://crowllmwiki.com/assets/img/og.jpg",
+      "dateModified": "2026-11-25",
+      "primaryImageOfPage": "https://crowllmwiki.com/assets/img/figures/llm-wiki-example-brain.webp",
       "mainEntity": {
         "@id": "https://crowllmwiki.com/llm-wiki/#article"
       }
@@ -372,7 +372,7 @@
       <a class="gh" href="https://github.com/crow-hq/llm-wiki-v2" aria-label="llm-wiki-v2 on GitHub, stars">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
         <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.94 5.96 6.58.96-4.76 4.64 1.12 6.55L12 17.52l-5.88 3.09 1.12-6.55L2.48 9.42l6.58-.96Z"/></svg>
-        <span data-stars>274</span>
+        <span data-stars>325</span>
       </a>
       <a class="btn btn-cta" href="/#download">Download</a>
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">
@@ -388,8 +388,8 @@
       <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Crow</a><span aria-hidden="true">/</span><span aria-current="page">LLM wiki</span></nav>
       <span class="eyebrow" style="--dot: var(--crow)">Guide</span>
       <h1>What is an LLM wiki? From Karpathy&#x27;s idea file to a wiki of thousands of documents</h1>
-      <p class="lede">An LLM wiki is a knowledge base that a language model writes and keeps current from your sources. Here is how the pattern works, how it differs from RAG, what gets expensive as it grows, and three ways to build one.</p>
-      <p class="byline">By <a href="https://www.federicocesarini.com/">Federico Cesarini</a> and <a href="https://github.com/sassarini-marco">Marco Sassarini</a> · Updated <time datetime="2026-11-18">18 November 2026</time></p>
+      <p class="lede">An LLM wiki is a knowledge base that a language model writes and keeps current from your sources. Here is how the pattern works, a real one file by file, how it differs from RAG, what gets expensive as it grows, and three ways to build one.</p>
+      <p class="byline">By <a href="https://www.federicocesarini.com/">Federico Cesarini</a> and <a href="https://github.com/sassarini-marco">Marco Sassarini</a> · Updated <time datetime="2026-11-25">25 November 2026</time></p>
       <div class="article-body">
 <p>An LLM wiki is a folder of Markdown pages that a language model writes and keeps current from your sources. Instead of searching raw documents at every question, as RAG does, the model reads each source once, files what it learned into linked pages, and revises them as new sources arrive. Andrej Karpathy described the pattern in April 2026.</p>
 
@@ -403,6 +403,72 @@
 </ul>
 <p>Three operations act on them. <strong>Ingest</strong>: the model reads a new source, writes a summary page and updates the related pages, the index and the log; one source may touch 10 to 15 pages. <strong>Query</strong>: it reads the relevant pages and answers with citations; good answers can be filed back. <strong>Lint</strong>: it checks for contradictions, stale claims and orphan pages.</p>
 <p><code>index.md</code> lists every page with a one-line summary, and the model reads it first to answer; <code>log.md</code> is an append-only record of what happened. Karpathy keeps the agent on one side and Obsidian on the other: "Obsidian is the IDE; the LLM is the programmer; the wiki is the codebase."</p>
+
+<h2>What does an LLM wiki look like? A real one, file by file</h2>
+<p>An LLM wiki is an ordinary folder of text files. The example that ships with <a href="/llmwiki2/">llmwiki2</a>, the notes of a coffee roastery that does not exist, is 56 Markdown files: 23 notes, the 23 sources they come from, nine indexes and a log. <code>uvx llmwiki2 demo</code> opens it on your computer, and the files are <a href="https://github.com/crow-hq/llm-wiki-v2/tree/v1.0.5/src/llmw2/demo">on GitHub</a>.</p>
+<div class="code"><div class="code-head"><span>The folder</span><button class="copy" type="button" data-copy="code-llm-wiki-1" aria-label="Copy"></button></div><pre id="code-llm-wiki-1">llm-wiki-demo/
+  index.md            the top folders
+  log.md              the filing log
+  about-this-demo.md  a note
+  products/           index.md, 4 notes
+  sourcing/           index.md, 3 notes
+  operations/         index.md
+    roasting/         index.md, 3 notes
+    shipping/         index.md, 2 notes
+  customers/          index.md, 4 notes
+  meetings/           index.md, 3 notes
+  ideas/              index.md, 3 notes
+  raw/                the 23 sources</pre></div>
+<figure><img src="/assets/img/figures/llm-wiki-example-brain.webp" width="1600" height="1000" loading="lazy" alt="The example LLM wiki drawn as a graph on llmwiki2's web page: a root, eight folders named customers, ideas, meetings, products, sourcing, operations, roasting and shipping, their notes as dots, and dashed See also links between notes. The page counts 23 notes, 8 folders and 23 links."><figcaption>The same wiki on llmwiki2's web page (1.0.5): 23 notes, 8 folders, 23 links. Solid lines are folders; dashed lines are the See also links between notes.</figcaption></figure>
+<p>This is one note, <code>meetings/pricing-meeting-may-2026.md</code>, as the file is. The top says what it is and which source it came from; the body is the knowledge; See also links it to the notes next to it in meaning, in other folders too.</p>
+<div class="code"><div class="code-head"><span>meetings/pricing-meeting-may-2026.md</span><button class="copy" type="button" data-copy="code-llm-wiki-2" aria-label="Copy"></button></div><pre id="code-llm-wiki-2">---
+type: Note
+title: Pricing meeting, May 2026
+description: Retail up 8% and wholesale up 5% from 1 July; decaf keeps its margin;
+  subscriptions keep their discount.
+tags:
+- meeting
+- prices
+- decision
+generated:
+  by: llmw2/0.2.0
+  at: '2026-09-25T16:24:41+00:00'
+sources:
+- id: s1
+  resource: /raw/20260925-162441-pricing-meeting-may-2026.md
+  title: Pricing meeting, May 2026
+---
+
+**Decisions**
+
+- Retail prices up 8% from 1 July 2026.
+- Wholesale up 5% only, to keep the cafés.
+- Subscriptions keep the 10% discount.
+
+**Why**: the July price fixings for green coffee came in 11% higher.
+
+**Actions**: update the price list and the web shop; email wholesale customers one month ahead.
+
+# See also
+
+* [Price list from July 2026](../products/price-list-from-july-2026.md) - Retail and wholesale prices from 1 July 2026, after the rise in green coffee prices.
+* [Subscription churn, Q2 2026](../customers/subscription-churn-q2-2026.md) - Churn was 6.1% a month in Q2 2026; people leave mostly because they have too much coffee, then because of price.</pre></div>
+<p>Every folder has an <code>index.md</code> that lists its notes with that one-line description, so a person or a model can choose what to open without reading everything:</p>
+<div class="code"><div class="code-head"><span>meetings/index.md</span><button class="copy" type="button" data-copy="code-llm-wiki-3" aria-label="Copy"></button></div><pre id="code-llm-wiki-3"># Notes
+
+* [Pricing meeting, May 2026](pricing-meeting-may-2026.md) - Retail up 8% and wholesale up 5% from 1 July; decaf keeps its margin; subscriptions keep their discount.
+* [Board meeting, June 2026](board-meeting-june-2026.md) - Approved a study for a second roaster, a cold brew pilot and a part-time packer.
+* [Weekly sync, 10 June 2026](weekly-sync-10-june-2026.md) - Packing is late on Tuesdays, the Guji lot has arrived, and two cafés asked for decaf training.</pre></div>
+
+<h3>What happens when you ask it a question</h3>
+<p>Four questions were recorded on this wiki on 4 November 2026, with llmwiki2 0.8.0 in CROW mode: Jev 1.13 decided what to read and Gemini 3.8 Flash wrote the answers. For "How long do customers have to ask for a refund?" the classifier scored the top folders: customers 0.75, operations 0.65, ideas 0.17, meetings 0.16, products 0.09, sourcing 0.05. It opened all but sourcing, and of the notes inside, <code>refund-policy.md</code> scored 0.93 and the next one 0.05. The LLM read that one note and answered "within 30 days of delivery", citing it.</p>
+<div class="table-wrap"><table><thead><tr><th>Question</th><th>Notes read</th><th>LLM tokens (calls)</th><th>Classifier tokens (calls)</th><th>Seconds</th><th>Cost</th></tr></thead><tbody>
+<tr><td>How long do customers have to ask for a refund?</td><td>1</td><td>386 (1)</td><td>2,639 (3)</td><td>2.4</td><td>$0.0004</td></tr>
+<tr><td>What did we decide about prices in May?</td><td>3</td><td>917 (1)</td><td>3,295 (4)</td><td>4.4</td><td>$0.0012</td></tr>
+<tr><td>Why do subscribers cancel, and what could keep them?</td><td>8</td><td>1,524 (1)</td><td>3,491 (4)</td><td>5.1</td><td>$0.0020</td></tr>
+<tr><td>How is a subscription order roasted and shipped?</td><td>8</td><td>1,799 (1)</td><td>3,633 (4)</td><td>3.7</td><td>$0.0023</td></tr>
+</tbody></table></div>
+<p>That version walked the folders. Since llmwiki2 1.0.0 the candidate notes come from the wiki's own search and the classifier reorders them. You can <a href="/#brain">play the four recordings</a> on the home page and open the notes they read; nothing there calls a model.</p>
 
 <h2>How is an LLM wiki different from RAG?</h2>
 <p>An LLM wiki differs from RAG in when the work is done. RAG retrieves chunks of your raw documents at every question and pieces the answer together again each time. An LLM wiki processes each source once, at ingest, into readable notes that the model keeps current, so knowledge accumulates instead of being rediscovered at every query.</p>
@@ -450,7 +516,7 @@
 
 <h3>With llmwiki2, the Python engine</h3>
 <p>llm-wiki-v2 is the open-source engine by Federico Cesarini and Marco Sassarini, on PyPI as <code>llmwiki2</code> (1.0.5, 17 November 2026). Drop PDF, Word, Excel or text files on its web page: each lands in a folder, merged with what the wiki knows, and answers cite their notes. It runs with OpenRouter, OpenAI, Gemini, Ollama or any OpenAI-compatible server, on Python 3.11 or later.</p>
-<div class="code"><div class="code-head"><span>Install and start</span><button class="copy" type="button" data-copy="code-llm-wiki-1" aria-label="Copy"></button></div><pre id="code-llm-wiki-1">pip install llmwiki2
+<div class="code"><div class="code-head"><span>Install and start</span><button class="copy" type="button" data-copy="code-llm-wiki-4" aria-label="Copy"></button></div><pre id="code-llm-wiki-4">pip install llmwiki2
 llmwiki2</pre></div>
 <p>Your browser opens: pick a provider, paste its key, press Test connection, then Save and start. <code>uvx llmwiki2 demo</code> opens an example wiki with no key. More on the <a href="/llmwiki2/">llmwiki2 page</a>.</p>
 
@@ -481,7 +547,7 @@ llmwiki2</pre></div>
       </section>
       <section class="article-sources" aria-labelledby="sources-h">
         <h2 id="sources-h">Sources</h2>
-        <ul><li><a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">Andrej Karpathy, LLM Wiki (GitHub gist, created 4 April 2026)</a></li><li><a href="https://doi.org/10.5281/zenodo.23260209">F. Cesarini, M. Sassarini, CROW: Classifier-Routed Organization of LLM Wikis, version 1.0, Zenodo, 2026</a></li><li><a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/README.md">crow-hq/llm-wiki-v2, README at v1.0.0</a></li><li><a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/wiki/crow.md">llm-wiki-v2, CROW mode (docs/wiki/crow.md at v1.0.0)</a></li><li><a href="https://github.com/crow-hq/llm-wiki-v2/releases/tag/v1.0.0">llm-wiki-v2 1.0.0 release notes</a></li><li><a href="https://pypi.org/project/llmwiki2/">llmwiki2 on PyPI</a></li><li><a href="https://github.com/crow-hq/crow-desktop">crow-hq/crow-desktop, README (Crow 1.0.1)</a></li></ul>
+        <ul><li><a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">Andrej Karpathy, LLM Wiki (GitHub gist, created 4 April 2026)</a></li><li><a href="https://doi.org/10.5281/zenodo.23260209">F. Cesarini, M. Sassarini, CROW: Classifier-Routed Organization of LLM Wikis, version 1.0, Zenodo, 2026</a></li><li><a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/README.md">crow-hq/llm-wiki-v2, README at v1.0.0</a></li><li><a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/wiki/crow.md">llm-wiki-v2, CROW mode (docs/wiki/crow.md at v1.0.0)</a></li><li><a href="https://github.com/crow-hq/llm-wiki-v2/releases/tag/v1.0.0">llm-wiki-v2 1.0.0 release notes</a></li><li><a href="https://github.com/crow-hq/llm-wiki-v2/tree/v1.0.5/src/llmw2/demo">The example wiki, Lumen Coffee Roasters (src/llmw2/demo at v1.0.5)</a></li><li><a href="https://github.com/fed3c3sa/crow-website/blob/main/assets/data/demo.json">The recorded answers of the example wiki (this site&#x27;s assets/data/demo.json)</a></li><li><a href="https://pypi.org/project/llmwiki2/">llmwiki2 on PyPI</a></li><li><a href="https://github.com/crow-hq/crow-desktop">crow-hq/crow-desktop, README (Crow 1.0.1)</a></li></ul>
       </section>
       <nav class="article-next links" aria-label="Keep reading"><a class="link-card" href="/llmwiki2/"><b>llmwiki2, the engine</b><span>The Python library, command line and MCP memory</span></a><a class="link-card" href="/paper/"><b>The CROW paper</b><span>Classifier-Routed Organization of LLM Wikis</span></a><a class="link-card" href="/#brain"><b>Explore a brain</b><span>An example wiki drawn by Crow's own code</span></a></nav>
     </article>

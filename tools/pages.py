@@ -19,7 +19,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://crowllmwiki.com"
-HOME_MODIFIED = "2026-11-18"  # bump when the homepage changes
+HOME_MODIFIED = "2026-11-25"  # bump when the homepage changes
 OTHER_PAGES = {"/privacy/": "2026-11-14"}
 
 PEOPLE = {
@@ -266,7 +266,7 @@ def build_page(src: Path, header: str, footer: str) -> tuple[str, str, dict]:
         "inLanguage": "en",
         "datePublished": meta["published"],
         "dateModified": meta["modified"],
-        "primaryImageOfPage": f"{SITE}/assets/img/og.jpg",
+        "primaryImageOfPage": SITE + meta.get("image", "/assets/img/og.jpg"),
     }
     nodes = base_nodes()
     if slug in PAGE_MAIN:
@@ -285,7 +285,7 @@ def build_page(src: Path, header: str, footer: str) -> tuple[str, str, dict]:
                 "datePublished": meta["published"],
                 "dateModified": meta["modified"],
                 "mainEntityOfPage": {"@id": f"{url}#webpage"},
-                "image": f"{SITE}/assets/img/og.jpg",
+                "image": SITE + meta.get("image", "/assets/img/og.jpg"),
                 "inLanguage": "en",
                 "keywords": meta.get("about", []),
                 "about": [{"@type": "Thing", "name": a} for a in meta.get("about", [])[:2]],
@@ -334,7 +334,7 @@ def build_page(src: Path, header: str, footer: str) -> tuple[str, str, dict]:
 
     sources = "".join(f'<li><a href="{esc(s["url"])}">{esc(s["title"])}</a></li>' for s in meta.get("sources", []))
     others = [(s, t, d) for s, t, d in [
-        ("llm-wiki", "What is an LLM wiki?", "Karpathy's idea, RAG, and how to build one"),
+        ("llm-wiki", "What is an LLM wiki?", "A real one file by file, RAG, and how to build one"),
         ("llmwiki2", "llmwiki2, the engine", "The Python library, command line and MCP memory"),
         ("paper", "The CROW paper", "Classifier-Routed Organization of LLM Wikis"),
     ] if s != slug]
@@ -421,13 +421,22 @@ def build_page(src: Path, header: str, footer: str) -> tuple[str, str, dict]:
 </body>
 </html>
 """
+    meta["images"] = re.findall(r'<img src="(/assets/img/figures/[^"]+)"', body)
     return slug, page_html, meta
 
 
 def sitemap(pages) -> str:
-    rows = [("/", HOME_MODIFIED)] + list(OTHER_PAGES.items()) + [(f"/{m['slug']}/", m["modified"]) for m in pages]
-    urls = "\n".join(f"  <url>\n    <loc>{SITE}{p}</loc>\n    <lastmod>{d}</lastmod>\n  </url>" for p, d in rows)
-    return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}\n</urlset>\n'
+    rows = [("/", HOME_MODIFIED, [])] + [(p, d, []) for p, d in OTHER_PAGES.items()] + [(f"/{m['slug']}/", m["modified"], m["images"]) for m in pages]
+    urls = "\n".join(
+        f"  <url>\n    <loc>{SITE}{p}</loc>\n    <lastmod>{d}</lastmod>\n"
+        + "".join(f"    <image:image><image:loc>{SITE}{i}</image:loc></image:image>\n" for i in images)
+        + "  </url>"
+        for p, d, images in rows
+    )
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+        f'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n{urls}\n</urlset>\n'
+    )
 
 
 def main():

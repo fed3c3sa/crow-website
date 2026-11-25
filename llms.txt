@@ -9,9 +9,9 @@
 
 ## On this site
 
-- [What is an LLM wiki?](https://crowllmwiki.com/llm-wiki/): Karpathy's idea, how it differs from RAG, what breaks as it grows, and three ways to build one
-- [llmwiki2, the engine](https://crowllmwiki.com/llmwiki2/): install, Python library, command line, MCP memory for Claude Code and Codex, CROW mode, version 1.0.5
-- [The CROW paper](https://crowllmwiki.com/paper/): abstract, method, benchmark, versions and DOIs, how to cite
+- [What is an LLM wiki?](https://crowllmwiki.com/llm-wiki/): Karpathy's idea, a real wiki file by file with four recorded questions, how it differs from RAG, what breaks as it grows, and three ways to build one
+- [llmwiki2, the engine](https://crowllmwiki.com/llmwiki2/): install, Python library, command line with a real session, MCP memory for Claude Code and Codex, CROW mode, the benchmark on eleven corpora, version 1.0.5
+- [The CROW paper](https://crowllmwiki.com/paper/): abstract, method, benchmark, figures 1, 3 and 4, versions and DOIs, how to cite
 - [Privacy](https://crowllmwiki.com/privacy/): what Crow, the desktop app, does with your documents
 
 ## Crow, the desktop app

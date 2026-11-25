@@ -1,14 +1,15 @@
 <!--meta
 {
   "slug": "llm-wiki",
-  "title": "LLM wiki: what it is, how it differs from RAG, how to build one",
-  "description": "What an LLM wiki is, from Karpathy's idea file: how it differs from RAG, what gets costly as it grows, and three ways to build one, with or without code.",
+  "title": "What is an LLM wiki? A real example, vs RAG, how to build one",
+  "description": "An LLM wiki is a folder of notes a language model writes and keeps current. A real one file by file, how it differs from RAG, and three ways to build one.",
   "h1": "What is an LLM wiki? From Karpathy's idea file to a wiki of thousands of documents",
-  "lede": "An LLM wiki is a knowledge base that a language model writes and keeps current from your sources. Here is how the pattern works, how it differs from RAG, what gets expensive as it grows, and three ways to build one.",
+  "lede": "An LLM wiki is a knowledge base that a language model writes and keeps current from your sources. Here is how the pattern works, a real one file by file, how it differs from RAG, what gets expensive as it grows, and three ways to build one.",
   "eyebrow": "Guide",
   "crumb": "LLM wiki",
   "published": "2026-11-11",
-  "modified": "2026-11-18",
+  "modified": "2026-11-25",
+  "image": "/assets/img/figures/llm-wiki-example-brain.webp",
   "about": ["LLM wiki", "Karpathy LLM Wiki", "LLM wiki vs RAG", "CROW", "Crow desktop app"],
   "sources": [
     {"title": "Andrej Karpathy, LLM Wiki (GitHub gist, created 4 April 2026)", "url": "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f"},
@@ -16,6 +17,8 @@
     {"title": "crow-hq/llm-wiki-v2, README at v1.0.0", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/README.md"},
     {"title": "llm-wiki-v2, CROW mode (docs/wiki/crow.md at v1.0.0)", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/wiki/crow.md"},
     {"title": "llm-wiki-v2 1.0.0 release notes", "url": "https://github.com/crow-hq/llm-wiki-v2/releases/tag/v1.0.0"},
+    {"title": "The example wiki, Lumen Coffee Roasters (src/llmw2/demo at v1.0.5)", "url": "https://github.com/crow-hq/llm-wiki-v2/tree/v1.0.5/src/llmw2/demo"},
+    {"title": "The recorded answers of the example wiki (this site's assets/data/demo.json)", "url": "https://github.com/fed3c3sa/crow-website/blob/main/assets/data/demo.json"},
     {"title": "llmwiki2 on PyPI", "url": "https://pypi.org/project/llmwiki2/"},
     {"title": "crow-hq/crow-desktop, README (Crow 1.0.1)", "url": "https://github.com/crow-hq/crow-desktop"}
   ]
@@ -33,6 +36,72 @@
 </ul>
 <p>Three operations act on them. <strong>Ingest</strong>: the model reads a new source, writes a summary page and updates the related pages, the index and the log; one source may touch 10 to 15 pages. <strong>Query</strong>: it reads the relevant pages and answers with citations; good answers can be filed back. <strong>Lint</strong>: it checks for contradictions, stale claims and orphan pages.</p>
 <p><code>index.md</code> lists every page with a one-line summary, and the model reads it first to answer; <code>log.md</code> is an append-only record of what happened. Karpathy keeps the agent on one side and Obsidian on the other: "Obsidian is the IDE; the LLM is the programmer; the wiki is the codebase."</p>
+
+<h2>What does an LLM wiki look like? A real one, file by file</h2>
+<p>An LLM wiki is an ordinary folder of text files. The example that ships with <a href="/llmwiki2/">llmwiki2</a>, the notes of a coffee roastery that does not exist, is 56 Markdown files: 23 notes, the 23 sources they come from, nine indexes and a log. <code>uvx llmwiki2 demo</code> opens it on your computer, and the files are <a href="https://github.com/crow-hq/llm-wiki-v2/tree/v1.0.5/src/llmw2/demo">on GitHub</a>.</p>
+<div class="code"><div class="code-head"><span>The folder</span></div><pre>llm-wiki-demo/
+  index.md            the top folders
+  log.md              the filing log
+  about-this-demo.md  a note
+  products/           index.md, 4 notes
+  sourcing/           index.md, 3 notes
+  operations/         index.md
+    roasting/         index.md, 3 notes
+    shipping/         index.md, 2 notes
+  customers/          index.md, 4 notes
+  meetings/           index.md, 3 notes
+  ideas/              index.md, 3 notes
+  raw/                the 23 sources</pre></div>
+<figure><img src="/assets/img/figures/llm-wiki-example-brain.webp" width="1600" height="1000" loading="lazy" alt="The example LLM wiki drawn as a graph on llmwiki2's web page: a root, eight folders named customers, ideas, meetings, products, sourcing, operations, roasting and shipping, their notes as dots, and dashed See also links between notes. The page counts 23 notes, 8 folders and 23 links."><figcaption>The same wiki on llmwiki2's web page (1.0.5): 23 notes, 8 folders, 23 links. Solid lines are folders; dashed lines are the See also links between notes.</figcaption></figure>
+<p>This is one note, <code>meetings/pricing-meeting-may-2026.md</code>, as the file is. The top says what it is and which source it came from; the body is the knowledge; See also links it to the notes next to it in meaning, in other folders too.</p>
+<div class="code"><div class="code-head"><span>meetings/pricing-meeting-may-2026.md</span></div><pre>---
+type: Note
+title: Pricing meeting, May 2026
+description: Retail up 8% and wholesale up 5% from 1 July; decaf keeps its margin;
+  subscriptions keep their discount.
+tags:
+- meeting
+- prices
+- decision
+generated:
+  by: llmw2/0.2.0
+  at: '2026-09-25T16:24:41+00:00'
+sources:
+- id: s1
+  resource: /raw/20260925-162441-pricing-meeting-may-2026.md
+  title: Pricing meeting, May 2026
+---
+
+**Decisions**
+
+- Retail prices up 8% from 1 July 2026.
+- Wholesale up 5% only, to keep the cafés.
+- Subscriptions keep the 10% discount.
+
+**Why**: the July price fixings for green coffee came in 11% higher.
+
+**Actions**: update the price list and the web shop; email wholesale customers one month ahead.
+
+# See also
+
+* [Price list from July 2026](../products/price-list-from-july-2026.md) - Retail and wholesale prices from 1 July 2026, after the rise in green coffee prices.
+* [Subscription churn, Q2 2026](../customers/subscription-churn-q2-2026.md) - Churn was 6.1% a month in Q2 2026; people leave mostly because they have too much coffee, then because of price.</pre></div>
+<p>Every folder has an <code>index.md</code> that lists its notes with that one-line description, so a person or a model can choose what to open without reading everything:</p>
+<div class="code"><div class="code-head"><span>meetings/index.md</span></div><pre># Notes
+
+* [Pricing meeting, May 2026](pricing-meeting-may-2026.md) - Retail up 8% and wholesale up 5% from 1 July; decaf keeps its margin; subscriptions keep their discount.
+* [Board meeting, June 2026](board-meeting-june-2026.md) - Approved a study for a second roaster, a cold brew pilot and a part-time packer.
+* [Weekly sync, 10 June 2026](weekly-sync-10-june-2026.md) - Packing is late on Tuesdays, the Guji lot has arrived, and two cafés asked for decaf training.</pre></div>
+
+<h3>What happens when you ask it a question</h3>
+<p>Four questions were recorded on this wiki on 4 November 2026, with llmwiki2 0.8.0 in CROW mode: Jev 1.13 decided what to read and Gemini 3.8 Flash wrote the answers. For "How long do customers have to ask for a refund?" the classifier scored the top folders: customers 0.75, operations 0.65, ideas 0.17, meetings 0.16, products 0.09, sourcing 0.05. It opened all but sourcing, and of the notes inside, <code>refund-policy.md</code> scored 0.93 and the next one 0.05. The LLM read that one note and answered "within 30 days of delivery", citing it.</p>
+<div class="table-wrap"><table><thead><tr><th>Question</th><th>Notes read</th><th>LLM tokens (calls)</th><th>Classifier tokens (calls)</th><th>Seconds</th><th>Cost</th></tr></thead><tbody>
+<tr><td>How long do customers have to ask for a refund?</td><td>1</td><td>386 (1)</td><td>2,639 (3)</td><td>2.4</td><td>$0.0004</td></tr>
+<tr><td>What did we decide about prices in May?</td><td>3</td><td>917 (1)</td><td>3,295 (4)</td><td>4.4</td><td>$0.0012</td></tr>
+<tr><td>Why do subscribers cancel, and what could keep them?</td><td>8</td><td>1,524 (1)</td><td>3,491 (4)</td><td>5.1</td><td>$0.0020</td></tr>
+<tr><td>How is a subscription order roasted and shipped?</td><td>8</td><td>1,799 (1)</td><td>3,633 (4)</td><td>3.7</td><td>$0.0023</td></tr>
+</tbody></table></div>
+<p>That version walked the folders. Since llmwiki2 1.0.0 the candidate notes come from the wiki's own search and the classifier reorders them. You can <a href="/#brain">play the four recordings</a> on the home page and open the notes they read; nothing there calls a model.</p>
 
 <h2>How is an LLM wiki different from RAG?</h2>
 <p>An LLM wiki differs from RAG in when the work is done. RAG retrieves chunks of your raw documents at every question and pieces the answer together again each time. An LLM wiki processes each source once, at ingest, into readable notes that the model keeps current, so knowledge accumulates instead of being rediscovered at every query.</p>

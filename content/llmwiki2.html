@@ -8,7 +8,8 @@
   "eyebrow": "Engine",
   "crumb": "llmwiki2",
   "published": "2026-11-11",
-  "modified": "2026-11-18",
+  "modified": "2026-11-25",
+  "image": "/assets/img/figures/llmwiki2-note-page.webp",
   "about": ["llmwiki2", "llm-wiki-v2", "LLM wiki", "MCP memory server", "CROW"],
   "sources": [
     {"title": "llm-wiki-v2 README, tag v1.0.0", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/README.md"},
@@ -17,6 +18,8 @@
     {"title": "llm-wiki-v2 CHANGELOG, tag v1.0.5", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.5/CHANGELOG.md"},
     {"title": "Using llmw2 as a library (library guide, Compatibility section)", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/library/index.md"},
     {"title": "The wiki as Claude's memory (MCP), tag v1.0.5", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.5/docs/wiki/memory.md"},
+    {"title": "CROW against classic on eleven corpora (benchmarks/README.md at v1.0.5)", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.5/benchmarks/README.md#crow-against-classic-on-eleven-corpora"},
+    {"title": "The example wiki (src/llmw2/demo at v1.0.5)", "url": "https://github.com/crow-hq/llm-wiki-v2/tree/v1.0.5/src/llmw2/demo"},
     {"title": "llm-wiki-v2 server.json (its MCP Registry entry), tag v1.0.5", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.5/server.json"},
     {"title": "CROW mode", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/wiki/crow.md"},
     {"title": "Providers, tag v1.0.5", "url": "https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.5/docs/wiki/providers.md"},
@@ -44,6 +47,52 @@ llmwiki2</pre></div>
 <p>Just looking? <code>llmwiki2 demo</code> opens an example wiki, the notes of a fictional coffee roastery, with no key needed to browse it and its brain. It is copied to <code>~/llm-wiki-demo</code>. To try it without installing anything but uv:</p>
 <div class="code"><div class="code-head"><span>Example wiki, no key</span></div><pre>uvx llmwiki2 demo</pre></div>
 <p>The same example wiki is drawn on Crow's home page, where you can <a href="/#brain">explore its brain</a> without installing anything.</p>
+
+<figure><img src="/assets/img/figures/llmwiki2-note-page.webp" width="1600" height="1000" loading="lazy" alt="llmwiki2's web page with the example wiki open: the folders with their descriptions on the left, the note Pricing meeting, May 2026 with its decisions and See also links on the right, and token counters at zero"><figcaption>llmwiki2 1.0.5 on the example wiki: the folders with their one-line descriptions, a note, and the token counters, at zero because browsing calls no model.</figcaption></figure>
+
+<h2>What does llmwiki2 do from the command line?</h2>
+<p>From the command line llmwiki2 files documents, answers questions, searches and checks a wiki. Some commands need no model and no key: <code>search</code> finds notes by their words, for example, and <code>check</code> looks for problems in the files. This is a real session on the example wiki, with llmwiki2 1.0.5 from PyPI, on a Mac, on 25 November 2026.</p>
+<div class="code"><div class="code-head"><span>Search the example wiki, then check it</span></div><pre>$ llmwiki2 --bundle ~/llm-wiki-demo search -k 3 --json "price increase July"
+[
+  {
+    "path": "meetings/pricing-meeting-may-2026.md",
+    "title": "Pricing meeting, May 2026",
+    "summary": "Retail up 8% and wholesale up 5% from 1 July; decaf keeps its margin; subscriptions keep their discount.",
+    "rank": 1
+  },
+  {
+    "path": "sourcing/green-coffee-price-hedging.md",
+    "title": "Green coffee price hedging",
+    "summary": "Prices are fixed for six months on 70% of the expected volume; the rest is bought at market.",
+    "rank": 2
+  },
+  {
+    "path": "products/price-list-from-july-2026.md",
+    "title": "Price list from July 2026",
+    "summary": "Retail and wholesale prices from 1 July 2026, after the rise in green coffee prices.",
+    "rank": 3
+  }
+]
+$ llmwiki2 --bundle ~/llm-wiki-demo check
+0 problem(s)</pre></div>
+<p>On this wiki of 23 notes each search took less than two tenths of a second, Python's start included. The commands of 1.0.5, from its <code>--help</code>:</p>
+<div class="table-wrap"><table><thead><tr><th>Command</th><th>What it does</th></tr></thead><tbody>
+<tr><td><code>llmwiki2</code>, <code>serve</code></td><td>Serve the HTTP API and the web page; with no command, open the browser too</td></tr>
+<tr><td><code>setup</code></td><td>Choose the model provider, key and model, and test them</td></tr>
+<tr><td><code>init</code></td><td>Create an empty wiki</td></tr>
+<tr><td><code>ingest</code></td><td>File one source: a text, Markdown or PDF file, or standard input</td></tr>
+<tr><td><code>sync</code></td><td>File a folder's documents and keep the wiki in step with it</td></tr>
+<tr><td><code>rebuild</code></td><td>Delete every note and file the documents again on the same folders</td></tr>
+<tr><td><code>purge</code></td><td>Delete a document for good: its raw copies, archived versions and notes</td></tr>
+<tr><td><code>ask</code></td><td>Answer a question from the wiki</td></tr>
+<tr><td><code>search</code></td><td>Find the notes for a query, with no model call</td></tr>
+<tr><td><code>move</code>, <code>describe</code></td><td>Move a note into another folder, links included; change a folder's one-line description</td></tr>
+<tr><td><code>proposals</code>, <code>rename-root</code>, <code>merge-roots</code></td><td>Manage the top-level folders: proposals, a new name, one folder moved into another</td></tr>
+<tr><td><code>audit</code></td><td>CROW: list the notes the classifier would file in another folder today, with no LLM call</td></tr>
+<tr><td><code>health</code>, <code>check</code></td><td>Per folder and month, new subfolders and fallbacks per note filed; lint the wiki</td></tr>
+<tr><td><code>mcp</code></td><td>The wiki as an MCP memory over stdio, for a client that starts it</td></tr>
+<tr><td><code>demo</code></td><td>Open the example wiki, a copy in <code>~/llm-wiki-demo</code></td></tr>
+</tbody></table></div>
 
 <h2>How do I use llmwiki2 as a Python library?</h2>
 <p>Use llmwiki2 as a library by importing <code>Wiki</code> from <code>llmw2</code>, the package's import name. <code>Wiki.from_env</code> reads the settings and the provider's key from the environment; then <code>ingest</code> files a text, <code>ingest_file</code> files a PDF or Office document, and <code>ask</code> returns an answer with its citations. The web page and the command line call the same object.</p>
@@ -88,6 +137,32 @@ codex mcp add llm-wiki --url http://127.0.0.1:8000/mcp                          
 <p>CROW stands for Classifier-Routed Organization of LLM Wikis, the method of <a href="/paper/">the CROW paper</a>. Filing picks a note's folder among every folder of the wiki in one classifier choice; the LLM lays out the folders, with a plan before a batch and a split when a folder grows. Asking, in 1.0.0, starts from the wiki's search: the top note stays first, and one batched classifier call reorders the other 15. The LLM walks the folders only when the search finds nothing.</p>
 <p>The default classifier is Jev, by TypeSafe AI, through OpenRouter or TypeSafe; any System One server, such as Laya or Ollama 0.35 or later, can take its place. Classic mode (<code>--mode classic</code>) lets the LLM take every decision. Details: <a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/wiki/crow.md">docs/wiki/crow.md</a>.</p>
 <p>In the CROW paper's benchmark of 525 documents, CROW read the right note in 89.2% of asks against 61.8% for an LLM taking the same decisions, took 18.4 s per document against 38.6 s, and used 68% fewer LLM tokens. These are the authors' own measurements, on a private corpus of the first author's notes, with the paper's pipeline, before 1.0.0 changed how CROW asks.</p>
+
+<h2>How accurate is llmwiki2? CROW and classic on eleven corpora</h2>
+<p>In the authors' benchmark of llmwiki2 1.0.0, CROW mode read the right note for 99.5% of 656 questions and classic mode, where the LLM decides everything, for 79.4%. CROW filed a document in 18.0 s against 29.2 s on average, with 63% fewer LLM tokens. It covers eleven corpora and 2,019 documents.</p>
+<div class="table-wrap"><table><thead><tr><th scope="col">Corpus</th><th scope="col">Documents</th><th scope="col">Right note, CROW</th><th scope="col">Right note, classic</th><th scope="col">Seconds per document, CROW vs classic</th><th scope="col">LLM tokens per document, CROW vs classic</th><th scope="col">Cost, writer at list price</th></tr></thead><tbody>
+<tr><th scope="row">GitLab handbook</th><td>151</td><td>100%</td><td>78%</td><td>18.2 vs 32.2</td><td>3,913 vs 11,648</td><td>0.58×</td></tr>
+<tr><th scope="row">Synthetic personal brain (Italian)</th><td>150</td><td>100%</td><td>75%</td><td>12.1 vs 24.7</td><td>2,317 vs 8,630</td><td>0.54×</td></tr>
+<tr><th scope="row">Enron mail</th><td>171</td><td>100%</td><td>76%</td><td>9.9 vs 19.1</td><td>1,700 vs 7,465</td><td>0.43×</td></tr>
+<tr><th scope="row">HMRC manuals</th><td>180</td><td>100%</td><td>93%</td><td>15.7 vs 23.6</td><td>2,830 vs 12,937</td><td>0.42×</td></tr>
+<tr><th scope="row">MultiEURLEX, Italian</th><td>180</td><td>100%</td><td>90%</td><td>23.3 vs 32.6</td><td>8,848 vs 17,146</td><td>0.72×</td></tr>
+<tr><th scope="row">CUAD contracts</th><td>180</td><td>100%</td><td>55%</td><td>36.8 vs 48.7</td><td>12,907 vs 24,487</td><td>0.69×</td></tr>
+<tr><th scope="row">MultiEURLEX, English</th><td>180</td><td>100%</td><td>95%</td><td>18.7 vs 26.3</td><td>6,487 vs 13,732</td><td>0.69×</td></tr>
+<tr><th scope="row">PostHog handbook</th><td>120</td><td>100%</td><td>75%</td><td>17.2 vs 28.5</td><td>3,736 vs 11,997</td><td>0.55×</td></tr>
+<tr><th scope="row">Italian Wikibooks</th><td>260</td><td>100%</td><td>85%</td><td>23.6 vs 39.1</td><td>5,982 vs 16,436</td><td>0.59×</td></tr>
+<tr><th scope="row">Synthetic personal brain, larger (Italian)</th><td>327</td><td>97%</td><td>68%</td><td>9.9 vs 22.4</td><td>2,080 vs 10,221</td><td>0.47×</td></tr>
+<tr><th scope="row">Coffee corpus</th><td>120</td><td>98%</td><td>83%</td><td>13.5 vs 21.4</td><td>2,573 vs 8,557</td><td>0.56×</td></tr>
+<tr><th scope="row">All eleven</th><td>2,019</td><td>99.5%</td><td>79.4%</td><td>18.0 vs 29.2</td><td>4,861 vs 13,227</td><td>0.59×</td></tr>
+</tbody></table></div>
+<p>Each corpus was filed into an empty wiki in one batch, once per mode, with the same writer (GLM 5.3 Flash) and the same classifier (Jev). The questions, up to 60 per corpus, were each written blind from one document. The right note is read when the note of that document is among the notes the wiki would read to answer, eight at most; it does not mean that the answer was correct. The table is from <a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.5/benchmarks/README.md#crow-against-classic-on-eleven-corpora">benchmarks/README.md</a>, which also gives the intervals.</p>
+<p>What to keep in mind when reading it:</p>
+<ul>
+<li><strong>The gap is in how each mode picks notes, not in the wiki it builds.</strong> The search alone (BM25, no model call) finds the right note 99.2% of the time on the CROW wikis and 98.9% on the classic ones. CROW reads the eight notes its search finds; classic reads 1.2 on average.</li>
+<li><strong>The cost depends on the writer's price.</strong> As the runs paid it, about a quarter of list price, the two modes cost the same (CROW 1.02 times classic). With the writer at its list price CROW cost 0.59 times classic.</li>
+<li><strong>It grows with the wiki in both modes.</strong> On 1,000 Enron mails filed in batches of 200, CROW read the right note for all of 107 questions (written from the first 200 mails) at every checkpoint reported; classic for 76% of them at the first and 60% at the last. One run per mode.</li>
+<li><strong>They are the authors' own measurements,</strong> one run per mode and corpus. The two synthetic brains and the Wikibooks pages are not in the repository; the other corpora are in it, or its scripts build them.</li>
+</ul>
+<p>This is not the CROW paper's benchmark, which used another corpus and an earlier pipeline: its numbers are <a href="/paper/">on the paper's page</a>.</p>
 
 <h2>Which models and providers does llmwiki2 support?</h2>
 <p>llmwiki2 talks to any OpenAI-compatible chat API. It has presets for OpenRouter (the default, with <code>deepseek/deepseek-v4.1-flash</code> since 1.0.3), OpenAI, Gemini and Ollama, and a <code>custom</code> setting for any other OpenAI-compatible server, such as vLLM, LM Studio or llama.cpp's server. CROW's classifier is a separate setting: Jev through OpenRouter or TypeSafe, or a local server.</p>

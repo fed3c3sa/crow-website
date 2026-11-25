@@ -20,7 +20,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="article:published_time" content="2026-11-11">
-<meta property="article:modified_time" content="2026-11-11">
+<meta property="article:modified_time" content="2026-11-25">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@fed3c3sa">
 <meta name="citation_title" content="CROW: Classifier-Routed Organization of LLM Wikis">
@@ -203,8 +203,8 @@
       },
       "inLanguage": "en",
       "datePublished": "2026-11-11",
-      "dateModified": "2026-11-11",
-      "primaryImageOfPage": "https://crowllmwiki.com/assets/img/og.jpg",
+      "dateModified": "2026-11-25",
+      "primaryImageOfPage": "https://crowllmwiki.com/assets/img/figures/crow-paper-figure-1-architecture.webp",
       "about": {
         "@id": "https://crowllmwiki.com/#paper"
       },
@@ -308,7 +308,7 @@
       <a class="gh" href="https://github.com/crow-hq/llm-wiki-v2" aria-label="llm-wiki-v2 on GitHub, stars">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
         <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.94 5.96 6.58.96-4.76 4.64 1.12 6.55L12 17.52l-5.88 3.09 1.12-6.55L2.48 9.42l6.58-.96Z"/></svg>
-        <span data-stars>274</span>
+        <span data-stars>325</span>
       </a>
       <a class="btn btn-cta" href="/#download">Download</a>
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">
@@ -325,7 +325,7 @@
       <span class="eyebrow" style="--dot: var(--crow)">Research</span>
       <h1>CROW: Classifier-Routed Organization of LLM Wikis</h1>
       <p class="lede">The paper behind Crow and llm-wiki-v2, by Federico Cesarini and Marco Sassarini: a typed classifier takes the filing and retrieval decisions of an LLM wiki, and the LLM writes the text. Published on Zenodo in 2026 under CC BY 4.0.</p>
-      <p class="byline">By <a href="https://www.federicocesarini.com/">Federico Cesarini</a> and <a href="https://github.com/sassarini-marco">Marco Sassarini</a> · Updated <time datetime="2026-11-11">11 November 2026</time></p>
+      <p class="byline">By <a href="https://www.federicocesarini.com/">Federico Cesarini</a> and <a href="https://github.com/sassarini-marco">Marco Sassarini</a> · Updated <time datetime="2026-11-25">25 November 2026</time></p>
       <div class="article-body">
 <p>CROW: Classifier-Routed Organization of LLM Wikis is a paper by Federico Cesarini and Marco Sassarini, published on Zenodo in 2026. It proposes a decision layer for LLM wikis: a typed classifier decides where each new document is filed and which notes can answer a question, and the LLM is called only when text must be written.</p>
 <p>The <a href="/assets/paper/CROW_Cesarini_Sassarini_2026_v1.0_doi-23260209.pdf">PDF on this site</a> is version 1.0 from Zenodo (CC BY 4.0). The engine <a href="/llmwiki2/">llm-wiki-v2</a> and the <a href="/">Crow</a> desktop app both run CROW.</p>
@@ -339,10 +339,12 @@
 <p>CROW addresses the cost of LLM wikis. In an LLM wiki, a language model files every new source and finds the notes for every question, and each of those calls reads the wiki's index, so the cost of one ingestion grows with the knowledge base. Many of the calls are decisions, not writing.</p>
 <p>An <a href="/llm-wiki/">LLM wiki</a> is the pattern Andrej Karpathy described in April 2026 in a <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">GitHub gist</a>: an LLM compiles sources once into linked Markdown notes and keeps them current, instead of retrieving raw fragments at every question as RAG does. Summaries have to be written; choosing where a source belongs, which notes it relates to and which notes to read is the kind of decision typed classifiers are built for.</p>
 <p>The decisions are also the part that grows. In the paper's benchmark (525 documents, the authors' own measurements on a private corpus), the LLM-only baseline spent 71.8% of its LLM tokens on decisions, and its tokens per document grew by 1,197 per 100 notes in the wiki.</p>
+<figure class="on-white"><img src="/assets/img/figures/crow-paper-figure-3-tokens-per-document.webp" width="1490" height="632" loading="lazy" alt="Two charts of tokens per ingested document against the notes already in the wiki, from 0 to 500. Left: LLM tokens rise from about 14,000 to 20,000 for the baseline and stay between about 4,000 and 7,000 for CROW. Right: decision tokens rise for the baseline's LLM and for CROW's classifier, and stay near zero for CROW's LLM fallback."><figcaption>Figure 3 of the paper: tokens per ingested document as the wiki grows. (a) LLM tokens: the baseline grows by 1,197 per 100 notes; CROW is flat once document length and new folders are accounted for. (b) Decision tokens: CROW's growth is in classifier tokens (dashed), priced 7 to 29 times lower. Cesarini and Sassarini, CC BY 4.0.</figcaption></figure>
 
 <h2>How does CROW work?</h2>
 <p>CROW keeps the notes of an LLM wiki and its two phases, ingestion and retrieval, but changes who takes the decisions. A typed classifier answers each one as a choice among options or a yes/no question, with probabilities, and an LLM is called only to summarize a source, name a new folder, rewrite a merged note or write the answer.</p>
 <p>The paper describes each decision with the primitives of Jev, a typed classifier released in early access by TypeSafe AI on 15 September 2026: a Choice picks one of up to 255 options, and a Noul gives the probability that a yes/no statement holds. Any classifier that returns such probabilities can take its place. Every decision but one sees notes and folders only through their titles and one-line summaries.</p>
+<figure class="on-white"><img src="/assets/img/figures/crow-paper-figure-1-architecture.webp" width="1484" height="1671" loading="lazy" alt="Diagram of two pipelines. In the LLM-decided baseline every ingestion and retrieval step is an orange LLM box. In CROW, routing, finding the related note, choosing between create and modify, linking, routing a question and scoring notes are blue classifier boxes; the LLM summarizes, names a new folder, rewrites an existing note and answers. Dashed boxes are fallbacks to the LLM."><figcaption>Figure 1 of the paper. (a) The baseline: an LLM takes every routing and filing decision. (b) CROW: a typed classifier takes them, and the LLM only summarizes the source, names a new subfolder, rewrites an existing note or writes the answer. Dashed paths are fallbacks to an LLM when the classifier is not confident. Cesarini and Sassarini, CC BY 4.0.</figcaption></figure>
 <h3>Ingestion: filing a new document</h3>
 <ol>
 <li><strong>Summarize (LLM, optional).</strong> An LLM turns the source into a candidate note: title, one-line summary and body. It is the only generative call every ingestion pays.</li>
@@ -374,6 +376,7 @@
 <tr><td>Cost per question (billed)</td><td>$0.0029 ($0.0021)</td><td>$0.0020 ($0.0013)</td><td>0.69</td></tr>
 </tbody></table></div>
 <p>Costs are in US dollars at list price, billed amounts in brackets. CROW's hit rate was 90% at both the smallest and the largest wiki, while the baseline's fell from 75% to 55%. Beyond 525 documents the paper only projects: about $0.006 per CROW ingest up to a million documents, if the folder tree is kept bounded.</p>
+<figure class="on-white"><img src="/assets/img/figures/crow-paper-figure-4-right-note-read.webp" width="1490" height="621" loading="lazy" alt="Two charts against the notes in the wiki, from 0 to 500. Left: the right note is read in 85 to 90% of asks at every size with CROW, and falls from 75% to 55% with the baseline, with Wilson 95% bands. Right: the share of questions answered, and CROW's fallbacks to LLM navigation, at or below 5% at every size."><figcaption>Figure 4 of the paper: retrieval as the wiki grows, 20 questions asked at each of 20 sizes from 26 to 525 documents. (a) Right note read: 89.2% for CROW and 61.8% for the baseline over the run; hollow markers are the calibration run on a 278-document snapshot. (b) Questions answered, and CROW's fallbacks to LLM navigation (4.5%). Cesarini and Sassarini, CC BY 4.0.</figcaption></figure>
 <h3>Limitations the paper states</h3>
 <ul>
 <li>One corpus of 525 short personal documents, mostly in Italian, one LLM and one classifier version. Other corpora, languages and models may give different results.</li>
@@ -425,7 +428,7 @@
         <h2 id="sources-h">Sources</h2>
         <ul><li><a href="https://zenodo.org/records/23260209">CROW: Classifier-Routed Organization of LLM Wikis, version 1.0 (Zenodo record 23260209)</a></li><li><a href="https://zenodo.org/records/23034952">CROW, version 1.0, first record (Zenodo record 23034952)</a></li><li><a href="https://zenodo.org/records/22900601">CROW, preprint version 0.1.1 (Zenodo record 22900601)</a></li><li><a href="https://doi.org/10.5281/zenodo.22898752">CROW, all versions (concept DOI 10.5281/zenodo.22898752)</a></li><li><a href="https://github.com/crow-hq/llm-wiki-v2/tree/v1.0.0">crow-hq/llm-wiki-v2 at v1.0.0 (README)</a></li><li><a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/docs/wiki/crow.md">CROW mode in llm-wiki-v2 1.0.0 (docs/wiki/crow.md)</a></li><li><a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/benchmarks/README.md">llm-wiki-v2 benchmarks (benchmarks/README.md at v1.0.0)</a></li><li><a href="https://github.com/crow-hq/llm-wiki-v2/tree/f51e926ac00725c442ab269a7b386d52b4c9144b">llm-wiki-v2 at commit f51e926, the code of the paper&#x27;s experiments</a></li><li><a href="https://github.com/crow-hq/llm-wiki-v2/blob/v1.0.0/CITATION.cff">llm-wiki-v2 CITATION.cff</a></li><li><a href="https://github.com/crow-hq/crow-desktop">crow-hq/crow-desktop (README)</a></li><li><a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">Andrej Karpathy, LLM Wiki (GitHub Gist)</a></li></ul>
       </section>
-      <nav class="article-next links" aria-label="Keep reading"><a class="link-card" href="/llm-wiki/"><b>What is an LLM wiki?</b><span>Karpathy&#x27;s idea, RAG, and how to build one</span></a><a class="link-card" href="/llmwiki2/"><b>llmwiki2, the engine</b><span>The Python library, command line and MCP memory</span></a><a class="link-card" href="/#brain"><b>Explore a brain</b><span>An example wiki drawn by Crow's own code</span></a></nav>
+      <nav class="article-next links" aria-label="Keep reading"><a class="link-card" href="/llm-wiki/"><b>What is an LLM wiki?</b><span>A real one file by file, RAG, and how to build one</span></a><a class="link-card" href="/llmwiki2/"><b>llmwiki2, the engine</b><span>The Python library, command line and MCP memory</span></a><a class="link-card" href="/#brain"><b>Explore a brain</b><span>An example wiki drawn by Crow's own code</span></a></nav>
     </article>
   </div>
 

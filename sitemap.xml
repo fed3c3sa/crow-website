@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://crowllmwiki.com/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-25</lastmod>
   </url>
   <url>
     <loc>https://crowllmwiki.com/privacy/</loc>
@@ -10,14 +10,19 @@
   </url>
   <url>
     <loc>https://crowllmwiki.com/llm-wiki/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-25</lastmod>
+    <image:image><image:loc>https://crowllmwiki.com/assets/img/figures/llm-wiki-example-brain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://crowllmwiki.com/llmwiki2/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-25</lastmod>
+    <image:image><image:loc>https://crowllmwiki.com/assets/img/figures/llmwiki2-note-page.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://crowllmwiki.com/paper/</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-25</lastmod>
+    <image:image><image:loc>https://crowllmwiki.com/assets/img/figures/crow-paper-figure-3-tokens-per-document.webp</image:loc></image:image>
+    <image:image><image:loc>https://crowllmwiki.com/assets/img/figures/crow-paper-figure-1-architecture.webp</image:loc></image:image>
+    <image:image><image:loc>https://crowllmwiki.com/assets/img/figures/crow-paper-figure-4-right-note-read.webp</image:loc></image:image>
   </url>
 </urlset>

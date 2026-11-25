@@ -218,7 +218,7 @@
       "mainEntity": {
         "@id": "https://crowllmwiki.com/#crow"
       },
-      "dateModified": "2026-11-18",
+      "dateModified": "2026-11-25",
       "inLanguage": "en",
       "primaryImageOfPage": "https://crowllmwiki.com/assets/img/og.jpg",
       "video": {
@@ -375,7 +375,7 @@
       <a class="gh" href="https://github.com/crow-hq/llm-wiki-v2" aria-label="llm-wiki-v2 on GitHub, stars">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
         <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.94 5.96 6.58.96-4.76 4.64 1.12 6.55L12 17.52l-5.88 3.09 1.12-6.55L2.48 9.42l6.58-.96Z"/></svg>
-        <span data-stars>274</span>
+        <span data-stars>325</span>
       </a>
       <a class="btn btn-cta" href="#download">Download</a>
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">
@@ -403,7 +403,7 @@
       <a class="btn btn-outline btn-gh" href="https://github.com/crow-hq/llm-wiki-v2">
         <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
         <span>llm-wiki-v2 on GitHub</span>
-        <span class="gh-stars"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.94 5.96 6.58.96-4.76 4.64 1.12 6.55L12 17.52l-5.88 3.09 1.12-6.55L2.48 9.42l6.58-.96Z"/></svg><span data-stars>274</span></span>
+        <span class="gh-stars"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.94 5.96 6.58.96-4.76 4.64 1.12 6.55L12 17.52l-5.88 3.09 1.12-6.55L2.48 9.42l6.58-.96Z"/></svg><span data-stars>325</span></span>
       </a>
     </div>
     <p class="dl-note"><span data-dl-note>Apple silicon</span> · Crow <span data-crow-version>1.0.1</span> · free and open source · <a href="#download">macOS, Windows and Linux</a></p>
@@ -675,13 +675,14 @@ crow mcp</pre>
         </tbody>
       </table>
     </div>
+    <p class="fine reveal" style="margin-top:16px">New to the idea? <a href="/llm-wiki/">What an LLM wiki is, with a real one file by file</a>.</p>
 
     <div class="split" style="margin-top:72px">
       <div class="prose reveal">
         <span class="eyebrow" style="--dot: var(--crow)">CROW</span>
         <h3 style="margin:14px 0 16px;font-size:clamp(24px,2.8vw,32px);font-weight:450;letter-spacing:-0.02em;line-height:1.2">A small classifier decides where things go, so the wiki stays fast and cheap as it grows</h3>
         <p>Karpathy's LLM wiki finds pages by having the model read an index, which works up to about a hundred sources. CROW makes it scale with a small classifier, so the wiki keeps growing without a vector database. In the paper, the classifier routes each document down the folders level by level, and answering walks them the same way. llmwiki2 now picks a document's folder among every folder of the wiki in one choice, and since llmwiki2 1.0.0, and in Crow since 1.0.0, a question finds its notes by search and the classifier reorders them. The LLM writes: it summarizes each source, rewrites a note it merges into, names new folders and writes the answer. It also lays out the folders, in a plan before a batch is filed and by splitting a folder that has grown, and it decides when the classifier fails.</p>
-        <p>In the <a href="#paper">CROW paper</a>, retrieval kept its accuracy across a twentyfold growth of the wiki.</p>
+        <p>In the <a href="/paper/">CROW paper</a>, retrieval kept its accuracy across a twentyfold growth of the wiki.</p>
         <div class="pipeline" role="group" aria-label="The ingest pipeline">
           <b><span>summarize</span><i>→</i></b><b><span>route</span><i>→</i></b><b><span>find match</span><i>→</i></b><b><span>merge or write</span><i>→</i></b><b><span>relate</span><i>→</i></b><b><span>link, index, log</span></b>
         </div>
@@ -899,11 +900,11 @@ crow mcp</pre>
         <span class="eyebrow" style="--dot: var(--area-5)">The engine</span>
         <h2 style="margin-top:14px;font-size:clamp(30px,4.2vw,46px);font-weight:450;line-height:1.12;letter-spacing:-0.022em">LLM Wiki v2</h2>
         <div class="prose" style="margin-top:18px">
-          <p>Crow runs the CROW architecture of the open-source <strong>llm-wiki-v2</strong> engine. Give it your documents: it files them into a tidy wiki of Markdown notes and answers your questions, citing the notes it used. It runs on your computer, with any AI provider: OpenRouter, OpenAI, Gemini, Ollama (free and local) or any OpenAI-compatible server.</p>
+          <p>Crow runs the CROW architecture of the open-source <a href="/llmwiki2/"><strong>llm-wiki-v2</strong></a> engine. Give it your documents: it files them into a tidy wiki of Markdown notes and answers your questions, citing the notes it used. It runs on your computer, with any AI provider: OpenRouter, OpenAI, Gemini, Ollama (free and local) or any OpenAI-compatible server.</p>
           <p>It is a Python library, a command line and a web page with the brain, and it can be the long-term memory of Claude Code, Codex or any MCP client. Every step of the ingest and ask flows is a function you can replace.</p>
         </div>
         <div class="links">
-          <a class="link-card" href="https://github.com/crow-hq/llm-wiki-v2"><b>crow-hq/llm-wiki-v2</b><span><span class="counter" data-stars>274</span> stars · <span class="counter" data-forks>44</span> forks on GitHub</span></a>
+          <a class="link-card" href="https://github.com/crow-hq/llm-wiki-v2"><b>crow-hq/llm-wiki-v2</b><span><span class="counter" data-stars>325</span> stars · <span class="counter" data-forks>50</span> forks on GitHub</span></a>
           <a class="link-card" href="https://pypi.org/project/llmwiki2/"><b>llmwiki2 on PyPI</b><span>Version <span data-pypi-version>1.0.5</span> · Python 3.11 or later</span></a>
           <a class="link-card" href="/llmwiki2/"><b>llmwiki2, explained</b><span>Install, library, MCP memory, CROW mode</span></a>
           <a class="link-card" href="https://github.com/crow-hq/llm-wiki-v2/blob/main/docs/library/index.md"><b>Library guide</b><span><code>from llmw2 import Wiki</code></span></a>
@@ -962,7 +963,7 @@ print(answer.text, answer.citations)</pre>
     </div>
     <article class="paper reveal">
       <div>
-        <h3>CROW: Classifier-Routed Organization of LLM Wikis</h3>
+        <h3><a href="/paper/">CROW: Classifier-Routed Organization of LLM Wikis</a></h3>
         <p class="authors">Federico Cesarini, Marco Sassarini · 2026 · Zenodo</p>
         <p class="abstract">LLM wikis have been proposed as an alternative to classical retrieval-augmented generation (RAG): a large language model (LLM) incrementally organizes knowledge into a directory of notes that can be inspected directly and grows with little manual upkeep, at the price of LLM calls whose cost grows with the knowledge base.</p>
         <p class="abstract">Many of these calls are spent on decisions rather than on writing: where a new source belongs, which notes it relates to, which notes answer a question. We introduce CROW (Classifier-Routed Organization of LLM Wikis), a decision layer for LLM wikis that delegates these routing and consolidation decisions to a general-purpose typed classifier, such as the recently released Jev, and reserves generative calls for the steps that require writing text.</p>
@@ -1013,8 +1014,8 @@ print(answer.text, answer.citations)</pre>
     </div>
     <div class="numbers">
       <div class="number reveal"><b>140,458</b><span>impressions on the launch post on LinkedIn</span></div>
-      <div class="number reveal"><b>250+</b><span>stars on GitHub, <span class="counter" data-stars>274</span> today</span></div>
-      <div class="number reveal"><b>40+</b><span>forks, <span class="counter" data-forks>44</span> today</span></div>
+      <div class="number reveal"><b>250+</b><span>stars on GitHub, <span class="counter" data-stars>325</span> today</span></div>
+      <div class="number reveal"><b>40+</b><span>forks, <span class="counter" data-forks>50</span> today</span></div>
       <div class="number reveal"><b>~3,000</b><span>downloads from PyPI, 661 in the last week</span></div>
       <div class="number reveal"><b>~3,000</b><span>views of the paper on Zenodo</span></div>
     </div>
