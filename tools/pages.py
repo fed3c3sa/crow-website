@@ -334,7 +334,7 @@ def build_page(src: Path, header: str, footer: str) -> tuple[str, str, dict]:
 
     sources = "".join(f'<li><a href="{esc(s["url"])}">{esc(s["title"])}</a></li>' for s in meta.get("sources", []))
     others = [(s, t, d) for s, t, d in [
-        ("llm-wiki", "What is an LLM wiki?", "A real one file by file, RAG, and how to build one"),
+        ("llm-wiki", "What is an LLM wiki?", "An example, file by file, RAG, and how to build one"),
         ("llmwiki2", "llmwiki2, the engine", "The Python library, command line and MCP memory"),
         ("paper", "The CROW paper", "Classifier-Routed Organization of LLM Wikis"),
     ] if s != slug]

@@ -1,10 +1,10 @@
 <!--meta
 {
   "slug": "llm-wiki",
-  "title": "What is an LLM wiki? A real example, vs RAG, how to build one",
-  "description": "An LLM wiki is a folder of notes a language model writes and keeps current. A real one file by file, how it differs from RAG, and three ways to build one.",
+  "title": "What is an LLM wiki? An example, vs RAG, and how to build one",
+  "description": "An LLM wiki is a folder of notes a language model writes and keeps current. An example, file by file, how it differs from RAG, and three ways to build one.",
   "h1": "What is an LLM wiki? From Karpathy's idea file to a wiki of thousands of documents",
-  "lede": "An LLM wiki is a knowledge base that a language model writes and keeps current from your sources. Here is how the pattern works, a real one file by file, how it differs from RAG, what gets expensive as it grows, and three ways to build one.",
+  "lede": "An LLM wiki is a knowledge base that a language model writes and keeps current from your sources. Here is how the pattern works, an example, file by file, how it differs from RAG, what gets expensive as it grows, and three ways to build one.",
   "eyebrow": "Guide",
   "crumb": "LLM wiki",
   "published": "2026-11-11",
@@ -37,8 +37,8 @@
 <p>Three operations act on them. <strong>Ingest</strong>: the model reads a new source, writes a summary page and updates the related pages, the index and the log; one source may touch 10 to 15 pages. <strong>Query</strong>: it reads the relevant pages and answers with citations; good answers can be filed back. <strong>Lint</strong>: it checks for contradictions, stale claims and orphan pages.</p>
 <p><code>index.md</code> lists every page with a one-line summary, and the model reads it first to answer; <code>log.md</code> is an append-only record of what happened. Karpathy keeps the agent on one side and Obsidian on the other: "Obsidian is the IDE; the LLM is the programmer; the wiki is the codebase."</p>
 
-<h2>What does an LLM wiki look like? A real one, file by file</h2>
-<p>An LLM wiki is an ordinary folder of text files. The example that ships with <a href="/llmwiki2/">llmwiki2</a>, the notes of a coffee roastery that does not exist, is 56 Markdown files: 23 notes, the 23 sources they come from, nine indexes and a log. <code>uvx llmwiki2 demo</code> opens it on your computer, and the files are <a href="https://github.com/crow-hq/llm-wiki-v2/tree/v1.0.5/src/llmw2/demo">on GitHub</a>.</p>
+<h2>What does an LLM wiki look like? An example, file by file</h2>
+<p>An LLM wiki is an ordinary folder of text files. The example that ships with <a href="/llmwiki2/">llmwiki2</a>, the notes of a coffee roastery that does not exist, is 56 Markdown files: 23 notes, the 23 sources they come from, nine indexes and a log. <code>uvx llmwiki2 demo</code> opens it on your computer, and the files are <a href="https://github.com/crow-hq/llm-wiki-v2/tree/v1.0.5/src/llmw2/demo">on GitHub</a>. It was written as a demo: each note's text is the same as its source's, so it shows the structure, not a model's summaries.</p>
 <div class="code"><div class="code-head"><span>The folder</span></div><pre>llm-wiki-demo/
   index.md            the top folders
   log.md              the filing log
@@ -52,7 +52,7 @@
   meetings/           index.md, 3 notes
   ideas/              index.md, 3 notes
   raw/                the 23 sources</pre></div>
-<figure><img src="/assets/img/figures/llm-wiki-example-brain.webp" width="1600" height="1000" loading="lazy" alt="The example LLM wiki drawn as a graph on llmwiki2's web page: a root, eight folders named customers, ideas, meetings, products, sourcing, operations, roasting and shipping, their notes as dots, and dashed See also links between notes. The page counts 23 notes, 8 folders and 23 links."><figcaption>The same wiki on llmwiki2's web page (1.0.5): 23 notes, 8 folders, 23 links. Solid lines are folders; dashed lines are the See also links between notes.</figcaption></figure>
+<figure><img src="/assets/img/figures/llm-wiki-example-brain.webp" width="1600" height="1000" loading="lazy" alt="The example LLM wiki drawn as a graph on llmwiki2's web page: a root, eight folders named customers, ideas, meetings, products, sourcing, operations, roasting and shipping, their notes as dots, and dashed See also links between notes. The page counts 23 notes, 8 folders and 23 links."><figcaption>The same wiki on llmwiki2's web page (1.0.5): 23 notes, 8 folders, 23 links. Solid lines join a folder to what is inside it; dashed lines are the See also links between notes.</figcaption></figure>
 <p>This is one note, <code>meetings/pricing-meeting-may-2026.md</code>, as the file is. The top says what it is and which source it came from; the body is the knowledge; See also links it to the notes next to it in meaning, in other folders too.</p>
 <div class="code"><div class="code-head"><span>meetings/pricing-meeting-may-2026.md</span></div><pre>---
 type: Note
@@ -94,7 +94,7 @@ sources:
 * [Weekly sync, 10 June 2026](weekly-sync-10-june-2026.md) - Packing is late on Tuesdays, the Guji lot has arrived, and two cafés asked for decaf training.</pre></div>
 
 <h3>What happens when you ask it a question</h3>
-<p>Four questions were recorded on this wiki on 4 November 2026, with llmwiki2 0.8.0 in CROW mode: Jev 1.13 decided what to read and Gemini 3.8 Flash wrote the answers. For "How long do customers have to ask for a refund?" the classifier scored the top folders: customers 0.75, operations 0.65, ideas 0.17, meetings 0.16, products 0.09, sourcing 0.05. It opened all but sourcing, and of the notes inside, <code>refund-policy.md</code> scored 0.93 and the next one 0.05. The LLM read that one note and answered "within 30 days of delivery", citing it.</p>
+<p>Four questions were recorded on this wiki on 4 November 2026, with llmwiki2 0.8.0 in CROW mode: Jev 1.13 decided what to read and Gemini 3.8 Flash wrote the answers. For "How long do customers have to ask for a refund?" the classifier scored the top folders: customers 0.75, operations 0.65, ideas 0.17, meetings 0.16, products 0.09, sourcing 0.05. It opened all but sourcing, and of the notes it scored, <code>refund-policy.md</code> scored 0.93 and the next one 0.05. The LLM read that one note and answered "within 30 days of delivery", citing it.</p>
 <div class="table-wrap"><table><thead><tr><th>Question</th><th>Notes read</th><th>LLM tokens (calls)</th><th>Classifier tokens (calls)</th><th>Seconds</th><th>Cost</th></tr></thead><tbody>
 <tr><td>How long do customers have to ask for a refund?</td><td>1</td><td>386 (1)</td><td>2,639 (3)</td><td>2.4</td><td>$0.0004</td></tr>
 <tr><td>What did we decide about prices in May?</td><td>3</td><td>917 (1)</td><td>3,295 (4)</td><td>4.4</td><td>$0.0012</td></tr>
